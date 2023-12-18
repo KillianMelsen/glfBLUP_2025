@@ -2,10 +2,10 @@
 # Add `export MKL_NUM_THREADS=3` and `export MKL_DYNAMIC=FALSE` to ~/.profile (assuming a system with 20 threads)
 # 5 parallel processes using foreach * 3 MKL threads = 15 out of 20 threads total.
 
-# Working directory and packages:
-# wd <- "C:/Users/killi/Desktop/gfblup-methodological-paper"
-wd <- "~/gfblup_methodology"
+wd <- getwd()
 setwd(wd)
+
+# Libraries:
 library(doParallel)
 library(tictoc)
 
@@ -20,7 +20,7 @@ combi <- 1
 for (h2s in h2.sec) {
   for (comm in comms) {
     
-    cl <- parallel::makeCluster(5, outfile = sprintf("logs/traintest_sim_p800_h2s%s_comm%s.txt", h2s, comm))
+    cl <- parallel::makeCluster(5, outfile = sprintf("logs/traintest_p800_h2s%s_comm%s.txt", h2s, comm))
     doParallel::registerDoParallel(cl)
     
     cat(sprintf("Starting parallel train/test division of 5 x 100 simulated datasets (h2s = %s, comm = %s, combination %d/%d)...\n",
@@ -40,7 +40,7 @@ for (h2s in h2.sec) {
       setwd(wd)
       
       # Loading kinship and marker data, setting number of simulations and number of training genotypes:
-      load("K_sim.RData"); rm(M)
+      load("genotypes/K_sim.RData"); rm(M)
       n.sim <- 100
       n.train <- 300
       
@@ -49,7 +49,7 @@ for (h2s in h2.sec) {
       for (sim in 1:n.sim) {
         
         # Loading raw simulated dataset:
-        datalist <- list.load(file = sprintf("sim_p800/datasets/sim_p800_h2y%s_comm%s_h2s%s_dataset_%d.RData",
+        datalist <- list.load(file = sprintf("p800/datasets/p800_h2y%s_comm%s_h2s%s_dataset_%d.RData",
                                              h2y, comm, h2s, sim))
         
         # Randomly choosing training and test genotypes:
@@ -91,7 +91,7 @@ for (h2s in h2.sec) {
         datalist$data.real <- rbind(data.real.test, data.real.train)
         
         # Overwriting dataset:
-        list.save(datalist, file = sprintf("sim_p800/datasets/sim_p800_h2y%s_comm%s_h2s%s_dataset_%d.RData",
+        list.save(datalist, file = sprintf("p800/datasets/p800_h2y%s_comm%s_h2s%s_dataset_%d.RData",
                                            h2y, comm, h2s, sim))
         
       }

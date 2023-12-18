@@ -1,22 +1,18 @@
-# For execution on WSL using oneMKL:
+# For execution on WSL using oneMKL BLAS/LAPACK:
 # Add `export MKL_NUM_THREADS=3` and `export MKL_DYNAMIC=FALSE` to ~/.profile (assuming a system with 20 threads)
 # 5 parallel processes using foreach * 3 MKL threads = 15 out of 20 threads total.
-# Runtimes for 5 x 100 datasets:
-# WSL MKL1:
-# WSL MKL3:
 
-# This scripts generates 100 datasets for each of the 45 h2s - comm - h2y combinations.
+# This script generates 100 datasets for each of the 45 h2s - comm - h2y combinations.
 # These datasets contain 500 genotypes replicated twice, with 300 training genotypes and 200 test genotypes.
-# There are 4 signal factors and 4 noise factors with 100 features each, for a total of p=800 features.
-# As a result the data is high-dimensional as p > n > n_g.
+# There are 4 signal factors and 4 noise factors representing 100 features each for a total of p = 800 features.
+# As a result, the data is high-dimensional as p > n > n_g.
 
 # Signal factors are not correlated to each other.
 
-# Working directory and packages:
 start <- Sys.time()
-wd <- "~/gfblup_methodology"
-# wd <- "C:/Users/killi/Desktop/gfblup-methodological-paper"
-setwd(wd)
+wd <- getwd()
+
+# Libraries:
 library(doParallel)
 library(tictoc)
 
@@ -31,7 +27,7 @@ combi <- 1
 for (h2s in h2.sec) {
   for (comm in comms) {
     
-    cl <- parallel::makeCluster(5, outfile = sprintf("logs/generate_sim_p800_h2s%s_comm%s.txt", h2s, comm))
+    cl <- parallel::makeCluster(5, outfile = sprintf("logs/generate_p800_h2s%s_comm%s.txt", h2s, comm))
     doParallel::registerDoParallel(cl)
     
     cat(sprintf("Starting parallel generation of 5 x 100 simulated datasets (h2s = %s, comm = %s, combination %d/%d)...\n",
@@ -51,7 +47,7 @@ for (h2s in h2.sec) {
       setwd(wd)
       
       # Loading kinship and marker data, setting number of simulations and replicates:
-      load("K_sim.RData")
+      load("genotypes/K_sim.RData"); rm(M)
       n.sim <- 100
       r <- 2
       
@@ -82,7 +78,7 @@ for (h2s in h2.sec) {
                                    S.sg2 = sg2.s, S.se2 = se2.s,
                                    Y.sg2 = sg2.y, Y.se2 = se2.y)
           
-        list.save(datalist, file = sprintf("sim_p800/datasets/sim_p800_h2y%s_comm%s_h2s%s_dataset_%d.RData",
+        list.save(datalist, file = sprintf("p800/datasets/p800_h2y%s_comm%s_h2s%s_dataset_%d.RData",
                                            h2y, comm, h2s, sim))
       }
     }
