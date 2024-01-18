@@ -34,7 +34,7 @@ Placeholder
 
 Placeholder
 
-### 2.4 - Interpretation of a single date
+### 2.4 - Interpretation of factor loadings for a single date
 
 Placeholder
 
