@@ -6,20 +6,21 @@ library(tictoc)
 library(MegaLMM)
 
 # Numbers of MegaLMM factors:
-Ms <- c(5, 10, 20, 50)
+# Ms <- c(5, 10)
+Ms <- c(20, 50)
 
 # Number of burn-in iterations (swithcing factors 10 times):
-burnin <- 5000
+burnin <- 10000
 
 # Number of sample iterations (thinning rate of 2)
-posterior <- 50000
+posterior <- 100000
 for (M in Ms) {
   
   # Setting seed:
   set.seed(1997)
   
   # Setting working directory:
-  setwd("C:/Users/killi/Desktop/LINUX/MEGALMM")
+  # setwd(paste0(getwd(), "/SM_MegaLMM"))
   
   # Loading kinship:
   load("K_hyper.RData")
@@ -94,12 +95,12 @@ for (M in Ms) {
                                                run_parameters = run_parameters,
                                                run_ID = run_ID)
   
-  maps = MegaLMM::make_Missing_data_map(MegaLMM_state, verbose = FALSE)
+  maps = MegaLMM::make_Missing_data_map(MegaLMM_state, verbose = T)
   MegaLMM_state <- MegaLMM::set_Missing_data_map(MegaLMM_state, maps$Missing_data_map)
   
   MegaLMM_state <- MegaLMM::set_priors_MegaLMM(MegaLMM_state, priors)
   MegaLMM_state <- MegaLMM::initialize_variables_MegaLMM(MegaLMM_state)
-  MegaLMM_state <- MegaLMM::initialize_MegaLMM(MegaLMM_state, verbose = FALSE)
+  MegaLMM_state <- MegaLMM::initialize_MegaLMM(MegaLMM_state, verbose = T)
   
   MegaLMM_state$Posterior$posteriorSample_params <- c("Lambda")
   MegaLMM_state$Posterior$posteriorFunctions <- list(pred = "U_R[,1] + U_F %*% Lambda[,1]")
