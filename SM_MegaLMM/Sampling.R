@@ -7,7 +7,7 @@ library(MegaLMM)
 
 # Numbers of MegaLMM factors:
 # Ms <- c(5, 10)
-Ms <- c(20, 50)
+Ms <- c(50)
 
 # Number of burn-in iterations (swithcing factors 10 times):
 burnin <- 10000

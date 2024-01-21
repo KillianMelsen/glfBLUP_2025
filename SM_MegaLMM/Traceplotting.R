@@ -1,6 +1,6 @@
 # Numbers of MegaLMM factors:
 # Ms <- c(5, 10)
-Ms <- c(20, 50)
+Ms <- c(50)
 
 for (M in Ms) {
   
