@@ -105,3 +105,7 @@ Note that the posterior arrays, MegaLMM traceplots, and state directories are no
 ### S1.3 - Traceplotting
 
 The [`Traceplotting.R`](https://github.com/KillianMelsen/gfBLUP_2024/blob/main/SM_MegaLMM/Traceplotting.R) script in [`./SM_MegaLMM`](https://github.com/KillianMelsen/gfBLUP_2024/tree/main/SM_MegaLMM) can be run to produce the custom traceplots. We first produce traceplots of the yield loadings on useful factors (absolute loading \> 0.05) for each value of `M`. We then produce a set of loading traceplots for a number of key wavelengths around 700 nm on the useful factors, again for each value of `M`. These traceplots can all be found in [`./SM_MegaLMM/custom_traceplots`](https://github.com/KillianMelsen/gfBLUP_2024/tree/main/SM_MegaLMM/custom_traceplots).
+
+![](SM_MegaLMM/custom_traceplots/M50_Y.jpg)
+
+[test](SM_MegaLMM/Sampling.R)
