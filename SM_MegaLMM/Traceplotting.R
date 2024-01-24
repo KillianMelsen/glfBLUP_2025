@@ -11,33 +11,33 @@ for (M in Ms) {
   # Which factors are important for predicting yield?
   (useful <- names(loadings.y)[which(abs(loadings.y) > 0.05)])
   
-  # 25000 x 50 x 63 array (samples x factors x features)
+  # 50000 x M x 63 array (samples x factors x features)
   dim(Lambda_samples)
   dimnames(Lambda_samples)
   dimnames(Lambda_samples)[[2]] <- paste0("F", 1:dim(Lambda_samples)[2])
   
-  # 25000 x 1032 x 1 array (samples x genotypes x yield)
+  # 50000 x 1032 x 1 array (samples x genotypes x yield)
   dim(pred_samples)
   pred_samples <- pred_samples[, , 1] # Collapse into simple matrix
   dimnames(pred_samples)[[2]] <- substr(dimnames(pred_samples)[[2]], 1, 7) # Remove weird part of G names
   
   # Some quick examples of the posterior loading samples of different features on the first useful factor (F1):
-  plot(Lambda_samples[, useful[1], "Y"])
-  plot(Lambda_samples[, useful[1], "nm685_150310"])
-  plot(Lambda_samples[, useful[1], "nm707_150310"])
-  plot(Lambda_samples[, useful[1], "nm751_150310"])
+  # plot(Lambda_samples[, useful[1], "Y"])
+  # plot(Lambda_samples[, useful[1], "nm685_150310"])
+  # plot(Lambda_samples[, useful[1], "nm707_150310"])
+  # plot(Lambda_samples[, useful[1], "nm751_150310"])
   
   # Some quick examples of the posterior predictions of different genotypes:
-  colnames(pred_samples)[1:3]
-  
-  line <- lm(pred_samples[, 1] ~ matrix(1:nrow(pred_samples)))
-  plot(pred_samples[, 1]); abline(line, col = "red")
-  
-  line <- lm(pred_samples[, 2] ~ matrix(1:nrow(pred_samples)))
-  plot(pred_samples[, 2]); abline(line, col = "red")
-  
-  line <- lm(pred_samples[, 3] ~ matrix(1:nrow(pred_samples)))
-  plot(pred_samples[, 3]); abline(line, col = "red")
+  # colnames(pred_samples)[1:3]
+  # 
+  # line <- lm(pred_samples[, 1] ~ matrix(1:nrow(pred_samples)))
+  # plot(pred_samples[, 1]); abline(line, col = "red")
+  # 
+  # line <- lm(pred_samples[, 2] ~ matrix(1:nrow(pred_samples)))
+  # plot(pred_samples[, 2]); abline(line, col = "red")
+  # 
+  # line <- lm(pred_samples[, 3] ~ matrix(1:nrow(pred_samples)))
+  # plot(pred_samples[, 3]); abline(line, col = "red")
   
   library(ggplot2)
   
@@ -61,7 +61,7 @@ for (M in Ms) {
     theme_classic() +
     ggtitle("Yield")
   
-  ggsave(filename = sprintf("mean_posterior_loadings_Y/M%s_Y.jpg", M), height = 20, width = 40, units = "cm")
+  ggsave(filename = sprintf("custom_traceplots/M%s_Y.jpg", M), height = 20, width = 40, units = "cm")
   
   # The important wavelengths around the "switching" point in gfBLUP:
   (WL <- dimnames(Lambda_samples)[[3]][41:45])
