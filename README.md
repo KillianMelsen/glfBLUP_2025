@@ -64,7 +64,7 @@ This section contains some additional results related to the behavior of the Meg
 
 ### S1.1 - Example data
 
-All results are obtained using the first hyperspectral dataset generated in Section 2.1. We use the kinship matrix (1032 genotypes) from this section as well. Furthermore, we focus on one single data of hyperspectral measurements (150310) resulting in 63 features total (yield + 62 wavelengths). Training data is scaled and centered, with no redundancy filtering taking place.
+All results are obtained using the first hyperspectral dataset generated in [Section 2.1](https://github.com/KillianMelsen/gfBLUP_2024/tree/main?tab=readme-ov-file#21---data-pre-processing). We use the kinship matrix (1032 genotypes) from this section as well. Furthermore, we focus on one single data of hyperspectral measurements (150310) resulting in 63 features total (yield + 62 wavelengths). Training data is scaled and centered, with no redundancy filtering taking place.
 
 ### S1.2 - Sampling
 
@@ -96,16 +96,12 @@ run_parameters <- MegaLMM::MegaLMM_control(
   )
 ```
 
-The `Sampling.R` script in `./SM_MegaLMM` can be run to obtain all data. The MegaLMM state files are saved in the `./SM_MegaLMM/states` directory. Traceplots as produced by the `MegaLMM` package are saved in `./SM_MegaLMM/MegaLMM_traceplots`. The mean posterior loadings of yield are saved in simple vectors in the `./SM_MegaLMM/mean_posterior_loadings_Y` directory. We then determine which of the `M` factors are "useful", that is, the factors for which yield has an absolute loading higher than 0.05. Plots of the mean wavelength loadings on useful and useless factors are produced and saved in `./SM_MegaLMM/mean_posterior_loadings_WL`.
+The [`Sampling.R`](https://github.com/KillianMelsen/gfBLUP_2024/blob/main/SM_MegaLMM/Sampling.R) script in [`./SM_MegaLMM`](https://github.com/KillianMelsen/gfBLUP_2024/tree/main/SM_MegaLMM) can be run to obtain all data. The MegaLMM state files are saved in the [`./SM_MegaLMM/states`](https://github.com/KillianMelsen/gfBLUP_2024/tree/main/SM_MegaLMM/states) directory. Traceplots as produced by the [`MegaLMM`](https://doi.org/10.1186/s13059-021-02416-w) package are saved in [`./SM_MegaLMM/MegaLMM_traceplots`](https://github.com/KillianMelsen/gfBLUP_2024/tree/main/SM_MegaLMM/MegaLMM_traceplots). The mean posterior loadings of yield are saved in simple vectors in the [`./SM_MegaLMM/mean_posterior_loadings_Y`](https://github.com/KillianMelsen/gfBLUP_2024/tree/main/SM_MegaLMM/mean_posterior_loadings_Y) directory. We then determine which of the `M` factors are "useful", that is, the factors for which yield has an absolute loading higher than 0.05. Plots of the mean wavelength loadings on useful and useless factors are produced and saved in [`./SM_MegaLMM/mean_posterior_loadings_WL`](https://github.com/KillianMelsen/gfBLUP_2024/tree/main/SM_MegaLMM/mean_posterior_loadings_WL).
 
-Finally, the full posterior arrays of the loadings (50000 x `M` x 63) and the predictions (50000 x 1032 x 1) are saved in `./SM_MegaLMM/posterior_arrays`. These are used for some custom traceplots to better look at the behavior of chains for important wavelength/yield by factor combinations.
+Finally, the full posterior arrays of the loadings (50000 x `M` x 63) and the predictions (50000 x 1032 x 1) are saved in [`./SM_MegaLMM/posterior_arrays`](https://github.com/KillianMelsen/gfBLUP_2024/tree/main/SM_MegaLMM/posterior_arrays). These are used for some custom traceplots to better look at the behavior of chains for important wavelength/yield by factor combinations.
 
 Note that the posterior arrays, MegaLMM traceplots, and state directories are not present in this repository due to file size limits.
 
 ### S1.3 - Traceplotting
 
-The `Traceplotting.R` script in `./SM_MegaLMM` can be run to produce the custom traceplots.
-We first produce traceplots of the yield loadings on useful factors (absolute loading > 0.05) for each value of `M`.
-We then produce a set of loading traceplots for a number of key wavelengths around 700 nm on the useful factors, again for each value of `M`.
-These traceplots can all be found in `./SM_MegaLMM/custom_traceplots`.
-
+The [`Traceplotting.R`](https://github.com/KillianMelsen/gfBLUP_2024/blob/main/SM_MegaLMM/Traceplotting.R) script in [`./SM_MegaLMM`](https://github.com/KillianMelsen/gfBLUP_2024/tree/main/SM_MegaLMM) can be run to produce the custom traceplots. We first produce traceplots of the yield loadings on useful factors (absolute loading \> 0.05) for each value of `M`. We then produce a set of loading traceplots for a number of key wavelengths around 700 nm on the useful factors, again for each value of `M`. These traceplots can all be found in [`./SM_MegaLMM/custom_traceplots`](https://github.com/KillianMelsen/gfBLUP_2024/tree/main/SM_MegaLMM/custom_traceplots).
