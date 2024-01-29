@@ -11,8 +11,8 @@ set.seed(1997)
 load(paste0(dirname(getwd()), "/genotypes/K_sim.RData")); rm(M)
 
 # Simulated genetic parameters:
-h2s <- "07"
-comm <- "05"
+h2s <- "09"
+comm <- "08"
 h2y <- "05"
 
 # Total number of secondary features:
