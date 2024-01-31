@@ -9,7 +9,7 @@ library(gfBLUP)
 set.seed(1997)
 
 # Total number of secondary features:
-ps <- seq(100, 1600, 100)
+ps <- seq(100, 1400, 100)
 
 # Loading kinship:
 load(paste0(dirname(getwd()), "/genotypes/K_sim.RData")); rm(M)
