@@ -19,7 +19,7 @@ load(paste0(dirname(getwd()), "/genotypes/K_sim.RData")); rm(M)
 # - Second dimension is used to store results from 10 timing runs after a single warmup run
 # - Third dimension is used to store results
 runs.warmup <- 1
-runs.timing <- 3
+runs.timing <- 5
 steps <- c("Redundancy filtering",
            "Regularization",
            "Factor model",
@@ -161,10 +161,10 @@ for (p in ps) {
     tic("Regularization") # Regularization start
     folds <- gfBLUP::createFolds(genos = unique(as.character(d.train$G)))
     tempG <- gfBLUP::regularizedCorrelation(data = d.train[c("G", sec)],
-                                            folds = folds, what = "genetic", dopar = FALSE)
+                                            folds = folds, what = "genetic", dopar = TRUE)
     
     tempE <- gfBLUP::regularizedCorrelation(data = d.train[c("G", sec)],
-                                            folds = folds, what = "residual", dopar = FALSE)
+                                            folds = folds, what = "residual", dopar = TRUE)
     Rg.reg <- tempG$optCor
     toc(log = TRUE) # Regularization stop
     
