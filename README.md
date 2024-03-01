@@ -4,19 +4,19 @@ Contains all scripts required to generate the simulated, hyperspectral, and timi
 
 ## 1 - High-dimensional p800 simulated data
 
-This section provides information on the generation and analysis of the high-dimensional simulated data.
+This section provides information on the generation and analysis of the high-dimensional simulated data. All required scripts can be run at once using the [`run_all_p800.R`](run_all_p800.R) script. It might be better to source the various scripts one after the other as running all in one go might take too long.
 
 ### 1.1 - Data simulation
 
-Two scripts are used to generate that data. The first one simulates the actual data based on the factor model while the second one randomly divides each dataset into a training and test set. Note that these scripts can be run on WSL using Intel's oneMKL BLAS and LAPACK libraries. In that case MKL_DYNAMIC and MKL_NUM_THREADS must be set to FALSE and 3, respectively. This assumes a 20 thread system (5 parallel processes each using 3 threads for MKL). For an 8 thread system MKL_NUM_THREADS should be set to 1.
+Two scripts are used to generate that data. The first one ([`generate_sim_p800_datasets.R`](p800/data_generation/generate_sim_p800_datasets.R)) simulates the actual data based on the factor model while [`traintest_sim_p800_datasets.R`](p800/data_generation/traintest_sim_p800_datasets.R) randomly divides each dataset into a training and test set. Note that these scripts can be run in WSL2 using Intel's oneMKL BLAS and LAPACK libraries. In that case `MKL_DYNAMIC` and `MKL_NUM_THREADS` must be set to `FALSE` and `3`, respectively. This assumes a 20 thread system (5 parallel processes each using 3 threads for MKL). For an 8 thread system `MKL_NUM_THREADS` should be set to `1`.
 
 ### 1.2 - Data analysis
 
-Placeholder
+[`run_all_p800.R`](run_all_p800.R) sources all scripts to analyze the generated data using different methods, as well as some scripts to merge results for methods that are run in multiple parts due to their long runtime. As an example, [`gfBLUP_part1.R`](p800/analyses/gfBLUP_part1.R) is responsible for analyzing the first 50 datasets for each of the combinations of focal/secondary trait heritabilities and focal trait communalities. The second 50 datasets are analyzed using [`gfBLUP_part2.R`](p800/analyses/gfBLUP_part2.R) after which the results are merged using [`gfBLUP_merge.R`](p800/misc/gfBLUP_merge.R). Note that if running the scripts in WSL2 using oneMKL, it is safest to set `MKL_NUM_THREADS=1` and `MKL_DYNAMIC=FALSE` to avoid issues
 
 ### 1.3 - Result visualization
 
-Placeholder
+The results of all p800 analyses are visualized using [`plot_p800_results.R`](p800/plot_p800_results.R). The produced plot (p800.png) is placed in the base directory.
 
 ## 2 - Hyperspectral data
 
