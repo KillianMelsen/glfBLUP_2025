@@ -1,14 +1,15 @@
 library(ggplot2)
+runs <- 5
 results <- read.csv("timing.csv")
 results <- results[which(results$p %in% seq(100, 1400, 100)), -c(1, 5)]
 
 totals <- expand.grid(Step = "Total",
-                      Run = 1:3,
+                      Run = 1:runs,
                       p = seq(100, 1400, 100))
 
 totals$Durations <- numeric(nrow(totals))
 
-for (R in 1:3) {
+for (R in 1:runs) {
   for (P in seq(100, 1400, 100)) {
     temp <- results[which(results$Run == R & results$p == P), ]
     totals[which(totals$Run == R & totals$p == P), "Durations"] <- sum(temp$Durations)

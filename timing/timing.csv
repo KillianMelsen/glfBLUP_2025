@@ -1,337 +1,491 @@
 "","Step","Run","p","Duration","Durations"
-"1","Redundancy filtering",1,100,0,0.139999999999418
-"2","Regularization",1,100,0,3.93000000000029
-"3","Factor model",1,100,0,0.0400000000008731
-"4","Factor scores",1,100,0,0.0200000000004366
-"5","Subset selection",1,100,0,0.00999999999839929
-"6","gfBLUP genomic prediction",1,100,0,1.32000000000153
+"1","Redundancy filtering",1,100,0,0.119999999995343
+"2","Regularization",1,100,0,2.52999999999884
+"3","Factor model",1,100,0,0
+"4","Factor scores",1,100,0,0.0299999999988358
+"5","Subset selection",1,100,0,0.0199999999895226
+"6","gfBLUP genomic prediction",1,100,0,1.30000000001746
 "7","Other",1,100,0,0
-"8","Redundancy filtering",2,100,0,0.139999999999418
-"9","Regularization",2,100,0,3.44000000000051
-"10","Factor model",2,100,0,0.0299999999988358
-"11","Factor scores",2,100,0,0.0300000000006548
-"12","Subset selection",2,100,0,0.0200000000004366
-"13","gfBLUP genomic prediction",2,100,0,1.32999999999993
+"8","Redundancy filtering",2,100,0,0.240000000019791
+"9","Regularization",2,100,0,2.80999999999767
+"10","Factor model",2,100,0,0.0099999999802094
+"11","Factor scores",2,100,0,0.0200000000186265
+"12","Subset selection",2,100,0,0.0199999999895226
+"13","gfBLUP genomic prediction",2,100,0,1.17999999999302
 "14","Other",2,100,0,0
-"15","Redundancy filtering",3,100,0,0.140000000001237
-"16","Regularization",3,100,0,3.35999999999876
-"17","Factor model",3,100,0,0.0300000000006548
-"18","Factor scores",3,100,0,0.0300000000006548
-"19","Subset selection",3,100,0,0.00999999999839929
-"20","gfBLUP genomic prediction",3,100,0,1.32000000000153
-"21","Other",3,100,0,0.0999999999985448
-"22","Redundancy filtering",1,200,0,0.299999999999272
-"23","Regularization",1,200,0,15.7299999999996
-"24","Factor model",1,200,0,0.180000000000291
-"25","Factor scores",1,200,0,0.0300000000006548
-"26","Subset selection",1,200,0,0.0299999999988358
-"27","gfBLUP genomic prediction",1,200,0,1.91000000000167
-"28","Other",1,200,0,0.0100000000002183
-"29","Redundancy filtering",2,200,0,0.290000000000873
-"30","Regularization",2,200,0,14.4200000000001
-"31","Factor model",2,200,0,0.180000000000291
-"32","Factor scores",2,200,0,0.0599999999994907
-"33","Subset selection",2,200,0,0.0100000000002183
-"34","gfBLUP genomic prediction",2,200,0,1.79999999999927
-"35","Other",2,200,0,0
-"36","Redundancy filtering",3,200,0,0.309999999999491
-"37","Regularization",3,200,0,17.3299999999999
-"38","Factor model",3,200,0,0.190000000000509
-"39","Factor scores",3,200,0,0.0599999999994907
-"40","Subset selection",3,200,0,0.0100000000002183
-"41","gfBLUP genomic prediction",3,200,0,1.88000000000102
-"42","Other",3,200,0,0
-"43","Redundancy filtering",1,300,0,0.5
-"44","Regularization",1,300,0,39.3500000000004
-"45","Factor model",1,300,0,0.579999999999927
-"46","Factor scores",1,300,0,0.0900000000001455
-"47","Subset selection",1,300,0,0.0200000000004366
-"48","gfBLUP genomic prediction",1,300,0,0.530000000000655
-"49","Other",1,300,0,0
-"50","Redundancy filtering",2,300,0,0.5
-"51","Regularization",2,300,0,39.7700000000004
-"52","Factor model",2,300,0,0.590000000000146
-"53","Factor scores",2,300,0,0.100000000000364
-"54","Subset selection",2,300,0,0.0100000000002183
-"55","gfBLUP genomic prediction",2,300,0,0.519999999998618
-"56","Other",2,300,0,0
-"57","Redundancy filtering",3,300,0,0.520000000000437
-"58","Regularization",3,300,0,66.0900000000001
-"59","Factor model",3,300,0,0.600000000000364
-"60","Factor scores",3,300,0,0.069999999999709
-"61","Subset selection",3,300,0,0.0399999999990541
-"62","gfBLUP genomic prediction",3,300,0,0.610000000000582
-"63","Other",3,300,0,0
-"64","Redundancy filtering",1,400,0,0.780000000000655
-"65","Regularization",1,400,0,78.8799999999992
-"66","Factor model",1,400,0,1.34000000000015
-"67","Factor scores",1,400,0,0.159999999999854
-"68","Subset selection",1,400,0,0.0100000000002183
-"69","gfBLUP genomic prediction",1,400,0,1.69999999999891
-"70","Other",1,400,0,0.0200000000004366
-"71","Redundancy filtering",2,400,0,0.860000000000582
-"72","Regularization",2,400,0,81.5
-"73","Factor model",2,400,0,1.33999999999833
-"74","Factor scores",2,400,0,0.130000000001019
-"75","Subset selection",2,400,0,0.0300000000006548
-"76","gfBLUP genomic prediction",2,400,0,1.22999999999956
-"77","Other",2,400,0,0
-"78","Redundancy filtering",3,400,0,0.800000000001091
-"79","Regularization",3,400,0,78.4399999999987
-"80","Factor model",3,400,0,1.34000000000015
-"81","Factor scores",3,400,0,0.140000000001237
-"82","Subset selection",3,400,0,0.0199999999986176
-"83","gfBLUP genomic prediction",3,400,0,1.78000000000065
-"84","Other",3,400,0,0
-"85","Redundancy filtering",1,500,0,1.13999999999942
-"86","Regularization",1,500,0,230.440000000001
-"87","Factor model",1,500,0,2.53000000000065
-"88","Factor scores",1,500,0,0.219999999999345
-"89","Subset selection",1,500,0,0.0300000000006548
-"90","gfBLUP genomic prediction",1,500,0,1.77999999999884
-"91","Other",1,500,0,0
-"92","Redundancy filtering",2,500,0,1.11000000000058
-"93","Regularization",2,500,0,229.290000000001
-"94","Factor model",2,500,0,2.54999999999927
-"95","Factor scores",2,500,0,0.219999999999345
-"96","Subset selection",2,500,0,0.0300000000006548
-"97","gfBLUP genomic prediction",2,500,0,1.79999999999927
-"98","Other",2,500,0,0.0199999999986176
-"99","Redundancy filtering",3,500,0,1.11999999999898
-"100","Regularization",3,500,0,230.139999999999
-"101","Factor model",3,500,0,2.55000000000109
-"102","Factor scores",3,500,0,0.219999999999345
-"103","Subset selection",3,500,0,0.0300000000006548
-"104","gfBLUP genomic prediction",3,500,0,1.90999999999985
-"105","Other",3,500,0,0
-"106","Redundancy filtering",1,600,0,1.51000000000022
-"107","Regularization",1,600,0,386
-"108","Factor model",1,600,0,4.36000000000058
-"109","Factor scores",1,600,0,0.309999999999491
-"110","Subset selection",1,600,0,0.0399999999990541
-"111","gfBLUP genomic prediction",1,600,0,2.5
-"112","Other",1,600,0,0.0200000000004366
-"113","Redundancy filtering",2,600,0,1.5099999999984
-"114","Regularization",2,600,0,245.470000000001
-"115","Factor model",2,600,0,4.3799999999992
-"116","Factor scores",2,600,0,0.31000000000131
-"117","Subset selection",2,600,0,0.0299999999988358
-"118","gfBLUP genomic prediction",2,600,0,2.53000000000065
-"119","Other",2,600,0,0.0200000000004366
-"120","Redundancy filtering",3,600,0,1.51000000000022
-"121","Regularization",3,600,0,253.389999999999
-"122","Factor model",3,600,0,4.38000000000102
-"123","Factor scores",3,600,0,0.309999999999491
-"124","Subset selection",3,600,0,0.0100000000002183
-"125","gfBLUP genomic prediction",3,600,0,2.48999999999978
-"126","Other",3,600,0,0.0200000000004366
-"127","Redundancy filtering",1,700,0,2.07000000000153
-"128","Regularization",1,700,0,383.389999999999
-"129","Factor model",1,700,0,6.86000000000058
-"130","Factor scores",1,700,0,0.420000000000073
-"131","Subset selection",1,700,0,0.00999999999839929
-"132","gfBLUP genomic prediction",1,700,0,3.58000000000175
-"133","Other",1,700,0,0.00999999999839929
-"134","Redundancy filtering",2,700,0,2.05999999999949
-"135","Regularization",2,700,0,385.879999999999
-"136","Factor model",2,700,0,6.8700000000008
-"137","Factor scores",2,700,0,0.420000000000073
-"138","Subset selection",2,700,0,0.0399999999990541
-"139","gfBLUP genomic prediction",2,700,0,3.59000000000015
-"140","Other",2,700,0,0.0200000000004366
-"141","Redundancy filtering",3,700,0,2.05999999999949
-"142","Regularization",3,700,0,385.07
-"143","Factor model",3,700,0,6.88999999999942
-"144","Factor scores",3,700,0,0.420000000000073
-"145","Subset selection",3,700,0,0.0300000000006548
-"146","gfBLUP genomic prediction",3,700,0,3.5
-"147","Other",3,700,0,0
-"148","Redundancy filtering",1,800,0,2.7400000000016
-"149","Regularization",1,800,0,825.009999999998
-"150","Factor model",1,800,0,10.1800000000003
-"151","Factor scores",1,800,0,0.56000000000131
-"152","Subset selection",1,800,0,0.0299999999988358
-"153","gfBLUP genomic prediction",1,800,0,3.59000000000015
-"154","Other",1,800,0,0.00999999999839929
-"155","Redundancy filtering",2,800,0,2.76000000000022
-"156","Regularization",2,800,0,853.779999999999
-"157","Factor model",2,800,0,10.2200000000012
-"158","Factor scores",2,800,0,0.569999999999709
-"159","Subset selection",2,800,0,0.0100000000002183
-"160","gfBLUP genomic prediction",2,800,0,3.52000000000044
-"161","Other",2,800,0,0.0200000000004366
-"162","Redundancy filtering",3,800,0,2.69000000000051
-"163","Regularization",3,800,0,823.539999999999
-"164","Factor model",3,800,0,10.2800000000007
-"165","Factor scores",3,800,0,0.549999999999272
-"166","Subset selection",3,800,0,0.0300000000006548
-"167","gfBLUP genomic prediction",3,800,0,3.63999999999942
-"168","Other",3,800,0,0
-"169","Redundancy filtering",1,900,0,3.48999999999978
-"170","Regularization",1,900,0,1291.4
-"171","Factor model",1,900,0,14.3899999999994
-"172","Factor scores",1,900,0,0.720000000001164
-"173","Subset selection",1,900,0,0.0299999999988358
-"174","gfBLUP genomic prediction",1,900,0,1.23999999999796
-"175","Other",1,900,0,0.0100000000002183
-"176","Redundancy filtering",2,900,0,3.43999999999869
-"177","Regularization",2,900,0,932.970000000001
-"178","Factor model",2,900,0,14.369999999999
-"179","Factor scores",2,900,0,0.740000000001601
-"180","Subset selection",2,900,0,0.00999999999839929
-"181","gfBLUP genomic prediction",2,900,0,1.19000000000233
-"182","Other",2,900,0,0
-"183","Redundancy filtering",3,900,0,3.52000000000044
-"184","Regularization",3,900,0,1138.89
-"185","Factor model",3,900,0,14.3600000000006
-"186","Factor scores",3,900,0,0.719999999997526
-"187","Subset selection",3,900,0,0.0300000000024738
-"188","gfBLUP genomic prediction",3,900,0,1.25
-"189","Other",3,900,0,0.0100000000020373
-"190","Redundancy filtering",1,1000,0,4.32999999999811
-"191","Regularization",1,1000,0,1017.14
-"192","Factor model",1,1000,0,19.7799999999988
-"193","Factor scores",1,1000,0,0.909999999999854
-"194","Subset selection",1,1000,0,0.0299999999988358
-"195","gfBLUP genomic prediction",1,1000,0,2.54000000000087
-"196","Other",1,1000,0,0
-"197","Redundancy filtering",2,1000,0,4.41999999999825
-"198","Regularization",2,1000,0,1508.35
-"199","Factor model",2,1000,0,19.7000000000007
-"200","Factor scores",2,1000,0,0.909999999999854
-"201","Subset selection",2,1000,0,0.0299999999988358
-"202","gfBLUP genomic prediction",2,1000,0,2.5099999999984
-"203","Other",2,1000,0,0.0100000000020373
-"204","Redundancy filtering",3,1000,0,4.32999999999811
-"205","Regularization",3,1000,0,1040.29
-"206","Factor model",3,1000,0,19.7200000000012
-"207","Factor scores",3,1000,0,0.889999999999418
-"208","Subset selection",3,1000,0,0.0499999999992724
-"209","gfBLUP genomic prediction",3,1000,0,2.45000000000073
-"210","Other",3,1000,0,0.0200000000004366
-"211","Redundancy filtering",1,1100,0,5.23999999999796
-"212","Regularization",1,1100,0,1275.64
-"213","Factor model",1,1100,0,26.8700000000026
-"214","Factor scores",1,1100,0,1.18999999999869
-"215","Subset selection",1,1100,0,0.0299999999988358
-"216","gfBLUP genomic prediction",1,1100,0,3.45000000000073
-"217","Other",1,1100,0,0.0100000000020373
-"218","Redundancy filtering",2,1100,0,5.34000000000015
-"219","Regularization",2,1100,0,1329.13
-"220","Factor model",2,1100,0,26.6700000000019
-"221","Factor scores",2,1100,0,1.16999999999825
-"222","Subset selection",2,1100,0,0.0299999999988358
-"223","gfBLUP genomic prediction",2,1100,0,3.5
-"224","Other",2,1100,0,0.0199999999967986
-"225","Redundancy filtering",3,1100,0,5.34000000000015
-"226","Regularization",3,1100,0,1242.64
-"227","Factor model",3,1100,0,26.5200000000004
-"228","Factor scores",3,1100,0,1.13000000000102
-"229","Subset selection",3,1100,0,0.0299999999988358
-"230","gfBLUP genomic prediction",3,1100,0,3.56999999999971
-"231","Other",3,1100,0,0.0200000000004366
-"232","Redundancy filtering",1,1200,0,6.45000000000073
-"233","Regularization",1,1200,0,1883.3
-"234","Factor model",1,1200,0,34.6499999999978
-"235","Factor scores",1,1200,0,1.40000000000146
-"236","Subset selection",1,1200,0,0.0299999999988358
-"237","gfBLUP genomic prediction",1,1200,0,3.47999999999956
-"238","Other",1,1200,0,0
-"239","Redundancy filtering",2,1200,0,6.53000000000247
-"240","Regularization",2,1200,0,1787.11
-"241","Factor model",2,1200,0,34.5600000000013
-"242","Factor scores",2,1200,0,1.33000000000175
-"243","Subset selection",2,1200,0,0.0299999999988358
-"244","gfBLUP genomic prediction",2,1200,0,3.45999999999913
-"245","Other",2,1200,0,0.0200000000004366
-"246","Redundancy filtering",3,1200,0,6.65000000000146
-"247","Regularization",3,1200,0,1745.58
-"248","Factor model",3,1200,0,34.6099999999933
-"249","Factor scores",3,1200,0,1.37000000000262
-"250","Subset selection",3,1200,0,0.0200000000040745
-"251","gfBLUP genomic prediction",3,1200,0,3.32999999999447
-"252","Other",3,1200,0,0
-"253","Redundancy filtering",1,1300,0,7.77999999999884
-"254","Regularization",1,1300,0,3372.08
-"255","Factor model",1,1300,0,48.5400000000009
-"256","Factor scores",1,1300,0,1.73999999999796
-"257","Subset selection",1,1300,0,0.0100000000020373
-"258","gfBLUP genomic prediction",1,1300,0,0.830000000001746
-"259","Other",1,1300,0,0.0199999999967986
-"260","Redundancy filtering",2,1300,0,7.97000000000116
-"261","Regularization",2,1300,0,3433.52
-"262","Factor model",2,1300,0,48.510000000002
-"263","Factor scores",2,1300,0,1.65999999999622
-"264","Subset selection",2,1300,0,0.0299999999988358
-"265","gfBLUP genomic prediction",2,1300,0,0.760000000002037
-"266","Other",2,1300,0,0.0100000000020373
-"267","Redundancy filtering",3,1300,0,8
-"268","Regularization",3,1300,0,3372.17
-"269","Factor model",3,1300,0,44.8099999999977
-"270","Factor scores",3,1300,0,1.70999999999913
-"271","Subset selection",3,1300,0,0.0299999999988358
-"272","gfBLUP genomic prediction",3,1300,0,0.80000000000291
-"273","Other",3,1300,0,0.0200000000040745
-"274","Redundancy filtering",1,1400,0,9.45000000000437
-"275","Regularization",1,1400,0,3641.74
-"276","Factor model",1,1400,0,61.9199999999983
-"277","Factor scores",1,1400,0,2.12000000000262
-"278","Subset selection",1,1400,0,0.0299999999988358
-"279","gfBLUP genomic prediction",1,1400,0,3.55000000000291
-"280","Other",1,1400,0,0.0199999999967986
-"281","Redundancy filtering",2,1400,0,9.55999999999767
-"282","Regularization",2,1400,0,4429.64
-"283","Factor model",2,1400,0,65.9100000000035
-"284","Factor scores",2,1400,0,2.16999999999825
-"285","Subset selection",2,1400,0,0.0299999999988358
-"286","gfBLUP genomic prediction",2,1400,0,3.58000000000175
-"287","Other",2,1400,0,0
-"288","Redundancy filtering",3,1400,0,9.7699999999968
-"289","Regularization",3,1400,0,3675.06
-"290","Factor model",3,1400,0,65.4499999999971
-"291","Factor scores",3,1400,0,2.15999999999622
-"292","Subset selection",3,1400,0,0.0100000000020373
-"293","gfBLUP genomic prediction",3,1400,0,3.72000000000116
-"294","Other",3,1400,0,0.0100000000020373
-"295","Redundancy filtering",1,1500,0,11.7300000000032
-"296","Regularization",1,1500,0,6116.27999999999
-"297","Factor model",1,1500,0,75.8800000000047
-"298","Factor scores",1,1500,0,2.54000000000815
-"299","Subset selection",1,1500,0,0.0199999999895226
-"300","gfBLUP genomic prediction",1,1500,0,1.75
-"301","Other",1,1500,0,0.0199999999967986
-"302","Redundancy filtering",2,1500,0,11.6199999999953
-"303","Regularization",2,1500,0,7582.91
-"304","Factor model",2,1500,0,76.6100000000006
-"305","Factor scores",2,1500,0,2.66999999999825
-"306","Subset selection",2,1500,0,0.0100000000093132
-"307","gfBLUP genomic prediction",2,1500,0,1.77999999999884
-"308","Other",2,1500,0,0.0399999999935972
-"309","Redundancy filtering",3,1500,0,NA
-"310","Regularization",3,1500,0,NA
-"311","Factor model",3,1500,0,NA
-"312","Factor scores",3,1500,0,NA
-"313","Subset selection",3,1500,0,NA
-"314","gfBLUP genomic prediction",3,1500,0,NA
-"315","Other",3,1500,0,NA
-"316","Redundancy filtering",1,1600,0,NA
-"317","Regularization",1,1600,0,NA
-"318","Factor model",1,1600,0,NA
-"319","Factor scores",1,1600,0,NA
-"320","Subset selection",1,1600,0,NA
-"321","gfBLUP genomic prediction",1,1600,0,NA
-"322","Other",1,1600,0,NA
-"323","Redundancy filtering",2,1600,0,NA
-"324","Regularization",2,1600,0,NA
-"325","Factor model",2,1600,0,NA
-"326","Factor scores",2,1600,0,NA
-"327","Subset selection",2,1600,0,NA
-"328","gfBLUP genomic prediction",2,1600,0,NA
-"329","Other",2,1600,0,NA
-"330","Redundancy filtering",3,1600,0,NA
-"331","Regularization",3,1600,0,NA
-"332","Factor model",3,1600,0,NA
-"333","Factor scores",3,1600,0,NA
-"334","Subset selection",3,1600,0,NA
-"335","gfBLUP genomic prediction",3,1600,0,NA
-"336","Other",3,1600,0,NA
+"15","Redundancy filtering",3,100,0,0.139999999984866
+"16","Regularization",3,100,0,2.51000000000931
+"17","Factor model",3,100,0,0.0199999999895226
+"18","Factor scores",3,100,0,0.0200000000186265
+"19","Subset selection",3,100,0,0.0099999999802094
+"20","gfBLUP genomic prediction",3,100,0,1.25
+"21","Other",3,100,0,0
+"22","Redundancy filtering",4,100,0,0.119999999995343
+"23","Regularization",4,100,0,2.52999999999884
+"24","Factor model",4,100,0,0.0199999999895226
+"25","Factor scores",4,100,0,0.0100000000093132
+"26","Subset selection",4,100,0,0.0199999999895226
+"27","gfBLUP genomic prediction",4,100,0,1.27999999999884
+"28","Other",4,100,0,0
+"29","Redundancy filtering",5,100,0,0.139999999984866
+"30","Regularization",5,100,0,2.83999999999651
+"31","Factor model",5,100,0,0
+"32","Factor scores",5,100,0,0.0299999999988358
+"33","Subset selection",5,100,0,0.0200000000186265
+"34","gfBLUP genomic prediction",5,100,0,1.25999999998021
+"35","Other",5,100,0,0
+"36","Redundancy filtering",1,200,0,0.320000000006985
+"37","Regularization",1,200,0,3.03999999997905
+"38","Factor model",1,200,0,0.0200000000186265
+"39","Factor scores",1,200,0,0.0499999999883585
+"40","Subset selection",1,200,0,0.0299999999988358
+"41","gfBLUP genomic prediction",1,200,0,1.77999999999884
+"42","Other",1,200,0,0
+"43","Redundancy filtering",2,200,0,0.300000000017462
+"44","Regularization",2,200,0,3.03999999997905
+"45","Factor model",2,200,0,0.0200000000186265
+"46","Factor scores",2,200,0,0.0499999999883585
+"47","Subset selection",2,200,0,0.0299999999988358
+"48","gfBLUP genomic prediction",2,200,0,1.73000000001048
+"49","Other",2,200,0,0.0199999999895226
+"50","Redundancy filtering",3,200,0,0.309999999997672
+"51","Regularization",3,200,0,3.02999999999884
+"52","Factor model",3,200,0,0.0299999999988358
+"53","Factor scores",3,200,0,0.0500000000174623
+"54","Subset selection",3,200,0,0.0099999999802094
+"55","gfBLUP genomic prediction",3,200,0,1.61000000001513
+"56","Other",3,200,0,0
+"57","Redundancy filtering",4,200,0,0.299999999988358
+"58","Regularization",4,200,0,3.14000000001397
+"59","Factor model",4,200,0,0.0199999999895226
+"60","Factor scores",4,200,0,0.0400000000081491
+"61","Subset selection",4,200,0,0.0199999999895226
+"62","gfBLUP genomic prediction",4,200,0,1.64000000001397
+"63","Other",4,200,0,0.0100000000093132
+"64","Redundancy filtering",5,200,0,0.299999999988358
+"65","Regularization",5,200,0,3.05000000001746
+"66","Factor model",5,200,0,0.0099999999802094
+"67","Factor scores",5,200,0,0.0500000000174623
+"68","Subset selection",5,200,0,0.0099999999802094
+"69","gfBLUP genomic prediction",5,200,0,1.64000000001397
+"70","Other",5,200,0,0.0100000000093132
+"71","Redundancy filtering",1,300,0,0.520000000018626
+"72","Regularization",1,300,0,3.83999999999651
+"73","Factor model",1,300,0,0.0599999999976717
+"74","Factor scores",1,300,0,0.0799999999871943
+"75","Subset selection",1,300,0,0.0200000000186265
+"76","gfBLUP genomic prediction",1,300,0,0.529999999998836
+"77","Other",1,300,0,0
+"78","Redundancy filtering",2,300,0,0.519999999989523
+"79","Regularization",2,300,0,3.82000000000698
+"80","Factor model",2,300,0,0.0700000000069849
+"81","Factor scores",2,300,0,0.0899999999965075
+"82","Subset selection",2,300,0,0.0199999999895226
+"83","gfBLUP genomic prediction",2,300,0,0.480000000010477
+"84","Other",2,300,0,0.0199999999895226
+"85","Redundancy filtering",3,300,0,0.529999999998836
+"86","Regularization",3,300,0,3.85999999998603
+"87","Factor model",3,300,0,0.0500000000174623
+"88","Factor scores",3,300,0,0.0899999999965075
+"89","Subset selection",3,300,0,0.0199999999895226
+"90","gfBLUP genomic prediction",3,300,0,0.529999999998836
+"91","Other",3,300,0,0
+"92","Redundancy filtering",4,300,0,0.619999999995343
+"93","Regularization",4,300,0,3.80999999999767
+"94","Factor model",4,300,0,0.0700000000069849
+"95","Factor scores",4,300,0,0.0799999999871943
+"96","Subset selection",4,300,0,0.0100000000093132
+"97","gfBLUP genomic prediction",4,300,0,0.549999999988358
+"98","Other",4,300,0,0
+"99","Redundancy filtering",5,300,0,0.5
+"100","Regularization",5,300,0,3.83999999999651
+"101","Factor model",5,300,0,0.0299999999988358
+"102","Factor scores",5,300,0,0.100000000005821
+"103","Subset selection",5,300,0,0.0100000000093132
+"104","gfBLUP genomic prediction",5,300,0,0.519999999989523
+"105","Other",5,300,0,0.0199999999895226
+"106","Redundancy filtering",1,400,0,0.779999999998836
+"107","Regularization",1,400,0,4.95999999999185
+"108","Factor model",1,400,0,0.0700000000069849
+"109","Factor scores",1,400,0,0.160000000003492
+"110","Subset selection",1,400,0,0.0199999999895226
+"111","gfBLUP genomic prediction",1,400,0,1.79000000000815
+"112","Other",1,400,0,0.0100000000093132
+"113","Redundancy filtering",2,400,0,0.800000000017462
+"114","Regularization",2,400,0,5.35999999998603
+"115","Factor model",2,400,0,0.0599999999976717
+"116","Factor scores",2,400,0,0.14000000001397
+"117","Subset selection",2,400,0,0.0100000000093132
+"118","gfBLUP genomic prediction",2,400,0,1.6699999999837
+"119","Other",2,400,0,0.0199999999895226
+"120","Redundancy filtering",3,400,0,0.799999999988358
+"121","Regularization",3,400,0,4.92999999999302
+"122","Factor model",3,400,0,0.100000000005821
+"123","Factor scores",3,400,0,0.14000000001397
+"124","Subset selection",3,400,0,0.0099999999802094
+"125","gfBLUP genomic prediction",3,400,0,1.79000000000815
+"126","Other",3,400,0,0
+"127","Redundancy filtering",4,400,0,0.790000000008149
+"128","Regularization",4,400,0,5.07000000000698
+"129","Factor model",4,400,0,0.0799999999871943
+"130","Factor scores",4,400,0,0.14000000001397
+"131","Subset selection",4,400,0,0.0299999999988358
+"132","gfBLUP genomic prediction",4,400,0,1.75
+"133","Other",4,400,0,0
+"134","Redundancy filtering",5,400,0,0.790000000008149
+"135","Regularization",5,400,0,4.98000000001048
+"136","Factor model",5,400,0,0.0799999999871943
+"137","Factor scores",5,400,0,0.149999999994179
+"138","Subset selection",5,400,0,0.0200000000186265
+"139","gfBLUP genomic prediction",5,400,0,1.80999999999767
+"140","Other",5,400,0,0.0099999999802094
+"141","Redundancy filtering",1,500,0,1.22999999998137
+"142","Regularization",1,500,0,7.61000000001513
+"143","Factor model",1,500,0,0.139999999984866
+"144","Factor scores",1,500,0,0.210000000020955
+"145","Subset selection",1,500,0,0.0099999999802094
+"146","gfBLUP genomic prediction",1,500,0,1.80999999999767
+"147","Other",1,500,0,0
+"148","Redundancy filtering",2,500,0,1.11999999999534
+"149","Regularization",2,500,0,8.02999999999884
+"150","Factor model",2,500,0,0.130000000004657
+"151","Factor scores",2,500,0,0.200000000011642
+"152","Subset selection",2,500,0,0.0299999999988358
+"153","gfBLUP genomic prediction",2,500,0,1.69000000000233
+"154","Other",2,500,0,0.0199999999895226
+"155","Redundancy filtering",3,500,0,1.10999999998603
+"156","Regularization",3,500,0,8.55000000001746
+"157","Factor model",3,500,0,0.25
+"158","Factor scores",3,500,0,0.199999999982538
+"159","Subset selection",3,500,0,0.0200000000186265
+"160","gfBLUP genomic prediction",3,500,0,1.82999999998719
+"161","Other",3,500,0,0.0100000000093132
+"162","Redundancy filtering",4,500,0,1.16000000000349
+"163","Regularization",4,500,0,7.77999999999884
+"164","Factor model",4,500,0,0.119999999995343
+"165","Factor scores",4,500,0,0.209999999991851
+"166","Subset selection",4,500,0,0.0100000000093132
+"167","gfBLUP genomic prediction",4,500,0,1.76999999998952
+"168","Other",4,500,0,0
+"169","Redundancy filtering",5,500,0,1.11999999999534
+"170","Regularization",5,500,0,8.05999999999767
+"171","Factor model",5,500,0,0.139999999984866
+"172","Factor scores",5,500,0,0.220000000001164
+"173","Subset selection",5,500,0,0.0200000000186265
+"174","gfBLUP genomic prediction",5,500,0,1.77999999999884
+"175","Other",5,500,0,0.0200000000186265
+"176","Redundancy filtering",1,600,0,1.52999999999884
+"177","Regularization",1,600,0,10.2999999999884
+"178","Factor model",1,600,0,0.190000000002328
+"179","Factor scores",1,600,0,0.290000000008149
+"180","Subset selection",1,600,0,0.0400000000081491
+"181","gfBLUP genomic prediction",1,600,0,2.39999999999418
+"182","Other",1,600,0,0.0100000000093132
+"183","Redundancy filtering",2,600,0,1.54000000000815
+"184","Regularization",2,600,0,10.6399999999849
+"185","Factor model",2,600,0,0.200000000011642
+"186","Factor scores",2,600,0,0.279999999998836
+"187","Subset selection",2,600,0,0.0299999999988358
+"188","gfBLUP genomic prediction",2,600,0,2.38999999998487
+"189","Other",2,600,0,0
+"190","Redundancy filtering",3,600,0,1.52999999999884
+"191","Regularization",3,600,0,9.14999999999418
+"192","Factor model",3,600,0,0.210000000020955
+"193","Factor scores",3,600,0,0.289999999979045
+"194","Subset selection",3,600,0,0.0200000000186265
+"195","gfBLUP genomic prediction",3,600,0,2.47000000000116
+"196","Other",3,600,0,0.0199999999895226
+"197","Redundancy filtering",4,600,0,1.54000000000815
+"198","Regularization",4,600,0,10.25
+"199","Factor model",4,600,0,0.179999999993015
+"200","Factor scores",4,600,0,0.279999999998836
+"201","Subset selection",4,600,0,0.0400000000081491
+"202","gfBLUP genomic prediction",4,600,0,2.61999999999534
+"203","Other",4,600,0,0
+"204","Redundancy filtering",5,600,0,1.55000000001746
+"205","Regularization",5,600,0,10.2200000000012
+"206","Factor model",5,600,0,0.199999999982538
+"207","Factor scores",5,600,0,0.309999999997672
+"208","Subset selection",5,600,0,0.0200000000186265
+"209","gfBLUP genomic prediction",5,600,0,2.52999999999884
+"210","Other",5,600,0,0.0099999999802094
+"211","Redundancy filtering",1,700,0,2.07000000000698
+"212","Regularization",1,700,0,13.2000000000116
+"213","Factor model",1,700,0,0.259999999980209
+"214","Factor scores",1,700,0,0.410000000003492
+"215","Subset selection",1,700,0,0.0099999999802094
+"216","gfBLUP genomic prediction",1,700,0,3.55000000001746
+"217","Other",1,700,0,0.0200000000186265
+"218","Redundancy filtering",2,700,0,2.16000000000349
+"219","Regularization",2,700,0,12.6199999999953
+"220","Factor model",2,700,0,0.299999999988358
+"221","Factor scores",2,700,0,0.420000000012806
+"222","Subset selection",2,700,0,0.0199999999895226
+"223","gfBLUP genomic prediction",2,700,0,3.54000000000815
+"224","Other",2,700,0,0.0100000000093132
+"225","Redundancy filtering",3,700,0,2.0800000000163
+"226","Regularization",3,700,0,13.4400000000023
+"227","Factor model",3,700,0,0.259999999980209
+"228","Factor scores",3,700,0,0.420000000012806
+"229","Subset selection",3,700,0,0.0199999999895226
+"230","gfBLUP genomic prediction",3,700,0,3.45000000001164
+"231","Other",3,700,0,0
+"232","Redundancy filtering",4,700,0,2.10000000000582
+"233","Regularization",4,700,0,13.75
+"234","Factor model",4,700,0,0.260000000009313
+"235","Factor scores",4,700,0,0.410000000003492
+"236","Subset selection",4,700,0,0.0099999999802094
+"237","gfBLUP genomic prediction",4,700,0,3.52999999999884
+"238","Other",4,700,0,0
+"239","Redundancy filtering",5,700,0,2.05999999999767
+"240","Regularization",5,700,0,13.320000000007
+"241","Factor model",5,700,0,0.369999999995343
+"242","Factor scores",5,700,0,0.410000000003492
+"243","Subset selection",5,700,0,0.0099999999802094
+"244","gfBLUP genomic prediction",5,700,0,3.38000000000466
+"245","Other",5,700,0,0.0100000000093132
+"246","Redundancy filtering",1,800,0,2.76000000000931
+"247","Regularization",1,800,0,16.4100000000035
+"248","Factor model",1,800,0,0.389999999984866
+"249","Factor scores",1,800,0,0.580000000016298
+"250","Subset selection",1,800,0,0.0199999999895226
+"251","gfBLUP genomic prediction",1,800,0,3.33999999999651
+"252","Other",1,800,0,0.0199999999895226
+"253","Redundancy filtering",2,800,0,2.75999999998021
+"254","Regularization",2,800,0,17.0500000000175
+"255","Factor model",2,800,0,0.410000000003492
+"256","Factor scores",2,800,0,0.569999999977881
+"257","Subset selection",2,800,0,0.0400000000081491
+"258","gfBLUP genomic prediction",2,800,0,3.58999999999651
+"259","Other",2,800,0,0
+"260","Redundancy filtering",3,800,0,2.67000000001281
+"261","Regularization",3,800,0,17.7399999999907
+"262","Factor model",3,800,0,0.420000000012806
+"263","Factor scores",3,800,0,0.529999999998836
+"264","Subset selection",3,800,0,0.0299999999988358
+"265","gfBLUP genomic prediction",3,800,0,3.5
+"266","Other",3,800,0,0.0299999999988358
+"267","Redundancy filtering",4,800,0,2.74000000001979
+"268","Regularization",4,800,0,16.6499999999942
+"269","Factor model",4,800,0,0.410000000003492
+"270","Factor scores",4,800,0,0.559999999997672
+"271","Subset selection",4,800,0,0.0299999999988358
+"272","gfBLUP genomic prediction",4,800,0,3.38000000000466
+"273","Other",4,800,0,0
+"274","Redundancy filtering",5,800,0,2.77999999999884
+"275","Regularization",5,800,0,16.7600000000093
+"276","Factor model",5,800,0,0.389999999984866
+"277","Factor scores",5,800,0,0.550000000017462
+"278","Subset selection",5,800,0,0.0499999999883585
+"279","gfBLUP genomic prediction",5,800,0,3.67000000001281
+"280","Other",5,800,0,0
+"281","Redundancy filtering",1,900,0,3.4199999999837
+"282","Regularization",1,900,0,21.0800000000163
+"283","Factor model",1,900,0,0.639999999984866
+"284","Factor scores",1,900,0,0.730000000010477
+"285","Subset selection",1,900,0,0.0199999999895226
+"286","gfBLUP genomic prediction",1,900,0,1.19000000000233
+"287","Other",1,900,0,0.0200000000186265
+"288","Redundancy filtering",2,900,0,3.51999999998952
+"289","Regularization",2,900,0,21.8600000000151
+"290","Factor model",2,900,0,0.529999999998836
+"291","Factor scores",2,900,0,0.720000000001164
+"292","Subset selection",2,900,0,0.0299999999988358
+"293","gfBLUP genomic prediction",2,900,0,1.08999999999651
+"294","Other",2,900,0,0
+"295","Redundancy filtering",3,900,0,3.50999999998021
+"296","Regularization",3,900,0,21.8000000000175
+"297","Factor model",3,900,0,0.549999999988358
+"298","Factor scores",3,900,0,0.720000000001164
+"299","Subset selection",3,900,0,0.0299999999988358
+"300","gfBLUP genomic prediction",3,900,0,1.22000000000116
+"301","Other",3,900,0,0
+"302","Redundancy filtering",4,900,0,3.52999999999884
+"303","Regularization",4,900,0,22.7200000000012
+"304","Factor model",4,900,0,0.529999999998836
+"305","Factor scores",4,900,0,0.679999999993015
+"306","Subset selection",4,900,0,0.0199999999895226
+"307","gfBLUP genomic prediction",4,900,0,1.17000000001281
+"308","Other",4,900,0,0.0200000000186265
+"309","Redundancy filtering",5,900,0,3.47999999998137
+"310","Regularization",5,900,0,23
+"311","Factor model",5,900,0,0.550000000017462
+"312","Factor scores",5,900,0,0.669999999983702
+"313","Subset selection",5,900,0,0.0299999999988358
+"314","gfBLUP genomic prediction",5,900,0,1.19000000000233
+"315","Other",5,900,0,0.0200000000186265
+"316","Redundancy filtering",1,1000,0,4.27999999999884
+"317","Regularization",1,1000,0,28.7399999999907
+"318","Factor model",1,1000,0,0.720000000001164
+"319","Factor scores",1,1000,0,0.970000000001164
+"320","Subset selection",1,1000,0,0.0299999999988358
+"321","gfBLUP genomic prediction",1,1000,0,2.3300000000163
+"322","Other",1,1000,0,0
+"323","Redundancy filtering",2,1000,0,4.30999999999767
+"324","Regularization",2,1000,0,29.5100000000093
+"325","Factor model",2,1000,0,0.739999999990687
+"326","Factor scores",2,1000,0,0.920000000012806
+"327","Subset selection",2,1000,0,0.0199999999895226
+"328","gfBLUP genomic prediction",2,1000,0,2.48000000001048
+"329","Other",2,1000,0,0
+"330","Redundancy filtering",3,1000,0,4.44000000000233
+"331","Regularization",3,1000,0,29.390000000014
+"332","Factor model",3,1000,0,0.729999999981374
+"333","Factor scores",3,1000,0,0.910000000003492
+"334","Subset selection",3,1000,0,0.0100000000093132
+"335","gfBLUP genomic prediction",3,1000,0,2.52999999999884
+"336","Other",3,1000,0,0
+"337","Redundancy filtering",4,1000,0,4.39999999999418
+"338","Regularization",4,1000,0,28.9599999999919
+"339","Factor model",4,1000,0,0.760000000009313
+"340","Factor scores",4,1000,0,0.919999999983702
+"341","Subset selection",4,1000,0,0.0400000000081491
+"342","gfBLUP genomic prediction",4,1000,0,2.51000000000931
+"343","Other",4,1000,0,0
+"344","Redundancy filtering",5,1000,0,4.35000000000582
+"345","Regularization",5,1000,0,29.0599999999977
+"346","Factor model",5,1000,0,0.720000000001164
+"347","Factor scores",5,1000,0,0.869999999995343
+"348","Subset selection",5,1000,0,0.0199999999895226
+"349","gfBLUP genomic prediction",5,1000,0,2.38000000000466
+"350","Other",5,1000,0,0
+"351","Redundancy filtering",1,1100,0,5.39999999999418
+"352","Regularization",1,1100,0,37.4800000000105
+"353","Factor model",1,1100,0,0.940000000002328
+"354","Factor scores",1,1100,0,1.11999999999534
+"355","Subset selection",1,1100,0,0.0299999999988358
+"356","gfBLUP genomic prediction",1,1100,0,3.48999999999069
+"357","Other",1,1100,0,0
+"358","Redundancy filtering",2,1100,0,5.32999999998719
+"359","Regularization",2,1100,0,36.820000000007
+"360","Factor model",2,1100,0,0.959999999991851
+"361","Factor scores",2,1100,0,1.22000000000116
+"362","Subset selection",2,1100,0,0.0299999999988358
+"363","gfBLUP genomic prediction",2,1100,0,3.27999999999884
+"364","Other",2,1100,0,0.0200000000186265
+"365","Redundancy filtering",3,1100,0,5.28999999997905
+"366","Regularization",3,1100,0,36.710000000021
+"367","Factor model",3,1100,0,0.929999999993015
+"368","Factor scores",3,1100,0,1.13000000000466
+"369","Subset selection",3,1100,0,0.0299999999988358
+"370","gfBLUP genomic prediction",3,1100,0,3.67000000001281
+"371","Other",3,1100,0,0.0199999999895226
+"372","Redundancy filtering",4,1100,0,5.48000000001048
+"373","Regularization",4,1100,0,38.2999999999884
+"374","Factor model",4,1100,0,0.950000000011642
+"375","Factor scores",4,1100,0,1.23999999999069
+"376","Subset selection",4,1100,0,0.0299999999988358
+"377","gfBLUP genomic prediction",4,1100,0,3.39000000001397
+"378","Other",4,1100,0,0.0199999999895226
+"379","Redundancy filtering",5,1100,0,5.27999999999884
+"380","Regularization",5,1100,0,37.9599999999919
+"381","Factor model",5,1100,0,0.950000000011642
+"382","Factor scores",5,1100,0,1.08999999999651
+"383","Subset selection",5,1100,0,0.0299999999988358
+"384","gfBLUP genomic prediction",5,1100,0,3.47000000000116
+"385","Other",5,1100,0,0.0100000000093132
+"386","Redundancy filtering",1,1200,0,6.64000000001397
+"387","Regularization",1,1200,0,48.75
+"388","Factor model",1,1200,0,1.26999999998952
+"389","Factor scores",1,1200,0,1.36000000001513
+"390","Subset selection",1,1200,0,0.0299999999988358
+"391","gfBLUP genomic prediction",1,1200,0,3.25
+"392","Other",1,1200,0,0.0099999999802094
+"393","Redundancy filtering",2,1200,0,6.69000000000233
+"394","Regularization",2,1200,0,49.3399999999965
+"395","Factor model",2,1200,0,1.25
+"396","Factor scores",2,1200,0,1.30000000001746
+"397","Subset selection",2,1200,0,0.0299999999988358
+"398","gfBLUP genomic prediction",2,1200,0,3.22999999998137
+"399","Other",2,1200,0,0.0199999999895226
+"400","Redundancy filtering",3,1200,0,6.54000000000815
+"401","Regularization",3,1200,0,47.8299999999872
+"402","Factor model",3,1200,0,1.27000000001863
+"403","Factor scores",3,1200,0,1.33999999999651
+"404","Subset selection",3,1200,0,0.0499999999883585
+"405","gfBLUP genomic prediction",3,1200,0,3.33999999999651
+"406","Other",3,1200,0,0
+"407","Redundancy filtering",4,1200,0,6.61000000001513
+"408","Regularization",4,1200,0,48.6199999999953
+"409","Factor model",4,1200,0,1.26999999998952
+"410","Factor scores",4,1200,0,1.39000000001397
+"411","Subset selection",4,1200,0,0.0299999999988358
+"412","gfBLUP genomic prediction",4,1200,0,3.32999999998719
+"413","Other",4,1200,0,0.0199999999895226
+"414","Redundancy filtering",5,1200,0,6.52999999999884
+"415","Regularization",5,1200,0,49.5599999999977
+"416","Factor model",5,1200,0,1.35000000000582
+"417","Factor scores",5,1200,0,1.42000000001281
+"418","Subset selection",5,1200,0,0.0299999999988358
+"419","gfBLUP genomic prediction",5,1200,0,3.26999999998952
+"420","Other",5,1200,0,0
+"421","Redundancy filtering",1,1300,0,8.00999999998021
+"422","Regularization",1,1300,0,62.25
+"423","Factor model",1,1300,0,1.67000000001281
+"424","Factor scores",1,1300,0,1.76999999998952
+"425","Subset selection",1,1300,0,0.0100000000093132
+"426","gfBLUP genomic prediction",1,1300,0,0.850000000005821
+"427","Other",1,1300,0,0.0200000000186265
+"428","Redundancy filtering",2,1300,0,8
+"429","Regularization",2,1300,0,90.9400000000023
+"430","Factor model",2,1300,0,1.55999999999767
+"431","Factor scores",2,1300,0,1.67999999999302
+"432","Subset selection",2,1300,0,0.0100000000093132
+"433","gfBLUP genomic prediction",2,1300,0,0.799999999988358
+"434","Other",2,1300,0,0.0299999999988358
+"435","Redundancy filtering",3,1300,0,7.97000000000116
+"436","Regularization",3,1300,0,61.2200000000012
+"437","Factor model",3,1300,0,1.61999999999534
+"438","Factor scores",3,1300,0,1.72000000000116
+"439","Subset selection",3,1300,0,0.0299999999988358
+"440","gfBLUP genomic prediction",3,1300,0,0.769999999989523
+"441","Other",3,1300,0,0.0299999999988358
+"442","Redundancy filtering",4,1300,0,7.91000000000349
+"443","Regularization",4,1300,0,61.2200000000012
+"444","Factor model",4,1300,0,1.67999999999302
+"445","Factor scores",4,1300,0,1.82000000000698
+"446","Subset selection",4,1300,0,0.0100000000093132
+"447","gfBLUP genomic prediction",4,1300,0,0.809999999997672
+"448","Other",4,1300,0,0.0099999999802094
+"449","Redundancy filtering",5,1300,0,7.9199999999837
+"450","Regularization",5,1300,0,61.3800000000047
+"451","Factor model",5,1300,0,1.52999999999884
+"452","Factor scores",5,1300,0,1.5800000000163
+"453","Subset selection",5,1300,0,0.0299999999988358
+"454","gfBLUP genomic prediction",5,1300,0,0.779999999998836
+"455","Other",5,1300,0,0.0299999999988358
+"456","Redundancy filtering",1,1400,0,9.52999999999884
+"457","Regularization",1,1400,0,76.3399999999965
+"458","Factor model",1,1400,0,1.80999999999767
+"459","Factor scores",1,1400,0,2.02000000001863
+"460","Subset selection",1,1400,0,0.0099999999802094
+"461","gfBLUP genomic prediction",1,1400,0,3.43000000002212
+"462","Other",1,1400,0,0.130000000004657
+"463","Redundancy filtering",2,1400,0,9.47000000000116
+"464","Regularization",2,1400,0,76.6000000000058
+"465","Factor model",2,1400,0,1.95999999999185
+"466","Factor scores",2,1400,0,2.02999999999884
+"467","Subset selection",2,1400,0,0.0299999999988358
+"468","gfBLUP genomic prediction",2,1400,0,3.55000000001746
+"469","Other",2,1400,0,0.0199999999895226
+"470","Redundancy filtering",3,1400,0,9.69000000000233
+"471","Regularization",3,1400,0,75.6399999999849
+"472","Factor model",3,1400,0,1.80000000001746
+"473","Factor scores",3,1400,0,2.05999999999767
+"474","Subset selection",3,1400,0,0.0199999999895226
+"475","gfBLUP genomic prediction",3,1400,0,3.27999999999884
+"476","Other",3,1400,0,0.0100000000093132
+"477","Redundancy filtering",4,1400,0,9.52999999999884
+"478","Regularization",4,1400,0,75.7200000000012
+"479","Factor model",4,1400,0,1.82999999998719
+"480","Factor scores",4,1400,0,2.05999999999767
+"481","Subset selection",4,1400,0,0.0100000000093132
+"482","gfBLUP genomic prediction",4,1400,0,3.39999999999418
+"483","Other",4,1400,0,0.0200000000186265
+"484","Redundancy filtering",5,1400,0,9.5
+"485","Regularization",5,1400,0,76.0200000000186
+"486","Factor model",5,1400,0,1.9199999999837
+"487","Factor scores",5,1400,0,1.95000000001164
+"488","Subset selection",5,1400,0,0.0299999999988358
+"489","gfBLUP genomic prediction",5,1400,0,3.41000000000349
+"490","Other",5,1400,0,0.0099999999802094
