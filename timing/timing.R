@@ -12,7 +12,7 @@ set.seed(1997)
 ps <- seq(100, 1400, 100)
 
 # Loading kinship:
-load(paste0(dirname(getwd()), "/genotypes/K_sim.RData")); rm(M)
+load("genotypes/K_sim.RData"); rm(M)
 
 # Setting up timing result storage:
 # - First dimension is for the different values of p
@@ -41,7 +41,7 @@ for (p in ps) {
   for (run.warmup in 1:runs.warmup) {
     
     # Loading simulated dataset:
-    datalist <- list.load(file = sprintf("datasets/timing_p%d.RData", p))
+    datalist <- list.load(file = sprintf("timing/datasets/timing_p%d.RData", p))
   
     # Storing data and prediction target:
     d <- datalist$data.real
@@ -135,7 +135,7 @@ for (p in ps) {
   for (run.timing in 1:runs.timing) {
     
     # Loading simulated dataset:
-    datalist <- list.load(file = sprintf("datasets/timing_p%d.RData", p))
+    datalist <- list.load(file = sprintf("timing/datasets/timing_p%d.RData", p))
     
     # Storing data and prediction target:
     d <- datalist$data.real
@@ -232,7 +232,7 @@ for (p in ps) {
 }
 
 # Saving results:
-write.csv(results, "timing.csv")
+write.csv(results, "timing/timing.csv")
 
 end <- Sys.time()
 end - start

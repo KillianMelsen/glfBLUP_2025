@@ -11,7 +11,7 @@ set.seed(1997)
 ps <- seq(100, 1400, 100)
 
 # Loading kinship:
-load(paste0(dirname(getwd()), "/genotypes/K_sim.RData")); rm(M)
+load("genotypes/K_sim.RData"); rm(M)
 
 n.train <- 300
 
@@ -21,7 +21,7 @@ for (p in ps) {
   tic(sprintf("p = %s", p))
   
   # Loading raw simulated dataset:
-  datalist <- list.load(file = sprintf("datasets/timing_p%d.RData", p))
+  datalist <- list.load(file = sprintf("timing/datasets/timing_p%d.RData", p))
 
   # Randomly choosing training and test genotypes:
   train.set <- sample(rownames(K), n.train)
@@ -62,7 +62,7 @@ for (p in ps) {
   datalist$data.real <- rbind(data.real.test, data.real.train)
   
   # Overwriting dataset:
-  list.save(datalist, file = sprintf("datasets/timing_p%d.RData", p))
+  list.save(datalist, file = sprintf("timing/datasets/timing_p%d.RData", p))
   
   cat(sprintf("Generation of dataset for p = %s done!\n\n", p))
   toc()

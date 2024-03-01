@@ -8,7 +8,7 @@ library(tictoc)
 set.seed(1997)
 
 # Loading kinship:
-load(paste0(dirname(getwd()), "/genotypes/K_sim.RData")); rm(M)
+load("genotypes/K_sim.RData"); rm(M)
 
 # Simulated genetic parameters:
 h2s <- "09"
@@ -55,7 +55,7 @@ for (p in ps) {
                              S.sg2 = sg2.s, S.se2 = se2.s,
                              Y.sg2 = sg2.y, Y.se2 = se2.y)
   
-  list.save(datalist, file = sprintf("datasets/timing_p%s.RData", p))
+  list.save(datalist, file = sprintf("timing/datasets/timing_p%s.RData", p))
   
   cat(sprintf("Generation of dataset for p = %s done!\n\n", p))
   toc()
