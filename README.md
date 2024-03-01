@@ -12,11 +12,13 @@ Two scripts are used to generate that data. The first one ([`generate_sim_p800_d
 
 ### 1.2 - Data analysis
 
-[`run_all_p800.R`](run_all_p800.R) sources all scripts to analyze the generated data using different methods, as well as some scripts to merge results for methods that are run in multiple parts due to their long runtime. As an example, [`gfBLUP_part1.R`](p800/analyses/gfBLUP_part1.R) is responsible for analyzing the first 50 datasets for each of the combinations of focal/secondary trait heritabilities and focal trait communalities. The second 50 datasets are analyzed using [`gfBLUP_part2.R`](p800/analyses/gfBLUP_part2.R) after which the results are merged using [`gfBLUP_merge.R`](p800/misc/gfBLUP_merge.R). Note that if running the scripts in WSL2 using oneMKL, it is safest to set `MKL_NUM_THREADS=1` and `MKL_DYNAMIC=FALSE` to avoid issues
+[`run_all_p800.R`](run_all_p800.R) sources all scripts to analyze the generated data using different methods, as well as some scripts to merge results for methods that are run in multiple parts due to their long runtime. As an example, [`gfBLUP_part1.R`](p800/analyses/gfBLUP_part1.R) is responsible for analyzing the first 50 datasets for each of the combinations of focal/secondary trait heritabilities and focal trait communalities. The second 50 datasets are analyzed using [`gfBLUP_part2.R`](p800/analyses/gfBLUP_part2.R) after which the results are merged using [`gfBLUP_merge.R`](p800/misc/gfBLUP_merge.R). Note that if running the scripts in WSL2 using oneMKL, it is safest to set `MKL_NUM_THREADS=1` and `MKL_DYNAMIC=FALSE` to avoid issues with parallelization.
 
 ### 1.3 - Result visualization
 
 The results of all p800 analyses are visualized using [`plot_p800_results.R`](p800/plot_p800_results.R). The produced plot (p800.png) is placed in the base directory.
+
+![](p800.png)
 
 ## 2 - Hyperspectral data
 
