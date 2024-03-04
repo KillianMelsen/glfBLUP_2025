@@ -24,7 +24,7 @@ for (file.name in list.files("helper_functions")) {
   source(paste0("helper_functions/", file.name))
 }
 
-# Setting seed:
+# Setting seed for the main instance:
 set.seed(1997)
 
 # Number of datasets:
@@ -68,13 +68,18 @@ if (!("K_hyper.RData" %in% list.files("genotypes"))) {
 
 n.cores <- parallel::detectCores() - 2
 work <- split(1:n.datasets, ceiling(seq_along(1:n.datasets) / ceiling(n.datasets / n.cores)))
+seeds <- sample(1:1000, n.cores)
 doParallel::registerDoParallel(cores = n.cores)
 
 tic("Dataset generation")
 invisible(
 foreach::foreach(i = 1:length(work)) %dopar% {
   
+  # Getting the dataset numbers that this worker client will generate:
   par.work <- work[[i]]
+  
+  # Setting the seed:
+  set.seed(seeds[i])
   
   for (run in par.work) {
     

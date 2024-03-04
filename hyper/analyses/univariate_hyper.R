@@ -10,25 +10,26 @@ library(doParallel)
 set.seed(1997)
 
 # Setting working directory:
-# wd <- "C:/Users/Killian/Desktop/gfblup-methodological-paper"
-wd <- "~/gfblup_methodology"
+wd <- getwd()
 setwd(wd)
 
 # Loading kinship:
-load("K_hyper.RData")
+load("genotypes/K_hyper.RData")
 
 # Hyperspectral data:
 tic("Univariate")
 
 n.datasets <- 250
-n.cores <- 16
+n.cores <- parallel::detectCores() - 2
 work <- split(1:n.datasets, ceiling(seq_along(1:n.datasets) / ceiling(n.datasets / n.cores)))
-doParallel::registerDoParallel(cores = n.cores)
+cl <- parallel::makeCluster(n.cores, outfile = "logs/univariate_hyper.txt")
+doParallel::registerDoParallel(cl)
 
 invisible(
 par.results <- foreach::foreach(i = 1:length(work), .packages = c("rlist", "tictoc"), .combine = "c") %dopar% {
   
   par.work <- work[[i]]
+  set.seed(1997)
   
   # Setting up result storage:
   acc <- numeric(length(par.work))
@@ -37,7 +38,7 @@ par.results <- foreach::foreach(i = 1:length(work), .packages = c("rlist", "tict
   for (run in 1:length(par.work)) {
 
     # Loading hyperspectral dataset:
-    datalist <- list.load(file = sprintf("analyses_datasets/hyper/hyper_dataset_%d.RData", par.work[run]))
+    datalist <- list.load(file = sprintf("hyper/datasets/hyper_dataset_%d.RData", par.work[run]))
     
     # Storing data and prediction target:
     d <- datalist$data
@@ -67,6 +68,7 @@ par.results <- foreach::foreach(i = 1:length(work), .packages = c("rlist", "tict
   
 })
 doParallel::stopImplicitCluster()
+parallel::stopCluster(cl)
 toc()
 
 # Restructuring parallel results for saving:
@@ -83,7 +85,7 @@ results <- data.frame(acc = acc,
                       comptimes = comptimes)
 
 # Export results:
-write.csv(results, "analyses_results/hyper/2_hyper_results_univariate.csv")
+write.csv(results, "hyper/results/2_hyper_results_univariate.csv")
 
 
 

@@ -11,12 +11,11 @@ library(gfBLUPold)
 set.seed(1997)
 
 # Setting working directory:
-# wd <- "C:/Users/Killian/Desktop/gfblup-methodological-paper"
-wd <- "~/gfblup_methodology"
+wd <- getwd()
 setwd(wd)
 
 # Loading kinship:
-load("K_hyper.RData")
+load("genotypes/K_hyper.RData")
 
 # Both CVs:
 for (CV in c("CV1", "CV2")) {
@@ -25,24 +24,27 @@ for (CV in c("CV1", "CV2")) {
   tic(sprintf("lsBLUP %s", CV))
   
   n.datasets <- 250
-  n.cores <- 16
+  n.cores <- parallel::detectCores() - 2
   work <- split(1:n.datasets, ceiling(seq_along(1:n.datasets) / ceiling(n.datasets / n.cores)))
-  doParallel::registerDoParallel(cores = n.cores)
+  cl <- parallel::makeCluster(n.cores, outfile = sprintf("logs/lsBLUP_hyper_%s.txt", CV))
+  doParallel::registerDoParallel(cl)
   
   invisible(
     par.results <- foreach::foreach(i = 1:length(work), .packages = c("rlist", "tictoc", "gfBLUPold"), .combine = "c") %dopar% {
       
       par.work <- work[[i]]
+      set.seed(1997)
       
       # Setting up result storage:
       acc <- numeric(length(par.work))
       extra <- vector("list", length(par.work))
       
+      
       # Running:
       for (run in 1:length(par.work)) {
         
         # Loading hyperspectral dataset:
-        datalist <- list.load(file = sprintf("analyses_datasets/hyper/hyper_dataset_%d.RData", par.work[run]))
+        datalist <- list.load(file = sprintf("hyper/datasets/hyper_dataset_%d.RData", par.work[run]))
         
         # Storing data and prediction target:
         d <- datalist$data
@@ -86,6 +88,7 @@ for (CV in c("CV1", "CV2")) {
       
     })
   doParallel::stopImplicitCluster()
+  parallel::stopCluster(cl)
   toc()
   
   # Restructuring parallel results for saving:
@@ -112,9 +115,9 @@ for (CV in c("CV1", "CV2")) {
   }
   
   # Export results:
-  write.csv(results, sprintf("analyses_results/hyper/11%s_hyper_results_lsblup_%s.csv", lab, CV))
+  write.csv(results, sprintf("hyper/results/11%s_hyper_results_lsblup_%s.csv", lab, CV))
   
-  list.save(extra, sprintf("analyses_results/hyper/11%s_hyper_extra_results_lsblup_%s.RData", lab, CV))
+  list.save(extra, sprintf("hyper/results/11%s_hyper_extra_results_lsblup_%s.RData", lab, CV))
   
 }
 
