@@ -13,6 +13,11 @@ reset <- function() {
   setwd(wd)
 }
 
+# Checking if the old package with some helper functions is installed:
+if (!("gfBLUpold" %in% installed.packages())) {
+  install.packages("gfBLUPold_1.3.1.tar.gz", type = "source", repos = NULL)
+}
+
 # Step I: data generation ======================================================
 source("p800/data_generation/generate_sim_p800_datasets.R"); reset()
 
