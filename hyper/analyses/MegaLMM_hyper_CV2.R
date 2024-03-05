@@ -1,4 +1,4 @@
-CV <- "CV1"
+CV <- "CV2"
 
 
 # Loading libraries:
@@ -19,19 +19,19 @@ setwd(wd)
 load("genotypes/K_hyper.RData")
 
 # Hyperspectral data:
-tic("MegaLMM CV1")
+tic("MegaLMM CV2")
 
-datasets <- 1:20
+datasets <- 1:250
 n.datasets <- length(datasets)
 n.cores <- 10
 work <- split(datasets, ceiling(seq_along(datasets) / ceiling(n.datasets / n.cores)))
-cl <- parallel::makeCluster(n.cores, outfile = sprintf("logs/MegaLMM_CV1_hyper_datasets_%s_%s.txt", datasets[1], datasets[n.datasets]))
+cl <- parallel::makeCluster(n.cores, outfile = sprintf("logs/MegaLMM_CV2_hyper_datasets_%s_%s.txt", datasets[1], datasets[n.datasets]))
 doParallel::registerDoParallel(cl)
 
 invisible(
-  par.results <- foreach::foreach(i = 1:length(work), .packages = c("MegaLMM", "gfBLUP", "rlist", "tictoc"), .combine = "c") %dopar% {
+  par.results <- foreach::foreach(k = 1:length(work), .packages = c("MegaLMM", "gfBLUP", "rlist", "tictoc"), .combine = "c") %dopar% {
     
-    par.work <- work[[i]]
+    par.work <- work[[k]]
     set.seed(1997)
     
     # Setting up result storage:
@@ -185,7 +185,7 @@ invisible(
     worker.result <- list(data.frame(acc = acc,
                                      comptimes = comptimes))
     
-    names(worker.result) <- sprintf("worker_%d", i)
+    names(worker.result) <- sprintf("worker_%d", k)
     return(worker.result)
     
   })
@@ -214,6 +214,6 @@ if (CV == "CV1") {
 }
 
 # Export results:
-write.csv(results, sprintf("hyper/results/12%s_hyper_results_megalmm_d%d_d%d.csv", lab, datasets[1], datasets[n.datasets]))
+write.csv(results, sprintf("hyper/results/12%s_hyper_results_megalmm_%s.csv", lab, CV))
 
 
