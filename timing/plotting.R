@@ -1,3 +1,4 @@
+# Plotting the timing results:
 library(ggplot2)
 results <- read.csv("timing/timing.csv")
 runs <- length(unique(results$Run))
@@ -24,13 +25,6 @@ results.avg$Step <- factor(results.avg$Step,
                                       "Factor model", "Factor scores", "Subset selection",
                                       "gfBLUP genomic prediction", "Other"))
 
-
-ggplot(data = results[which(results$Step == "Total"), ],
-       mapping = aes(x = p, y = Durations)) +
-  geom_point() +
-  theme_classic() +
-  ylab("Duration in seconds")
-
 pal <- RColorBrewer::brewer.pal(8, "Paired")
 
 ggplot(data = results.avg,
@@ -42,3 +36,25 @@ ggplot(data = results.avg,
   scale_color_manual(values = pal)
 
 ggsave("timing/timing.jpg", width = 30, height = 10, units = "cm")
+
+
+results.avg$percentage <- numeric(nrow(results.avg))
+
+for (p in unique(results.avg$p)) {
+  for (step in unique(results.avg$Step)[-8]) {
+    results.avg[results.avg$p == p & results.avg$Step == step, "percentage"] <-
+      results.avg[results.avg$p == p & results.avg$Step == step, "Durations"] / results.avg[results.avg$p == p & results.avg$Step == "Total", "Durations"] * 100
+  }
+}
+
+results.avg <- droplevels(results.avg[which(!(results.avg$Step == "Total")),])
+
+ggplot(data = results.avg, mapping = aes(x = p, y = percentage, fill = Step)) +
+  geom_area() +
+  theme_classic() +
+  scale_fill_manual(values = NatParksPalettes::natparks.pals("Acadia")[2:8])
+
+
+
+
+
