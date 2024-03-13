@@ -39,6 +39,12 @@ source("hyper/analyses/MegaLMM_hyper_CV1_RF.R"); reset()
 # Step VII: MegaLMM CV2 analysis ===============================================
 source("hyper/analyses/MegaLMM_hyper_CV2_RF.R"); reset()
 
+# Step VIII: MultiMLP CV1 analysis =============================================
+source("hyper/analyses/multiMLP_hyper_CV1_RF.R"); reset()
+
+# Step IX: MultiMLP CV2 analysis ===============================================
+source("hyper/analyses/multiMLP_hyper_CV2_RF.R"); reset()
+
 # Step VIII: Result Plotting ===================================================
 source("hyper/plot_hyper_results.R"); reset()
 
