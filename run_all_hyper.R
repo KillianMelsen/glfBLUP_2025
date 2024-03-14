@@ -45,7 +45,10 @@ source("hyper/analyses/multiMLP_hyper_CV1_RF.R"); reset()
 # Step IX: MultiMLP CV2 analysis ===============================================
 source("hyper/analyses/multiMLP_hyper_CV2_RF.R"); reset()
 
-# Step VIII: Result Plotting ===================================================
+# Step X: Result Plotting ======================================================
 source("hyper/plot_hyper_results.R"); reset()
+
+# Step XI: gfBLUP single date analysis =========================================
+source("hyper/gfBLUP_hyper_single_date.R"); reset()
 
 

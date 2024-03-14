@@ -26,61 +26,54 @@ results.avg$Step <- factor(results.avg$Step,
                                       "Factor scores", "Subset selection",
                                       "gfBLUP genomic prediction", "Other"))
 
-pal <- RColorBrewer::brewer.pal(9, "Paired")
-
-ggplot(data = results.avg,
-       mapping = aes(x = p, y = Duration, color = Step)) +
-  geom_point(size = 2) +
-  geom_line(linewidth = 1) +
-  theme_classic(base_size = 11) +
-  ylab("Duration in seconds") +
-  scale_color_manual(values = pal) +
-  theme(axis.text = element_text(color = "black", size = 6),
-        axis.title = element_text(face = "bold"),
-        legend.title = element_text(face = "bold"),
-        plot.title = element_text(face = "bold", hjust = 0.5),
-        plot.subtitle = element_text(hjust = 0.5)) +
-  theme(legend.text = element_text(size = 6),
-        legend.title = element_text(size = 8),
-        axis.title = element_text(size = 8),
-        legend.position = "right",
-        legend.key.height = unit(0.5, "cm"),
-        legend.spacing.y = unit(0.1, "cm"),
-        legend.key.width = unit(0.5, "cm"))
-
-ggsave("timing/timing.jpg", width = 30, height = 10, units = "cm")
-
-
-results.avg$percentage <- numeric(nrow(results.avg))
+results.avg$Percentage <- numeric(nrow(results.avg))
 
 for (p in unique(results.avg$p)) {
   for (step in unique(results.avg$Step)[-9]) {
-    results.avg[results.avg$p == p & results.avg$Step == step, "percentage"] <-
+    results.avg[results.avg$p == p & results.avg$Step == step, "Percentage"] <-
       results.avg[results.avg$p == p & results.avg$Step == step, "Duration"] / results.avg[results.avg$p == p & results.avg$Step == "Total", "Duration"]
   }
 }
 
-results.avg <- droplevels(results.avg[which(!(results.avg$Step == "Total")),])
+SF <- 1 / (max(results.avg[which(results.avg$Step == "Total"), "Duration"]) * 1.1)
 
-ggplot(data = results.avg, mapping = aes(x = p, y = percentage, fill = Step)) +
-  geom_area() +
-  theme_classic(base_size = 11) +
+ggplot(mapping = aes(x = p)) +
+  geom_area(aes(y = Percentage, fill = Step), droplevels(results.avg[which(!(results.avg$Step == "Total")),])) +
   scale_fill_manual(values = NatParksPalettes::natparks.pals("Acadia")[2:9]) +
-  theme(axis.text = element_text(color = "black", size = 6),
-        axis.title = element_text(face = "bold"),
-        legend.title = element_text(face = "bold"),
-        plot.title = element_text(face = "bold", hjust = 0.5),
-        plot.subtitle = element_text(hjust = 0.5)) +
-  theme(legend.text = element_text(size = 6),
-        legend.title = element_text(size = 8),
-        axis.title = element_text(size = 8),
-        legend.position = "right",
+  geom_line(aes(y = Duration * SF), droplevels(results.avg[which(results.avg$Step == "Total"),]), col = "coral", linewidth = 1) +
+  geom_point(aes(y = Duration * SF), droplevels(results.avg[which(results.avg$Step == "Total"),]), col = "coral", size = 1.5) +
+  theme_classic(base_size = 11) +
+  theme(axis.text = element_text(color = "black", size = 11),
+        axis.title = element_text(face = "bold", size = 13),
+        axis.title.y.left = element_text(margin = margin(r = 0.25, unit = "cm")),
+        axis.title.y.right = element_text(margin = margin(l = 0.25, unit = "cm")),
+        legend.title = element_text(face = "bold", size = 13),
+        legend.text = element_text(size = 11),
+        legend.position = "bottom",
         legend.key.height = unit(0.5, "cm"),
         legend.spacing.y = unit(0.1, "cm"),
         legend.key.width = unit(0.5, "cm")) +
-  scale_y_continuous(labels = scales::percent)
+  scale_y_continuous(labels = scales::percent, sec.axis = sec_axis(~./SF, name = "Total runtime (s)"))
 
-ggsave("timing/timing_percentages.jpg", width = 30, height = 10, units = "cm")
+# ggplot(data = results.avg, mapping = aes(x = p, y = percentage, fill = Step)) +
+#   geom_area() +
+#   theme_classic(base_size = 11) +
+#   scale_fill_manual(values = NatParksPalettes::natparks.pals("Acadia")[2:9]) +
+#   theme(axis.text = element_text(color = "black", size = 6),
+#         axis.title = element_text(face = "bold"),
+#         legend.title = element_text(face = "bold"),
+#         plot.title = element_text(face = "bold", hjust = 0.5),
+#         plot.subtitle = element_text(hjust = 0.5)) +
+#   theme(legend.text = element_text(size = 6),
+#         legend.title = element_text(size = 8),
+#         axis.title = element_text(size = 8),
+#         legend.position = "right",
+#         legend.key.height = unit(0.5, "cm"),
+#         legend.spacing.y = unit(0.1, "cm"),
+#         legend.key.width = unit(0.5, "cm")) +
+#   scale_y_continuous(labels = scales::percent)
+
+ggsave("timing/timing.png", width = 24, height = 8, units = "cm")
 
 
 
