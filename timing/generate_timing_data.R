@@ -16,7 +16,7 @@ comm <- "08"
 h2y <- "05"
 
 # Total number of secondary features:
-ps <- seq(100, 1400, 100)
+ps <- seq(100, 2500, 100)
 
 p <- ps[1]
 for (p in ps) {

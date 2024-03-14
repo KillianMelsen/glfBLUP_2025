@@ -8,7 +8,7 @@ library(tictoc)
 set.seed(1997)
 
 # Total number of secondary features:
-ps <- seq(100, 1400, 100)
+ps <- seq(100, 2500, 100)
 
 # Loading kinship:
 load("genotypes/K_sim.RData"); rm(M)
