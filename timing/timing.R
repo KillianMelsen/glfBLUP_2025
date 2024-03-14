@@ -21,7 +21,8 @@ load("genotypes/K_sim.RData"); rm(M)
 runs.warmup <- 1
 runs.timing <- 5
 steps <- c("Redundancy filtering",
-           "Regularization",
+           "Genetic regularization",
+           "Residual regularization",
            "Factor model",
            "Factor scores",
            "Subset selection",
@@ -46,6 +47,7 @@ for (p in ps) {
     # Storing data and prediction target:
     d <- datalist$data.real
     pred.target <- datalist$pred.target
+    d[which(is.na(d$Y)), 2:ncol(d)] <- NA
     
     tic("Full model") # Full model start
     
@@ -66,15 +68,19 @@ for (p in ps) {
     
     
     ## 3. Regularization =======================================================
-    tic("Regularization") # Regularization start
     folds <- gfBLUP::createFolds(genos = unique(as.character(d.train$G)))
+    
+    tic("Genetic Regularization") # Genetic regularization start
     tempG <- gfBLUP::regularizedCorrelation(data = d.train[c("G", sec)],
                                             folds = folds, what = "genetic", dopar = TRUE)
+    toc(log = FALSE) # Genetic regularization stop
     
+    tic("Residual Regularization") # Residual regularization start
     tempE <- gfBLUP::regularizedCorrelation(data = d.train[c("G", sec)],
                                             folds = folds, what = "residual", dopar = TRUE)
+    toc(log = FALSE) # Residual regularization stop
+    
     Rg.reg <- tempG$optCor
-    toc(log = FALSE) # Regularization stop
     
     
     
@@ -91,19 +97,31 @@ for (p in ps) {
     L.cov <- diag(D) %*% FM.fit$loadings
     PSI.cov <- outer(D, D) * FM.fit$uniquenesses
     
-    # CV2 Factor scores:
-    # First recenter/rescale the training and test secondary data together:
-    d[sec] <- sapply(d[sec], scale)
-    CV2.F.scores <- gfBLUP::factorScores(data = d[c("G", sec)],
+    # CV1 Factor scores
+    CV1.F.scores <- gfBLUP::factorScores(data = d[c("G", sec)],
                                          loadings = L.cov,
                                          uniquenesses = PSI.cov,
                                          m = FM.fit$m,
                                          type = "genetic-thomson-repdiv",
                                          Se = outer(sqrt(diag(tempE$Se)), sqrt(diag(tempE$Se))) * tempE$optCor)
     
-    CV2.d.final <- cbind(CV2.F.scores, d$Y)
-    names(CV2.d.final)[ncol(CV2.d.final)] <- "Y"
-    names(CV2.d.final)[1] <- "G"
+    CV1.d.final <- cbind(CV1.F.scores, d$Y)
+    names(CV1.d.final)[ncol(CV1.d.final)] <- "Y"
+    names(CV1.d.final)[1] <- "G"
+    
+    # # CV2 Factor scores:
+    # # First recenter/rescale the training and test secondary data together:
+    # d[sec] <- sapply(d[sec], scale)
+    # CV2.F.scores <- gfBLUP::factorScores(data = d[c("G", sec)],
+    #                                      loadings = L.cov,
+    #                                      uniquenesses = PSI.cov,
+    #                                      m = FM.fit$m,
+    #                                      type = "genetic-thomson-repdiv",
+    #                                      Se = outer(sqrt(diag(tempE$Se)), sqrt(diag(tempE$Se))) * tempE$optCor)
+    # 
+    # CV2.d.final <- cbind(CV2.F.scores, d$Y)
+    # names(CV2.d.final)[ncol(CV2.d.final)] <- "Y"
+    # names(CV2.d.final)[1] <- "G"
     toc(log = FALSE) # Factor scores stop
     
     
@@ -111,20 +129,20 @@ for (p in ps) {
     ## 6. Selecting the relevant factors =======================================
     tic("Subset selection") # Subset selection start
     # Subset selection can only be done using training data:
-    selection <- gfBLUP::factorSelect(na.omit(CV2.d.final), procedure = "leaps", verbose = F)
+    selection <- gfBLUP::factorSelect(na.omit(CV1.d.final), procedure = "leaps", verbose = F)
     toc(log = FALSE) # Subset selection stop
     
     
     
     ## 7. Multi-trait genomic prediction =======================================
     tic("gfBLUP genomic prediction") # gfBLUP genomic prediction start
-    CV2.temp <- gfBLUP::gfBLUP(data = CV2.d.final, selection = selection, K = K, sepExp = FALSE, verbose = F)
+    CV1.temp <- gfBLUP::gfBLUP(data = CV1.d.final, selection = selection, K = K, sepExp = FALSE, verbose = F)
     toc(log = FALSE) # gfBLUP genomic prediction stop
     
     toc(log = FALSE) # Full model stop
     
     cat(sprintf("Warmup run %d done, accuracy of %.3f\n\n",
-                run.warmup, cor(pred.target, CV2.temp$preds[match(names(pred.target), names(CV2.temp$preds))])))
+                run.warmup, cor(pred.target, CV1.temp$preds[match(names(pred.target), names(CV1.temp$preds))])))
     
   }
   
@@ -140,6 +158,7 @@ for (p in ps) {
     # Storing data and prediction target:
     d <- datalist$data.real
     pred.target <- datalist$pred.target
+    d[which(is.na(d$Y)), 2:ncol(d)] <- NA
     
     tic("Full model") # Full model start
     
@@ -158,16 +177,20 @@ for (p in ps) {
     
     
     ## 3. Regularization =======================================================
-    tic("Regularization") # Regularization start
     folds <- gfBLUP::createFolds(genos = unique(as.character(d.train$G)))
+    
+    tic("Genetic Regularization") # Genetic regularization start
     tempG <- gfBLUP::regularizedCorrelation(data = d.train[c("G", sec)],
                                             folds = folds, what = "genetic", dopar = TRUE)
+    toc(log = TRUE) # Genetic regularization stop
     
+    tic("Residual Regularization") # Residual regularization start
     tempE <- gfBLUP::regularizedCorrelation(data = d.train[c("G", sec)],
                                             folds = folds, what = "residual", dopar = TRUE)
-    Rg.reg <- tempG$optCor
-    toc(log = TRUE) # Regularization stop
+    toc(log = TRUE) # Residual regularization stop
     
+    Rg.reg <- tempG$optCor
+
     
     
     ## 4. Fitting factor model =================================================
@@ -183,19 +206,31 @@ for (p in ps) {
     L.cov <- diag(D) %*% FM.fit$loadings
     PSI.cov <- outer(D, D) * FM.fit$uniquenesses
     
-    # CV2 Factor scores:
-    # First recenter/rescale the training and test secondary data together:
-    d[sec] <- sapply(d[sec], scale)
-    CV2.F.scores <- gfBLUP::factorScores(data = d[c("G", sec)],
+    # CV1 Factor scores
+    CV1.F.scores <- gfBLUP::factorScores(data = d[c("G", sec)],
                                          loadings = L.cov,
                                          uniquenesses = PSI.cov,
                                          m = FM.fit$m,
                                          type = "genetic-thomson-repdiv",
                                          Se = outer(sqrt(diag(tempE$Se)), sqrt(diag(tempE$Se))) * tempE$optCor)
     
-    CV2.d.final <- cbind(CV2.F.scores, d$Y)
-    names(CV2.d.final)[ncol(CV2.d.final)] <- "Y"
-    names(CV2.d.final)[1] <- "G"
+    CV1.d.final <- cbind(CV1.F.scores, d$Y)
+    names(CV1.d.final)[ncol(CV1.d.final)] <- "Y"
+    names(CV1.d.final)[1] <- "G"
+    
+    # # CV2 Factor scores:
+    # # First recenter/rescale the training and test secondary data together:
+    # d[sec] <- sapply(d[sec], scale)
+    # CV2.F.scores <- gfBLUP::factorScores(data = d[c("G", sec)],
+    #                                      loadings = L.cov,
+    #                                      uniquenesses = PSI.cov,
+    #                                      m = FM.fit$m,
+    #                                      type = "genetic-thomson-repdiv",
+    #                                      Se = outer(sqrt(diag(tempE$Se)), sqrt(diag(tempE$Se))) * tempE$optCor)
+    # 
+    # CV2.d.final <- cbind(CV2.F.scores, d$Y)
+    # names(CV2.d.final)[ncol(CV2.d.final)] <- "Y"
+    # names(CV2.d.final)[1] <- "G"
     toc(log = TRUE) # Factor scores stop
     
     
@@ -203,30 +238,30 @@ for (p in ps) {
     ## 6. Selecting the relevant factors =======================================
     tic("Subset selection") # Subset selection start
     # Subset selection can only be done using training data:
-    selection <- gfBLUP::factorSelect(na.omit(CV2.d.final), procedure = "leaps", verbose = F)
+    selection <- gfBLUP::factorSelect(na.omit(CV1.d.final), procedure = "leaps", verbose = F)
     toc(log = TRUE) # Subset selection stop
     
     
     
     ## 7. Multi-trait genomic prediction =======================================
     tic("gfBLUP genomic prediction") # gfBLUP genomic prediction start
-    CV2.temp <- gfBLUP::gfBLUP(data = CV2.d.final, selection = selection, K = K, sepExp = FALSE, verbose = F)
+    CV1.temp <- gfBLUP::gfBLUP(data = CV1.d.final, selection = selection, K = K, sepExp = FALSE, verbose = F)
     toc(log = TRUE) # gfBLUP genomic prediction stop
     
     toc(log = TRUE) # Full model stop
     
     cat(sprintf("Timing run %d done, accuracy of %.3f\n\n",
-                run.timing, cor(pred.target, CV2.temp$preds[match(names(pred.target), names(CV2.temp$preds))])))
+                run.timing, cor(pred.target, CV1.temp$preds[match(names(pred.target), names(CV1.temp$preds))])))
     
     times <- tic.log(format = FALSE)
     tic.clearlog()
     times <- unlist(lapply(times, function(x) x$toc - x$tic))
     names(times) <- steps
-    times["Other"] <- times["Other"] - sum(times[1:6])
+    times["Other"] <- times["Other"] - sum(times[1:7])
     
-    results[result.row.start:result.row.end, "Durations"] <- as.numeric(times)
+    results[result.row.start:result.row.end, "Duration"] <- as.numeric(times)
     result.row.start <- result.row.end + 1
-    result.row.end <- result.row.start + 6
+    result.row.end <- result.row.start + 7
   }
   cat(sprintf("Timing runs for p = %s done, proceeding to warmup of next p\n\n", p))
 }
