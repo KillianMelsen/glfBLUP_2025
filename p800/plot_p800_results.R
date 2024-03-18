@@ -144,6 +144,6 @@ ggplot(data = medians, mapping = aes(x = h2y, y = Accuracy, color = Model)) +
                                  nrow = 3, byrow = TRUE)) +
   ggtitle("Focal trait communality")
 
-ggsave(filename = "p800.png", dpi = 640, width = 25, height = 25, units = "cm")
+ggsave(filename = "plots/p800.png", dpi = 640, width = 25, height = 25, units = "cm")
 
 

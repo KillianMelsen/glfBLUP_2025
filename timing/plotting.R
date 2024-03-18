@@ -73,7 +73,7 @@ ggplot(mapping = aes(x = p)) +
 #         legend.key.width = unit(0.5, "cm")) +
 #   scale_y_continuous(labels = scales::percent)
 
-ggsave("timing/timing.png", width = 24, height = 8, units = "cm")
+ggsave("plots/timing.png", width = 24, height = 8, units = "cm")
 
 
 

@@ -59,21 +59,21 @@ invisible(
       foc <- names(d)[ncol(d)]
       
       ### 2. Redundancy filter the secondary features using training data only -------------------------------------------------------------
-      # temp <- gfBLUP::redundancyFilter(data = d.train[c("G", sec)], tau = 0.95, verbose = FALSE)
-      # d.train.RF <- cbind(temp$data.RF, d.train[foc])
-      # d.RF <- d[names(d.train.RF)]
-      # sec.RF <- names(d.RF[2:(ncol(d.RF) - 1)])
+      temp <- gfBLUP::redundancyFilter(data = d.train[c("G", sec)], tau = 0.95, verbose = FALSE)
+      d.train.RF <- cbind(temp$data.RF, d.train[foc])
+      d.RF <- d[names(d.train.RF)]
+      sec.RF <- names(d.RF[2:(ncol(d.RF) - 1)])
       
       ### 3. Regularization ----------------------------------------------------------------------------------------------------------------
-      folds <- gfBLUP::createFolds(genos = unique(as.character(d.train$G)))
-      tempG <- gfBLUP::regularizedCorrelation(data = d.train[c("G", sec)], folds = folds, what = "genetic", dopar = FALSE, verbose = FALSE)
-      tempE <- gfBLUP::regularizedCorrelation(data = d.train[c("G", sec)], folds = folds, what = "residual", dopar = FALSE, verbose = FALSE)
-      Rg.reg <- tempG$optCor
+      folds <- gfBLUP::createFolds(genos = unique(as.character(d.train.RF$G)))
+      tempG <- gfBLUP::regularizedCorrelation(data = d.train.RF[c("G", sec.RF)], folds = folds, what = "genetic", dopar = FALSE, verbose = FALSE)
+      tempE <- gfBLUP::regularizedCorrelation(data = d.train.RF[c("G", sec.RF)], folds = folds, what = "residual", dopar = FALSE, verbose = FALSE)
+      Rg.RF.reg <- tempG$optCor
       
       ### 4. Fitting factor model ----------------------------------------------------------------------------------------------------------
       # data is only used to determine the sample size for the MP-bound. what specifies that it's a genetic correlation matrix, so the
       # number of training genotypes should be used, and not the number of training individuals (= genotypes * replicates).
-      FM.fit <- gfBLUP::factorModel(data = d.train[c("G", sec)], cormat = Rg.reg, what = "genetic", verbose = FALSE)
+      FM.fit <- gfBLUP::factorModel(data = d.train.RF[c("G", sec.RF)], cormat = Rg.RF.reg, what = "genetic", verbose = FALSE)
       
       #### 5. Getting factor scores (also for the test set in CV2!) ------------------------------------------------------------------------
       # Loadings and uniquenesses were estimated on the correlation scale, but should be on the covariance scale for genetic-thomson scores:
@@ -82,30 +82,30 @@ invisible(
       PSI.cov <- outer(D, D) * FM.fit$uniquenesses
       
       # CV1 Factor scores:
-      CV1.d <- d
-      CV1.d[which(is.na(CV1.d$Y)), 2:ncol(CV1.d)] <- NA
-      CV1.F.scores <- gfBLUP::factorScores(data = CV1.d[c("G", sec)],
+      CV1.d.RF <- d.RF
+      CV1.d.RF[which(is.na(CV1.d.RF$Y)), 2:ncol(CV1.d.RF)] <- NA
+      CV1.F.scores <- gfBLUP::factorScores(data = CV1.d.RF[c("G", sec.RF)],
                                            loadings = L.cov,
                                            uniquenesses = PSI.cov,
                                            m = FM.fit$m,
                                            type = "genetic-thomson-repdiv",
                                            Se = outer(sqrt(diag(tempE$Se)), sqrt(diag(tempE$Se))) * tempE$optCor)
       
-      CV1.d.final <- cbind(CV1.F.scores, CV1.d$Y)
+      CV1.d.final <- cbind(CV1.F.scores, CV1.d.RF$Y)
       names(CV1.d.final)[ncol(CV1.d.final)] <- "Y"
       names(CV1.d.final)[1] <- "G"
       
       # CV2 Factor scores:
       # First recenter/rescale the training and test secondary data together:
-      d[sec] <- sapply(d[sec], scale)
-      CV2.F.scores <- gfBLUP::factorScores(data = d[c("G", sec)],
+      d.RF[sec.RF] <- sapply(d.RF[sec.RF], scale)
+      CV2.F.scores <- gfBLUP::factorScores(data = d.RF[c("G", sec.RF)],
                                            loadings = L.cov,
                                            uniquenesses = PSI.cov,
                                            m = FM.fit$m,
                                            type = "genetic-thomson-repdiv",
                                            Se = outer(sqrt(diag(tempE$Se)), sqrt(diag(tempE$Se))) * tempE$optCor)
       
-      CV2.d.final <- cbind(CV2.F.scores, d$Y)
+      CV2.d.final <- cbind(CV2.F.scores, d.RF$Y)
       names(CV2.d.final)[ncol(CV2.d.final)] <- "Y"
       names(CV2.d.final)[1] <- "G"
       
@@ -189,10 +189,10 @@ CV2.results <- data.frame(acc = CV2.acc,
                           comptimes = comptimes)
 
 # Export results:
-write.csv(CV1.results, "hyper/results/3a_hyper_results_gfblup_CV1.csv")
-write.csv(CV2.results, "hyper/results/3b_hyper_results_gfblup_CV2.csv")
+write.csv(CV1.results, "hyper/results/3a_hyper_results_gfblup_CV1_RF.csv")
+write.csv(CV2.results, "hyper/results/3b_hyper_results_gfblup_CV2_RF.csv")
 
-list.save(extra, "hyper/results/3_hyper_extra_results_gfblup.RData")
+list.save(extra, "hyper/results/3_hyper_extra_results_gfblup_RF.RData")
 
 
 

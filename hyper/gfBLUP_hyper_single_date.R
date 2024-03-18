@@ -69,11 +69,14 @@ loadings$Wavelength <- as.numeric(loadings$Wavelength)
 loadings$Factor <- factor(loadings$Factor, levels = c("F1", "F2"))
 
 # Some data for the spectral background:
-conesdata <- read.csv("http://www.cvrl.org/database/data/cones/linss10e_5.csv")
-names(conesdata) <- c("Wavelength", "Red", "Green", "Blue")
-conesdata[is.na(conesdata)] <- 0
-conesdata$colour <- rgb(conesdata$Red, conesdata$Green, conesdata$Blue, alpha = 0.8)   
-gradient <- t(conesdata$colour[conesdata$Wavelength >= 400 & conesdata$Wavelength <= 800])
+# conesdata <- read.csv("http://www.cvrl.org/database/data/cones/linss10e_5.csv")
+# names(conesdata) <- c("Wavelength", "Red", "Green", "Blue")
+# conesdata[is.na(conesdata)] <- 0
+# conesdata$colour <- rgb(conesdata$Red, conesdata$Green, conesdata$Blue, alpha = 0.8)   
+# gradient <- t(conesdata$colour[conesdata$Wavelength >= 400 & conesdata$Wavelength <= 800])
+# g <- rasterGrob(gradient, width = unit(1, "npc"), height = unit(1, "npc"), interpolate = TRUE)
+
+gradient <- t(photobiology::w_length2rgb(400:800))
 g <- rasterGrob(gradient, width = unit(1, "npc"), height = unit(1, "npc"), interpolate = TRUE)
 
 # Plotting:
@@ -98,12 +101,6 @@ ggplot(data = loadings, mapping = aes(x = Wavelength, y = Loading, color = Facto
   annotate("text", x = 757, y = 0.05, label = paste(("rho[(F1*', '* Y)]^g * ' = ' *"), round(gencors["F1", "Y"], 2)),
            color = "white", parse = TRUE, size = 6, hjust = 0)
 
-ggsave("hyper_single_date.png", width = 24, height = 8, units = "cm")
+ggsave("plots/gfBLUP_hyper_single_date.png", width = 24, height = 8, units = "cm")
 
 
-
-
-
-
-
-      
