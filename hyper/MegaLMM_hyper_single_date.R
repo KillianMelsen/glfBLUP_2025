@@ -288,63 +288,73 @@ save(pred_samples, file = "hyper/megalmm_hyper_single_date_arrays/PREDS_M10.RDat
 # Deleting MegaLMM state files:
 unlink(run_ID, recursive = TRUE)
 
-# # Calculating posterior means:
-# mean_Lambda <- MegaLMM::get_posterior_mean(Lambda_samples)
-# mean_pred <- MegaLMM::get_posterior_mean(pred_samples)
-# 
-# loadings <- as.data.frame(t(mean_Lambda))
-# names(loadings) <- paste0("F", 1:nrow(mean_Lambda))
-# loadings.wl <- loadings[-1,]
-# loadings.y <- loadings[1,]
-# 
-# loadings.wl$Wavelength <- as.numeric(rownames(loadings.wl))
-# 
-# loadings.wl.long <- tidyr::pivot_longer(loadings.wl, names_to = "Factor",
-#                                         cols = 1:(ncol(loadings.wl) - 1),
-#                                         values_to = "Loading")
-# 
-# loadings.wl.long$Factor <- factor(loadings.wl.long$Factor, levels = paste0("F", 1:nrow(mean_Lambda)))
-# 
-# # Some data for the spectral background:
-# # conesdata <- read.csv("http://www.cvrl.org/database/data/cones/linss10e_5.csv")
-# # names(conesdata) <- c("Wavelength", "Red", "Green", "Blue")
-# # conesdata[is.na(conesdata)] <- 0
-# # conesdata$colour <- rgb(conesdata$Red, conesdata$Green, conesdata$Blue, alpha = 0.8)   
-# # gradient <- t(conesdata$colour[conesdata$Wavelength >= 400 & conesdata$Wavelength <= 800])
-# # g <- rasterGrob(gradient, width = unit(1, "npc"), height = unit(1, "npc"), interpolate = TRUE)
-# 
-# gradient <- t(photobiology::w_length2rgb(400:800))
+# Calculating posterior means:
+mean_Lambda <- MegaLMM::get_posterior_mean(Lambda_samples)
+mean_pred <- MegaLMM::get_posterior_mean(pred_samples)
+
+loadings <- as.data.frame(t(mean_Lambda))
+names(loadings) <- paste0("F", 1:nrow(mean_Lambda))
+loadings.wl <- loadings[-1,]
+loadings.y <- loadings[1,]
+
+loadings.wl$Wavelength <- as.numeric(rownames(loadings.wl))
+
+loadings.wl.long <- tidyr::pivot_longer(loadings.wl, names_to = "Factor",
+                                        cols = 1:(ncol(loadings.wl) - 1),
+                                        values_to = "Loading")
+
+loadings.wl.long$Factor <- factor(loadings.wl.long$Factor, levels = paste0("F", 1:nrow(mean_Lambda)))
+
+# Some data for the spectral background:
+# conesdata <- read.csv("http://www.cvrl.org/database/data/cones/linss10e_5.csv")
+# names(conesdata) <- c("Wavelength", "Red", "Green", "Blue")
+# conesdata[is.na(conesdata)] <- 0
+# conesdata$colour <- rgb(conesdata$Red, conesdata$Green, conesdata$Blue, alpha = 0.8)
+# gradient <- t(conesdata$colour[conesdata$Wavelength >= 400 & conesdata$Wavelength <= 800])
 # g <- rasterGrob(gradient, width = unit(1, "npc"), height = unit(1, "npc"), interpolate = TRUE)
-# 
-# # Plotting:
-# ggplot(data = loadings.wl.long, mapping = aes(x = Wavelength, y = Loading, color = Factor)) +
-#   annotation_custom(g, xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf) +
-#   geom_line(linewidth = 1.5) +
-#   scale_color_manual(values = c("F1" = "#63a7ff", "F2" = "#ffb667", "F3" = "red3",
-#                                 "F4" = "green3", "F5" = "yellow3")) +
-#   ylim(c(-0.5, 1.1)) +
-#   theme_classic(base_size = 11) +
-#   theme(axis.text = element_text(color = "black", size = 11),
-#         axis.title = element_text(face = "bold", size = 13),
-#         axis.title.y.left = element_text(margin = margin(r = 0.25, unit = "cm")),
-#         axis.title.y.right = element_text(margin = margin(l = 0.25, unit = "cm")),
-#         legend.title = element_text(face = "bold", size = 13),
-#         legend.text = element_text(size = 11),
-#         legend.position = "right",
-#         legend.key.height = unit(0.5, "cm"),
-#         legend.spacing.y = unit(0.1, "cm"),
-#         legend.key.width = unit(0.5, "cm")) +
-#   annotate("text", x = 757, y = 0.13, label = paste(("lambda(F1*', '* Y) * ' = ' *"), round(loadings.y["F1"], 2)),
-#            color = "white", parse = TRUE, size = 4, hjust = 0) +
-#   annotate("text", x = 757, y = -0.5, label = paste(("lambda(F2*', '* Y) * ' = ' *"), round(loadings.y["F2"], 2)),
-#            color = "white", parse = TRUE, size = 4, hjust = 0) +
-#   annotate("text", x = 757, y = -0.35, label = paste(("lambda(F3*', '* Y) * ' = ' *"), round(loadings.y["F3"], 2)),
-#            color = "white", parse = TRUE, size = 4, hjust = 0) +
-#   annotate("text", x = 757, y = 0.45, label = paste(("lambda(F4*', '* Y) * ' = ' *"), round(loadings.y["F4"], 2)),
-#            color = "white", parse = TRUE, size = 4, hjust = 0) +
-#   annotate("text", x = 757, y = 0.90, label = paste(("lambda(F5*', '* Y) * ' = ' *"), round(loadings.y["F5"], 2)),
-#            color = "white", parse = TRUE, size = 4, hjust = 0)
-# 
-# ggsave("plots/MegaLMM_hyper_single_date_M10.png", width = 24, height = 8, units = "cm")
+
+gradient <- t(photobiology::w_length2rgb(400:800))
+g <- rasterGrob(gradient, width = unit(1, "npc"), height = unit(1, "npc"), interpolate = TRUE)
+
+# Plotting:
+ggplot(data = loadings.wl.long, mapping = aes(x = Wavelength, y = Loading, color = Factor)) +
+  annotation_custom(g, xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf) +
+  geom_line(linewidth = 1.5) +
+  # scale_color_manual(values = c("F1" = "#63a7ff", "F2" = "#ffb667", "F3" = "red3",
+  #                               "F4" = "green3", "F5" = "yellow3")) +
+  ylim(c(-1.1, 1.1)) +
+  theme_classic(base_size = 11) +
+  theme(axis.text = element_text(color = "black", size = 11),
+        axis.title = element_text(face = "bold", size = 13),
+        axis.title.y.left = element_text(margin = margin(r = 0.25, unit = "cm")),
+        axis.title.y.right = element_text(margin = margin(l = 0.25, unit = "cm")),
+        legend.title = element_text(face = "bold", size = 13),
+        legend.text = element_text(size = 11),
+        legend.position = "right",
+        legend.key.height = unit(0.5, "cm"),
+        legend.spacing.y = unit(0.1, "cm"),
+        legend.key.width = unit(0.5, "cm")) +
+  annotate("text", x = 757, y = -1.0, label = paste(("lambda(F1*', '* Y) * ' = ' *"), round(loadings.y["F1"], 2)),
+           color = "white", parse = TRUE, size = 4, hjust = 0) +
+  annotate("text", x = 757, y = 0.75, label = paste(("lambda(F2 *', '* Y) * ' = ' *"), round(loadings.y["F2"], 2)),
+           color = "white", parse = TRUE, size = 4, hjust = 0) +
+  annotate("text", x = 757, y = 0.90, label = paste(("lambda(F3*', '* Y) * ' = ' *"), round(loadings.y["F3"], 2)),
+           color = "white", parse = TRUE, size = 4, hjust = 0) +
+  annotate("text", x = 757, y = 0.60, label = paste(("lambda(F4*', '* Y) * ' = ' *"), round(loadings.y["F4"], 2)),
+           color = "white", parse = TRUE, size = 4, hjust = 0) +
+  annotate("text", x = 757, y = 0.45, label = paste(("lambda(F5*', '* Y) * ' = ' *"), round(loadings.y["F5"], 2)),
+           color = "white", parse = TRUE, size = 4, hjust = 0) +
+  annotate("text", x = 757, y = 0.30, label = paste(("lambda(F6*', '* Y) * ' = ' *"), round(loadings.y["F6"], 2)),
+           color = "white", parse = TRUE, size = 4, hjust = 0) +
+  annotate("text", x = 757, y = -0.85, label = paste(("lambda(F7*', '* Y) * ' = ' *"), round(loadings.y["F7"], 2)),
+           color = "white", parse = TRUE, size = 4, hjust = 0) +
+  annotate("text", x = 757, y = -0.70, label = paste(("lambda(F8*', '* Y) * ' = ' *"), round(loadings.y["F8"], 2)),
+           color = "white", parse = TRUE, size = 4, hjust = 0) +
+  annotate("text", x = 757, y = -0.55, label = paste(("lambda(F9*', '* Y) * ' = ' *"), round(loadings.y["F9"], 2)),
+           color = "white", parse = TRUE, size = 4, hjust = 0) +
+  annotate("text", x = 757, y = -0.40, label = paste(("lambda(F10*', '* Y) * ' = ' *"), round(loadings.y["F10"], 2)),
+           color = "white", parse = TRUE, size = 4, hjust = 0)
+
+ggsave("plots/MegaLMM_hyper_single_date_M10.png", width = 24, height = 8, units = "cm")
 
 
