@@ -42,15 +42,15 @@ gamma$Wavelength <- rownames(gamma)
 gamma$Wavelength <- as.numeric(gamma$Wavelength)
 
 # Some data for the spectral background:
-# conesdata <- read.csv("http://www.cvrl.org/database/data/cones/linss10e_5.csv")
-# names(conesdata) <- c("Wavelength", "Red", "Green", "Blue")
-# conesdata[is.na(conesdata)] <- 0
-# conesdata$colour <- rgb(conesdata$Red, conesdata$Green, conesdata$Blue, alpha = 0.8)   
-# gradient <- t(conesdata$colour[conesdata$Wavelength >= 400 & conesdata$Wavelength <= 800])
-# g <- rasterGrob(gradient, width = unit(1, "npc"), height = unit(1, "npc"), interpolate = TRUE)
-
-gradient <- t(photobiology::w_length2rgb(400:800))
+conesdata <- read.csv("http://www.cvrl.org/database/data/cones/linss10e_5.csv")
+names(conesdata) <- c("Wavelength", "Red", "Green", "Blue")
+conesdata[is.na(conesdata)] <- 0
+conesdata$colour <- rgb(conesdata$Red, conesdata$Green, conesdata$Blue, alpha = 0.6)
+gradient <- t(conesdata$colour[conesdata$Wavelength >= 400 & conesdata$Wavelength <= 800])
 g <- rasterGrob(gradient, width = unit(1, "npc"), height = unit(1, "npc"), interpolate = TRUE)
+
+# gradient <- t(photobiology::w_length2rgb(400:800))
+# g <- rasterGrob(gradient, width = unit(1, "npc"), height = unit(1, "npc"), interpolate = TRUE)
 
 # Plotting:
 ggplot(data = gamma, mapping = aes(x = Wavelength, y = Gamma)) +
@@ -68,10 +68,12 @@ ggplot(data = gamma, mapping = aes(x = Wavelength, y = Gamma)) +
         legend.key.height = unit(0.5, "cm"),
         legend.spacing.y = unit(0.1, "cm"),
         legend.key.width = unit(0.5, "cm")) +
-  annotate("text", x = 757, y = 1.2, label = paste(("rho[(SI*', '* Y)]^g * ' = ' *"), round(gencors["penSI", "Y"], 2)),
+  annotate("text", x = 775, y = 1.2, label = paste(("rho[(SI*', '* Y)]^g * ' = ' *"), round(gencors["penSI", "Y"], 2)),
            color = "white", parse = TRUE, size = 6, hjust = 0) +
-  ylab("SI Weight")
+  annotate("text", x = 400, y = 1.3, label = "B",
+           color = "white", parse = TRUE, size = 6, hjust = 0) +
+  ylab("SI Weight") + xlab("Wavelength (nm)")
 
-ggsave("plots/siBLUP_hyper_single_date.png", width = 24, height = 8, units = "cm")
+ggsave("plots/siBLUP_hyper_single_date.png", width = 24, height = 7.6, units = "cm")
 
 

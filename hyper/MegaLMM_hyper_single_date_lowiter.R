@@ -33,8 +33,8 @@ foc <- names(d)[ncol(d)]
 # M = 5 ========================================================================
 # Some MegaLMM parameters:
 M <- 5
-burnin <- 10000
-posterior <- 100000
+burnin <- 1000
+posterior <- 500
 thin <- 2
 
 # Data manipulation:
@@ -81,7 +81,7 @@ priors = MegaLMM::MegaLMM_priors(
 )
 
 # Creating run ID:
-run_ID <- "hyper/megalmm_states/MegaLMM_hyper_single_date_M5"
+run_ID <- "hyper/megalmm_states/MegaLMM_hyper_single_date_M5_lowiter"
 
 # Initializing MegaLMM:
 MegaLMM_state = MegaLMM::setup_model_MegaLMM(d[, 2:ncol(d)],
@@ -131,8 +131,8 @@ Lambda_samples <- MegaLMM::load_posterior_param(MegaLMM_state, "Lambda")
 pred_samples <- MegaLMM::load_posterior_param(MegaLMM_state, "pred")
 
 # Saving the arrays containing all posterior predictions and loadings
-save(Lambda_samples, file = "hyper/megalmm_hyper_single_date_arrays/LAMBDA_M5.RData")
-save(pred_samples, file = "hyper/megalmm_hyper_single_date_arrays/PREDS_M5.RData")
+save(Lambda_samples, file = "hyper/megalmm_hyper_single_date_arrays/LAMBDA_M5_lowiter.RData")
+save(pred_samples, file = "hyper/megalmm_hyper_single_date_arrays/PREDS_M5_lowiter.RData")
 
 # Deleting MegaLMM state files:
 unlink(run_ID, recursive = TRUE)
@@ -196,7 +196,7 @@ ggplot(data = loadings.wl.long, mapping = aes(x = Wavelength, y = Loading, color
   xlab(NULL) +
   annotate("text", x = 400, y = 1, label = "A", color = "white", parse = TRUE, size = 4, hjust = 0)
 
-ggsave("plots/MegaLMM_hyper_single_date_M5.png", width = 24, height = 7.5, units = "cm")
+ggsave("plots/MegaLMM_hyper_single_date_M5_lowiter.png", width = 24, height = 7.5, units = "cm")
 
 # M = 10 =======================================================================
 # Setting seed:
@@ -204,8 +204,8 @@ set.seed(1997)
 
 # Some MegaLMM parameters:
 M <- 10
-burnin <- 10000
-posterior <- 100000
+burnin <- 1000
+posterior <- 500
 thin <- 2
 
 # MegaLMM config:
@@ -234,7 +234,7 @@ priors = MegaLMM::MegaLMM_priors(
 )
 
 # Creating run ID:
-run_ID <- "hyper/megalmm_states/MegaLMM_hyper_single_date_M10"
+run_ID <- "hyper/megalmm_states/MegaLMM_hyper_single_date_M10_lowiter"
 
 # Initializing MegaLMM:
 MegaLMM_state = MegaLMM::setup_model_MegaLMM(d[, 2:ncol(d)],
@@ -284,8 +284,8 @@ Lambda_samples <- MegaLMM::load_posterior_param(MegaLMM_state, "Lambda")
 pred_samples <- MegaLMM::load_posterior_param(MegaLMM_state, "pred")
 
 # Saving the arrays containing all posterior predictions and loadings
-save(Lambda_samples, file = "hyper/megalmm_hyper_single_date_arrays/LAMBDA_M10.RData")
-save(pred_samples, file = "hyper/megalmm_hyper_single_date_arrays/PREDS_M10.RData")
+save(Lambda_samples, file = "hyper/megalmm_hyper_single_date_arrays/LAMBDA_M10_lowiter.RData")
+save(pred_samples, file = "hyper/megalmm_hyper_single_date_arrays/PREDS_M10_lowiter.RData")
 
 # Deleting MegaLMM state files:
 unlink(run_ID, recursive = TRUE)
@@ -358,13 +358,13 @@ ggplot(data = loadings.wl.long, mapping = aes(x = Wavelength, y = Loading, color
   xlab("Wavelength (nm)") +
   annotate("text", x = 400, y = 1, label = "B", color = "white", parse = TRUE, size = 4, hjust = 0)
 
-ggsave("plots/MegaLMM_hyper_single_date_M10.png", width = 24, height = 8.3, units = "cm")
+ggsave("plots/MegaLMM_hyper_single_date_M10_lowiter.png", width = 24, height = 8.3, units = "cm")
 
 # M = 5 traceplotting ==========================================================
 rm(list = ls())
 if (!("Lambda_samples" %in% ls() & "pred_samples" %in% ls())) {
-  load("hyper/megalmm_hyper_single_date_arrays/LAMBDA_M5.RData")
-  load("hyper/megalmm_hyper_single_date_arrays/PREDS_M5.RData")
+  load("hyper/megalmm_hyper_single_date_arrays/LAMBDA_M5_lowiter.RData")
+  load("hyper/megalmm_hyper_single_date_arrays/PREDS_M5_lowiter.RData")
 }
 
 dimnames(Lambda_samples)[[2]] <- paste0("F", 1:dim(Lambda_samples)[2])
@@ -393,7 +393,7 @@ ggplot(loadings.y, aes(x = Iteration, y = Loading)) +
         legend.key.width = unit(0.5, "cm")) +
   guides(fill = guide_legend(override.aes = list(size = 5)))
 
-ggsave("plots/MegaLMM_hyper_single_date_traceplot_Y_M5.png", width = 24, height = 8, units = "cm")
+ggsave("plots/MegaLMM_hyper_single_date_traceplot_Y_M5_lowiter.png", width = 24, height = 8, units = "cm")
 
 # The important wavelengths around the "switching" point in gfBLUP:
 (WL <- dimnames(Lambda_samples)[[3]][39:47])
@@ -426,7 +426,7 @@ for (f in paste0("F", 1:dim(Lambda_samples)[2])) {
     guides(fill = guide_legend(override.aes = list(size = 5))) +
     ylab(sprintf("Loading (%s)", f)) + xlab(NULL)
   
-  ggsave(filename = sprintf("plots/MegaLMM_hyper_single_date_traceplot_WL_%s_M5.png", f), width = 24, height = 6.1, units = "cm")
+  ggsave(filename = sprintf("plots/MegaLMM_hyper_single_date_traceplot_WL_%s_M5_lowiter.png", f), width = 24, height = 6.1, units = "cm")
     
   } else {
     
@@ -447,7 +447,7 @@ for (f in paste0("F", 1:dim(Lambda_samples)[2])) {
       guides(fill = guide_legend(override.aes = list(size = 5))) +
       ylab(sprintf("Loading (%s)", f))
     
-    ggsave(filename = sprintf("plots/MegaLMM_hyper_single_date_traceplot_WL_%s_M5.png", f), width = 24, height = 6.9, units = "cm")
+    ggsave(filename = sprintf("plots/MegaLMM_hyper_single_date_traceplot_WL_%s_M5_lowiter.png", f), width = 24, height = 6.9, units = "cm")
     
   }
 }
@@ -457,8 +457,8 @@ for (f in paste0("F", 1:dim(Lambda_samples)[2])) {
 # M = 10 traceplotting =========================================================
 rm(list = ls())
 if (!("Lambda_samples" %in% ls() & "pred_samples" %in% ls())) {
-  load("hyper/megalmm_hyper_single_date_arrays/LAMBDA_M10.RData")
-  load("hyper/megalmm_hyper_single_date_arrays/PREDS_M10.RData")
+  load("hyper/megalmm_hyper_single_date_arrays/LAMBDA_M10_lowiter.RData")
+  load("hyper/megalmm_hyper_single_date_arrays/PREDS_M10_lowiter.RData")
 }
 
 dimnames(Lambda_samples)[[2]] <- paste0("F", 1:dim(Lambda_samples)[2])
@@ -487,7 +487,7 @@ ggplot(loadings.y, aes(x = Iteration, y = Loading)) +
         legend.key.width = unit(0.5, "cm")) +
   guides(fill = guide_legend(override.aes = list(size = 5)))
 
-ggsave("plots/MegaLMM_hyper_single_date_traceplot_Y_M10.png", width = 24, height = 8, units = "cm")
+ggsave("plots/MegaLMM_hyper_single_date_traceplot_Y_M10_lowiter.png", width = 24, height = 8, units = "cm")
 
 # The important wavelengths around the "switching" point in gfBLUP:
 (WL <- dimnames(Lambda_samples)[[3]][39:47])
@@ -520,7 +520,7 @@ for (f in paste0("F", 1:dim(Lambda_samples)[2])) {
       guides(fill = guide_legend(override.aes = list(size = 5))) +
       ylab(sprintf("Loading (%s)", f)) + xlab(NULL)
     
-    ggsave(filename = sprintf("plots/MegaLMM_hyper_single_date_traceplot_WL_%s_M10.png", f), width = 24, height = 6.1, units = "cm")
+    ggsave(filename = sprintf("plots/MegaLMM_hyper_single_date_traceplot_WL_%s_M10_lowiter.png", f), width = 24, height = 6.1, units = "cm")
     
   } else {
     
@@ -541,7 +541,7 @@ for (f in paste0("F", 1:dim(Lambda_samples)[2])) {
       guides(fill = guide_legend(override.aes = list(size = 5))) +
       ylab(sprintf("Loading (%s)", f))
     
-    ggsave(filename = sprintf("plots/MegaLMM_hyper_single_date_traceplot_WL_%s_M10.png", f), width = 24, height = 6.9, units = "cm")
+    ggsave(filename = sprintf("plots/MegaLMM_hyper_single_date_traceplot_WL_%s_M10_lowiter.png", f), width = 24, height = 6.9, units = "cm")
     
   }
 }

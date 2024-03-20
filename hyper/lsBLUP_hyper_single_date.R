@@ -42,15 +42,15 @@ coefs$Wavelength <- rownames(coefs)
 coefs$Wavelength <- as.numeric(coefs$Wavelength)
 
 # Some data for the spectral background:
-# conesdata <- read.csv("http://www.cvrl.org/database/data/cones/linss10e_5.csv")
-# names(conesdata) <- c("Wavelength", "Red", "Green", "Blue")
-# conesdata[is.na(conesdata)] <- 0
-# conesdata$colour <- rgb(conesdata$Red, conesdata$Green, conesdata$Blue, alpha = 0.8)   
-# gradient <- t(conesdata$colour[conesdata$Wavelength >= 400 & conesdata$Wavelength <= 800])
-# g <- rasterGrob(gradient, width = unit(1, "npc"), height = unit(1, "npc"), interpolate = TRUE)
-
-gradient <- t(photobiology::w_length2rgb(400:800))
+conesdata <- read.csv("http://www.cvrl.org/database/data/cones/linss10e_5.csv")
+names(conesdata) <- c("Wavelength", "Red", "Green", "Blue")
+conesdata[is.na(conesdata)] <- 0
+conesdata$colour <- rgb(conesdata$Red, conesdata$Green, conesdata$Blue, alpha = 0.6)
+gradient <- t(conesdata$colour[conesdata$Wavelength >= 400 & conesdata$Wavelength <= 800])
 g <- rasterGrob(gradient, width = unit(1, "npc"), height = unit(1, "npc"), interpolate = TRUE)
+
+# gradient <- t(photobiology::w_length2rgb(400:800))
+# g <- rasterGrob(gradient, width = unit(1, "npc"), height = unit(1, "npc"), interpolate = TRUE)
 
 # Plotting:
 ggplot(data = coefs, mapping = aes(x = Wavelength, y = Coefficient)) +
@@ -58,7 +58,8 @@ ggplot(data = coefs, mapping = aes(x = Wavelength, y = Coefficient)) +
   geom_line(linewidth = 1.5, color = "gray") +
   ylim(c(-1.5, 1.5)) +
   theme_classic(base_size = 11) +
-  theme(axis.text = element_text(color = "black", size = 11),
+  theme(axis.text.x = element_blank(),
+        axis.text.y = element_text(color = "black", size = 11),
         axis.title = element_text(face = "bold", size = 13),
         axis.title.y.left = element_text(margin = margin(r = 0.25, unit = "cm")),
         axis.title.y.right = element_text(margin = margin(l = 0.25, unit = "cm")),
@@ -68,10 +69,12 @@ ggplot(data = coefs, mapping = aes(x = Wavelength, y = Coefficient)) +
         legend.key.height = unit(0.5, "cm"),
         legend.spacing.y = unit(0.1, "cm"),
         legend.key.width = unit(0.5, "cm")) +
-  annotate("text", x = 757, y = -0.8, label = paste(("rho[(LSP*', '* Y)]^g * ' = ' *"), round(gencors["LSP", "Y"], 2)),
+  annotate("text", x = 775, y = 1.2, label = paste(("rho[(LS*', '* Y)]^g * ' = ' *"), round(gencors["LSP", "Y"], 2)),
            color = "white", parse = TRUE, size = 6, hjust = 0) +
-  ylab("LSP Coefficient")
+  annotate("text", x = 400, y = 1.3, label = "A",
+           color = "white", parse = TRUE, size = 6, hjust = 0) +
+  ylab("LSP Coefficient") + xlab(NULL)
 
-ggsave("plots/lsBLUP_hyper_single_date.png", width = 24, height = 8, units = "cm")
+ggsave("plots/lsBLUP_hyper_single_date.png", width = 24, height = 6.8, units = "cm")
 
 
