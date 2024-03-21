@@ -22,8 +22,8 @@ results <- rbind(results,
 
 results[results$Model == "Univariate", 4] <- read.csv("hyper/results/2_hyper_results_univariate.csv")$acc
 
-results[results$Model == "gfBLUP" & results$Scenario == "CV1", 4] <- read.csv("hyper/results/3a_hyper_results_gfblup_CV1.csv")$acc
-results[results$Model == "gfBLUP" & results$Scenario == "CV2", 4] <- read.csv("hyper/results/3b_hyper_results_gfblup_CV2.csv")$acc
+results[results$Model == "gfBLUP" & results$Scenario == "CV1", 4] <- read.csv("hyper/results/3a_hyper_results_gfblup_CV1_RF.csv")$acc
+results[results$Model == "gfBLUP" & results$Scenario == "CV2", 4] <- read.csv("hyper/results/3b_hyper_results_gfblup_CV2_RF.csv")$acc
 
 results[results$Model == "MegaLMM" & results$Scenario == "CV1", 4] <- read.csv("hyper/results/12a_hyper_results_megalmm_CV1_RF.csv")$acc
 results[results$Model == "MegaLMM" & results$Scenario == "CV2", 4] <- read.csv("hyper/results/12b_hyper_results_megalmm_CV2_RF.csv")$acc
@@ -71,7 +71,7 @@ ggplot(data = results, mapping = aes(x = Model, y = Accuracy, fill = Scenario)) 
   geom_sina(data = results, mapping = aes(x = Model, y = Accuracy, fill = Scenario),
             size = 0.3, position = position_dodge(width = 0.75), shape = 21, stroke = 0.05, maxwidth = 0.5, alpha = 0.25)
 
-ggsave(filename = "hyper.png", dpi = 640, width = 15, height = 6, units = "cm")
+ggsave(filename = "plots/hyper.png", dpi = 640, width = 15, height = 6, units = "cm")
 
 
 

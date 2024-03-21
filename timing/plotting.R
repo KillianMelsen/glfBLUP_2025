@@ -73,6 +73,7 @@ ggplot(mapping = aes(x = p)) +
 #         legend.key.width = unit(0.5, "cm")) +
 #   scale_y_continuous(labels = scales::percent)
 
+<<<<<<< HEAD
 ggsave("timing/timing.png", width = 24, height = 12, units = "cm")
 
 # results.total <- results.avg[which(results.avg$Step == "Total"),]
@@ -88,6 +89,11 @@ ggsave("timing/timing.png", width = 24, height = 12, units = "cm")
 #            results.total[which(results.total$p == ceiling(p / 200) * 100), "Duration"])
 #   }
 # }
+=======
+ggsave("plots/timing.png", width = 24, height = 8, units = "cm")
+
+
+>>>>>>> 87e7702d25d2a6936cb7eda6479063090f13bef7
 
 
 
