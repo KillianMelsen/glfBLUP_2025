@@ -40,8 +40,8 @@ SF <- 1 / (max(results.avg[which(results.avg$Step == "Total"), "Duration"]) * 1.
 ggplot(mapping = aes(x = p)) +
   geom_area(aes(y = Percentage, fill = Step), droplevels(results.avg[which(!(results.avg$Step == "Total")),])) +
   scale_fill_manual(values = NatParksPalettes::natparks.pals("Acadia")[2:9]) +
-  geom_line(aes(y = Duration * SF), droplevels(results.avg[which(results.avg$Step == "Total"),]), col = "coral", linewidth = 1) +
-  geom_point(aes(y = Duration * SF), droplevels(results.avg[which(results.avg$Step == "Total"),]), col = "coral", size = 1.5) +
+  geom_line(aes(y = Duration * SF), droplevels(results.avg[which(results.avg$Step == "Total"),]), col = "red3", linewidth = 1) +
+  geom_point(aes(y = Duration * SF), droplevels(results.avg[which(results.avg$Step == "Total"),]), col = "red3", size = 1.5) +
   theme_classic(base_size = 11) +
   theme(axis.text = element_text(color = "black", size = 11),
         axis.title = element_text(face = "bold", size = 13),
@@ -73,9 +73,21 @@ ggplot(mapping = aes(x = p)) +
 #         legend.key.width = unit(0.5, "cm")) +
 #   scale_y_continuous(labels = scales::percent)
 
-ggsave("timing/timing.png", width = 24, height = 8, units = "cm")
+ggsave("timing/timing.png", width = 24, height = 12, units = "cm")
 
-
+# results.total <- results.avg[which(results.avg$Step == "Total"),]
+# results.total$times <- numeric(nrow(results.total))
+# for (p in results.total$p) {
+#   if ((p / 2) %in% results.total$p) {
+#     results.total[which(results.total$p == p), "times"] <-
+#       results.total[which(results.total$p == p), "Duration"] / results.total[which(results.total$p == p / 2), "Duration"]
+#   } else if (p / 100 > 2) {
+#     results.total[which(results.total$p == p), "times"] <-
+#       results.total[which(results.total$p == p), "Duration"] /
+#       mean(results.total[which(results.total$p == floor(p / 200) * 100), "Duration"],
+#            results.total[which(results.total$p == ceiling(p / 200) * 100), "Duration"])
+#   }
+# }
 
 
 
