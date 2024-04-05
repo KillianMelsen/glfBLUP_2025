@@ -89,12 +89,12 @@ aggregate(CV2, Accuracy ~ Model, FUN = "mean")
 h = 20
 w = 25
 
-labs <- list("comm02" = expression("\u03BB\u03BB"[~y]^"\u0054"~"= 0.2"),
-             "comm05" = expression("\u03BB\u03BB"[~y]^"\u0054"~"= 0.5"),
-             "comm08" = expression("\u03BB\u03BB"[~y]^"\u0054"~"= 0.8"),
-             "h2s05" = expression(h^"2"~"= 0.5"),
-             "h2s07" = expression(h^"2"~"= 0.7"),
-             "h2s09" = expression(h^"2"~"= 0.9"))
+labs <- list("comm02" = expression(bold("\u03BB\u03BB")[~y]^"\u0054"~"= 0.2"),
+             "comm05" = expression(bold("\u03BB\u03BB")[~y]^"\u0054"~"= 0.5"),
+             "comm08" = expression(bold("\u03BB\u03BB")[~y]^"\u0054"~"= 0.8"),
+             "h2s05" = expression(h^2*(s)~"= 0.5"),
+             "h2s07" = expression(h^2*(s)~"= 0.7"),
+             "h2s09" = expression(h^2*(s)~"= 0.9"))
 
 labs_labeller <- function(variable, value) {
   return(labs[value])
@@ -135,7 +135,7 @@ ggplot(data = medians, mapping = aes(x = h2y, y = Accuracy, color = Model)) +
         plot.title = element_text(size = 11)) +
   guides(Model = guide_legend(title.position = "top", title.hjust = 0.5)) +
   labs(tag = "Secondary feature heritability") +
-  theme(plot.tag.position = c(0.865, 0.48),
+  theme(plot.tag.position = c(0.875, 0.48),
         plot.tag = element_text(angle = 270, face = "bold", size = 11),
         plot.margin = margin(l = 0.5, r = 1, t = 0.5, b = 0.5, unit = "cm")) +
   guides(color = guide_legend(title.position = "top", title.hjust = 0.5,
