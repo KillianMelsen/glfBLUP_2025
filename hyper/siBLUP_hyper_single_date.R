@@ -74,6 +74,6 @@ ggplot(data = gamma, mapping = aes(x = Wavelength, y = Gamma)) +
            color = "white", parse = TRUE, size = 6, hjust = 0) +
   ylab("SI Weight") + xlab("Wavelength (nm)")
 
-ggsave("plots/siBLUP_hyper_single_date.png", width = 24, height = 7.6, units = "cm")
+ggsave("plots/siBLUP_hyper_single_date.png", width = 24, height = 5.6, units = "cm")
 
 

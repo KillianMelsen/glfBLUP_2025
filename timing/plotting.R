@@ -55,26 +55,7 @@ ggplot(mapping = aes(x = p)) +
         legend.key.width = unit(0.5, "cm")) +
   scale_y_continuous(labels = scales::percent, sec.axis = sec_axis(~./SF, name = "Total runtime (s)"))
 
-# ggplot(data = results.avg, mapping = aes(x = p, y = percentage, fill = Step)) +
-#   geom_area() +
-#   theme_classic(base_size = 11) +
-#   scale_fill_manual(values = NatParksPalettes::natparks.pals("Acadia")[2:9]) +
-#   theme(axis.text = element_text(color = "black", size = 6),
-#         axis.title = element_text(face = "bold"),
-#         legend.title = element_text(face = "bold"),
-#         plot.title = element_text(face = "bold", hjust = 0.5),
-#         plot.subtitle = element_text(hjust = 0.5)) +
-#   theme(legend.text = element_text(size = 6),
-#         legend.title = element_text(size = 8),
-#         axis.title = element_text(size = 8),
-#         legend.position = "right",
-#         legend.key.height = unit(0.5, "cm"),
-#         legend.spacing.y = unit(0.1, "cm"),
-#         legend.key.width = unit(0.5, "cm")) +
-#   scale_y_continuous(labels = scales::percent)
-
-<<<<<<< HEAD
-ggsave("timing/timing.png", width = 24, height = 12, units = "cm")
+ggsave("plots/timing.png", width = 24, height = 10, units = "cm")
 
 # results.total <- results.avg[which(results.avg$Step == "Total"),]
 # results.total$times <- numeric(nrow(results.total))
@@ -89,11 +70,8 @@ ggsave("timing/timing.png", width = 24, height = 12, units = "cm")
 #            results.total[which(results.total$p == ceiling(p / 200) * 100), "Duration"])
 #   }
 # }
-=======
-ggsave("plots/timing.png", width = 24, height = 8, units = "cm")
-
-
->>>>>>> 87e7702d25d2a6936cb7eda6479063090f13bef7
+# 
+# plot(results.total$p, results.total$times)
 
 
 

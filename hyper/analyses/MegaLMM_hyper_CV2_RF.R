@@ -58,7 +58,7 @@ invisible(
       d.train <- cbind(temp$data.RF, d.train[foc])
       d.test <- d.test[colnames(d.train)]
       sec.RF <- names(d.train[2:(ncol(d.train) - 1)])
-      
+
       # Calculating genotypic means (BLUEs):
       d.train <- gfBLUP:::genotypeMeans(d.train)
       d.test <- gfBLUP:::genotypeMeans(d.test)

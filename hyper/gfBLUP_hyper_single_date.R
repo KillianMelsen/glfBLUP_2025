@@ -15,7 +15,7 @@ setwd(wd)
 load("genotypes/K_hyper.RData")
 
 # Which dataset should we look at:
-dataset <- 1
+dataset <- 221
       
 # Loading hyperspectral dataset:
 datalist <- list.load(file = sprintf("hyper/datasets/hyper_dataset_%d.RData", dataset))
@@ -64,15 +64,15 @@ gencors <- cov2cor(gfBLUP::covSS(na.omit(d))$Sg)
 loadings <- as.data.frame(FM.fit$loadings[,])
 rownames(loadings) <- substr(rownames(loadings), 3, 5)
 loadings$Wavelength <- rownames(loadings)
-loadings <- tidyr::pivot_longer(loadings, 1:2, names_to = "Factor", values_to = "Loading")
+loadings <- tidyr::pivot_longer(loadings, 1:3, names_to = "Factor", values_to = "Loading")
 loadings$Wavelength <- as.numeric(loadings$Wavelength)
-loadings$Factor <- factor(loadings$Factor, levels = c("F1", "F2"))
+loadings$Factor <- factor(loadings$Factor, levels = c("F1", "F2", "F3"))
 
 # Some data for the spectral background:
 conesdata <- read.csv("http://www.cvrl.org/database/data/cones/linss10e_5.csv")
 names(conesdata) <- c("Wavelength", "Red", "Green", "Blue")
 conesdata[is.na(conesdata)] <- 0
-conesdata$colour <- rgb(conesdata$Red, conesdata$Green, conesdata$Blue, alpha = 0.8)
+conesdata$colour <- rgb(conesdata$Red, conesdata$Green, conesdata$Blue, alpha = 0.6)
 gradient <- t(conesdata$colour[conesdata$Wavelength >= 400 & conesdata$Wavelength <= 800])
 g <- rasterGrob(gradient, width = unit(1, "npc"), height = unit(1, "npc"), interpolate = TRUE)
 
@@ -83,7 +83,7 @@ g <- rasterGrob(gradient, width = unit(1, "npc"), height = unit(1, "npc"), inter
 ggplot(data = loadings, mapping = aes(x = Wavelength, y = Loading, color = Factor)) +
   annotation_custom(g, xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf) +
   geom_line(linewidth = 1.5) +
-  scale_color_manual(values = c("F1" = "#63a7ff", "F2" = "#ffb667")) +
+  scale_color_manual(values = c("F1" = "#63a7ff", "F2" = "#ffb667", "F3" = "yellowgreen")) +
   ylim(c(-0.5, 1)) +
   theme_classic(base_size = 11) +
   theme(axis.text = element_text(color = "black", size = 11),
@@ -98,7 +98,9 @@ ggplot(data = loadings, mapping = aes(x = Wavelength, y = Loading, color = Facto
         legend.key.width = unit(0.5, "cm")) +
   annotate("text", x = 757, y = 0.8, label = paste(("rho[(F2*', '* Y)]^g * ' = ' *"), round(gencors["F2", "Y"], 2)),
            color = "white", parse = TRUE, size = 6, hjust = 0) +
-  annotate("text", x = 757, y = 0.05, label = paste(("rho[(F1*', '* Y)]^g * ' = ' *"), round(gencors["F1", "Y"], 2)),
+  annotate("text", x = 757, y = -0.3, label = paste(("rho[(F1*', '* Y)]^g * ' = ' *"), round(gencors["F1", "Y"], 2)),
+           color = "white", parse = TRUE, size = 6, hjust = 0) +
+  annotate("text", x = 757, y = 0.2, label = paste(("rho[(F3*', '* Y)]^g * ' = ' *"), round(gencors["F3", "Y"], 2)),
            color = "white", parse = TRUE, size = 6, hjust = 0)
 
 ggsave("plots/gfBLUP_hyper_single_date.png", width = 24, height = 8, units = "cm")

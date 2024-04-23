@@ -398,61 +398,47 @@ ggsave("plots/MegaLMM_hyper_single_date_traceplot_Y_M5.png", width = 24, height 
 # The important wavelengths around the "switching" point in gfBLUP:
 (WL <- dimnames(Lambda_samples)[[3]][39:47])
 
-for (f in paste0("F", 1:dim(Lambda_samples)[2])) {
-  
+factors <- paste0("F", 1:dim(Lambda_samples)[2])
+niter <- dim(Lambda_samples)[1]
+data <- as.data.frame(Lambda_samples[, factors[1], WL])
+data$Factor <- rep(factors[1], niter)
+data$Iteration <- 1:niter
+
+for (f in factors[-1]) {
   subset <- as.data.frame(Lambda_samples[, f, WL])
-  subset$Iteration <- 1:nrow(subset)
-  subset <- tidyr::pivot_longer(subset, cols = 1:(ncol(subset) - 1),
-                                names_to = "Wavelength", values_to = "Loading")
-  subset$Wavelength <- factor(subset$Wavelength, levels = WL, labels = paste0(WL, " nm"))
-  
-  if (f != paste0("F", 1:dim(Lambda_samples)[2])[dim(Lambda_samples)[2]]) {
-    
-    ggplot(subset, aes(x = Iteration, y = Loading)) +
-    geom_point(aes(fill = Wavelength), color = "black", pch = 21, stroke = 0.05, size = 1) +
-    scale_fill_manual(values = NatParksPalettes::natparks.pals("Acadia")[1:9]) +
-    theme_classic(base_size = 11) +
-    theme(axis.text.y = element_text(color = "black", size = 11),
-          axis.text.x = element_blank(),
-          axis.title = element_text(face = "bold", size = 13),
-          axis.title.y.left = element_text(margin = margin(r = 0.25, unit = "cm")),
-          axis.title.y.right = element_text(margin = margin(l = 0.25, unit = "cm")),
-          legend.title = element_text(face = "bold", size = 13),
-          legend.text = element_text(size = 11),
-          legend.position = "right",
-          legend.key.height = unit(0.5, "cm"),
-          legend.spacing.y = unit(0.1, "cm"),
-          legend.key.width = unit(0.5, "cm")) +
-    guides(fill = guide_legend(override.aes = list(size = 5))) +
-    ylab(sprintf("Loading (%s)", f)) + xlab(NULL)
-  
-  ggsave(filename = sprintf("plots/MegaLMM_hyper_single_date_traceplot_WL_%s_M5.png", f), width = 24, height = 6.1, units = "cm")
-    
-  } else {
-    
-    ggplot(subset, aes(x = Iteration, y = Loading)) +
-      geom_point(aes(fill = Wavelength), color = "black", pch = 21, stroke = 0.05, size = 1) +
-      scale_fill_manual(values = NatParksPalettes::natparks.pals("Acadia")[1:9]) +
-      theme_classic(base_size = 11) +
-      theme(axis.text = element_text(color = "black", size = 11),
-            axis.title = element_text(face = "bold", size = 13),
-            axis.title.y.left = element_text(margin = margin(r = 0.25, unit = "cm")),
-            axis.title.y.right = element_text(margin = margin(l = 0.25, unit = "cm")),
-            legend.title = element_text(face = "bold", size = 13),
-            legend.text = element_text(size = 11),
-            legend.position = "right",
-            legend.key.height = unit(0.5, "cm"),
-            legend.spacing.y = unit(0.1, "cm"),
-            legend.key.width = unit(0.5, "cm")) +
-      guides(fill = guide_legend(override.aes = list(size = 5))) +
-      ylab(sprintf("Loading (%s)", f))
-    
-    ggsave(filename = sprintf("plots/MegaLMM_hyper_single_date_traceplot_WL_%s_M5.png", f), width = 24, height = 6.9, units = "cm")
-    
-  }
+  subset$Factor <- rep(f, niter)
+  subset$Iteration <- 1:niter
+  data <- rbind(data, subset)
 }
 
+data <- tidyr::pivot_longer(data, cols = 1:length(WL),
+                            names_to = "Wavelength", values_to = "Loading")
+data$Wavelength <- factor(data$Wavelength, levels = WL, labels = paste0(WL, " nm"))
+data$Factor <- factor(data$Factor, levels = factors)
 
+scaleFUN <- function(x) sprintf("%.3f", x)
+
+p <- ggplot(data, aes(x = Iteration, y = Loading)) +
+  geom_point(aes(fill = Wavelength), color = "black", pch = 21, stroke = 0.05, size = 1) +
+  scale_fill_manual(values = NatParksPalettes::natparks.pals("Acadia")[1:9]) +
+  theme_classic(base_size = 11) +
+  facet_grid(rows = vars(Factor), scales = "free_y") +
+  theme(axis.text = element_text(color = "black", size = 11),
+        axis.title = element_text(face = "bold", size = 13),
+        axis.title.y.left = element_text(margin = margin(r = 0.25, unit = "cm")),
+        axis.title.y.right = element_text(margin = margin(l = 0.25, unit = "cm")),
+        legend.title = element_text(face = "bold", size = 13),
+        legend.text = element_text(size = 11),
+        legend.position = "bottom",
+        legend.key.height = unit(0.5, "cm"),
+        legend.spacing.y = unit(0.1, "cm"),
+        legend.key.width = unit(0.5, "cm")) +
+  guides(fill = guide_legend(override.aes = list(size = 5))) +
+  ylab("Loading") +
+  scale_y_continuous(labels=scaleFUN)
+
+ggsave(plot = p, filename = "plots/MegaLMM_hyper_single_date_traceplot_WL_M5.png",
+       width = 24, height = 31.3, units = "cm")
 
 # M = 10 traceplotting =========================================================
 rm(list = ls())
@@ -492,59 +478,69 @@ ggsave("plots/MegaLMM_hyper_single_date_traceplot_Y_M10.png", width = 24, height
 # The important wavelengths around the "switching" point in gfBLUP:
 (WL <- dimnames(Lambda_samples)[[3]][39:47])
 
-for (f in paste0("F", 1:dim(Lambda_samples)[2])) {
-  
+factors <- paste0("F", 1:dim(Lambda_samples)[2])
+niter <- dim(Lambda_samples)[1]
+data <- as.data.frame(Lambda_samples[, factors[1], WL])
+data$Factor <- rep(factors[1], niter)
+data$Iteration <- 1:niter
+
+for (f in factors[-1]) {
   subset <- as.data.frame(Lambda_samples[, f, WL])
-  subset$Iteration <- 1:nrow(subset)
-  subset <- tidyr::pivot_longer(subset, cols = 1:(ncol(subset) - 1),
-                                names_to = "Wavelength", values_to = "Loading")
-  subset$Wavelength <- factor(subset$Wavelength, levels = WL, labels = paste0(WL, " nm"))
-  
-  if (!(f %in% c("F5", "F10"))) {
-    
-    ggplot(subset, aes(x = Iteration, y = Loading)) +
-      geom_point(aes(fill = Wavelength), color = "black", pch = 21, stroke = 0.05, size = 1) +
-      scale_fill_manual(values = NatParksPalettes::natparks.pals("Acadia")[1:9]) +
-      theme_classic(base_size = 11) +
-      theme(axis.text.y = element_text(color = "black", size = 11),
-            axis.text.x = element_blank(),
-            axis.title = element_text(face = "bold", size = 13),
-            axis.title.y.left = element_text(margin = margin(r = 0.25, unit = "cm")),
-            axis.title.y.right = element_text(margin = margin(l = 0.25, unit = "cm")),
-            legend.title = element_text(face = "bold", size = 13),
-            legend.text = element_text(size = 11),
-            legend.position = "right",
-            legend.key.height = unit(0.5, "cm"),
-            legend.spacing.y = unit(0.1, "cm"),
-            legend.key.width = unit(0.5, "cm")) +
-      guides(fill = guide_legend(override.aes = list(size = 5))) +
-      ylab(sprintf("Loading (%s)", f)) + xlab(NULL)
-    
-    ggsave(filename = sprintf("plots/MegaLMM_hyper_single_date_traceplot_WL_%s_M10.png", f), width = 24, height = 6.1, units = "cm")
-    
-  } else {
-    
-    ggplot(subset, aes(x = Iteration, y = Loading)) +
-      geom_point(aes(fill = Wavelength), color = "black", pch = 21, stroke = 0.05, size = 1) +
-      scale_fill_manual(values = NatParksPalettes::natparks.pals("Acadia")[1:9]) +
-      theme_classic(base_size = 11) +
-      theme(axis.text = element_text(color = "black", size = 11),
-            axis.title = element_text(face = "bold", size = 13),
-            axis.title.y.left = element_text(margin = margin(r = 0.25, unit = "cm")),
-            axis.title.y.right = element_text(margin = margin(l = 0.25, unit = "cm")),
-            legend.title = element_text(face = "bold", size = 13),
-            legend.text = element_text(size = 11),
-            legend.position = "right",
-            legend.key.height = unit(0.5, "cm"),
-            legend.spacing.y = unit(0.1, "cm"),
-            legend.key.width = unit(0.5, "cm")) +
-      guides(fill = guide_legend(override.aes = list(size = 5))) +
-      ylab(sprintf("Loading (%s)", f))
-    
-    ggsave(filename = sprintf("plots/MegaLMM_hyper_single_date_traceplot_WL_%s_M10.png", f), width = 24, height = 6.9, units = "cm")
-    
-  }
+  subset$Factor <- rep(f, niter)
+  subset$Iteration <- 1:niter
+  data <- rbind(data, subset)
 }
+
+data <- tidyr::pivot_longer(data, cols = 1:length(WL),
+                            names_to = "Wavelength", values_to = "Loading")
+data$Wavelength <- factor(data$Wavelength, levels = WL, labels = paste0(WL, " nm"))
+data$Factor <- factor(data$Factor, levels = factors)
+
+scaleFUN <- function(x) sprintf("%.3f", x)
+
+p1 <- ggplot(data[which(data$Factor %in% factors[1:5]),], aes(x = Iteration, y = Loading)) +
+  geom_point(aes(fill = Wavelength), color = "black", pch = 21, stroke = 0.05, size = 1) +
+  scale_fill_manual(values = NatParksPalettes::natparks.pals("Acadia")[1:9]) +
+  theme_classic(base_size = 11) +
+  facet_grid(rows = vars(Factor), scales = "free_y") +
+  theme(axis.text = element_text(color = "black", size = 11),
+        axis.title = element_text(face = "bold", size = 13),
+        axis.title.y.left = element_text(margin = margin(r = 0.25, unit = "cm")),
+        axis.title.y.right = element_text(margin = margin(l = 0.25, unit = "cm")),
+        legend.title = element_text(face = "bold", size = 13),
+        legend.text = element_text(size = 11),
+        legend.position = "bottom",
+        legend.key.height = unit(0.5, "cm"),
+        legend.spacing.y = unit(0.1, "cm"),
+        legend.key.width = unit(0.5, "cm")) +
+  guides(fill = guide_legend(override.aes = list(size = 5))) +
+  ylab("Loading") +
+  scale_y_continuous(labels=scaleFUN)
+
+p2 <- ggplot(data[which(data$Factor %in% factors[6:10]),], aes(x = Iteration, y = Loading)) +
+  geom_point(aes(fill = Wavelength), color = "black", pch = 21, stroke = 0.05, size = 1) +
+  scale_fill_manual(values = NatParksPalettes::natparks.pals("Acadia")[1:9]) +
+  theme_classic(base_size = 11) +
+  facet_grid(rows = vars(Factor), scales = "free_y") +
+  theme(axis.text = element_text(color = "black", size = 11),
+        axis.title = element_text(face = "bold", size = 13),
+        axis.title.y.left = element_text(margin = margin(r = 0.25, unit = "cm")),
+        axis.title.y.right = element_text(margin = margin(l = 0.25, unit = "cm")),
+        legend.title = element_text(face = "bold", size = 13),
+        legend.text = element_text(size = 11),
+        legend.position = "bottom",
+        legend.key.height = unit(0.5, "cm"),
+        legend.spacing.y = unit(0.1, "cm"),
+        legend.key.width = unit(0.5, "cm")) +
+  guides(fill = guide_legend(override.aes = list(size = 5))) +
+  ylab("Loading") +
+  scale_y_continuous(labels=scaleFUN)
+
+ggsave(plot = p1, filename = "plots/MegaLMM_hyper_single_date_traceplot_WL_M10_part1.png",
+       width = 24, height = 31.3, units = "cm")
+
+ggsave(plot = p2, filename = "plots/MegaLMM_hyper_single_date_traceplot_WL_M10_part2.png",
+       width = 24, height = 31.3, units = "cm")
 
 
 

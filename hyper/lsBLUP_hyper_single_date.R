@@ -75,6 +75,6 @@ ggplot(data = coefs, mapping = aes(x = Wavelength, y = Coefficient)) +
            color = "white", parse = TRUE, size = 6, hjust = 0) +
   ylab("LSP Coefficient") + xlab(NULL)
 
-ggsave("plots/lsBLUP_hyper_single_date.png", width = 24, height = 6.8, units = "cm")
+ggsave("plots/lsBLUP_hyper_single_date.png", width = 24, height = 4.8, units = "cm")
 
 
