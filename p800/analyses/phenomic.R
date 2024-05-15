@@ -26,7 +26,7 @@ combi <- 1
 par.combis <- data.frame(comm = rep(comms, each = length(h2.foc)),
                          h2y = rep(h2.foc, length(comms)))
 
-# All simulated data (no CV's because univariate):
+# All simulated data (we only have CV2 because of phenomic):
 tic("Phenomic")
 for (h2s in h2.sec) {
   

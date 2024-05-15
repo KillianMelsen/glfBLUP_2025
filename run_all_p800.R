@@ -56,7 +56,10 @@ source("p800/analyses/CV1_multiMLP_part2.R"); reset()
 source("p800/misc/CV1_multiMLP_merge.R"); reset()
 source("p800/analyses/CV2_multiMLP.R"); reset()
 
-# Step X: Result Plotting ======================================================
+# Step X: phenomics analysis ===================================================
+source("p800/analyses/phenomic.R"); reset()
+
+# Step XI: Result Plotting =====================================================
 source("p800/plot_p800_results.R"); reset()
 
 

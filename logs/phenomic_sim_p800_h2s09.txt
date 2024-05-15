@@ -1,0 +1,3015 @@
+starting worker pid=286501 on localhost:11301 at 11:55:57.572
+starting worker pid=286516 on localhost:11301 at 11:55:57.648
+starting worker pid=286533 on localhost:11301 at 11:55:57.911
+starting worker pid=286550 on localhost:11301 at 11:55:57.983
+starting worker pid=286565 on localhost:11301 at 11:55:58.056
+starting worker pid=286580 on localhost:11301 at 11:55:58.132
+starting worker pid=286597 on localhost:11301 at 11:55:58.204
+starting worker pid=286612 on localhost:11301 at 11:55:58.278
+starting worker pid=286627 on localhost:11301 at 11:55:58.350
+starting worker pid=286642 on localhost:11301 at 11:55:58.422
+starting worker pid=286659 on localhost:11301 at 11:55:58.495
+starting worker pid=286674 on localhost:11301 at 11:55:58.565
+starting worker pid=286689 on localhost:11301 at 11:55:58.636
+starting worker pid=286704 on localhost:11301 at 11:55:58.711
+starting worker pid=286721 on localhost:11301 at 11:55:58.785
+Running phenomic on p800 dataset 1 / 100, (h2s = 09, comm = 02, h2y = 01), combi 3 / 3
+Running phenomic on p800 dataset 1 / 100, (h2s = 09, comm = 02, h2y = 03), combi 3 / 3
+Running phenomic on p800 dataset 1 / 100, (h2s = 09, comm = 02, h2y = 05), combi 3 / 3
+Running phenomic on p800 dataset 1 / 100, (h2s = 09, comm = 02, h2y = 07), combi 3 / 3
+Running phenomic on p800 dataset 1 / 100, (h2s = 09, comm = 02, h2y = 09), combi 3 / 3
+Running phenomic on p800 dataset 1 / 100, (h2s = 09, comm = 05, h2y = 01), combi 3 / 3
+Running phenomic on p800 dataset 1 / 100, (h2s = 09, comm = 05, h2y = 03), combi 3 / 3
+Running phenomic on p800 dataset 1 / 100, (h2s = 09, comm = 05, h2y = 05), combi 3 / 3
+Running phenomic on p800 dataset 1 / 100, (h2s = 09, comm = 05, h2y = 07), combi 3 / 3
+Running phenomic on p800 dataset 1 / 100, (h2s = 09, comm = 05, h2y = 09), combi 3 / 3
+Running phenomic on p800 dataset 1 / 100, (h2s = 09, comm = 08, h2y = 01), combi 3 / 3
+Running phenomic on p800 dataset 1 / 100, (h2s = 09, comm = 08, h2y = 03), combi 3 / 3
+Running phenomic on p800 dataset 1 / 100, (h2s = 09, comm = 08, h2y = 07), combi 3 / 3
+Running phenomic on p800 dataset 1 / 100, (h2s = 09, comm = 08, h2y = 05), combi 3 / 3
+Running phenomic on p800 dataset 1 / 100, (h2s = 09, comm = 08, h2y = 09), combi 3 / 3
+1: 0.44 sec elapsed
+Running phenomic on p800 dataset 2 / 100, (h2s = 09, comm = 05, h2y = 09), combi 3 / 3
+1: 0.407 sec elapsed
+Running phenomic on p800 dataset 2 / 100, (h2s = 09, comm = 08, h2y = 05), combi 3 / 3
+1: 0.394 sec elapsed
+Running phenomic on p800 dataset 2 / 100, (h2s = 09, comm = 05, h2y = 03), combi 3 / 3
+1: 0.408 sec elapsed
+Running phenomic on p800 dataset 2 / 100, (h2s = 09, comm = 08, h2y = 03), combi 3 / 3
+1: 0.398 sec elapsed
+Running phenomic on p800 dataset 2 / 100, (h2s = 09, comm = 02, h2y = 07), combi 3 / 3
+1: 0.449 sec elapsed
+Running phenomic on p800 dataset 2 / 100, (h2s = 09, comm = 02, h2y = 03), combi 3 / 3
+1: 0.436 sec elapsed
+Running phenomic on p800 dataset 2 / 100, (h2s = 09, comm = 08, h2y = 07), combi 3 / 3
+1: 0.449 sec elapsed
+Running phenomic on p800 dataset 2 / 100, (h2s = 09, comm = 08, h2y = 09), combi 3 / 3
+1: 0.471 sec elapsed
+Running phenomic on p800 dataset 2 / 100, (h2s = 09, comm = 08, h2y = 01), combi 3 / 3
+1: 0.426 sec elapsed
+Running phenomic on p800 dataset 2 / 100, (h2s = 09, comm = 02, h2y = 09), combi 3 / 3
+1: 0.434 sec elapsed
+Running phenomic on p800 dataset 2 / 100, (h2s = 09, comm = 05, h2y = 07), combi 3 / 3
+1: 0.486 sec elapsed
+Running phenomic on p800 dataset 2 / 100, (h2s = 09, comm = 05, h2y = 05), combi 3 / 3
+1: 0.432 sec elapsed
+Running phenomic on p800 dataset 2 / 100, (h2s = 09, comm = 02, h2y = 01), combi 3 / 3
+1: 0.441 sec elapsed
+Running phenomic on p800 dataset 2 / 100, (h2s = 09, comm = 02, h2y = 05), combi 3 / 3
+1: 0.465 sec elapsed
+Running phenomic on p800 dataset 2 / 100, (h2s = 09, comm = 05, h2y = 01), combi 3 / 3
+2: 0.316 sec elapsed
+Running phenomic on p800 dataset 3 / 100, (h2s = 09, comm = 05, h2y = 09), combi 3 / 3
+2: 0.327 sec elapsed
+Running phenomic on p800 dataset 3 / 100, (h2s = 09, comm = 08, h2y = 05), combi 3 / 3
+2: 0.339 sec elapsed
+Running phenomic on p800 dataset 3 / 100, (h2s = 09, comm = 05, h2y = 03), combi 3 / 3
+2: 0.309 sec elapsed
+Running phenomic on p800 dataset 3 / 100, (h2s = 09, comm = 02, h2y = 09), combi 3 / 3
+2: 0.341 sec elapsed
+Running phenomic on p800 dataset 3 / 100, (h2s = 09, comm = 05, h2y = 05), combi 3 / 3
+2: 0.333 sec elapsed
+Running phenomic on p800 dataset 3 / 100, (h2s = 09, comm = 08, h2y = 07), combi 3 / 3
+2: 0.379 sec elapsed
+Running phenomic on p800 dataset 3 / 100, (h2s = 09, comm = 08, h2y = 03), combi 3 / 3
+2: 0.342 sec elapsed
+Running phenomic on p800 dataset 3 / 100, (h2s = 09, comm = 02, h2y = 03), combi 3 / 3
+2: 0.332 sec elapsed
+Running phenomic on p800 dataset 3 / 100, (h2s = 09, comm = 02, h2y = 07), combi 3 / 3
+2: 0.342 sec elapsed
+Running phenomic on p800 dataset 3 / 100, (h2s = 09, comm = 08, h2y = 01), combi 3 / 3
+2: 0.314 sec elapsed
+Running phenomic on p800 dataset 3 / 100, (h2s = 09, comm = 05, h2y = 07), combi 3 / 3
+2: 0.321 sec elapsed
+Running phenomic on p800 dataset 3 / 100, (h2s = 09, comm = 05, h2y = 01), combi 3 / 3
+2: 0.302 sec elapsed
+Running phenomic on p800 dataset 3 / 100, (h2s = 09, comm = 02, h2y = 01), combi 3 / 3
+2: 0.367 sec elapsed
+Running phenomic on p800 dataset 3 / 100, (h2s = 09, comm = 08, h2y = 09), combi 3 / 3
+2: 0.34 sec elapsed
+Running phenomic on p800 dataset 3 / 100, (h2s = 09, comm = 02, h2y = 05), combi 3 / 3
+3: 0.289 sec elapsed
+Running phenomic on p800 dataset 4 / 100, (h2s = 09, comm = 05, h2y = 09), combi 3 / 3
+3: 0.241 sec elapsed
+Running phenomic on p800 dataset 4 / 100, (h2s = 09, comm = 08, h2y = 03), combi 3 / 3
+3: 0.314 sec elapsed
+Running phenomic on p800 dataset 4 / 100, (h2s = 09, comm = 02, h2y = 09), combi 3 / 3
+3: 0.344 sec elapsed
+Running phenomic on p800 dataset 4 / 100, (h2s = 09, comm = 08, h2y = 05), combi 3 / 3
+3: 0.319 sec elapsed
+Running phenomic on p800 dataset 4 / 100, (h2s = 09, comm = 08, h2y = 07), combi 3 / 3
+3: 0.253 sec elapsed
+Running phenomic on p800 dataset 4 / 100, (h2s = 09, comm = 02, h2y = 07), combi 3 / 3
+3: 0.315 sec elapsed
+Running phenomic on p800 dataset 4 / 100, (h2s = 09, comm = 05, h2y = 05), combi 3 / 3
+3: 0.274 sec elapsed
+Running phenomic on p800 dataset 4 / 100, (h2s = 09, comm = 05, h2y = 07), combi 3 / 3
+3: 0.306 sec elapsed
+Running phenomic on p800 dataset 4 / 100, (h2s = 09, comm = 08, h2y = 01), combi 3 / 3
+3: 0.293 sec elapsed
+Running phenomic on p800 dataset 4 / 100, (h2s = 09, comm = 02, h2y = 05), combi 3 / 3
+3: 0.279 sec elapsed
+Running phenomic on p800 dataset 4 / 100, (h2s = 09, comm = 02, h2y = 03), combi 3 / 3
+3: 0.295 sec elapsed
+Running phenomic on p800 dataset 4 / 100, (h2s = 09, comm = 05, h2y = 03), combi 3 / 3
+3: 0.273 sec elapsed
+Running phenomic on p800 dataset 4 / 100, (h2s = 09, comm = 08, h2y = 09), combi 3 / 3
+3: 0.283 sec elapsed
+Running phenomic on p800 dataset 4 / 100, (h2s = 09, comm = 05, h2y = 01), combi 3 / 3
+3: 0.273 sec elapsed
+Running phenomic on p800 dataset 4 / 100, (h2s = 09, comm = 02, h2y = 01), combi 3 / 3
+4: 0.258 sec elapsed
+Running phenomic on p800 dataset 5 / 100, (h2s = 09, comm = 05, h2y = 09), combi 3 / 3
+4: 0.256 sec elapsed
+Running phenomic on p800 dataset 5 / 100, (h2s = 09, comm = 02, h2y = 09), combi 3 / 3
+4: 0.253 sec elapsed
+Running phenomic on p800 dataset 5 / 100, (h2s = 09, comm = 05, h2y = 05), combi 3 / 3
+4: 0.339 sec elapsed
+Running phenomic on p800 dataset 5 / 100, (h2s = 09, comm = 08, h2y = 03), combi 3 / 3
+4: 0.269 sec elapsed
+Running phenomic on p800 dataset 5 / 100, (h2s = 09, comm = 02, h2y = 07), combi 3 / 3
+4: 0.321 sec elapsed
+Running phenomic on p800 dataset 5 / 100, (h2s = 09, comm = 08, h2y = 05), combi 3 / 3
+4: 0.302 sec elapsed
+Running phenomic on p800 dataset 5 / 100, (h2s = 09, comm = 05, h2y = 07), combi 3 / 3
+4: 0.312 sec elapsed
+Running phenomic on p800 dataset 5 / 100, (h2s = 09, comm = 08, h2y = 07), combi 3 / 3
+4: 0.262 sec elapsed
+Running phenomic on p800 dataset 5 / 100, (h2s = 09, comm = 08, h2y = 01), combi 3 / 3
+4: 0.238 sec elapsed
+Running phenomic on p800 dataset 5 / 100, (h2s = 09, comm = 05, h2y = 03), combi 3 / 3
+4: 0.221 sec elapsed
+Running phenomic on p800 dataset 5 / 100, (h2s = 09, comm = 02, h2y = 03), combi 3 / 3
+4: 0.292 sec elapsed
+Running phenomic on p800 dataset 5 / 100, (h2s = 09, comm = 02, h2y = 05), combi 3 / 3
+4: 0.252 sec elapsed
+Running phenomic on p800 dataset 5 / 100, (h2s = 09, comm = 08, h2y = 09), combi 3 / 3
+4: 0.245 sec elapsed
+Running phenomic on p800 dataset 5 / 100, (h2s = 09, comm = 05, h2y = 01), combi 3 / 3
+4: 0.286 sec elapsed
+Running phenomic on p800 dataset 5 / 100, (h2s = 09, comm = 02, h2y = 01), combi 3 / 3
+5: 0.296 sec elapsed
+Running phenomic on p800 dataset 6 / 100, (h2s = 09, comm = 05, h2y = 09), combi 3 / 3
+5: 0.27 sec elapsed
+Running phenomic on p800 dataset 6 / 100, (h2s = 09, comm = 08, h2y = 05), combi 3 / 3
+5: 0.296 sec elapsed
+Running phenomic on p800 dataset 6 / 100, (h2s = 09, comm = 08, h2y = 03), combi 3 / 3
+5: 0.249 sec elapsed
+Running phenomic on p800 dataset 6 / 100, (h2s = 09, comm = 02, h2y = 09), combi 3 / 3
+5: 0.244 sec elapsed
+Running phenomic on p800 dataset 6 / 100, (h2s = 09, comm = 02, h2y = 07), combi 3 / 3
+5: 0.254 sec elapsed
+Running phenomic on p800 dataset 6 / 100, (h2s = 09, comm = 05, h2y = 05), combi 3 / 3
+5: 0.261 sec elapsed
+Running phenomic on p800 dataset 6 / 100, (h2s = 09, comm = 08, h2y = 01), combi 3 / 3
+5: 0.26 sec elapsed
+Running phenomic on p800 dataset 6 / 100, (h2s = 09, comm = 08, h2y = 07), combi 3 / 3
+5: 0.282 sec elapsed
+Running phenomic on p800 dataset 6 / 100, (h2s = 09, comm = 05, h2y = 07), combi 3 / 3
+5: 0.254 sec elapsed
+Running phenomic on p800 dataset 6 / 100, (h2s = 09, comm = 08, h2y = 09), combi 3 / 3
+5: 0.25 sec elapsed
+Running phenomic on p800 dataset 6 / 100, (h2s = 09, comm = 02, h2y = 03), combi 3 / 3
+5: 0.285 sec elapsed
+Running phenomic on p800 dataset 6 / 100, (h2s = 09, comm = 05, h2y = 03), combi 3 / 3
+5: 0.27 sec elapsed
+Running phenomic on p800 dataset 6 / 100, (h2s = 09, comm = 02, h2y = 05), combi 3 / 3
+5: 0.244 sec elapsed
+Running phenomic on p800 dataset 6 / 100, (h2s = 09, comm = 05, h2y = 01), combi 3 / 3
+5: 0.253 sec elapsed
+Running phenomic on p800 dataset 6 / 100, (h2s = 09, comm = 02, h2y = 01), combi 3 / 3
+6: 0.317 sec elapsed
+Running phenomic on p800 dataset 7 / 100, (h2s = 09, comm = 05, h2y = 09), combi 3 / 3
+6: 0.307 sec elapsed
+Running phenomic on p800 dataset 7 / 100, (h2s = 09, comm = 08, h2y = 03), combi 3 / 3
+6: 0.332 sec elapsed
+Running phenomic on p800 dataset 7 / 100, (h2s = 09, comm = 08, h2y = 05), combi 3 / 3
+6: 0.322 sec elapsed
+Running phenomic on p800 dataset 7 / 100, (h2s = 09, comm = 02, h2y = 09), combi 3 / 3
+6: 0.284 sec elapsed
+Running phenomic on p800 dataset 7 / 100, (h2s = 09, comm = 05, h2y = 05), combi 3 / 3
+6: 0.311 sec elapsed
+Running phenomic on p800 dataset 7 / 100, (h2s = 09, comm = 02, h2y = 07), combi 3 / 3
+6: 0.307 sec elapsed
+Running phenomic on p800 dataset 7 / 100, (h2s = 09, comm = 08, h2y = 01), combi 3 / 3
+6: 0.322 sec elapsed
+Running phenomic on p800 dataset 7 / 100, (h2s = 09, comm = 08, h2y = 07), combi 3 / 3
+6: 0.322 sec elapsed
+Running phenomic on p800 dataset 7 / 100, (h2s = 09, comm = 05, h2y = 07), combi 3 / 3
+6: 0.332 sec elapsed
+Running phenomic on p800 dataset 7 / 100, (h2s = 09, comm = 08, h2y = 09), combi 3 / 3
+6: 0.327 sec elapsed
+Running phenomic on p800 dataset 7 / 100, (h2s = 09, comm = 05, h2y = 01), combi 3 / 3
+6: 0.295 sec elapsed
+Running phenomic on p800 dataset 7 / 100, (h2s = 09, comm = 05, h2y = 03), combi 3 / 3
+6: 0.312 sec elapsed
+Running phenomic on p800 dataset 7 / 100, (h2s = 09, comm = 02, h2y = 03), combi 3 / 3
+6: 0.335 sec elapsed
+Running phenomic on p800 dataset 7 / 100, (h2s = 09, comm = 02, h2y = 05), combi 3 / 3
+6: 0.291 sec elapsed
+Running phenomic on p800 dataset 7 / 100, (h2s = 09, comm = 02, h2y = 01), combi 3 / 3
+7: 0.326 sec elapsed
+Running phenomic on p800 dataset 8 / 100, (h2s = 09, comm = 08, h2y = 05), combi 3 / 3
+7: 0.372 sec elapsed
+Running phenomic on p800 dataset 8 / 100, (h2s = 09, comm = 02, h2y = 09), combi 3 / 3
+7: 0.372 sec elapsed
+7: 0.295 sec elapsed
+Running phenomic on p800 dataset 8 / 100, (h2s = 09, comm = 02, h2y = 07), combi 3 / 3
+Running phenomic on p800 dataset 8 / 100, (h2s = 09, comm = 05, h2y = 09), combi 3 / 3
+7: 0.338 sec elapsed
+Running phenomic on p800 dataset 8 / 100, (h2s = 09, comm = 08, h2y = 03), combi 3 / 3
+7: 0.333 sec elapsed
+Running phenomic on p800 dataset 8 / 100, (h2s = 09, comm = 05, h2y = 05), combi 3 / 3
+7: 0.299 sec elapsed
+Running phenomic on p800 dataset 8 / 100, (h2s = 09, comm = 08, h2y = 01), combi 3 / 3
+7: 0.343 sec elapsed
+Running phenomic on p800 dataset 8 / 100, (h2s = 09, comm = 08, h2y = 07), combi 3 / 3
+7: 0.313 sec elapsed
+Running phenomic on p800 dataset 8 / 100, (h2s = 09, comm = 05, h2y = 07), combi 3 / 3
+7: 0.324 sec elapsed
+Running phenomic on p800 dataset 8 / 100, (h2s = 09, comm = 08, h2y = 09), combi 3 / 3
+7: 0.328 sec elapsed
+Running phenomic on p800 dataset 8 / 100, (h2s = 09, comm = 05, h2y = 03), combi 3 / 3
+7: 0.27 sec elapsed
+Running phenomic on p800 dataset 8 / 100, (h2s = 09, comm = 02, h2y = 05), combi 3 / 3
+7: 0.29 sec elapsed
+Running phenomic on p800 dataset 8 / 100, (h2s = 09, comm = 05, h2y = 01), combi 3 / 3
+7: 0.306 sec elapsed
+Running phenomic on p800 dataset 8 / 100, (h2s = 09, comm = 02, h2y = 01), combi 3 / 3
+7: 0.358 sec elapsed
+Running phenomic on p800 dataset 8 / 100, (h2s = 09, comm = 02, h2y = 03), combi 3 / 3
+8: 0.287 sec elapsed
+Running phenomic on p800 dataset 9 / 100, (h2s = 09, comm = 08, h2y = 05), combi 3 / 3
+8: 0.281 sec elapsed
+Running phenomic on p800 dataset 9 / 100, (h2s = 09, comm = 02, h2y = 07), combi 3 / 3
+8: 0.23 sec elapsed
+Running phenomic on p800 dataset 9 / 100, (h2s = 09, comm = 05, h2y = 09), combi 3 / 3
+8: 0.313 sec elapsed
+Running phenomic on p800 dataset 9 / 100, (h2s = 09, comm = 08, h2y = 03), combi 3 / 3
+8: 0.243 sec elapsed
+Running phenomic on p800 dataset 9 / 100, (h2s = 09, comm = 02, h2y = 09), combi 3 / 3
+8: 0.242 sec elapsed
+Running phenomic on p800 dataset 9 / 100, (h2s = 09, comm = 05, h2y = 05), combi 3 / 3
+8: 0.309 sec elapsed
+Running phenomic on p800 dataset 9 / 100, (h2s = 09, comm = 08, h2y = 01), combi 3 / 3
+8: 0.242 sec elapsed
+Running phenomic on p800 dataset 9 / 100, (h2s = 09, comm = 08, h2y = 07), combi 3 / 3
+8: 0.253 sec elapsed
+Running phenomic on p800 dataset 9 / 100, (h2s = 09, comm = 05, h2y = 07), combi 3 / 3
+8: 0.264 sec elapsed
+Running phenomic on p800 dataset 9 / 100, (h2s = 09, comm = 05, h2y = 03), combi 3 / 3
+8: 0.259 sec elapsed
+Running phenomic on p800 dataset 9 / 100, (h2s = 09, comm = 02, h2y = 05), combi 3 / 3
+8: 0.319 sec elapsed
+Running phenomic on p800 dataset 9 / 100, (h2s = 09, comm = 08, h2y = 09), combi 3 / 3
+8: 0.24 sec elapsed
+Running phenomic on p800 dataset 9 / 100, (h2s = 09, comm = 05, h2y = 01), combi 3 / 3
+8: 0.232 sec elapsed
+Running phenomic on p800 dataset 9 / 100, (h2s = 09, comm = 02, h2y = 03), combi 3 / 3
+8: 0.261 sec elapsed
+Running phenomic on p800 dataset 9 / 100, (h2s = 09, comm = 02, h2y = 01), combi 3 / 3
+9: 0.239 sec elapsed
+Running phenomic on p800 dataset 10 / 100, (h2s = 09, comm = 08, h2y = 05), combi 3 / 3
+9: 0.283 sec elapsed
+Running phenomic on p800 dataset 10 / 100, (h2s = 09, comm = 08, h2y = 03), combi 3 / 3
+9: 0.228 sec elapsed
+Running phenomic on p800 dataset 10 / 100, (h2s = 09, comm = 02, h2y = 09), combi 3 / 3
+9: 0.285 sec elapsed
+Running phenomic on p800 dataset 10 / 100, (h2s = 09, comm = 02, h2y = 07), combi 3 / 3
+9: 0.276 sec elapsed
+Running phenomic on p800 dataset 10 / 100, (h2s = 09, comm = 05, h2y = 09), combi 3 / 3
+9: 0.221 sec elapsed
+Running phenomic on p800 dataset 10 / 100, (h2s = 09, comm = 05, h2y = 07), combi 3 / 3
+9: 0.277 sec elapsed
+Running phenomic on p800 dataset 10 / 100, (h2s = 09, comm = 05, h2y = 05), combi 3 / 3
+9: 0.269 sec elapsed
+Running phenomic on p800 dataset 10 / 100, (h2s = 09, comm = 08, h2y = 07), combi 3 / 3
+9: 0.297 sec elapsed
+Running phenomic on p800 dataset 10 / 100, (h2s = 09, comm = 08, h2y = 01), combi 3 / 3
+9: 0.28 sec elapsed
+Running phenomic on p800 dataset 10 / 100, (h2s = 09, comm = 02, h2y = 05), combi 3 / 3
+9: 0.242 sec elapsed
+Running phenomic on p800 dataset 10 / 100, (h2s = 09, comm = 08, h2y = 09), combi 3 / 3
+9: 0.279 sec elapsed
+Running phenomic on p800 dataset 10 / 100, (h2s = 09, comm = 05, h2y = 03), combi 3 / 3
+9: 0.288 sec elapsed
+Running phenomic on p800 dataset 10 / 100, (h2s = 09, comm = 05, h2y = 01), combi 3 / 3
+9: 0.205 sec elapsed
+Running phenomic on p800 dataset 10 / 100, (h2s = 09, comm = 02, h2y = 03), combi 3 / 3
+9: 0.256 sec elapsed
+Running phenomic on p800 dataset 10 / 100, (h2s = 09, comm = 02, h2y = 01), combi 3 / 3
+10: 0.232 sec elapsed
+Running phenomic on p800 dataset 11 / 100, (h2s = 09, comm = 08, h2y = 05), combi 3 / 3
+10: 0.302 sec elapsed
+Running phenomic on p800 dataset 11 / 100, (h2s = 09, comm = 08, h2y = 03), combi 3 / 3
+10: 0.288 sec elapsed
+Running phenomic on p800 dataset 11 / 100, (h2s = 09, comm = 02, h2y = 07), combi 3 / 3
+10: 0.304 sec elapsed
+Running phenomic on p800 dataset 11 / 100, (h2s = 09, comm = 02, h2y = 09), combi 3 / 3
+10: 0.311 sec elapsed
+Running phenomic on p800 dataset 11 / 100, (h2s = 09, comm = 08, h2y = 07), combi 3 / 3
+10: 0.344 sec elapsed
+Running phenomic on p800 dataset 11 / 100, (h2s = 09, comm = 05, h2y = 09), combi 3 / 3
+10: 0.274 sec elapsed
+Running phenomic on p800 dataset 11 / 100, (h2s = 09, comm = 05, h2y = 05), combi 3 / 3
+10: 0.294 sec elapsed
+Running phenomic on p800 dataset 11 / 100, (h2s = 09, comm = 05, h2y = 07), combi 3 / 3
+10: 0.305 sec elapsed
+Running phenomic on p800 dataset 11 / 100, (h2s = 09, comm = 08, h2y = 01), combi 3 / 3
+10: 0.269 sec elapsed
+Running phenomic on p800 dataset 11 / 100, (h2s = 09, comm = 05, h2y = 03), combi 3 / 3
+10: 0.306 sec elapsed
+Running phenomic on p800 dataset 11 / 100, (h2s = 09, comm = 08, h2y = 09), combi 3 / 3
+10: 0.247 sec elapsed
+Running phenomic on p800 dataset 11 / 100, (h2s = 09, comm = 02, h2y = 03), combi 3 / 3
+10: 0.31 sec elapsed
+Running phenomic on p800 dataset 11 / 100, (h2s = 09, comm = 05, h2y = 01), combi 3 / 3
+10: 0.34 sec elapsed
+Running phenomic on p800 dataset 11 / 100, (h2s = 09, comm = 02, h2y = 05), combi 3 / 3
+10: 0.318 sec elapsed
+Running phenomic on p800 dataset 11 / 100, (h2s = 09, comm = 02, h2y = 01), combi 3 / 3
+11: 0.272 sec elapsed
+Running phenomic on p800 dataset 12 / 100, (h2s = 09, comm = 08, h2y = 05), combi 3 / 3
+11: 0.243 sec elapsed
+Running phenomic on p800 dataset 12 / 100, (h2s = 09, comm = 08, h2y = 03), combi 3 / 3
+11: 0.324 sec elapsed
+Running phenomic on p800 dataset 12 / 100, (h2s = 09, comm = 08, h2y = 07), combi 3 / 3
+11: 0.233 sec elapsed
+Running phenomic on p800 dataset 12 / 100, (h2s = 09, comm = 05, h2y = 09), combi 3 / 3
+11: 0.338 sec elapsed
+Running phenomic on p800 dataset 12 / 100, (h2s = 09, comm = 02, h2y = 09), combi 3 / 3
+11: 0.296 sec elapsed
+Running phenomic on p800 dataset 12 / 100, (h2s = 09, comm = 02, h2y = 07), combi 3 / 3
+11: 0.283 sec elapsed
+Running phenomic on p800 dataset 12 / 100, (h2s = 09, comm = 05, h2y = 07), combi 3 / 3
+11: 0.319 sec elapsed
+Running phenomic on p800 dataset 12 / 100, (h2s = 09, comm = 05, h2y = 05), combi 3 / 3
+11: 0.252 sec elapsed
+Running phenomic on p800 dataset 12 / 100, (h2s = 09, comm = 08, h2y = 01), combi 3 / 3
+11: 0.221 sec elapsed
+Running phenomic on p800 dataset 12 / 100, (h2s = 09, comm = 05, h2y = 03), combi 3 / 3
+11: 0.273 sec elapsed
+Running phenomic on p800 dataset 12 / 100, (h2s = 09, comm = 08, h2y = 09), combi 3 / 3
+11: 0.28 sec elapsed
+Running phenomic on p800 dataset 12 / 100, (h2s = 09, comm = 05, h2y = 01), combi 3 / 3
+11: 0.247 sec elapsed
+Running phenomic on p800 dataset 12 / 100, (h2s = 09, comm = 02, h2y = 03), combi 3 / 3
+11: 0.309 sec elapsed
+Running phenomic on p800 dataset 12 / 100, (h2s = 09, comm = 02, h2y = 05), combi 3 / 3
+11: 0.314 sec elapsed
+Running phenomic on p800 dataset 12 / 100, (h2s = 09, comm = 02, h2y = 01), combi 3 / 3
+12: 0.246 sec elapsed
+Running phenomic on p800 dataset 13 / 100, (h2s = 09, comm = 08, h2y = 05), combi 3 / 3
+12: 0.261 sec elapsed
+Running phenomic on p800 dataset 13 / 100, (h2s = 09, comm = 08, h2y = 03), combi 3 / 3
+12: 0.23 sec elapsed
+Running phenomic on p800 dataset 13 / 100, (h2s = 09, comm = 08, h2y = 07), combi 3 / 3
+12: 0.277 sec elapsed
+Running phenomic on p800 dataset 13 / 100, (h2s = 09, comm = 02, h2y = 09), combi 3 / 3
+12: 0.248 sec elapsed
+Running phenomic on p800 dataset 13 / 100, (h2s = 09, comm = 05, h2y = 09), combi 3 / 3
+12: 0.224 sec elapsed
+Running phenomic on p800 dataset 13 / 100, (h2s = 09, comm = 02, h2y = 07), combi 3 / 3
+12: 0.229 sec elapsed
+Running phenomic on p800 dataset 13 / 100, (h2s = 09, comm = 05, h2y = 07), combi 3 / 3
+12: 0.245 sec elapsed
+Running phenomic on p800 dataset 13 / 100, (h2s = 09, comm = 05, h2y = 05), combi 3 / 3
+12: 0.289 sec elapsed
+Running phenomic on p800 dataset 13 / 100, (h2s = 09, comm = 08, h2y = 01), combi 3 / 3
+12: 0.259 sec elapsed
+Running phenomic on p800 dataset 13 / 100, (h2s = 09, comm = 05, h2y = 03), combi 3 / 3
+12: 0.247 sec elapsed
+Running phenomic on p800 dataset 13 / 100, (h2s = 09, comm = 08, h2y = 09), combi 3 / 3
+12: 0.274 sec elapsed
+Running phenomic on p800 dataset 13 / 100, (h2s = 09, comm = 05, h2y = 01), combi 3 / 3
+12: 0.264 sec elapsed
+Running phenomic on p800 dataset 13 / 100, (h2s = 09, comm = 02, h2y = 05), combi 3 / 3
+12: 0.241 sec elapsed
+Running phenomic on p800 dataset 13 / 100, (h2s = 09, comm = 02, h2y = 03), combi 3 / 3
+12: 0.222 sec elapsed
+Running phenomic on p800 dataset 13 / 100, (h2s = 09, comm = 02, h2y = 01), combi 3 / 3
+13: 0.254 sec elapsed
+Running phenomic on p800 dataset 14 / 100, (h2s = 09, comm = 08, h2y = 05), combi 3 / 3
+13: 0.25 sec elapsed
+Running phenomic on p800 dataset 14 / 100, (h2s = 09, comm = 08, h2y = 03), combi 3 / 3
+13: 0.228 sec elapsed
+Running phenomic on p800 dataset 14 / 100, (h2s = 09, comm = 02, h2y = 09), combi 3 / 3
+13: 0.258 sec elapsed
+Running phenomic on p800 dataset 14 / 100, (h2s = 09, comm = 05, h2y = 09), combi 3 / 3
+13: 0.326 sec elapsed
+Running phenomic on p800 dataset 14 / 100, (h2s = 09, comm = 08, h2y = 07), combi 3 / 3
+13: 0.28 sec elapsed
+Running phenomic on p800 dataset 14 / 100, (h2s = 09, comm = 02, h2y = 07), combi 3 / 3
+13: 0.264 sec elapsed
+Running phenomic on p800 dataset 14 / 100, (h2s = 09, comm = 05, h2y = 07), combi 3 / 3
+13: 0.262 sec elapsed
+Running phenomic on p800 dataset 14 / 100, (h2s = 09, comm = 05, h2y = 05), combi 3 / 3
+13: 0.241 sec elapsed
+Running phenomic on p800 dataset 14 / 100, (h2s = 09, comm = 08, h2y = 01), combi 3 / 3
+13: 0.259 sec elapsed
+Running phenomic on p800 dataset 14 / 100, (h2s = 09, comm = 05, h2y = 03), combi 3 / 3
+13: 0.269 sec elapsed
+Running phenomic on p800 dataset 14 / 100, (h2s = 09, comm = 08, h2y = 09), combi 3 / 3
+13: 0.232 sec elapsed
+Running phenomic on p800 dataset 14 / 100, (h2s = 09, comm = 02, h2y = 05), combi 3 / 3
+13: 0.269 sec elapsed
+Running phenomic on p800 dataset 14 / 100, (h2s = 09, comm = 05, h2y = 01), combi 3 / 3
+13: 0.294 sec elapsed
+Running phenomic on p800 dataset 14 / 100, (h2s = 09, comm = 02, h2y = 03), combi 3 / 3
+13: 0.239 sec elapsed
+Running phenomic on p800 dataset 14 / 100, (h2s = 09, comm = 02, h2y = 01), combi 3 / 3
+14: 0.226 sec elapsed
+Running phenomic on p800 dataset 15 / 100, (h2s = 09, comm = 08, h2y = 05), combi 3 / 3
+14: 0.257 sec elapsed
+Running phenomic on p800 dataset 15 / 100, (h2s = 09, comm = 02, h2y = 09), combi 3 / 3
+14: 0.256 sec elapsed
+Running phenomic on p800 dataset 15 / 100, (h2s = 09, comm = 08, h2y = 03), combi 3 / 3
+14: 0.264 sec elapsed
+Running phenomic on p800 dataset 15 / 100, (h2s = 09, comm = 02, h2y = 07), combi 3 / 3
+14: 0.3 sec elapsed
+Running phenomic on p800 dataset 15 / 100, (h2s = 09, comm = 05, h2y = 09), combi 3 / 3
+14: 0.297 sec elapsed
+Running phenomic on p800 dataset 15 / 100, (h2s = 09, comm = 08, h2y = 07), combi 3 / 3
+14: 0.242 sec elapsed
+Running phenomic on p800 dataset 15 / 100, (h2s = 09, comm = 05, h2y = 07), combi 3 / 3
+14: 0.294 sec elapsed
+Running phenomic on p800 dataset 15 / 100, (h2s = 09, comm = 05, h2y = 05), combi 3 / 3
+14: 0.232 sec elapsed
+Running phenomic on p800 dataset 15 / 100, (h2s = 09, comm = 08, h2y = 01), combi 3 / 3
+14: 0.296 sec elapsed
+Running phenomic on p800 dataset 15 / 100, (h2s = 09, comm = 08, h2y = 09), combi 3 / 3
+14: 0.228 sec elapsed
+Running phenomic on p800 dataset 15 / 100, (h2s = 09, comm = 02, h2y = 05), combi 3 / 3
+14: 0.244 sec elapsed
+Running phenomic on p800 dataset 15 / 100, (h2s = 09, comm = 05, h2y = 03), combi 3 / 3
+14: 0.296 sec elapsed
+Running phenomic on p800 dataset 15 / 100, (h2s = 09, comm = 05, h2y = 01), combi 3 / 3
+14: 0.249 sec elapsed
+Running phenomic on p800 dataset 15 / 100, (h2s = 09, comm = 02, h2y = 03), combi 3 / 3
+14: 0.235 sec elapsed
+Running phenomic on p800 dataset 15 / 100, (h2s = 09, comm = 02, h2y = 01), combi 3 / 3
+15: 0.22 sec elapsed
+Running phenomic on p800 dataset 16 / 100, (h2s = 09, comm = 08, h2y = 05), combi 3 / 3
+15: 0.238 sec elapsed
+Running phenomic on p800 dataset 16 / 100, (h2s = 09, comm = 02, h2y = 07), combi 3 / 3
+15: 0.272 sec elapsed
+Running phenomic on p800 dataset 16 / 100, (h2s = 09, comm = 02, h2y = 09), combi 3 / 3
+15: 0.319 sec elapsed
+Running phenomic on p800 dataset 16 / 100, (h2s = 09, comm = 08, h2y = 03), combi 3 / 3
+15: 0.229 sec elapsed
+Running phenomic on p800 dataset 16 / 100, (h2s = 09, comm = 05, h2y = 09), combi 3 / 3
+15: 0.285 sec elapsed
+Running phenomic on p800 dataset 16 / 100, (h2s = 09, comm = 08, h2y = 07), combi 3 / 3
+15: 0.239 sec elapsed
+Running phenomic on p800 dataset 16 / 100, (h2s = 09, comm = 05, h2y = 05), combi 3 / 3
+15: 0.222 sec elapsed
+Running phenomic on p800 dataset 16 / 100, (h2s = 09, comm = 05, h2y = 07), combi 3 / 3
+15: 0.295 sec elapsed
+Running phenomic on p800 dataset 16 / 100, (h2s = 09, comm = 08, h2y = 01), combi 3 / 3
+15: 0.246 sec elapsed
+Running phenomic on p800 dataset 16 / 100, (h2s = 09, comm = 08, h2y = 09), combi 3 / 3
+15: 0.261 sec elapsed
+Running phenomic on p800 dataset 16 / 100, (h2s = 09, comm = 05, h2y = 03), combi 3 / 3
+15: 0.245 sec elapsed
+Running phenomic on p800 dataset 16 / 100, (h2s = 09, comm = 02, h2y = 05), combi 3 / 3
+15: 0.309 sec elapsed
+Running phenomic on p800 dataset 16 / 100, (h2s = 09, comm = 05, h2y = 01), combi 3 / 3
+15: 0.24 sec elapsed
+Running phenomic on p800 dataset 16 / 100, (h2s = 09, comm = 02, h2y = 03), combi 3 / 3
+15: 0.242 sec elapsed
+Running phenomic on p800 dataset 16 / 100, (h2s = 09, comm = 02, h2y = 01), combi 3 / 3
+16: 0.262 sec elapsed
+Running phenomic on p800 dataset 17 / 100, (h2s = 09, comm = 08, h2y = 05), combi 3 / 3
+16: 0.243 sec elapsed
+Running phenomic on p800 dataset 17 / 100, (h2s = 09, comm = 02, h2y = 07), combi 3 / 3
+16: 0.217 sec elapsed
+Running phenomic on p800 dataset 17 / 100, (h2s = 09, comm = 08, h2y = 03), combi 3 / 3
+16: 0.238 sec elapsed
+Running phenomic on p800 dataset 17 / 100, (h2s = 09, comm = 05, h2y = 09), combi 3 / 3
+16: 0.264 sec elapsed
+Running phenomic on p800 dataset 17 / 100, (h2s = 09, comm = 02, h2y = 09), combi 3 / 3
+16: 0.253 sec elapsed
+Running phenomic on p800 dataset 17 / 100, (h2s = 09, comm = 08, h2y = 07), combi 3 / 3
+16: 0.226 sec elapsed
+Running phenomic on p800 dataset 17 / 100, (h2s = 09, comm = 05, h2y = 07), combi 3 / 3
+16: 0.278 sec elapsed
+Running phenomic on p800 dataset 17 / 100, (h2s = 09, comm = 05, h2y = 05), combi 3 / 3
+16: 0.312 sec elapsed
+Running phenomic on p800 dataset 17 / 100, (h2s = 09, comm = 08, h2y = 01), combi 3 / 3
+16: 0.279 sec elapsed
+Running phenomic on p800 dataset 17 / 100, (h2s = 09, comm = 02, h2y = 05), combi 3 / 3
+16: 0.248 sec elapsed
+Running phenomic on p800 dataset 17 / 100, (h2s = 09, comm = 05, h2y = 03), combi 3 / 3
+16: 0.274 sec elapsed
+Running phenomic on p800 dataset 17 / 100, (h2s = 09, comm = 08, h2y = 09), combi 3 / 3
+16: 0.234 sec elapsed
+Running phenomic on p800 dataset 17 / 100, (h2s = 09, comm = 05, h2y = 01), combi 3 / 3
+16: 0.316 sec elapsed
+Running phenomic on p800 dataset 17 / 100, (h2s = 09, comm = 02, h2y = 03), combi 3 / 3
+16: 0.294 sec elapsed
+Running phenomic on p800 dataset 17 / 100, (h2s = 09, comm = 02, h2y = 01), combi 3 / 3
+17: 0.299 sec elapsed
+Running phenomic on p800 dataset 18 / 100, (h2s = 09, comm = 08, h2y = 05), combi 3 / 3
+17: 0.253 sec elapsed
+Running phenomic on p800 dataset 18 / 100, (h2s = 09, comm = 02, h2y = 07), combi 3 / 3
+17: 0.226 sec elapsed
+Running phenomic on p800 dataset 18 / 100, (h2s = 09, comm = 05, h2y = 09), combi 3 / 3
+17: 0.253 sec elapsed
+Running phenomic on p800 dataset 18 / 100, (h2s = 09, comm = 08, h2y = 03), combi 3 / 3
+17: 0.253 sec elapsed
+Running phenomic on p800 dataset 18 / 100, (h2s = 09, comm = 08, h2y = 07), combi 3 / 3
+17: 0.236 sec elapsed
+Running phenomic on p800 dataset 18 / 100, (h2s = 09, comm = 02, h2y = 09), combi 3 / 3
+17: 0.23 sec elapsed
+Running phenomic on p800 dataset 18 / 100, (h2s = 09, comm = 05, h2y = 05), combi 3 / 3
+17: 0.284 sec elapsed
+Running phenomic on p800 dataset 18 / 100, (h2s = 09, comm = 05, h2y = 07), combi 3 / 3
+17: 0.258 sec elapsed
+Running phenomic on p800 dataset 18 / 100, (h2s = 09, comm = 08, h2y = 01), combi 3 / 3
+17: 0.254 sec elapsed
+Running phenomic on p800 dataset 18 / 100, (h2s = 09, comm = 05, h2y = 03), combi 3 / 3
+17: 0.241 sec elapsed
+Running phenomic on p800 dataset 18 / 100, (h2s = 09, comm = 02, h2y = 05), combi 3 / 3
+17: 0.267 sec elapsed
+Running phenomic on p800 dataset 18 / 100, (h2s = 09, comm = 08, h2y = 09), combi 3 / 3
+17: 0.264 sec elapsed
+Running phenomic on p800 dataset 18 / 100, (h2s = 09, comm = 02, h2y = 03), combi 3 / 3
+17: 0.325 sec elapsed
+Running phenomic on p800 dataset 18 / 100, (h2s = 09, comm = 05, h2y = 01), combi 3 / 3
+17: 0.284 sec elapsed
+Running phenomic on p800 dataset 18 / 100, (h2s = 09, comm = 02, h2y = 01), combi 3 / 3
+18: 0.267 sec elapsed
+Running phenomic on p800 dataset 19 / 100, (h2s = 09, comm = 08, h2y = 05), combi 3 / 3
+18: 0.27 sec elapsed
+Running phenomic on p800 dataset 19 / 100, (h2s = 09, comm = 02, h2y = 07), combi 3 / 3
+18: 0.239 sec elapsed
+Running phenomic on p800 dataset 19 / 100, (h2s = 09, comm = 05, h2y = 09), combi 3 / 3
+18: 0.252 sec elapsed
+Running phenomic on p800 dataset 19 / 100, (h2s = 09, comm = 08, h2y = 07), combi 3 / 3
+18: 0.256 sec elapsed
+Running phenomic on p800 dataset 19 / 100, (h2s = 09, comm = 08, h2y = 03), combi 3 / 3
+18: 0.226 sec elapsed
+Running phenomic on p800 dataset 19 / 100, (h2s = 09, comm = 02, h2y = 09), combi 3 / 3
+18: 0.229 sec elapsed
+Running phenomic on p800 dataset 19 / 100, (h2s = 09, comm = 05, h2y = 07), combi 3 / 3
+18: 0.261 sec elapsed
+Running phenomic on p800 dataset 19 / 100, (h2s = 09, comm = 05, h2y = 05), combi 3 / 3
+18: 0.282 sec elapsed
+Running phenomic on p800 dataset 19 / 100, (h2s = 09, comm = 02, h2y = 05), combi 3 / 3
+18: 0.335 sec elapsed
+Running phenomic on p800 dataset 19 / 100, (h2s = 09, comm = 08, h2y = 01), combi 3 / 3
+18: 0.265 sec elapsed
+Running phenomic on p800 dataset 19 / 100, (h2s = 09, comm = 05, h2y = 03), combi 3 / 3
+18: 0.305 sec elapsed
+Running phenomic on p800 dataset 19 / 100, (h2s = 09, comm = 08, h2y = 09), combi 3 / 3
+18: 0.2 sec elapsed
+Running phenomic on p800 dataset 19 / 100, (h2s = 09, comm = 02, h2y = 03), combi 3 / 3
+18: 0.297 sec elapsed
+Running phenomic on p800 dataset 19 / 100, (h2s = 09, comm = 05, h2y = 01), combi 3 / 3
+18: 0.249 sec elapsed
+Running phenomic on p800 dataset 19 / 100, (h2s = 09, comm = 02, h2y = 01), combi 3 / 3
+19: 0.244 sec elapsed
+Running phenomic on p800 dataset 20 / 100, (h2s = 09, comm = 08, h2y = 05), combi 3 / 3
+19: 0.213 sec elapsed
+Running phenomic on p800 dataset 20 / 100, (h2s = 09, comm = 02, h2y = 07), combi 3 / 3
+19: 0.272 sec elapsed
+Running phenomic on p800 dataset 20 / 100, (h2s = 09, comm = 05, h2y = 09), combi 3 / 3
+19: 0.237 sec elapsed
+Running phenomic on p800 dataset 20 / 100, (h2s = 09, comm = 08, h2y = 07), combi 3 / 3
+19: 0.276 sec elapsed
+Running phenomic on p800 dataset 20 / 100, (h2s = 09, comm = 08, h2y = 03), combi 3 / 3
+19: 0.245 sec elapsed
+Running phenomic on p800 dataset 20 / 100, (h2s = 09, comm = 02, h2y = 09), combi 3 / 3
+19: 0.26 sec elapsed
+Running phenomic on p800 dataset 20 / 100, (h2s = 09, comm = 05, h2y = 05), combi 3 / 3
+19: 0.307 sec elapsed
+Running phenomic on p800 dataset 20 / 100, (h2s = 09, comm = 05, h2y = 07), combi 3 / 3
+19: 0.23 sec elapsed
+Running phenomic on p800 dataset 20 / 100, (h2s = 09, comm = 02, h2y = 05), combi 3 / 3
+19: 0.253 sec elapsed
+Running phenomic on p800 dataset 20 / 100, (h2s = 09, comm = 08, h2y = 01), combi 3 / 3
+19: 0.248 sec elapsed
+Running phenomic on p800 dataset 20 / 100, (h2s = 09, comm = 05, h2y = 03), combi 3 / 3
+19: 0.268 sec elapsed
+Running phenomic on p800 dataset 20 / 100, (h2s = 09, comm = 08, h2y = 09), combi 3 / 3
+19: 0.237 sec elapsed
+Running phenomic on p800 dataset 20 / 100, (h2s = 09, comm = 05, h2y = 01), combi 3 / 3
+19: 0.303 sec elapsed
+Running phenomic on p800 dataset 20 / 100, (h2s = 09, comm = 02, h2y = 03), combi 3 / 3
+19: 0.291 sec elapsed
+Running phenomic on p800 dataset 20 / 100, (h2s = 09, comm = 02, h2y = 01), combi 3 / 3
+20: 0.267 sec elapsed
+Running phenomic on p800 dataset 21 / 100, (h2s = 09, comm = 08, h2y = 05), combi 3 / 3
+20: 0.255 sec elapsed
+Running phenomic on p800 dataset 21 / 100, (h2s = 09, comm = 02, h2y = 07), combi 3 / 3
+20: 0.236 sec elapsed
+Running phenomic on p800 dataset 21 / 100, (h2s = 09, comm = 08, h2y = 07), combi 3 / 3
+20: 0.279 sec elapsed
+Running phenomic on p800 dataset 21 / 100, (h2s = 09, comm = 08, h2y = 03), combi 3 / 3
+20: 0.279 sec elapsed
+Running phenomic on p800 dataset 21 / 100, (h2s = 09, comm = 05, h2y = 09), combi 3 / 3
+20: 0.246 sec elapsed
+Running phenomic on p800 dataset 21 / 100, (h2s = 09, comm = 02, h2y = 09), combi 3 / 3
+20: 0.278 sec elapsed
+Running phenomic on p800 dataset 21 / 100, (h2s = 09, comm = 05, h2y = 05), combi 3 / 3
+20: 0.288 sec elapsed
+Running phenomic on p800 dataset 21 / 100, (h2s = 09, comm = 05, h2y = 07), combi 3 / 3
+20: 0.251 sec elapsed
+Running phenomic on p800 dataset 21 / 100, (h2s = 09, comm = 08, h2y = 01), combi 3 / 3
+20: 0.277 sec elapsed
+Running phenomic on p800 dataset 21 / 100, (h2s = 09, comm = 02, h2y = 05), combi 3 / 3
+20: 0.248 sec elapsed
+Running phenomic on p800 dataset 21 / 100, (h2s = 09, comm = 05, h2y = 03), combi 3 / 3
+20: 0.328 sec elapsed
+Running phenomic on p800 dataset 21 / 100, (h2s = 09, comm = 08, h2y = 09), combi 3 / 3
+20: 0.235 sec elapsed
+Running phenomic on p800 dataset 21 / 100, (h2s = 09, comm = 05, h2y = 01), combi 3 / 3
+20: 0.237 sec elapsed
+Running phenomic on p800 dataset 21 / 100, (h2s = 09, comm = 02, h2y = 03), combi 3 / 3
+20: 0.27 sec elapsed
+Running phenomic on p800 dataset 21 / 100, (h2s = 09, comm = 02, h2y = 01), combi 3 / 3
+21: 0.218 sec elapsed
+Running phenomic on p800 dataset 22 / 100, (h2s = 09, comm = 08, h2y = 05), combi 3 / 3
+21: 0.286 sec elapsed
+Running phenomic on p800 dataset 22 / 100, (h2s = 09, comm = 02, h2y = 07), combi 3 / 3
+21: 0.286 sec elapsed
+Running phenomic on p800 dataset 22 / 100, (h2s = 09, comm = 08, h2y = 07), combi 3 / 3
+21: 0.31 sec elapsed
+Running phenomic on p800 dataset 22 / 100, (h2s = 09, comm = 05, h2y = 09), combi 3 / 3
+21: 0.292 sec elapsed
+Running phenomic on p800 dataset 22 / 100, (h2s = 09, comm = 08, h2y = 03), combi 3 / 3
+21: 0.275 sec elapsed
+Running phenomic on p800 dataset 22 / 100, (h2s = 09, comm = 05, h2y = 05), combi 3 / 3
+21: 0.256 sec elapsed
+Running phenomic on p800 dataset 22 / 100, (h2s = 09, comm = 02, h2y = 09), combi 3 / 3
+21: 0.249 sec elapsed
+Running phenomic on p800 dataset 22 / 100, (h2s = 09, comm = 05, h2y = 07), combi 3 / 3
+21: 0.278 sec elapsed
+Running phenomic on p800 dataset 22 / 100, (h2s = 09, comm = 08, h2y = 01), combi 3 / 3
+21: 0.25 sec elapsed
+Running phenomic on p800 dataset 22 / 100, (h2s = 09, comm = 02, h2y = 05), combi 3 / 3
+21: 0.238 sec elapsed
+Running phenomic on p800 dataset 22 / 100, (h2s = 09, comm = 05, h2y = 03), combi 3 / 3
+21: 0.257 sec elapsed
+Running phenomic on p800 dataset 22 / 100, (h2s = 09, comm = 05, h2y = 01), combi 3 / 3
+21: 0.232 sec elapsed
+Running phenomic on p800 dataset 22 / 100, (h2s = 09, comm = 08, h2y = 09), combi 3 / 3
+21: 0.226 sec elapsed
+Running phenomic on p800 dataset 22 / 100, (h2s = 09, comm = 02, h2y = 03), combi 3 / 3
+21: 0.284 sec elapsed
+Running phenomic on p800 dataset 22 / 100, (h2s = 09, comm = 02, h2y = 01), combi 3 / 3
+22: 0.261 sec elapsed
+Running phenomic on p800 dataset 23 / 100, (h2s = 09, comm = 08, h2y = 05), combi 3 / 3
+22: 0.299 sec elapsed
+Running phenomic on p800 dataset 23 / 100, (h2s = 09, comm = 02, h2y = 07), combi 3 / 3
+22: 0.271 sec elapsed
+Running phenomic on p800 dataset 23 / 100, (h2s = 09, comm = 08, h2y = 07), combi 3 / 3
+22: 0.254 sec elapsed
+Running phenomic on p800 dataset 23 / 100, (h2s = 09, comm = 02, h2y = 09), combi 3 / 3
+22: 0.315 sec elapsed
+Running phenomic on p800 dataset 23 / 100, (h2s = 09, comm = 05, h2y = 09), combi 3 / 3
+22: 0.288 sec elapsed
+Running phenomic on p800 dataset 23 / 100, (h2s = 09, comm = 08, h2y = 03), combi 3 / 3
+22: 0.248 sec elapsed
+Running phenomic on p800 dataset 23 / 100, (h2s = 09, comm = 05, h2y = 05), combi 3 / 3
+22: 0.269 sec elapsed
+Running phenomic on p800 dataset 23 / 100, (h2s = 09, comm = 05, h2y = 07), combi 3 / 3
+22: 0.303 sec elapsed
+Running phenomic on p800 dataset 23 / 100, (h2s = 09, comm = 08, h2y = 01), combi 3 / 3
+22: 0.241 sec elapsed
+Running phenomic on p800 dataset 23 / 100, (h2s = 09, comm = 05, h2y = 03), combi 3 / 3
+22: 0.255 sec elapsed
+Running phenomic on p800 dataset 23 / 100, (h2s = 09, comm = 05, h2y = 01), combi 3 / 3
+22: 0.251 sec elapsed
+Running phenomic on p800 dataset 23 / 100, (h2s = 09, comm = 02, h2y = 05), combi 3 / 3
+22: 0.266 sec elapsed
+Running phenomic on p800 dataset 23 / 100, (h2s = 09, comm = 08, h2y = 09), combi 3 / 3
+22: 0.335 sec elapsed
+Running phenomic on p800 dataset 23 / 100, (h2s = 09, comm = 02, h2y = 03), combi 3 / 3
+22: 0.27 sec elapsed
+Running phenomic on p800 dataset 23 / 100, (h2s = 09, comm = 02, h2y = 01), combi 3 / 3
+23: 0.244 sec elapsed
+Running phenomic on p800 dataset 24 / 100, (h2s = 09, comm = 08, h2y = 05), combi 3 / 3
+23: 0.252 sec elapsed
+Running phenomic on p800 dataset 24 / 100, (h2s = 09, comm = 02, h2y = 07), combi 3 / 3
+23: 0.244 sec elapsed
+Running phenomic on p800 dataset 24 / 100, (h2s = 09, comm = 08, h2y = 07), combi 3 / 3
+23: 0.284 sec elapsed
+Running phenomic on p800 dataset 24 / 100, (h2s = 09, comm = 02, h2y = 09), combi 3 / 3
+23: 0.25 sec elapsed
+Running phenomic on p800 dataset 24 / 100, (h2s = 09, comm = 05, h2y = 09), combi 3 / 3
+23: 0.298 sec elapsed
+Running phenomic on p800 dataset 24 / 100, (h2s = 09, comm = 05, h2y = 05), combi 3 / 3
+23: 0.317 sec elapsed
+Running phenomic on p800 dataset 24 / 100, (h2s = 09, comm = 08, h2y = 03), combi 3 / 3
+23: 0.237 sec elapsed
+Running phenomic on p800 dataset 24 / 100, (h2s = 09, comm = 05, h2y = 07), combi 3 / 3
+23: 0.2 sec elapsed
+Running phenomic on p800 dataset 24 / 100, (h2s = 09, comm = 05, h2y = 01), combi 3 / 3
+23: 0.288 sec elapsed
+Running phenomic on p800 dataset 24 / 100, (h2s = 09, comm = 08, h2y = 01), combi 3 / 3
+23: 0.262 sec elapsed
+Running phenomic on p800 dataset 24 / 100, (h2s = 09, comm = 02, h2y = 05), combi 3 / 3
+23: 0.26 sec elapsed
+Running phenomic on p800 dataset 24 / 100, (h2s = 09, comm = 08, h2y = 09), combi 3 / 3
+23: 0.348 sec elapsed
+Running phenomic on p800 dataset 24 / 100, (h2s = 09, comm = 05, h2y = 03), combi 3 / 3
+23: 0.32 sec elapsed
+Running phenomic on p800 dataset 24 / 100, (h2s = 09, comm = 02, h2y = 03), combi 3 / 3
+24: 0.279 sec elapsed
+23: 0.298 sec elapsed
+Running phenomic on p800 dataset 25 / 100, (h2s = 09, comm = 08, h2y = 05), combi 3 / 3
+Running phenomic on p800 dataset 24 / 100, (h2s = 09, comm = 02, h2y = 01), combi 3 / 3
+24: 0.311 sec elapsed
+Running phenomic on p800 dataset 25 / 100, (h2s = 09, comm = 02, h2y = 07), combi 3 / 3
+24: 0.243 sec elapsed
+Running phenomic on p800 dataset 25 / 100, (h2s = 09, comm = 08, h2y = 07), combi 3 / 3
+24: 0.281 sec elapsed
+Running phenomic on p800 dataset 25 / 100, (h2s = 09, comm = 02, h2y = 09), combi 3 / 3
+24: 0.258 sec elapsed
+Running phenomic on p800 dataset 25 / 100, (h2s = 09, comm = 05, h2y = 09), combi 3 / 3
+24: 0.265 sec elapsed
+Running phenomic on p800 dataset 25 / 100, (h2s = 09, comm = 05, h2y = 05), combi 3 / 3
+24: 0.301 sec elapsed
+Running phenomic on p800 dataset 25 / 100, (h2s = 09, comm = 08, h2y = 03), combi 3 / 3
+24: 0.301 sec elapsed
+Running phenomic on p800 dataset 25 / 100, (h2s = 09, comm = 05, h2y = 07), combi 3 / 3
+24: 0.226 sec elapsed
+Running phenomic on p800 dataset 25 / 100, (h2s = 09, comm = 08, h2y = 01), combi 3 / 3
+24: 0.248 sec elapsed
+Running phenomic on p800 dataset 25 / 100, (h2s = 09, comm = 05, h2y = 01), combi 3 / 3
+24: 0.27 sec elapsed
+Running phenomic on p800 dataset 25 / 100, (h2s = 09, comm = 02, h2y = 05), combi 3 / 3
+24: 0.222 sec elapsed
+Running phenomic on p800 dataset 25 / 100, (h2s = 09, comm = 08, h2y = 09), combi 3 / 3
+24: 0.269 sec elapsed
+Running phenomic on p800 dataset 25 / 100, (h2s = 09, comm = 05, h2y = 03), combi 3 / 3
+24: 0.252 sec elapsed
+Running phenomic on p800 dataset 25 / 100, (h2s = 09, comm = 02, h2y = 03), combi 3 / 3
+24: 0.245 sec elapsed
+Running phenomic on p800 dataset 25 / 100, (h2s = 09, comm = 02, h2y = 01), combi 3 / 3
+25: 0.226 sec elapsed
+Running phenomic on p800 dataset 26 / 100, (h2s = 09, comm = 08, h2y = 05), combi 3 / 3
+25: 0.319 sec elapsed
+Running phenomic on p800 dataset 26 / 100, (h2s = 09, comm = 08, h2y = 07), combi 3 / 3
+25: 0.29 sec elapsed
+Running phenomic on p800 dataset 26 / 100, (h2s = 09, comm = 02, h2y = 09), combi 3 / 3
+25: 0.347 sec elapsed
+Running phenomic on p800 dataset 26 / 100, (h2s = 09, comm = 02, h2y = 07), combi 3 / 3
+25: 0.27 sec elapsed
+Running phenomic on p800 dataset 26 / 100, (h2s = 09, comm = 05, h2y = 05), combi 3 / 3
+25: 0.266 sec elapsed
+Running phenomic on p800 dataset 26 / 100, (h2s = 09, comm = 05, h2y = 09), combi 3 / 3
+25: 0.277 sec elapsed
+Running phenomic on p800 dataset 26 / 100, (h2s = 09, comm = 08, h2y = 03), combi 3 / 3
+25: 0.214 sec elapsed
+Running phenomic on p800 dataset 26 / 100, (h2s = 09, comm = 05, h2y = 07), combi 3 / 3
+25: 0.27 sec elapsed
+Running phenomic on p800 dataset 26 / 100, (h2s = 09, comm = 05, h2y = 01), combi 3 / 3
+25: 0.27 sec elapsed
+Running phenomic on p800 dataset 26 / 100, (h2s = 09, comm = 08, h2y = 01), combi 3 / 3
+25: 0.272 sec elapsed
+Running phenomic on p800 dataset 26 / 100, (h2s = 09, comm = 02, h2y = 05), combi 3 / 3
+25: 0.268 sec elapsed
+Running phenomic on p800 dataset 26 / 100, (h2s = 09, comm = 08, h2y = 09), combi 3 / 3
+25: 0.198 sec elapsed
+Running phenomic on p800 dataset 26 / 100, (h2s = 09, comm = 05, h2y = 03), combi 3 / 3
+25: 0.248 sec elapsed
+Running phenomic on p800 dataset 26 / 100, (h2s = 09, comm = 02, h2y = 03), combi 3 / 3
+25: 0.263 sec elapsed
+Running phenomic on p800 dataset 26 / 100, (h2s = 09, comm = 02, h2y = 01), combi 3 / 3
+26: 0.323 sec elapsed
+Running phenomic on p800 dataset 27 / 100, (h2s = 09, comm = 08, h2y = 05), combi 3 / 3
+26: 0.236 sec elapsed
+Running phenomic on p800 dataset 27 / 100, (h2s = 09, comm = 08, h2y = 07), combi 3 / 3
+26: 0.237 sec elapsed
+Running phenomic on p800 dataset 27 / 100, (h2s = 09, comm = 05, h2y = 05), combi 3 / 3
+26: 0.31 sec elapsed
+Running phenomic on p800 dataset 27 / 100, (h2s = 09, comm = 02, h2y = 09), combi 3 / 3
+26: 0.268 sec elapsed
+Running phenomic on p800 dataset 27 / 100, (h2s = 09, comm = 05, h2y = 09), combi 3 / 3
+26: 0.334 sec elapsed
+Running phenomic on p800 dataset 27 / 100, (h2s = 09, comm = 02, h2y = 07), combi 3 / 3
+26: 0.261 sec elapsed
+Running phenomic on p800 dataset 27 / 100, (h2s = 09, comm = 08, h2y = 03), combi 3 / 3
+26: 0.283 sec elapsed
+Running phenomic on p800 dataset 27 / 100, (h2s = 09, comm = 05, h2y = 07), combi 3 / 3
+26: 0.284 sec elapsed
+Running phenomic on p800 dataset 27 / 100, (h2s = 09, comm = 05, h2y = 01), combi 3 / 3
+26: 0.263 sec elapsed
+Running phenomic on p800 dataset 27 / 100, (h2s = 09, comm = 08, h2y = 01), combi 3 / 3
+26: 0.239 sec elapsed
+Running phenomic on p800 dataset 27 / 100, (h2s = 09, comm = 02, h2y = 05), combi 3 / 3
+26: 0.331 sec elapsed
+Running phenomic on p800 dataset 27 / 100, (h2s = 09, comm = 08, h2y = 09), combi 3 / 3
+26: 0.272 sec elapsed
+Running phenomic on p800 dataset 27 / 100, (h2s = 09, comm = 05, h2y = 03), combi 3 / 3
+26: 0.295 sec elapsed
+Running phenomic on p800 dataset 27 / 100, (h2s = 09, comm = 02, h2y = 03), combi 3 / 3
+26: 0.222 sec elapsed
+Running phenomic on p800 dataset 27 / 100, (h2s = 09, comm = 02, h2y = 01), combi 3 / 3
+27: 0.32 sec elapsed
+Running phenomic on p800 dataset 28 / 100, (h2s = 09, comm = 08, h2y = 05), combi 3 / 3
+27: 0.232 sec elapsed
+Running phenomic on p800 dataset 28 / 100, (h2s = 09, comm = 08, h2y = 07), combi 3 / 3
+27: 0.242 sec elapsed
+Running phenomic on p800 dataset 28 / 100, (h2s = 09, comm = 05, h2y = 05), combi 3 / 3
+27: 0.239 sec elapsed
+Running phenomic on p800 dataset 28 / 100, (h2s = 09, comm = 02, h2y = 07), combi 3 / 3
+27: 0.374 sec elapsed
+Running phenomic on p800 dataset 28 / 100, (h2s = 09, comm = 02, h2y = 09), combi 3 / 3
+27: 0.238 sec elapsed
+Running phenomic on p800 dataset 28 / 100, (h2s = 09, comm = 05, h2y = 09), combi 3 / 3
+27: 0.352 sec elapsed
+Running phenomic on p800 dataset 28 / 100, (h2s = 09, comm = 08, h2y = 03), combi 3 / 3
+27: 0.284 sec elapsed
+Running phenomic on p800 dataset 28 / 100, (h2s = 09, comm = 05, h2y = 07), combi 3 / 3
+27: 0.287 sec elapsed
+Running phenomic on p800 dataset 28 / 100, (h2s = 09, comm = 05, h2y = 01), combi 3 / 3
+27: 0.24 sec elapsed
+Running phenomic on p800 dataset 28 / 100, (h2s = 09, comm = 08, h2y = 01), combi 3 / 3
+27: 0.246 sec elapsed
+Running phenomic on p800 dataset 28 / 100, (h2s = 09, comm = 08, h2y = 09), combi 3 / 3
+27: 0.247 sec elapsed
+Running phenomic on p800 dataset 28 / 100, (h2s = 09, comm = 02, h2y = 05), combi 3 / 3
+27: 0.253 sec elapsed
+Running phenomic on p800 dataset 28 / 100, (h2s = 09, comm = 05, h2y = 03), combi 3 / 3
+27: 0.375 sec elapsed
+Running phenomic on p800 dataset 28 / 100, (h2s = 09, comm = 02, h2y = 03), combi 3 / 3
+28: 0.265 sec elapsed
+Running phenomic on p800 dataset 29 / 100, (h2s = 09, comm = 08, h2y = 05), combi 3 / 3
+27: 0.279 sec elapsed
+Running phenomic on p800 dataset 28 / 100, (h2s = 09, comm = 02, h2y = 01), combi 3 / 3
+28: 0.264 sec elapsed
+Running phenomic on p800 dataset 29 / 100, (h2s = 09, comm = 08, h2y = 07), combi 3 / 3
+28: 0.244 sec elapsed
+Running phenomic on p800 dataset 29 / 100, (h2s = 09, comm = 05, h2y = 05), combi 3 / 3
+28: 0.276 sec elapsed
+Running phenomic on p800 dataset 29 / 100, (h2s = 09, comm = 02, h2y = 09), combi 3 / 3
+28: 0.281 sec elapsed
+Running phenomic on p800 dataset 29 / 100, (h2s = 09, comm = 02, h2y = 07), combi 3 / 3
+28: 0.252 sec elapsed
+Running phenomic on p800 dataset 29 / 100, (h2s = 09, comm = 05, h2y = 09), combi 3 / 3
+28: 0.257 sec elapsed
+Running phenomic on p800 dataset 29 / 100, (h2s = 09, comm = 05, h2y = 07), combi 3 / 3
+28: 0.269 sec elapsed
+Running phenomic on p800 dataset 29 / 100, (h2s = 09, comm = 08, h2y = 03), combi 3 / 3
+28: 0.205 sec elapsed
+Running phenomic on p800 dataset 29 / 100, (h2s = 09, comm = 05, h2y = 01), combi 3 / 3
+28: 0.253 sec elapsed
+Running phenomic on p800 dataset 29 / 100, (h2s = 09, comm = 08, h2y = 01), combi 3 / 3
+28: 0.243 sec elapsed
+Running phenomic on p800 dataset 29 / 100, (h2s = 09, comm = 08, h2y = 09), combi 3 / 3
+28: 0.303 sec elapsed
+Running phenomic on p800 dataset 29 / 100, (h2s = 09, comm = 02, h2y = 05), combi 3 / 3
+28: 0.235 sec elapsed
+Running phenomic on p800 dataset 29 / 100, (h2s = 09, comm = 05, h2y = 03), combi 3 / 3
+28: 0.259 sec elapsed
+Running phenomic on p800 dataset 29 / 100, (h2s = 09, comm = 02, h2y = 03), combi 3 / 3
+29: 0.225 sec elapsed
+Running phenomic on p800 dataset 30 / 100, (h2s = 09, comm = 08, h2y = 05), combi 3 / 3
+28: 0.283 sec elapsed
+Running phenomic on p800 dataset 29 / 100, (h2s = 09, comm = 02, h2y = 01), combi 3 / 3
+29: 0.24 sec elapsed
+Running phenomic on p800 dataset 30 / 100, (h2s = 09, comm = 05, h2y = 05), combi 3 / 3
+29: 0.25 sec elapsed
+Running phenomic on p800 dataset 30 / 100, (h2s = 09, comm = 08, h2y = 07), combi 3 / 3
+29: 0.239 sec elapsed
+Running phenomic on p800 dataset 30 / 100, (h2s = 09, comm = 05, h2y = 09), combi 3 / 3
+29: 0.279 sec elapsed
+Running phenomic on p800 dataset 30 / 100, (h2s = 09, comm = 02, h2y = 09), combi 3 / 3
+29: 0.332 sec elapsed
+Running phenomic on p800 dataset 30 / 100, (h2s = 09, comm = 02, h2y = 07), combi 3 / 3
+29: 0.245 sec elapsed
+Running phenomic on p800 dataset 30 / 100, (h2s = 09, comm = 08, h2y = 03), combi 3 / 3
+29: 0.252 sec elapsed
+Running phenomic on p800 dataset 30 / 100, (h2s = 09, comm = 05, h2y = 07), combi 3 / 3
+29: 0.309 sec elapsed
+Running phenomic on p800 dataset 30 / 100, (h2s = 09, comm = 05, h2y = 01), combi 3 / 3
+29: 0.296 sec elapsed
+Running phenomic on p800 dataset 30 / 100, (h2s = 09, comm = 08, h2y = 01), combi 3 / 3
+29: 0.246 sec elapsed
+Running phenomic on p800 dataset 30 / 100, (h2s = 09, comm = 05, h2y = 03), combi 3 / 3
+29: 0.293 sec elapsed
+Running phenomic on p800 dataset 30 / 100, (h2s = 09, comm = 08, h2y = 09), combi 3 / 3
+29: 0.275 sec elapsed
+Running phenomic on p800 dataset 30 / 100, (h2s = 09, comm = 02, h2y = 05), combi 3 / 3
+29: 0.278 sec elapsed
+Running phenomic on p800 dataset 30 / 100, (h2s = 09, comm = 02, h2y = 03), combi 3 / 3
+30: 0.279 sec elapsed
+Running phenomic on p800 dataset 31 / 100, (h2s = 09, comm = 08, h2y = 05), combi 3 / 3
+29: 0.245 sec elapsed
+Running phenomic on p800 dataset 30 / 100, (h2s = 09, comm = 02, h2y = 01), combi 3 / 3
+30: 0.263 sec elapsed
+Running phenomic on p800 dataset 31 / 100, (h2s = 09, comm = 08, h2y = 07), combi 3 / 3
+30: 0.318 sec elapsed
+Running phenomic on p800 dataset 31 / 100, (h2s = 09, comm = 05, h2y = 05), combi 3 / 3
+30: 0.292 sec elapsed
+Running phenomic on p800 dataset 31 / 100, (h2s = 09, comm = 05, h2y = 09), combi 3 / 3
+30: 0.261 sec elapsed
+Running phenomic on p800 dataset 31 / 100, (h2s = 09, comm = 02, h2y = 07), combi 3 / 3
+30: 0.301 sec elapsed
+Running phenomic on p800 dataset 31 / 100, (h2s = 09, comm = 02, h2y = 09), combi 3 / 3
+30: 0.238 sec elapsed
+Running phenomic on p800 dataset 31 / 100, (h2s = 09, comm = 08, h2y = 03), combi 3 / 3
+30: 0.299 sec elapsed
+Running phenomic on p800 dataset 31 / 100, (h2s = 09, comm = 05, h2y = 07), combi 3 / 3
+30: 0.282 sec elapsed
+Running phenomic on p800 dataset 31 / 100, (h2s = 09, comm = 05, h2y = 01), combi 3 / 3
+30: 0.253 sec elapsed
+Running phenomic on p800 dataset 31 / 100, (h2s = 09, comm = 08, h2y = 09), combi 3 / 3
+30: 0.351 sec elapsed
+Running phenomic on p800 dataset 31 / 100, (h2s = 09, comm = 08, h2y = 01), combi 3 / 3
+30: 0.24 sec elapsed
+Running phenomic on p800 dataset 31 / 100, (h2s = 09, comm = 02, h2y = 05), combi 3 / 3
+30: 0.316 sec elapsed
+Running phenomic on p800 dataset 31 / 100, (h2s = 09, comm = 05, h2y = 03), combi 3 / 3
+30: 0.336 sec elapsed
+Running phenomic on p800 dataset 31 / 100, (h2s = 09, comm = 02, h2y = 03), combi 3 / 3
+31: 0.339 sec elapsed
+Running phenomic on p800 dataset 32 / 100, (h2s = 09, comm = 08, h2y = 05), combi 3 / 3
+30: 0.264 sec elapsed
+Running phenomic on p800 dataset 31 / 100, (h2s = 09, comm = 02, h2y = 01), combi 3 / 3
+31: 0.297 sec elapsed
+Running phenomic on p800 dataset 32 / 100, (h2s = 09, comm = 08, h2y = 07), combi 3 / 3
+31: 0.241 sec elapsed
+Running phenomic on p800 dataset 32 / 100, (h2s = 09, comm = 05, h2y = 05), combi 3 / 3
+31: 0.301 sec elapsed
+Running phenomic on p800 dataset 32 / 100, (h2s = 09, comm = 05, h2y = 09), combi 3 / 3
+31: 0.284 sec elapsed
+Running phenomic on p800 dataset 32 / 100, (h2s = 09, comm = 02, h2y = 07), combi 3 / 3
+31: 0.28 sec elapsed
+Running phenomic on p800 dataset 32 / 100, (h2s = 09, comm = 02, h2y = 09), combi 3 / 3
+31: 0.345 sec elapsed
+Running phenomic on p800 dataset 32 / 100, (h2s = 09, comm = 08, h2y = 03), combi 3 / 3
+31: 0.251 sec elapsed
+Running phenomic on p800 dataset 32 / 100, (h2s = 09, comm = 05, h2y = 07), combi 3 / 3
+31: 0.272 sec elapsed
+Running phenomic on p800 dataset 32 / 100, (h2s = 09, comm = 05, h2y = 01), combi 3 / 3
+31: 0.23 sec elapsed
+Running phenomic on p800 dataset 32 / 100, (h2s = 09, comm = 08, h2y = 01), combi 3 / 3
+31: 0.301 sec elapsed
+Running phenomic on p800 dataset 32 / 100, (h2s = 09, comm = 08, h2y = 09), combi 3 / 3
+31: 0.251 sec elapsed
+Running phenomic on p800 dataset 32 / 100, (h2s = 09, comm = 02, h2y = 05), combi 3 / 3
+31: 0.268 sec elapsed
+Running phenomic on p800 dataset 32 / 100, (h2s = 09, comm = 05, h2y = 03), combi 3 / 3
+31: 0.275 sec elapsed
+Running phenomic on p800 dataset 32 / 100, (h2s = 09, comm = 02, h2y = 03), combi 3 / 3
+32: 0.235 sec elapsed
+Running phenomic on p800 dataset 33 / 100, (h2s = 09, comm = 08, h2y = 05), combi 3 / 3
+31: 0.228 sec elapsed
+32: 0.252 sec elapsed
+Running phenomic on p800 dataset 32 / 100, (h2s = 09, comm = 02, h2y = 01), combi 3 / 3
+Running phenomic on p800 dataset 33 / 100, (h2s = 09, comm = 08, h2y = 07), combi 3 / 3
+32: 0.301 sec elapsed
+Running phenomic on p800 dataset 33 / 100, (h2s = 09, comm = 05, h2y = 05), combi 3 / 3
+32: 0.265 sec elapsed
+Running phenomic on p800 dataset 33 / 100, (h2s = 09, comm = 05, h2y = 09), combi 3 / 3
+32: 0.246 sec elapsed
+Running phenomic on p800 dataset 33 / 100, (h2s = 09, comm = 02, h2y = 07), combi 3 / 3
+32: 0.263 sec elapsed
+Running phenomic on p800 dataset 33 / 100, (h2s = 09, comm = 02, h2y = 09), combi 3 / 3
+32: 0.221 sec elapsed
+Running phenomic on p800 dataset 33 / 100, (h2s = 09, comm = 05, h2y = 07), combi 3 / 3
+32: 0.294 sec elapsed
+Running phenomic on p800 dataset 33 / 100, (h2s = 09, comm = 08, h2y = 03), combi 3 / 3
+32: 0.289 sec elapsed
+Running phenomic on p800 dataset 33 / 100, (h2s = 09, comm = 05, h2y = 01), combi 3 / 3
+32: 0.263 sec elapsed
+Running phenomic on p800 dataset 33 / 100, (h2s = 09, comm = 08, h2y = 01), combi 3 / 3
+32: 0.242 sec elapsed
+Running phenomic on p800 dataset 33 / 100, (h2s = 09, comm = 08, h2y = 09), combi 3 / 3
+32: 0.279 sec elapsed
+Running phenomic on p800 dataset 33 / 100, (h2s = 09, comm = 02, h2y = 05), combi 3 / 3
+32: 0.251 sec elapsed
+Running phenomic on p800 dataset 33 / 100, (h2s = 09, comm = 05, h2y = 03), combi 3 / 3
+32: 0.258 sec elapsed
+Running phenomic on p800 dataset 33 / 100, (h2s = 09, comm = 02, h2y = 03), combi 3 / 3
+33: 0.234 sec elapsed
+Running phenomic on p800 dataset 34 / 100, (h2s = 09, comm = 08, h2y = 05), combi 3 / 3
+33: 0.268 sec elapsed
+Running phenomic on p800 dataset 34 / 100, (h2s = 09, comm = 08, h2y = 07), combi 3 / 3
+32: 0.299 sec elapsed
+Running phenomic on p800 dataset 33 / 100, (h2s = 09, comm = 02, h2y = 01), combi 3 / 3
+33: 0.234 sec elapsed
+Running phenomic on p800 dataset 34 / 100, (h2s = 09, comm = 05, h2y = 05), combi 3 / 3
+33: 0.306 sec elapsed
+Running phenomic on p800 dataset 34 / 100, (h2s = 09, comm = 05, h2y = 09), combi 3 / 3
+33: 0.23 sec elapsed
+Running phenomic on p800 dataset 34 / 100, (h2s = 09, comm = 02, h2y = 07), combi 3 / 3
+33: 0.221 sec elapsed
+Running phenomic on p800 dataset 34 / 100, (h2s = 09, comm = 02, h2y = 09), combi 3 / 3
+33: 0.23 sec elapsed
+Running phenomic on p800 dataset 34 / 100, (h2s = 09, comm = 08, h2y = 03), combi 3 / 3
+33: 0.254 sec elapsed
+Running phenomic on p800 dataset 34 / 100, (h2s = 09, comm = 05, h2y = 01), combi 3 / 3
+33: 0.297 sec elapsed
+Running phenomic on p800 dataset 34 / 100, (h2s = 09, comm = 05, h2y = 07), combi 3 / 3
+33: 0.231 sec elapsed
+Running phenomic on p800 dataset 34 / 100, (h2s = 09, comm = 08, h2y = 01), combi 3 / 3
+33: 0.299 sec elapsed
+Running phenomic on p800 dataset 34 / 100, (h2s = 09, comm = 08, h2y = 09), combi 3 / 3
+33: 0.224 sec elapsed
+Running phenomic on p800 dataset 34 / 100, (h2s = 09, comm = 02, h2y = 05), combi 3 / 3
+33: 0.272 sec elapsed
+Running phenomic on p800 dataset 34 / 100, (h2s = 09, comm = 05, h2y = 03), combi 3 / 3
+33: 0.24 sec elapsed
+Running phenomic on p800 dataset 34 / 100, (h2s = 09, comm = 02, h2y = 03), combi 3 / 3
+34: 0.294 sec elapsed
+Running phenomic on p800 dataset 35 / 100, (h2s = 09, comm = 08, h2y = 05), combi 3 / 3
+34: 0.276 sec elapsed
+Running phenomic on p800 dataset 35 / 100, (h2s = 09, comm = 05, h2y = 05), combi 3 / 3
+34: 0.294 sec elapsed
+33: 0.316 sec elapsed
+Running phenomic on p800 dataset 35 / 100, (h2s = 09, comm = 08, h2y = 07), combi 3 / 3
+Running phenomic on p800 dataset 34 / 100, (h2s = 09, comm = 02, h2y = 01), combi 3 / 3
+34: 0.289 sec elapsed
+Running phenomic on p800 dataset 35 / 100, (h2s = 09, comm = 05, h2y = 09), combi 3 / 3
+34: 0.23 sec elapsed
+Running phenomic on p800 dataset 35 / 100, (h2s = 09, comm = 02, h2y = 09), combi 3 / 3
+34: 0.265 sec elapsed
+Running phenomic on p800 dataset 35 / 100, (h2s = 09, comm = 02, h2y = 07), combi 3 / 3
+34: 0.273 sec elapsed
+Running phenomic on p800 dataset 35 / 100, (h2s = 09, comm = 08, h2y = 03), combi 3 / 3
+34: 0.26 sec elapsed
+Running phenomic on p800 dataset 35 / 100, (h2s = 09, comm = 05, h2y = 07), combi 3 / 3
+34: 0.26 sec elapsed
+Running phenomic on p800 dataset 35 / 100, (h2s = 09, comm = 05, h2y = 01), combi 3 / 3
+34: 0.286 sec elapsed
+Running phenomic on p800 dataset 35 / 100, (h2s = 09, comm = 08, h2y = 01), combi 3 / 3
+34: 0.273 sec elapsed
+Running phenomic on p800 dataset 35 / 100, (h2s = 09, comm = 08, h2y = 09), combi 3 / 3
+34: 0.233 sec elapsed
+Running phenomic on p800 dataset 35 / 100, (h2s = 09, comm = 02, h2y = 05), combi 3 / 3
+34: 0.26 sec elapsed
+Running phenomic on p800 dataset 35 / 100, (h2s = 09, comm = 05, h2y = 03), combi 3 / 3
+34: 0.312 sec elapsed
+Running phenomic on p800 dataset 35 / 100, (h2s = 09, comm = 02, h2y = 03), combi 3 / 3
+35: 0.228 sec elapsed
+Running phenomic on p800 dataset 36 / 100, (h2s = 09, comm = 08, h2y = 05), combi 3 / 3
+35: 0.233 sec elapsed
+Running phenomic on p800 dataset 36 / 100, (h2s = 09, comm = 05, h2y = 05), combi 3 / 3
+35: 0.262 sec elapsed
+Running phenomic on p800 dataset 36 / 100, (h2s = 09, comm = 08, h2y = 07), combi 3 / 3
+34: 0.278 sec elapsed
+Running phenomic on p800 dataset 35 / 100, (h2s = 09, comm = 02, h2y = 01), combi 3 / 3
+35: 0.238 sec elapsed
+Running phenomic on p800 dataset 36 / 100, (h2s = 09, comm = 05, h2y = 09), combi 3 / 3
+35: 0.306 sec elapsed
+Running phenomic on p800 dataset 36 / 100, (h2s = 09, comm = 02, h2y = 09), combi 3 / 3
+35: 0.311 sec elapsed
+Running phenomic on p800 dataset 36 / 100, (h2s = 09, comm = 02, h2y = 07), combi 3 / 3
+35: 0.262 sec elapsed
+Running phenomic on p800 dataset 36 / 100, (h2s = 09, comm = 08, h2y = 03), combi 3 / 3
+35: 0.267 sec elapsed
+Running phenomic on p800 dataset 36 / 100, (h2s = 09, comm = 05, h2y = 07), combi 3 / 3
+35: 0.26 sec elapsed
+Running phenomic on p800 dataset 36 / 100, (h2s = 09, comm = 05, h2y = 01), combi 3 / 3
+35: 0.263 sec elapsed
+Running phenomic on p800 dataset 36 / 100, (h2s = 09, comm = 08, h2y = 01), combi 3 / 3
+35: 0.223 sec elapsed
+Running phenomic on p800 dataset 36 / 100, (h2s = 09, comm = 08, h2y = 09), combi 3 / 3
+35: 0.262 sec elapsed
+Running phenomic on p800 dataset 36 / 100, (h2s = 09, comm = 02, h2y = 05), combi 3 / 3
+35: 0.26 sec elapsed
+Running phenomic on p800 dataset 36 / 100, (h2s = 09, comm = 05, h2y = 03), combi 3 / 3
+35: 0.216 sec elapsed
+Running phenomic on p800 dataset 36 / 100, (h2s = 09, comm = 02, h2y = 03), combi 3 / 3
+36: 0.256 sec elapsed
+Running phenomic on p800 dataset 37 / 100, (h2s = 09, comm = 08, h2y = 05), combi 3 / 3
+36: 0.269 sec elapsed
+Running phenomic on p800 dataset 37 / 100, (h2s = 09, comm = 08, h2y = 07), combi 3 / 3
+36: 0.226 sec elapsed
+Running phenomic on p800 dataset 37 / 100, (h2s = 09, comm = 05, h2y = 05), combi 3 / 3
+35: 0.271 sec elapsed
+Running phenomic on p800 dataset 36 / 100, (h2s = 09, comm = 02, h2y = 01), combi 3 / 3
+36: 0.313 sec elapsed
+Running phenomic on p800 dataset 37 / 100, (h2s = 09, comm = 05, h2y = 09), combi 3 / 3
+36: 0.235 sec elapsed
+Running phenomic on p800 dataset 37 / 100, (h2s = 09, comm = 02, h2y = 09), combi 3 / 3
+36: 0.259 sec elapsed
+Running phenomic on p800 dataset 37 / 100, (h2s = 09, comm = 02, h2y = 07), combi 3 / 3
+36: 0.263 sec elapsed
+Running phenomic on p800 dataset 37 / 100, (h2s = 09, comm = 08, h2y = 03), combi 3 / 3
+36: 0.288 sec elapsed
+Running phenomic on p800 dataset 37 / 100, (h2s = 09, comm = 05, h2y = 07), combi 3 / 3
+36: 0.295 sec elapsed
+Running phenomic on p800 dataset 37 / 100, (h2s = 09, comm = 05, h2y = 01), combi 3 / 3
+36: 0.243 sec elapsed
+Running phenomic on p800 dataset 37 / 100, (h2s = 09, comm = 08, h2y = 01), combi 3 / 3
+36: 0.223 sec elapsed
+Running phenomic on p800 dataset 37 / 100, (h2s = 09, comm = 08, h2y = 09), combi 3 / 3
+36: 0.23 sec elapsed
+Running phenomic on p800 dataset 37 / 100, (h2s = 09, comm = 02, h2y = 05), combi 3 / 3
+36: 0.223 sec elapsed
+Running phenomic on p800 dataset 37 / 100, (h2s = 09, comm = 05, h2y = 03), combi 3 / 3
+36: 0.248 sec elapsed
+Running phenomic on p800 dataset 37 / 100, (h2s = 09, comm = 02, h2y = 03), combi 3 / 3
+37: 0.237 sec elapsed
+Running phenomic on p800 dataset 38 / 100, (h2s = 09, comm = 08, h2y = 05), combi 3 / 3
+37: 0.212 sec elapsed
+Running phenomic on p800 dataset 38 / 100, (h2s = 09, comm = 05, h2y = 05), combi 3 / 3
+37: 0.229 sec elapsed
+Running phenomic on p800 dataset 38 / 100, (h2s = 09, comm = 08, h2y = 07), combi 3 / 3
+36: 0.261 sec elapsed
+Running phenomic on p800 dataset 37 / 100, (h2s = 09, comm = 02, h2y = 01), combi 3 / 3
+37: 0.277 sec elapsed
+Running phenomic on p800 dataset 38 / 100, (h2s = 09, comm = 05, h2y = 09), combi 3 / 3
+37: 0.225 sec elapsed
+Running phenomic on p800 dataset 38 / 100, (h2s = 09, comm = 02, h2y = 07), combi 3 / 3
+37: 0.311 sec elapsed
+Running phenomic on p800 dataset 38 / 100, (h2s = 09, comm = 02, h2y = 09), combi 3 / 3
+37: 0.257 sec elapsed
+Running phenomic on p800 dataset 38 / 100, (h2s = 09, comm = 08, h2y = 03), combi 3 / 3
+37: 0.292 sec elapsed
+Running phenomic on p800 dataset 38 / 100, (h2s = 09, comm = 05, h2y = 07), combi 3 / 3
+37: 0.276 sec elapsed
+Running phenomic on p800 dataset 38 / 100, (h2s = 09, comm = 08, h2y = 01), combi 3 / 3
+37: 0.343 sec elapsed
+Running phenomic on p800 dataset 38 / 100, (h2s = 09, comm = 05, h2y = 01), combi 3 / 3
+37: 0.26 sec elapsed
+Running phenomic on p800 dataset 38 / 100, (h2s = 09, comm = 08, h2y = 09), combi 3 / 3
+37: 0.264 sec elapsed
+Running phenomic on p800 dataset 38 / 100, (h2s = 09, comm = 02, h2y = 05), combi 3 / 3
+37: 0.263 sec elapsed
+Running phenomic on p800 dataset 38 / 100, (h2s = 09, comm = 05, h2y = 03), combi 3 / 3
+37: 0.268 sec elapsed
+Running phenomic on p800 dataset 38 / 100, (h2s = 09, comm = 02, h2y = 03), combi 3 / 3
+38: 0.276 sec elapsed
+Running phenomic on p800 dataset 39 / 100, (h2s = 09, comm = 08, h2y = 05), combi 3 / 3
+38: 0.273 sec elapsed
+Running phenomic on p800 dataset 39 / 100, (h2s = 09, comm = 05, h2y = 05), combi 3 / 3
+38: 0.297 sec elapsed
+Running phenomic on p800 dataset 39 / 100, (h2s = 09, comm = 08, h2y = 07), combi 3 / 3
+38: 0.236 sec elapsed
+Running phenomic on p800 dataset 39 / 100, (h2s = 09, comm = 02, h2y = 07), combi 3 / 3
+37: 0.296 sec elapsed
+Running phenomic on p800 dataset 38 / 100, (h2s = 09, comm = 02, h2y = 01), combi 3 / 3
+38: 0.282 sec elapsed
+Running phenomic on p800 dataset 39 / 100, (h2s = 09, comm = 05, h2y = 09), combi 3 / 3
+38: 0.344 sec elapsed
+Running phenomic on p800 dataset 39 / 100, (h2s = 09, comm = 02, h2y = 09), combi 3 / 3
+38: 0.297 sec elapsed
+Running phenomic on p800 dataset 39 / 100, (h2s = 09, comm = 08, h2y = 03), combi 3 / 3
+38: 0.333 sec elapsed
+Running phenomic on p800 dataset 39 / 100, (h2s = 09, comm = 08, h2y = 01), combi 3 / 3
+38: 0.24 sec elapsed
+Running phenomic on p800 dataset 39 / 100, (h2s = 09, comm = 05, h2y = 01), combi 3 / 3
+38: 0.341 sec elapsed
+Running phenomic on p800 dataset 39 / 100, (h2s = 09, comm = 05, h2y = 07), combi 3 / 3
+38: 0.275 sec elapsed
+Running phenomic on p800 dataset 39 / 100, (h2s = 09, comm = 08, h2y = 09), combi 3 / 3
+38: 0.252 sec elapsed
+Running phenomic on p800 dataset 39 / 100, (h2s = 09, comm = 02, h2y = 05), combi 3 / 3
+38: 0.228 sec elapsed
+Running phenomic on p800 dataset 39 / 100, (h2s = 09, comm = 05, h2y = 03), combi 3 / 3
+38: 0.238 sec elapsed
+Running phenomic on p800 dataset 39 / 100, (h2s = 09, comm = 02, h2y = 03), combi 3 / 3
+39: 0.289 sec elapsed
+Running phenomic on p800 dataset 40 / 100, (h2s = 09, comm = 08, h2y = 05), combi 3 / 3
+39: 0.302 sec elapsed
+Running phenomic on p800 dataset 40 / 100, (h2s = 09, comm = 08, h2y = 07), combi 3 / 3
+39: 0.301 sec elapsed
+Running phenomic on p800 dataset 40 / 100, (h2s = 09, comm = 05, h2y = 05), combi 3 / 3
+39: 0.232 sec elapsed
+Running phenomic on p800 dataset 40 / 100, (h2s = 09, comm = 05, h2y = 09), combi 3 / 3
+38: 0.212 sec elapsed
+Running phenomic on p800 dataset 39 / 100, (h2s = 09, comm = 02, h2y = 01), combi 3 / 3
+39: 0.264 sec elapsed
+Running phenomic on p800 dataset 40 / 100, (h2s = 09, comm = 02, h2y = 09), combi 3 / 3
+39: 0.3 sec elapsed
+Running phenomic on p800 dataset 40 / 100, (h2s = 09, comm = 02, h2y = 07), combi 3 / 3
+39: 0.275 sec elapsed
+Running phenomic on p800 dataset 40 / 100, (h2s = 09, comm = 08, h2y = 03), combi 3 / 3
+39: 0.27 sec elapsed
+Running phenomic on p800 dataset 40 / 100, (h2s = 09, comm = 08, h2y = 01), combi 3 / 3
+39: 0.289 sec elapsed
+Running phenomic on p800 dataset 40 / 100, (h2s = 09, comm = 05, h2y = 07), combi 3 / 3
+39: 0.222 sec elapsed
+Running phenomic on p800 dataset 40 / 100, (h2s = 09, comm = 05, h2y = 01), combi 3 / 3
+39: 0.279 sec elapsed
+Running phenomic on p800 dataset 40 / 100, (h2s = 09, comm = 08, h2y = 09), combi 3 / 3
+39: 0.266 sec elapsed
+Running phenomic on p800 dataset 40 / 100, (h2s = 09, comm = 05, h2y = 03), combi 3 / 3
+39: 0.299 sec elapsed
+Running phenomic on p800 dataset 40 / 100, (h2s = 09, comm = 02, h2y = 05), combi 3 / 3
+39: 0.229 sec elapsed
+Running phenomic on p800 dataset 40 / 100, (h2s = 09, comm = 02, h2y = 03), combi 3 / 3
+40: 0.256 sec elapsed
+Running phenomic on p800 dataset 41 / 100, (h2s = 09, comm = 08, h2y = 05), combi 3 / 3
+40: 0.284 sec elapsed
+Running phenomic on p800 dataset 41 / 100, (h2s = 09, comm = 05, h2y = 05), combi 3 / 3
+40: 0.329 sec elapsed
+Running phenomic on p800 dataset 41 / 100, (h2s = 09, comm = 08, h2y = 07), combi 3 / 3
+40: 0.244 sec elapsed
+Running phenomic on p800 dataset 41 / 100, (h2s = 09, comm = 05, h2y = 09), combi 3 / 3
+39: 0.232 sec elapsed
+Running phenomic on p800 dataset 40 / 100, (h2s = 09, comm = 02, h2y = 01), combi 3 / 3
+40: 0.244 sec elapsed
+Running phenomic on p800 dataset 41 / 100, (h2s = 09, comm = 02, h2y = 07), combi 3 / 3
+40: 0.305 sec elapsed
+Running phenomic on p800 dataset 41 / 100, (h2s = 09, comm = 02, h2y = 09), combi 3 / 3
+40: 0.278 sec elapsed
+Running phenomic on p800 dataset 41 / 100, (h2s = 09, comm = 08, h2y = 03), combi 3 / 3
+40: 0.226 sec elapsed
+Running phenomic on p800 dataset 41 / 100, (h2s = 09, comm = 08, h2y = 01), combi 3 / 3
+40: 0.249 sec elapsed
+Running phenomic on p800 dataset 41 / 100, (h2s = 09, comm = 05, h2y = 07), combi 3 / 3
+40: 0.321 sec elapsed
+Running phenomic on p800 dataset 41 / 100, (h2s = 09, comm = 05, h2y = 01), combi 3 / 3
+40: 0.232 sec elapsed
+Running phenomic on p800 dataset 41 / 100, (h2s = 09, comm = 05, h2y = 03), combi 3 / 3
+40: 0.281 sec elapsed
+Running phenomic on p800 dataset 41 / 100, (h2s = 09, comm = 08, h2y = 09), combi 3 / 3
+40: 0.283 sec elapsed
+Running phenomic on p800 dataset 41 / 100, (h2s = 09, comm = 02, h2y = 05), combi 3 / 3
+40: 0.271 sec elapsed
+Running phenomic on p800 dataset 41 / 100, (h2s = 09, comm = 02, h2y = 03), combi 3 / 3
+41: 0.333 sec elapsed
+Running phenomic on p800 dataset 42 / 100, (h2s = 09, comm = 08, h2y = 05), combi 3 / 3
+41: 0.247 sec elapsed
+Running phenomic on p800 dataset 42 / 100, (h2s = 09, comm = 05, h2y = 05), combi 3 / 3
+41: 0.257 sec elapsed
+Running phenomic on p800 dataset 42 / 100, (h2s = 09, comm = 08, h2y = 07), combi 3 / 3
+41: 0.258 sec elapsed
+Running phenomic on p800 dataset 42 / 100, (h2s = 09, comm = 05, h2y = 09), combi 3 / 3
+40: 0.27 sec elapsed
+Running phenomic on p800 dataset 41 / 100, (h2s = 09, comm = 02, h2y = 01), combi 3 / 3
+41: 0.276 sec elapsed
+Running phenomic on p800 dataset 42 / 100, (h2s = 09, comm = 02, h2y = 09), combi 3 / 3
+41: 0.261 sec elapsed
+Running phenomic on p800 dataset 42 / 100, (h2s = 09, comm = 02, h2y = 07), combi 3 / 3
+41: 0.267 sec elapsed
+Running phenomic on p800 dataset 42 / 100, (h2s = 09, comm = 08, h2y = 03), combi 3 / 3
+41: 0.297 sec elapsed
+Running phenomic on p800 dataset 42 / 100, (h2s = 09, comm = 08, h2y = 01), combi 3 / 3
+41: 0.298 sec elapsed
+Running phenomic on p800 dataset 42 / 100, (h2s = 09, comm = 05, h2y = 07), combi 3 / 3
+41: 0.325 sec elapsed
+Running phenomic on p800 dataset 42 / 100, (h2s = 09, comm = 05, h2y = 01), combi 3 / 3
+41: 0.242 sec elapsed
+Running phenomic on p800 dataset 42 / 100, (h2s = 09, comm = 08, h2y = 09), combi 3 / 3
+41: 0.308 sec elapsed
+Running phenomic on p800 dataset 42 / 100, (h2s = 09, comm = 05, h2y = 03), combi 3 / 3
+41: 0.252 sec elapsed
+Running phenomic on p800 dataset 42 / 100, (h2s = 09, comm = 02, h2y = 05), combi 3 / 3
+41: 0.197 sec elapsed
+Running phenomic on p800 dataset 42 / 100, (h2s = 09, comm = 02, h2y = 03), combi 3 / 3
+42: 0.25 sec elapsed
+Running phenomic on p800 dataset 43 / 100, (h2s = 09, comm = 05, h2y = 05), combi 3 / 3
+42: 0.33 sec elapsed
+Running phenomic on p800 dataset 43 / 100, (h2s = 09, comm = 08, h2y = 05), combi 3 / 3
+42: 0.316 sec elapsed
+Running phenomic on p800 dataset 43 / 100, (h2s = 09, comm = 08, h2y = 07), combi 3 / 3
+42: 0.342 sec elapsed
+Running phenomic on p800 dataset 43 / 100, (h2s = 09, comm = 05, h2y = 09), combi 3 / 3
+41: 0.243 sec elapsed
+Running phenomic on p800 dataset 42 / 100, (h2s = 09, comm = 02, h2y = 01), combi 3 / 3
+42: 0.274 sec elapsed
+Running phenomic on p800 dataset 43 / 100, (h2s = 09, comm = 02, h2y = 09), combi 3 / 3
+42: 0.259 sec elapsed
+Running phenomic on p800 dataset 43 / 100, (h2s = 09, comm = 02, h2y = 07), combi 3 / 3
+42: 0.275 sec elapsed
+Running phenomic on p800 dataset 43 / 100, (h2s = 09, comm = 08, h2y = 03), combi 3 / 3
+42: 0.268 sec elapsed
+Running phenomic on p800 dataset 43 / 100, (h2s = 09, comm = 08, h2y = 01), combi 3 / 3
+42: 0.234 sec elapsed
+Running phenomic on p800 dataset 43 / 100, (h2s = 09, comm = 05, h2y = 01), combi 3 / 3
+42: 0.34 sec elapsed
+Running phenomic on p800 dataset 43 / 100, (h2s = 09, comm = 05, h2y = 07), combi 3 / 3
+42: 0.257 sec elapsed
+Running phenomic on p800 dataset 43 / 100, (h2s = 09, comm = 08, h2y = 09), combi 3 / 3
+42: 0.22 sec elapsed
+Running phenomic on p800 dataset 43 / 100, (h2s = 09, comm = 05, h2y = 03), combi 3 / 3
+42: 0.286 sec elapsed
+Running phenomic on p800 dataset 43 / 100, (h2s = 09, comm = 02, h2y = 05), combi 3 / 3
+42: 0.241 sec elapsed
+Running phenomic on p800 dataset 43 / 100, (h2s = 09, comm = 02, h2y = 03), combi 3 / 3
+43: 0.245 sec elapsed
+Running phenomic on p800 dataset 44 / 100, (h2s = 09, comm = 05, h2y = 05), combi 3 / 3
+43: 0.234 sec elapsed
+Running phenomic on p800 dataset 44 / 100, (h2s = 09, comm = 08, h2y = 05), combi 3 / 3
+43: 0.308 sec elapsed
+Running phenomic on p800 dataset 44 / 100, (h2s = 09, comm = 08, h2y = 07), combi 3 / 3
+43: 0.329 sec elapsed
+Running phenomic on p800 dataset 44 / 100, (h2s = 09, comm = 05, h2y = 09), combi 3 / 3
+43: 0.23 sec elapsed
+Running phenomic on p800 dataset 44 / 100, (h2s = 09, comm = 02, h2y = 09), combi 3 / 3
+43: 0.254 sec elapsed
+Running phenomic on p800 dataset 44 / 100, (h2s = 09, comm = 02, h2y = 07), combi 3 / 3
+42: 0.292 sec elapsed
+Running phenomic on p800 dataset 43 / 100, (h2s = 09, comm = 02, h2y = 01), combi 3 / 3
+43: 0.289 sec elapsed
+Running phenomic on p800 dataset 44 / 100, (h2s = 09, comm = 08, h2y = 03), combi 3 / 3
+43: 0.282 sec elapsed
+Running phenomic on p800 dataset 44 / 100, (h2s = 09, comm = 08, h2y = 01), combi 3 / 3
+43: 0.193 sec elapsed
+Running phenomic on p800 dataset 44 / 100, (h2s = 09, comm = 05, h2y = 01), combi 3 / 3
+43: 0.295 sec elapsed
+Running phenomic on p800 dataset 44 / 100, (h2s = 09, comm = 05, h2y = 07), combi 3 / 3
+43: 0.22 sec elapsed
+Running phenomic on p800 dataset 44 / 100, (h2s = 09, comm = 02, h2y = 05), combi 3 / 3
+43: 0.234 sec elapsed
+Running phenomic on p800 dataset 44 / 100, (h2s = 09, comm = 08, h2y = 09), combi 3 / 3
+43: 0.247 sec elapsed
+Running phenomic on p800 dataset 44 / 100, (h2s = 09, comm = 05, h2y = 03), combi 3 / 3
+43: 0.268 sec elapsed
+Running phenomic on p800 dataset 44 / 100, (h2s = 09, comm = 02, h2y = 03), combi 3 / 3
+44: 0.283 sec elapsed
+Running phenomic on p800 dataset 45 / 100, (h2s = 09, comm = 05, h2y = 05), combi 3 / 3
+44: 0.263 sec elapsed
+Running phenomic on p800 dataset 45 / 100, (h2s = 09, comm = 08, h2y = 05), combi 3 / 3
+44: 0.232 sec elapsed
+Running phenomic on p800 dataset 45 / 100, (h2s = 09, comm = 08, h2y = 07), combi 3 / 3
+44: 0.275 sec elapsed
+Running phenomic on p800 dataset 45 / 100, (h2s = 09, comm = 05, h2y = 09), combi 3 / 3
+44: 0.223 sec elapsed
+Running phenomic on p800 dataset 45 / 100, (h2s = 09, comm = 02, h2y = 07), combi 3 / 3
+44: 0.295 sec elapsed
+Running phenomic on p800 dataset 45 / 100, (h2s = 09, comm = 02, h2y = 09), combi 3 / 3
+43: 0.337 sec elapsed
+Running phenomic on p800 dataset 44 / 100, (h2s = 09, comm = 02, h2y = 01), combi 3 / 3
+44: 0.239 sec elapsed
+Running phenomic on p800 dataset 45 / 100, (h2s = 09, comm = 08, h2y = 03), combi 3 / 3
+44: 0.287 sec elapsed
+Running phenomic on p800 dataset 45 / 100, (h2s = 09, comm = 08, h2y = 01), combi 3 / 3
+44: 0.287 sec elapsed
+Running phenomic on p800 dataset 45 / 100, (h2s = 09, comm = 05, h2y = 07), combi 3 / 3
+44: 0.352 sec elapsed
+Running phenomic on p800 dataset 45 / 100, (h2s = 09, comm = 05, h2y = 01), combi 3 / 3
+44: 0.26 sec elapsed
+Running phenomic on p800 dataset 45 / 100, (h2s = 09, comm = 08, h2y = 09), combi 3 / 3
+44: 0.223 sec elapsed
+Running phenomic on p800 dataset 45 / 100, (h2s = 09, comm = 05, h2y = 03), combi 3 / 3
+44: 0.255 sec elapsed
+Running phenomic on p800 dataset 45 / 100, (h2s = 09, comm = 02, h2y = 05), combi 3 / 3
+44: 0.307 sec elapsed
+Running phenomic on p800 dataset 45 / 100, (h2s = 09, comm = 02, h2y = 03), combi 3 / 3
+45: 0.233 sec elapsed
+Running phenomic on p800 dataset 46 / 100, (h2s = 09, comm = 05, h2y = 05), combi 3 / 3
+45: 0.347 sec elapsed
+Running phenomic on p800 dataset 46 / 100, (h2s = 09, comm = 08, h2y = 05), combi 3 / 3
+45: 0.265 sec elapsed
+Running phenomic on p800 dataset 46 / 100, (h2s = 09, comm = 08, h2y = 07), combi 3 / 3
+45: 0.266 sec elapsed
+Running phenomic on p800 dataset 46 / 100, (h2s = 09, comm = 05, h2y = 09), combi 3 / 3
+45: 0.274 sec elapsed
+Running phenomic on p800 dataset 46 / 100, (h2s = 09, comm = 02, h2y = 07), combi 3 / 3
+45: 0.246 sec elapsed
+Running phenomic on p800 dataset 46 / 100, (h2s = 09, comm = 02, h2y = 09), combi 3 / 3
+44: 0.313 sec elapsed
+Running phenomic on p800 dataset 45 / 100, (h2s = 09, comm = 02, h2y = 01), combi 3 / 3
+45: 0.242 sec elapsed
+Running phenomic on p800 dataset 46 / 100, (h2s = 09, comm = 08, h2y = 03), combi 3 / 3
+45: 0.293 sec elapsed
+Running phenomic on p800 dataset 46 / 100, (h2s = 09, comm = 08, h2y = 01), combi 3 / 3
+45: 0.268 sec elapsed
+Running phenomic on p800 dataset 46 / 100, (h2s = 09, comm = 05, h2y = 01), combi 3 / 3
+45: 0.227 sec elapsed
+Running phenomic on p800 dataset 46 / 100, (h2s = 09, comm = 05, h2y = 07), combi 3 / 3
+45: 0.224 sec elapsed
+Running phenomic on p800 dataset 46 / 100, (h2s = 09, comm = 08, h2y = 09), combi 3 / 3
+45: 0.337 sec elapsed
+Running phenomic on p800 dataset 46 / 100, (h2s = 09, comm = 02, h2y = 05), combi 3 / 3
+45: 0.35 sec elapsed
+Running phenomic on p800 dataset 46 / 100, (h2s = 09, comm = 05, h2y = 03), combi 3 / 3
+46: 0.263 sec elapsed
+Running phenomic on p800 dataset 47 / 100, (h2s = 09, comm = 05, h2y = 05), combi 3 / 3
+45: 0.292 sec elapsed
+Running phenomic on p800 dataset 46 / 100, (h2s = 09, comm = 02, h2y = 03), combi 3 / 3
+46: 0.259 sec elapsed
+Running phenomic on p800 dataset 47 / 100, (h2s = 09, comm = 08, h2y = 07), combi 3 / 3
+46: 0.359 sec elapsed
+Running phenomic on p800 dataset 47 / 100, (h2s = 09, comm = 08, h2y = 05), combi 3 / 3
+46: 0.288 sec elapsed
+Running phenomic on p800 dataset 47 / 100, (h2s = 09, comm = 05, h2y = 09), combi 3 / 3
+46: 0.262 sec elapsed
+Running phenomic on p800 dataset 47 / 100, (h2s = 09, comm = 02, h2y = 07), combi 3 / 3
+46: 0.251 sec elapsed
+Running phenomic on p800 dataset 47 / 100, (h2s = 09, comm = 02, h2y = 09), combi 3 / 3
+46: 0.263 sec elapsed
+Running phenomic on p800 dataset 47 / 100, (h2s = 09, comm = 08, h2y = 01), combi 3 / 3
+46: 0.252 sec elapsed
+Running phenomic on p800 dataset 47 / 100, (h2s = 09, comm = 08, h2y = 03), combi 3 / 3
+45: 0.306 sec elapsed
+Running phenomic on p800 dataset 46 / 100, (h2s = 09, comm = 02, h2y = 01), combi 3 / 3
+46: 0.243 sec elapsed
+Running phenomic on p800 dataset 47 / 100, (h2s = 09, comm = 05, h2y = 01), combi 3 / 3
+46: 0.235 sec elapsed
+Running phenomic on p800 dataset 47 / 100, (h2s = 09, comm = 05, h2y = 07), combi 3 / 3
+46: 0.292 sec elapsed
+Running phenomic on p800 dataset 47 / 100, (h2s = 09, comm = 08, h2y = 09), combi 3 / 3
+46: 0.317 sec elapsed
+Running phenomic on p800 dataset 47 / 100, (h2s = 09, comm = 02, h2y = 05), combi 3 / 3
+46: 0.332 sec elapsed
+Running phenomic on p800 dataset 47 / 100, (h2s = 09, comm = 05, h2y = 03), combi 3 / 3
+47: 0.261 sec elapsed
+Running phenomic on p800 dataset 48 / 100, (h2s = 09, comm = 05, h2y = 05), combi 3 / 3
+46: 0.237 sec elapsed
+Running phenomic on p800 dataset 47 / 100, (h2s = 09, comm = 02, h2y = 03), combi 3 / 3
+47: 0.26 sec elapsed
+Running phenomic on p800 dataset 48 / 100, (h2s = 09, comm = 08, h2y = 05), combi 3 / 3
+47: 0.248 sec elapsed
+Running phenomic on p800 dataset 48 / 100, (h2s = 09, comm = 08, h2y = 07), combi 3 / 3
+47: 0.218 sec elapsed
+Running phenomic on p800 dataset 48 / 100, (h2s = 09, comm = 05, h2y = 09), combi 3 / 3
+47: 0.304 sec elapsed
+Running phenomic on p800 dataset 48 / 100, (h2s = 09, comm = 02, h2y = 09), combi 3 / 3
+47: 0.24 sec elapsed
+Running phenomic on p800 dataset 48 / 100, (h2s = 09, comm = 02, h2y = 07), combi 3 / 3
+47: 0.216 sec elapsed
+Running phenomic on p800 dataset 48 / 100, (h2s = 09, comm = 08, h2y = 01), combi 3 / 3
+47: 0.344 sec elapsed
+Running phenomic on p800 dataset 48 / 100, (h2s = 09, comm = 08, h2y = 03), combi 3 / 3
+47: 0.32 sec elapsed
+Running phenomic on p800 dataset 48 / 100, (h2s = 09, comm = 05, h2y = 07), combi 3 / 3
+47: 0.286 sec elapsed
+Running phenomic on p800 dataset 48 / 100, (h2s = 09, comm = 05, h2y = 01), combi 3 / 3
+46: 0.315 sec elapsed
+Running phenomic on p800 dataset 47 / 100, (h2s = 09, comm = 02, h2y = 01), combi 3 / 3
+47: 0.305 sec elapsed
+Running phenomic on p800 dataset 48 / 100, (h2s = 09, comm = 08, h2y = 09), combi 3 / 3
+47: 0.207 sec elapsed
+Running phenomic on p800 dataset 48 / 100, (h2s = 09, comm = 02, h2y = 05), combi 3 / 3
+47: 0.267 sec elapsed
+Running phenomic on p800 dataset 48 / 100, (h2s = 09, comm = 05, h2y = 03), combi 3 / 3
+48: 0.207 sec elapsed
+Running phenomic on p800 dataset 49 / 100, (h2s = 09, comm = 05, h2y = 05), combi 3 / 3
+48: 0.283 sec elapsed
+Running phenomic on p800 dataset 49 / 100, (h2s = 09, comm = 08, h2y = 05), combi 3 / 3
+47: 0.305 sec elapsed
+Running phenomic on p800 dataset 48 / 100, (h2s = 09, comm = 02, h2y = 03), combi 3 / 3
+48: 0.275 sec elapsed
+Running phenomic on p800 dataset 49 / 100, (h2s = 09, comm = 08, h2y = 07), combi 3 / 3
+48: 0.286 sec elapsed
+Running phenomic on p800 dataset 49 / 100, (h2s = 09, comm = 05, h2y = 09), combi 3 / 3
+48: 0.207 sec elapsed
+Running phenomic on p800 dataset 49 / 100, (h2s = 09, comm = 02, h2y = 09), combi 3 / 3
+48: 0.35 sec elapsed
+Running phenomic on p800 dataset 49 / 100, (h2s = 09, comm = 02, h2y = 07), combi 3 / 3
+48: 0.275 sec elapsed
+Running phenomic on p800 dataset 49 / 100, (h2s = 09, comm = 08, h2y = 03), combi 3 / 3
+48: 0.304 sec elapsed
+Running phenomic on p800 dataset 49 / 100, (h2s = 09, comm = 08, h2y = 01), combi 3 / 3
+48: 0.239 sec elapsed
+Running phenomic on p800 dataset 49 / 100, (h2s = 09, comm = 05, h2y = 07), combi 3 / 3
+48: 0.339 sec elapsed
+Running phenomic on p800 dataset 49 / 100, (h2s = 09, comm = 05, h2y = 01), combi 3 / 3
+47: 0.379 sec elapsed
+Running phenomic on p800 dataset 48 / 100, (h2s = 09, comm = 02, h2y = 01), combi 3 / 3
+48: 0.251 sec elapsed
+Running phenomic on p800 dataset 49 / 100, (h2s = 09, comm = 08, h2y = 09), combi 3 / 3
+48: 0.275 sec elapsed
+Running phenomic on p800 dataset 49 / 100, (h2s = 09, comm = 02, h2y = 05), combi 3 / 3
+48: 0.241 sec elapsed
+Running phenomic on p800 dataset 49 / 100, (h2s = 09, comm = 05, h2y = 03), combi 3 / 3
+49: 0.283 sec elapsed
+Running phenomic on p800 dataset 50 / 100, (h2s = 09, comm = 05, h2y = 05), combi 3 / 3
+49: 0.297 sec elapsed
+Running phenomic on p800 dataset 50 / 100, (h2s = 09, comm = 08, h2y = 05), combi 3 / 3
+49: 0.268 sec elapsed
+Running phenomic on p800 dataset 50 / 100, (h2s = 09, comm = 08, h2y = 07), combi 3 / 3
+48: 0.246 sec elapsed
+Running phenomic on p800 dataset 49 / 100, (h2s = 09, comm = 02, h2y = 03), combi 3 / 3
+49: 0.235 sec elapsed
+Running phenomic on p800 dataset 50 / 100, (h2s = 09, comm = 02, h2y = 09), combi 3 / 3
+49: 0.271 sec elapsed
+Running phenomic on p800 dataset 50 / 100, (h2s = 09, comm = 05, h2y = 09), combi 3 / 3
+49: 0.266 sec elapsed
+Running phenomic on p800 dataset 50 / 100, (h2s = 09, comm = 02, h2y = 07), combi 3 / 3
+49: 0.288 sec elapsed
+Running phenomic on p800 dataset 50 / 100, (h2s = 09, comm = 08, h2y = 03), combi 3 / 3
+49: 0.261 sec elapsed
+Running phenomic on p800 dataset 50 / 100, (h2s = 09, comm = 08, h2y = 01), combi 3 / 3
+49: 0.212 sec elapsed
+Running phenomic on p800 dataset 50 / 100, (h2s = 09, comm = 05, h2y = 07), combi 3 / 3
+49: 0.26 sec elapsed
+Running phenomic on p800 dataset 50 / 100, (h2s = 09, comm = 05, h2y = 01), combi 3 / 3
+48: 0.272 sec elapsed
+Running phenomic on p800 dataset 49 / 100, (h2s = 09, comm = 02, h2y = 01), combi 3 / 3
+49: 0.286 sec elapsed
+Running phenomic on p800 dataset 50 / 100, (h2s = 09, comm = 08, h2y = 09), combi 3 / 3
+49: 0.307 sec elapsed
+Running phenomic on p800 dataset 50 / 100, (h2s = 09, comm = 02, h2y = 05), combi 3 / 3
+49: 0.312 sec elapsed
+Running phenomic on p800 dataset 50 / 100, (h2s = 09, comm = 05, h2y = 03), combi 3 / 3
+50: 0.326 sec elapsed
+Running phenomic on p800 dataset 51 / 100, (h2s = 09, comm = 05, h2y = 05), combi 3 / 3
+50: 0.331 sec elapsed
+Running phenomic on p800 dataset 51 / 100, (h2s = 09, comm = 08, h2y = 05), combi 3 / 3
+50: 0.328 sec elapsed
+Running phenomic on p800 dataset 51 / 100, (h2s = 09, comm = 08, h2y = 07), combi 3 / 3
+49: 0.271 sec elapsed
+Running phenomic on p800 dataset 50 / 100, (h2s = 09, comm = 02, h2y = 03), combi 3 / 3
+50: 0.267 sec elapsed
+Running phenomic on p800 dataset 51 / 100, (h2s = 09, comm = 02, h2y = 09), combi 3 / 3
+50: 0.226 sec elapsed
+Running phenomic on p800 dataset 51 / 100, (h2s = 09, comm = 02, h2y = 07), combi 3 / 3
+50: 0.355 sec elapsed
+Running phenomic on p800 dataset 51 / 100, (h2s = 09, comm = 05, h2y = 09), combi 3 / 3
+50: 0.295 sec elapsed
+Running phenomic on p800 dataset 51 / 100, (h2s = 09, comm = 08, h2y = 03), combi 3 / 3
+50: 0.235 sec elapsed
+Running phenomic on p800 dataset 51 / 100, (h2s = 09, comm = 08, h2y = 01), combi 3 / 3
+50: 0.267 sec elapsed
+Running phenomic on p800 dataset 51 / 100, (h2s = 09, comm = 05, h2y = 07), combi 3 / 3
+50: 0.309 sec elapsed
+Running phenomic on p800 dataset 51 / 100, (h2s = 09, comm = 05, h2y = 01), combi 3 / 3
+49: 0.251 sec elapsed
+Running phenomic on p800 dataset 50 / 100, (h2s = 09, comm = 02, h2y = 01), combi 3 / 3
+50: 0.279 sec elapsed
+Running phenomic on p800 dataset 51 / 100, (h2s = 09, comm = 08, h2y = 09), combi 3 / 3
+50: 0.263 sec elapsed
+Running phenomic on p800 dataset 51 / 100, (h2s = 09, comm = 02, h2y = 05), combi 3 / 3
+50: 0.311 sec elapsed
+Running phenomic on p800 dataset 51 / 100, (h2s = 09, comm = 05, h2y = 03), combi 3 / 3
+51: 0.289 sec elapsed
+Running phenomic on p800 dataset 52 / 100, (h2s = 09, comm = 05, h2y = 05), combi 3 / 3
+51: 0.243 sec elapsed
+Running phenomic on p800 dataset 52 / 100, (h2s = 09, comm = 08, h2y = 05), combi 3 / 3
+51: 0.327 sec elapsed
+Running phenomic on p800 dataset 52 / 100, (h2s = 09, comm = 08, h2y = 07), combi 3 / 3
+51: 0.247 sec elapsed
+Running phenomic on p800 dataset 52 / 100, (h2s = 09, comm = 02, h2y = 09), combi 3 / 3
+51: 0.353 sec elapsed
+Running phenomic on p800 dataset 52 / 100, (h2s = 09, comm = 02, h2y = 07), combi 3 / 3
+51: 0.224 sec elapsed
+Running phenomic on p800 dataset 52 / 100, (h2s = 09, comm = 08, h2y = 03), combi 3 / 3
+50: 0.318 sec elapsed
+Running phenomic on p800 dataset 51 / 100, (h2s = 09, comm = 02, h2y = 03), combi 3 / 3
+51: 0.37 sec elapsed
+Running phenomic on p800 dataset 52 / 100, (h2s = 09, comm = 05, h2y = 09), combi 3 / 3
+51: 0.291 sec elapsed
+Running phenomic on p800 dataset 52 / 100, (h2s = 09, comm = 08, h2y = 01), combi 3 / 3
+51: 0.271 sec elapsed
+Running phenomic on p800 dataset 52 / 100, (h2s = 09, comm = 05, h2y = 07), combi 3 / 3
+51: 0.339 sec elapsed
+Running phenomic on p800 dataset 52 / 100, (h2s = 09, comm = 05, h2y = 01), combi 3 / 3
+51: 0.251 sec elapsed
+Running phenomic on p800 dataset 52 / 100, (h2s = 09, comm = 08, h2y = 09), combi 3 / 3
+50: 0.352 sec elapsed
+Running phenomic on p800 dataset 51 / 100, (h2s = 09, comm = 02, h2y = 01), combi 3 / 3
+51: 0.229 sec elapsed
+Running phenomic on p800 dataset 52 / 100, (h2s = 09, comm = 02, h2y = 05), combi 3 / 3
+52: 0.265 sec elapsed
+Running phenomic on p800 dataset 53 / 100, (h2s = 09, comm = 05, h2y = 05), combi 3 / 3
+51: 0.296 sec elapsed
+Running phenomic on p800 dataset 52 / 100, (h2s = 09, comm = 05, h2y = 03), combi 3 / 3
+52: 0.276 sec elapsed
+Running phenomic on p800 dataset 53 / 100, (h2s = 09, comm = 08, h2y = 05), combi 3 / 3
+52: 0.216 sec elapsed
+Running phenomic on p800 dataset 53 / 100, (h2s = 09, comm = 08, h2y = 07), combi 3 / 3
+52: 0.267 sec elapsed
+Running phenomic on p800 dataset 53 / 100, (h2s = 09, comm = 02, h2y = 09), combi 3 / 3
+52: 0.257 sec elapsed
+Running phenomic on p800 dataset 53 / 100, (h2s = 09, comm = 02, h2y = 07), combi 3 / 3
+52: 0.246 sec elapsed
+Running phenomic on p800 dataset 53 / 100, (h2s = 09, comm = 05, h2y = 09), combi 3 / 3
+51: 0.242 sec elapsed
+Running phenomic on p800 dataset 52 / 100, (h2s = 09, comm = 02, h2y = 03), combi 3 / 3
+52: 0.269 sec elapsed
+Running phenomic on p800 dataset 53 / 100, (h2s = 09, comm = 08, h2y = 03), combi 3 / 3
+52: 0.295 sec elapsed
+Running phenomic on p800 dataset 53 / 100, (h2s = 09, comm = 08, h2y = 01), combi 3 / 3
+52: 0.253 sec elapsed
+Running phenomic on p800 dataset 53 / 100, (h2s = 09, comm = 05, h2y = 07), combi 3 / 3
+52: 0.257 sec elapsed
+Running phenomic on p800 dataset 53 / 100, (h2s = 09, comm = 05, h2y = 01), combi 3 / 3
+52: 0.253 sec elapsed
+Running phenomic on p800 dataset 53 / 100, (h2s = 09, comm = 08, h2y = 09), combi 3 / 3
+52: 0.255 sec elapsed
+Running phenomic on p800 dataset 53 / 100, (h2s = 09, comm = 02, h2y = 05), combi 3 / 3
+51: 0.27 sec elapsed
+Running phenomic on p800 dataset 52 / 100, (h2s = 09, comm = 02, h2y = 01), combi 3 / 3
+53: 0.246 sec elapsed
+Running phenomic on p800 dataset 54 / 100, (h2s = 09, comm = 05, h2y = 05), combi 3 / 3
+52: 0.303 sec elapsed
+Running phenomic on p800 dataset 53 / 100, (h2s = 09, comm = 05, h2y = 03), combi 3 / 3
+53: 0.312 sec elapsed
+Running phenomic on p800 dataset 54 / 100, (h2s = 09, comm = 08, h2y = 05), combi 3 / 3
+53: 0.239 sec elapsed
+Running phenomic on p800 dataset 54 / 100, (h2s = 09, comm = 08, h2y = 07), combi 3 / 3
+53: 0.282 sec elapsed
+Running phenomic on p800 dataset 54 / 100, (h2s = 09, comm = 02, h2y = 09), combi 3 / 3
+53: 0.321 sec elapsed
+Running phenomic on p800 dataset 54 / 100, (h2s = 09, comm = 02, h2y = 07), combi 3 / 3
+53: 0.284 sec elapsed
+Running phenomic on p800 dataset 54 / 100, (h2s = 09, comm = 05, h2y = 09), combi 3 / 3
+52: 0.26 sec elapsed
+Running phenomic on p800 dataset 53 / 100, (h2s = 09, comm = 02, h2y = 03), combi 3 / 3
+53: 0.338 sec elapsed
+Running phenomic on p800 dataset 54 / 100, (h2s = 09, comm = 08, h2y = 03), combi 3 / 3
+53: 0.259 sec elapsed
+Running phenomic on p800 dataset 54 / 100, (h2s = 09, comm = 08, h2y = 01), combi 3 / 3
+53: 0.274 sec elapsed
+Running phenomic on p800 dataset 54 / 100, (h2s = 09, comm = 05, h2y = 07), combi 3 / 3
+53: 0.249 sec elapsed
+Running phenomic on p800 dataset 54 / 100, (h2s = 09, comm = 05, h2y = 01), combi 3 / 3
+53: 0.28 sec elapsed
+Running phenomic on p800 dataset 54 / 100, (h2s = 09, comm = 08, h2y = 09), combi 3 / 3
+52: 0.298 sec elapsed
+Running phenomic on p800 dataset 53 / 100, (h2s = 09, comm = 02, h2y = 01), combi 3 / 3
+53: 0.255 sec elapsed
+Running phenomic on p800 dataset 54 / 100, (h2s = 09, comm = 02, h2y = 05), combi 3 / 3
+54: 0.247 sec elapsed
+Running phenomic on p800 dataset 55 / 100, (h2s = 09, comm = 05, h2y = 05), combi 3 / 3
+53: 0.25 sec elapsed
+Running phenomic on p800 dataset 54 / 100, (h2s = 09, comm = 05, h2y = 03), combi 3 / 3
+54: 0.279 sec elapsed
+Running phenomic on p800 dataset 55 / 100, (h2s = 09, comm = 08, h2y = 07), combi 3 / 3
+54: 0.321 sec elapsed
+Running phenomic on p800 dataset 55 / 100, (h2s = 09, comm = 08, h2y = 05), combi 3 / 3
+54: 0.249 sec elapsed
+Running phenomic on p800 dataset 55 / 100, (h2s = 09, comm = 02, h2y = 09), combi 3 / 3
+54: 0.251 sec elapsed
+Running phenomic on p800 dataset 55 / 100, (h2s = 09, comm = 05, h2y = 09), combi 3 / 3
+54: 0.277 sec elapsed
+Running phenomic on p800 dataset 55 / 100, (h2s = 09, comm = 02, h2y = 07), combi 3 / 3
+54: 0.315 sec elapsed
+Running phenomic on p800 dataset 55 / 100, (h2s = 09, comm = 08, h2y = 03), combi 3 / 3
+53: 0.255 sec elapsed
+Running phenomic on p800 dataset 54 / 100, (h2s = 09, comm = 02, h2y = 03), combi 3 / 3
+54: 0.248 sec elapsed
+Running phenomic on p800 dataset 55 / 100, (h2s = 09, comm = 08, h2y = 01), combi 3 / 3
+54: 0.285 sec elapsed
+Running phenomic on p800 dataset 55 / 100, (h2s = 09, comm = 05, h2y = 07), combi 3 / 3
+54: 0.26 sec elapsed
+Running phenomic on p800 dataset 55 / 100, (h2s = 09, comm = 05, h2y = 01), combi 3 / 3
+54: 0.267 sec elapsed
+Running phenomic on p800 dataset 55 / 100, (h2s = 09, comm = 08, h2y = 09), combi 3 / 3
+54: 0.231 sec elapsed
+Running phenomic on p800 dataset 55 / 100, (h2s = 09, comm = 02, h2y = 05), combi 3 / 3
+53: 0.276 sec elapsed
+Running phenomic on p800 dataset 54 / 100, (h2s = 09, comm = 02, h2y = 01), combi 3 / 3
+55: 0.252 sec elapsed
+Running phenomic on p800 dataset 56 / 100, (h2s = 09, comm = 05, h2y = 05), combi 3 / 3
+54: 0.252 sec elapsed
+Running phenomic on p800 dataset 55 / 100, (h2s = 09, comm = 05, h2y = 03), combi 3 / 3
+55: 0.269 sec elapsed
+Running phenomic on p800 dataset 56 / 100, (h2s = 09, comm = 08, h2y = 07), combi 3 / 3
+55: 0.216 sec elapsed
+Running phenomic on p800 dataset 56 / 100, (h2s = 09, comm = 08, h2y = 05), combi 3 / 3
+55: 0.216 sec elapsed
+Running phenomic on p800 dataset 56 / 100, (h2s = 09, comm = 05, h2y = 09), combi 3 / 3
+55: 0.301 sec elapsed
+Running phenomic on p800 dataset 56 / 100, (h2s = 09, comm = 02, h2y = 09), combi 3 / 3
+55: 0.293 sec elapsed
+Running phenomic on p800 dataset 56 / 100, (h2s = 09, comm = 02, h2y = 07), combi 3 / 3
+55: 0.286 sec elapsed
+Running phenomic on p800 dataset 56 / 100, (h2s = 09, comm = 08, h2y = 03), combi 3 / 3
+54: 0.293 sec elapsed
+Running phenomic on p800 dataset 55 / 100, (h2s = 09, comm = 02, h2y = 03), combi 3 / 3
+55: 0.297 sec elapsed
+Running phenomic on p800 dataset 56 / 100, (h2s = 09, comm = 08, h2y = 01), combi 3 / 3
+55: 0.26 sec elapsed
+Running phenomic on p800 dataset 56 / 100, (h2s = 09, comm = 05, h2y = 07), combi 3 / 3
+55: 0.314 sec elapsed
+Running phenomic on p800 dataset 56 / 100, (h2s = 09, comm = 05, h2y = 01), combi 3 / 3
+55: 0.284 sec elapsed
+Running phenomic on p800 dataset 56 / 100, (h2s = 09, comm = 08, h2y = 09), combi 3 / 3
+55: 0.308 sec elapsed
+Running phenomic on p800 dataset 56 / 100, (h2s = 09, comm = 02, h2y = 05), combi 3 / 3
+54: 0.294 sec elapsed
+Running phenomic on p800 dataset 55 / 100, (h2s = 09, comm = 02, h2y = 01), combi 3 / 3
+56: 0.271 sec elapsed
+Running phenomic on p800 dataset 57 / 100, (h2s = 09, comm = 05, h2y = 05), combi 3 / 3
+55: 0.22 sec elapsed
+Running phenomic on p800 dataset 56 / 100, (h2s = 09, comm = 05, h2y = 03), combi 3 / 3
+56: 0.224 sec elapsed
+Running phenomic on p800 dataset 57 / 100, (h2s = 09, comm = 08, h2y = 07), combi 3 / 3
+56: 0.222 sec elapsed
+Running phenomic on p800 dataset 57 / 100, (h2s = 09, comm = 08, h2y = 05), combi 3 / 3
+56: 0.217 sec elapsed
+Running phenomic on p800 dataset 57 / 100, (h2s = 09, comm = 02, h2y = 07), combi 3 / 3
+56: 0.308 sec elapsed
+Running phenomic on p800 dataset 57 / 100, (h2s = 09, comm = 05, h2y = 09), combi 3 / 3
+56: 0.315 sec elapsed
+Running phenomic on p800 dataset 57 / 100, (h2s = 09, comm = 02, h2y = 09), combi 3 / 3
+56: 0.239 sec elapsed
+Running phenomic on p800 dataset 57 / 100, (h2s = 09, comm = 08, h2y = 03), combi 3 / 3
+55: 0.232 sec elapsed
+Running phenomic on p800 dataset 56 / 100, (h2s = 09, comm = 02, h2y = 03), combi 3 / 3
+56: 0.251 sec elapsed
+Running phenomic on p800 dataset 57 / 100, (h2s = 09, comm = 05, h2y = 07), combi 3 / 3
+56: 0.326 sec elapsed
+Running phenomic on p800 dataset 57 / 100, (h2s = 09, comm = 08, h2y = 01), combi 3 / 3
+56: 0.249 sec elapsed
+Running phenomic on p800 dataset 57 / 100, (h2s = 09, comm = 05, h2y = 01), combi 3 / 3
+56: 0.232 sec elapsed
+Running phenomic on p800 dataset 57 / 100, (h2s = 09, comm = 08, h2y = 09), combi 3 / 3
+56: 0.268 sec elapsed
+Running phenomic on p800 dataset 57 / 100, (h2s = 09, comm = 02, h2y = 05), combi 3 / 3
+55: 0.343 sec elapsed
+Running phenomic on p800 dataset 56 / 100, (h2s = 09, comm = 02, h2y = 01), combi 3 / 3
+57: 0.226 sec elapsed
+Running phenomic on p800 dataset 58 / 100, (h2s = 09, comm = 05, h2y = 05), combi 3 / 3
+56: 0.237 sec elapsed
+Running phenomic on p800 dataset 57 / 100, (h2s = 09, comm = 05, h2y = 03), combi 3 / 3
+57: 0.225 sec elapsed
+Running phenomic on p800 dataset 58 / 100, (h2s = 09, comm = 08, h2y = 07), combi 3 / 3
+57: 0.289 sec elapsed
+Running phenomic on p800 dataset 58 / 100, (h2s = 09, comm = 08, h2y = 05), combi 3 / 3
+57: 0.281 sec elapsed
+Running phenomic on p800 dataset 58 / 100, (h2s = 09, comm = 02, h2y = 07), combi 3 / 3
+57: 0.333 sec elapsed
+Running phenomic on p800 dataset 58 / 100, (h2s = 09, comm = 02, h2y = 09), combi 3 / 3
+57: 0.295 sec elapsed
+Running phenomic on p800 dataset 58 / 100, (h2s = 09, comm = 05, h2y = 09), combi 3 / 3
+57: 0.283 sec elapsed
+Running phenomic on p800 dataset 58 / 100, (h2s = 09, comm = 08, h2y = 03), combi 3 / 3
+56: 0.264 sec elapsed
+Running phenomic on p800 dataset 57 / 100, (h2s = 09, comm = 02, h2y = 03), combi 3 / 3
+57: 0.248 sec elapsed
+Running phenomic on p800 dataset 58 / 100, (h2s = 09, comm = 05, h2y = 07), combi 3 / 3
+57: 0.236 sec elapsed
+Running phenomic on p800 dataset 58 / 100, (h2s = 09, comm = 08, h2y = 01), combi 3 / 3
+57: 0.226 sec elapsed
+Running phenomic on p800 dataset 58 / 100, (h2s = 09, comm = 05, h2y = 01), combi 3 / 3
+57: 0.25 sec elapsed
+Running phenomic on p800 dataset 58 / 100, (h2s = 09, comm = 08, h2y = 09), combi 3 / 3
+56: 0.245 sec elapsed
+Running phenomic on p800 dataset 57 / 100, (h2s = 09, comm = 02, h2y = 01), combi 3 / 3
+57: 0.287 sec elapsed
+Running phenomic on p800 dataset 58 / 100, (h2s = 09, comm = 02, h2y = 05), combi 3 / 3
+58: 0.345 sec elapsed
+Running phenomic on p800 dataset 59 / 100, (h2s = 09, comm = 05, h2y = 05), combi 3 / 3
+57: 0.253 sec elapsed
+Running phenomic on p800 dataset 58 / 100, (h2s = 09, comm = 05, h2y = 03), combi 3 / 3
+58: 0.236 sec elapsed
+Running phenomic on p800 dataset 59 / 100, (h2s = 09, comm = 08, h2y = 07), combi 3 / 3
+58: 0.288 sec elapsed
+Running phenomic on p800 dataset 59 / 100, (h2s = 09, comm = 08, h2y = 05), combi 3 / 3
+58: 0.194 sec elapsed
+Running phenomic on p800 dataset 59 / 100, (h2s = 09, comm = 02, h2y = 09), combi 3 / 3
+58: 0.301 sec elapsed
+Running phenomic on p800 dataset 59 / 100, (h2s = 09, comm = 02, h2y = 07), combi 3 / 3
+58: 0.309 sec elapsed
+Running phenomic on p800 dataset 59 / 100, (h2s = 09, comm = 05, h2y = 09), combi 3 / 3
+58: 0.256 sec elapsed
+Running phenomic on p800 dataset 59 / 100, (h2s = 09, comm = 08, h2y = 03), combi 3 / 3
+58: 0.256 sec elapsed
+Running phenomic on p800 dataset 59 / 100, (h2s = 09, comm = 05, h2y = 07), combi 3 / 3
+57: 0.268 sec elapsed
+Running phenomic on p800 dataset 58 / 100, (h2s = 09, comm = 02, h2y = 03), combi 3 / 3
+58: 0.255 sec elapsed
+Running phenomic on p800 dataset 59 / 100, (h2s = 09, comm = 08, h2y = 01), combi 3 / 3
+58: 0.245 sec elapsed
+Running phenomic on p800 dataset 59 / 100, (h2s = 09, comm = 05, h2y = 01), combi 3 / 3
+58: 0.28 sec elapsed
+Running phenomic on p800 dataset 59 / 100, (h2s = 09, comm = 08, h2y = 09), combi 3 / 3
+57: 0.252 sec elapsed
+Running phenomic on p800 dataset 58 / 100, (h2s = 09, comm = 02, h2y = 01), combi 3 / 3
+58: 0.292 sec elapsed
+Running phenomic on p800 dataset 59 / 100, (h2s = 09, comm = 02, h2y = 05), combi 3 / 3
+59: 0.303 sec elapsed
+Running phenomic on p800 dataset 60 / 100, (h2s = 09, comm = 05, h2y = 05), combi 3 / 3
+58: 0.267 sec elapsed
+Running phenomic on p800 dataset 59 / 100, (h2s = 09, comm = 05, h2y = 03), combi 3 / 3
+59: 0.307 sec elapsed
+Running phenomic on p800 dataset 60 / 100, (h2s = 09, comm = 08, h2y = 07), combi 3 / 3
+59: 0.272 sec elapsed
+Running phenomic on p800 dataset 60 / 100, (h2s = 09, comm = 08, h2y = 05), combi 3 / 3
+59: 0.223 sec elapsed
+Running phenomic on p800 dataset 60 / 100, (h2s = 09, comm = 05, h2y = 09), combi 3 / 3
+59: 0.303 sec elapsed
+Running phenomic on p800 dataset 60 / 100, (h2s = 09, comm = 02, h2y = 07), combi 3 / 3
+59: 0.253 sec elapsed
+Running phenomic on p800 dataset 60 / 100, (h2s = 09, comm = 02, h2y = 09), combi 3 / 3
+59: 0.259 sec elapsed
+Running phenomic on p800 dataset 60 / 100, (h2s = 09, comm = 08, h2y = 03), combi 3 / 3
+59: 0.214 sec elapsed
+Running phenomic on p800 dataset 60 / 100, (h2s = 09, comm = 05, h2y = 07), combi 3 / 3
+58: 0.229 sec elapsed
+Running phenomic on p800 dataset 59 / 100, (h2s = 09, comm = 02, h2y = 03), combi 3 / 3
+59: 0.326 sec elapsed
+Running phenomic on p800 dataset 60 / 100, (h2s = 09, comm = 08, h2y = 01), combi 3 / 3
+59: 0.222 sec elapsed
+Running phenomic on p800 dataset 60 / 100, (h2s = 09, comm = 05, h2y = 01), combi 3 / 3
+58: 0.262 sec elapsed
+Running phenomic on p800 dataset 59 / 100, (h2s = 09, comm = 02, h2y = 01), combi 3 / 3
+59: 0.266 sec elapsed
+Running phenomic on p800 dataset 60 / 100, (h2s = 09, comm = 08, h2y = 09), combi 3 / 3
+59: 0.261 sec elapsed
+Running phenomic on p800 dataset 60 / 100, (h2s = 09, comm = 02, h2y = 05), combi 3 / 3
+60: 0.286 sec elapsed
+Running phenomic on p800 dataset 61 / 100, (h2s = 09, comm = 05, h2y = 05), combi 3 / 3
+59: 0.283 sec elapsed
+Running phenomic on p800 dataset 60 / 100, (h2s = 09, comm = 05, h2y = 03), combi 3 / 3
+60: 0.256 sec elapsed
+Running phenomic on p800 dataset 61 / 100, (h2s = 09, comm = 08, h2y = 05), combi 3 / 3
+60: 0.281 sec elapsed
+Running phenomic on p800 dataset 61 / 100, (h2s = 09, comm = 08, h2y = 07), combi 3 / 3
+60: 0.289 sec elapsed
+Running phenomic on p800 dataset 61 / 100, (h2s = 09, comm = 02, h2y = 07), combi 3 / 3
+60: 0.27 sec elapsed
+Running phenomic on p800 dataset 61 / 100, (h2s = 09, comm = 08, h2y = 03), combi 3 / 3
+60: 0.29 sec elapsed
+Running phenomic on p800 dataset 61 / 100, (h2s = 09, comm = 05, h2y = 09), combi 3 / 3
+60: 0.284 sec elapsed
+Running phenomic on p800 dataset 61 / 100, (h2s = 09, comm = 02, h2y = 09), combi 3 / 3
+60: 0.228 sec elapsed
+Running phenomic on p800 dataset 61 / 100, (h2s = 09, comm = 05, h2y = 07), combi 3 / 3
+59: 0.263 sec elapsed
+Running phenomic on p800 dataset 60 / 100, (h2s = 09, comm = 02, h2y = 03), combi 3 / 3
+60: 0.325 sec elapsed
+Running phenomic on p800 dataset 61 / 100, (h2s = 09, comm = 08, h2y = 01), combi 3 / 3
+60: 0.241 sec elapsed
+Running phenomic on p800 dataset 61 / 100, (h2s = 09, comm = 05, h2y = 01), combi 3 / 3
+59: 0.279 sec elapsed
+Running phenomic on p800 dataset 60 / 100, (h2s = 09, comm = 02, h2y = 01), combi 3 / 3
+60: 0.274 sec elapsed
+Running phenomic on p800 dataset 61 / 100, (h2s = 09, comm = 08, h2y = 09), combi 3 / 3
+60: 0.249 sec elapsed
+Running phenomic on p800 dataset 61 / 100, (h2s = 09, comm = 02, h2y = 05), combi 3 / 3
+61: 0.247 sec elapsed
+Running phenomic on p800 dataset 62 / 100, (h2s = 09, comm = 05, h2y = 05), combi 3 / 3
+61: 0.221 sec elapsed
+Running phenomic on p800 dataset 62 / 100, (h2s = 09, comm = 08, h2y = 07), combi 3 / 3
+60: 0.246 sec elapsed
+Running phenomic on p800 dataset 61 / 100, (h2s = 09, comm = 05, h2y = 03), combi 3 / 3
+61: 0.342 sec elapsed
+Running phenomic on p800 dataset 62 / 100, (h2s = 09, comm = 08, h2y = 05), combi 3 / 3
+61: 0.239 sec elapsed
+Running phenomic on p800 dataset 62 / 100, (h2s = 09, comm = 02, h2y = 07), combi 3 / 3
+61: 0.221 sec elapsed
+Running phenomic on p800 dataset 62 / 100, (h2s = 09, comm = 05, h2y = 09), combi 3 / 3
+61: 0.364 sec elapsed
+Running phenomic on p800 dataset 62 / 100, (h2s = 09, comm = 02, h2y = 09), combi 3 / 3
+61: 0.298 sec elapsed
+Running phenomic on p800 dataset 62 / 100, (h2s = 09, comm = 08, h2y = 03), combi 3 / 3
+61: 0.305 sec elapsed
+Running phenomic on p800 dataset 62 / 100, (h2s = 09, comm = 05, h2y = 07), combi 3 / 3
+60: 0.244 sec elapsed
+Running phenomic on p800 dataset 61 / 100, (h2s = 09, comm = 02, h2y = 03), combi 3 / 3
+61: 0.277 sec elapsed
+Running phenomic on p800 dataset 62 / 100, (h2s = 09, comm = 08, h2y = 01), combi 3 / 3
+60: 0.199 sec elapsed
+Running phenomic on p800 dataset 61 / 100, (h2s = 09, comm = 02, h2y = 01), combi 3 / 3
+61: 0.33 sec elapsed
+Running phenomic on p800 dataset 62 / 100, (h2s = 09, comm = 05, h2y = 01), combi 3 / 3
+61: 0.311 sec elapsed
+Running phenomic on p800 dataset 62 / 100, (h2s = 09, comm = 08, h2y = 09), combi 3 / 3
+61: 0.281 sec elapsed
+Running phenomic on p800 dataset 62 / 100, (h2s = 09, comm = 02, h2y = 05), combi 3 / 3
+62: 0.271 sec elapsed
+Running phenomic on p800 dataset 63 / 100, (h2s = 09, comm = 05, h2y = 05), combi 3 / 3
+62: 0.296 sec elapsed
+Running phenomic on p800 dataset 63 / 100, (h2s = 09, comm = 08, h2y = 07), combi 3 / 3
+61: 0.24 sec elapsed
+Running phenomic on p800 dataset 62 / 100, (h2s = 09, comm = 05, h2y = 03), combi 3 / 3
+62: 0.295 sec elapsed
+Running phenomic on p800 dataset 63 / 100, (h2s = 09, comm = 08, h2y = 05), combi 3 / 3
+62: 0.266 sec elapsed
+Running phenomic on p800 dataset 63 / 100, (h2s = 09, comm = 05, h2y = 09), combi 3 / 3
+62: 0.264 sec elapsed
+Running phenomic on p800 dataset 63 / 100, (h2s = 09, comm = 02, h2y = 07), combi 3 / 3
+62: 0.316 sec elapsed
+Running phenomic on p800 dataset 63 / 100, (h2s = 09, comm = 08, h2y = 03), combi 3 / 3
+62: 0.293 sec elapsed
+Running phenomic on p800 dataset 63 / 100, (h2s = 09, comm = 02, h2y = 09), combi 3 / 3
+62: 0.313 sec elapsed
+Running phenomic on p800 dataset 63 / 100, (h2s = 09, comm = 05, h2y = 07), combi 3 / 3
+61: 0.259 sec elapsed
+Running phenomic on p800 dataset 62 / 100, (h2s = 09, comm = 02, h2y = 03), combi 3 / 3
+62: 0.232 sec elapsed
+Running phenomic on p800 dataset 63 / 100, (h2s = 09, comm = 08, h2y = 01), combi 3 / 3
+61: 0.245 sec elapsed
+Running phenomic on p800 dataset 62 / 100, (h2s = 09, comm = 02, h2y = 01), combi 3 / 3
+62: 0.299 sec elapsed
+Running phenomic on p800 dataset 63 / 100, (h2s = 09, comm = 05, h2y = 01), combi 3 / 3
+62: 0.268 sec elapsed
+Running phenomic on p800 dataset 63 / 100, (h2s = 09, comm = 08, h2y = 09), combi 3 / 3
+62: 0.314 sec elapsed
+Running phenomic on p800 dataset 63 / 100, (h2s = 09, comm = 02, h2y = 05), combi 3 / 3
+63: 0.296 sec elapsed
+Running phenomic on p800 dataset 64 / 100, (h2s = 09, comm = 05, h2y = 05), combi 3 / 3
+63: 0.249 sec elapsed
+Running phenomic on p800 dataset 64 / 100, (h2s = 09, comm = 08, h2y = 05), combi 3 / 3
+63: 0.261 sec elapsed
+Running phenomic on p800 dataset 64 / 100, (h2s = 09, comm = 08, h2y = 07), combi 3 / 3
+62: 0.246 sec elapsed
+Running phenomic on p800 dataset 63 / 100, (h2s = 09, comm = 05, h2y = 03), combi 3 / 3
+63: 0.281 sec elapsed
+Running phenomic on p800 dataset 64 / 100, (h2s = 09, comm = 05, h2y = 09), combi 3 / 3
+63: 0.26 sec elapsed
+Running phenomic on p800 dataset 64 / 100, (h2s = 09, comm = 02, h2y = 07), combi 3 / 3
+63: 0.265 sec elapsed
+Running phenomic on p800 dataset 64 / 100, (h2s = 09, comm = 08, h2y = 03), combi 3 / 3
+63: 0.322 sec elapsed
+Running phenomic on p800 dataset 64 / 100, (h2s = 09, comm = 02, h2y = 09), combi 3 / 3
+63: 0.267 sec elapsed
+Running phenomic on p800 dataset 64 / 100, (h2s = 09, comm = 08, h2y = 01), combi 3 / 3
+63: 0.251 sec elapsed
+Running phenomic on p800 dataset 64 / 100, (h2s = 09, comm = 05, h2y = 07), combi 3 / 3
+62: 0.27 sec elapsed
+Running phenomic on p800 dataset 63 / 100, (h2s = 09, comm = 02, h2y = 03), combi 3 / 3
+62: 0.355 sec elapsed
+Running phenomic on p800 dataset 63 / 100, (h2s = 09, comm = 02, h2y = 01), combi 3 / 3
+63: 0.253 sec elapsed
+Running phenomic on p800 dataset 64 / 100, (h2s = 09, comm = 05, h2y = 01), combi 3 / 3
+63: 0.268 sec elapsed
+Running phenomic on p800 dataset 64 / 100, (h2s = 09, comm = 08, h2y = 09), combi 3 / 3
+63: 0.255 sec elapsed
+Running phenomic on p800 dataset 64 / 100, (h2s = 09, comm = 02, h2y = 05), combi 3 / 3
+64: 0.359 sec elapsed
+Running phenomic on p800 dataset 65 / 100, (h2s = 09, comm = 05, h2y = 05), combi 3 / 3
+64: 0.264 sec elapsed
+Running phenomic on p800 dataset 65 / 100, (h2s = 09, comm = 08, h2y = 05), combi 3 / 3
+64: 0.27 sec elapsed
+Running phenomic on p800 dataset 65 / 100, (h2s = 09, comm = 08, h2y = 07), combi 3 / 3
+63: 0.273 sec elapsed
+Running phenomic on p800 dataset 64 / 100, (h2s = 09, comm = 05, h2y = 03), combi 3 / 3
+64: 0.334 sec elapsed
+Running phenomic on p800 dataset 65 / 100, (h2s = 09, comm = 05, h2y = 09), combi 3 / 3
+64: 0.32 sec elapsed
+Running phenomic on p800 dataset 65 / 100, (h2s = 09, comm = 02, h2y = 07), combi 3 / 3
+64: 0.288 sec elapsed
+Running phenomic on p800 dataset 65 / 100, (h2s = 09, comm = 08, h2y = 03), combi 3 / 3
+64: 0.332 sec elapsed
+Running phenomic on p800 dataset 65 / 100, (h2s = 09, comm = 02, h2y = 09), combi 3 / 3
+64: 0.254 sec elapsed
+Running phenomic on p800 dataset 65 / 100, (h2s = 09, comm = 08, h2y = 01), combi 3 / 3
+64: 0.258 sec elapsed
+Running phenomic on p800 dataset 65 / 100, (h2s = 09, comm = 05, h2y = 07), combi 3 / 3
+63: 0.246 sec elapsed
+Running phenomic on p800 dataset 64 / 100, (h2s = 09, comm = 02, h2y = 03), combi 3 / 3
+63: 0.289 sec elapsed
+Running phenomic on p800 dataset 64 / 100, (h2s = 09, comm = 02, h2y = 01), combi 3 / 3
+64: 0.271 sec elapsed
+Running phenomic on p800 dataset 65 / 100, (h2s = 09, comm = 05, h2y = 01), combi 3 / 3
+64: 0.259 sec elapsed
+Running phenomic on p800 dataset 65 / 100, (h2s = 09, comm = 08, h2y = 09), combi 3 / 3
+65: 0.274 sec elapsed
+Running phenomic on p800 dataset 66 / 100, (h2s = 09, comm = 05, h2y = 05), combi 3 / 3
+64: 0.26 sec elapsed
+Running phenomic on p800 dataset 65 / 100, (h2s = 09, comm = 02, h2y = 05), combi 3 / 3
+65: 0.264 sec elapsed
+Running phenomic on p800 dataset 66 / 100, (h2s = 09, comm = 08, h2y = 05), combi 3 / 3
+64: 0.235 sec elapsed
+Running phenomic on p800 dataset 65 / 100, (h2s = 09, comm = 05, h2y = 03), combi 3 / 3
+65: 0.356 sec elapsed
+Running phenomic on p800 dataset 66 / 100, (h2s = 09, comm = 08, h2y = 07), combi 3 / 3
+65: 0.263 sec elapsed
+Running phenomic on p800 dataset 66 / 100, (h2s = 09, comm = 05, h2y = 09), combi 3 / 3
+65: 0.239 sec elapsed
+Running phenomic on p800 dataset 66 / 100, (h2s = 09, comm = 02, h2y = 07), combi 3 / 3
+65: 0.254 sec elapsed
+Running phenomic on p800 dataset 66 / 100, (h2s = 09, comm = 08, h2y = 03), combi 3 / 3
+65: 0.318 sec elapsed
+Running phenomic on p800 dataset 66 / 100, (h2s = 09, comm = 02, h2y = 09), combi 3 / 3
+65: 0.236 sec elapsed
+Running phenomic on p800 dataset 66 / 100, (h2s = 09, comm = 08, h2y = 01), combi 3 / 3
+65: 0.28 sec elapsed
+Running phenomic on p800 dataset 66 / 100, (h2s = 09, comm = 05, h2y = 07), combi 3 / 3
+64: 0.228 sec elapsed
+Running phenomic on p800 dataset 65 / 100, (h2s = 09, comm = 02, h2y = 03), combi 3 / 3
+64: 0.251 sec elapsed
+Running phenomic on p800 dataset 65 / 100, (h2s = 09, comm = 02, h2y = 01), combi 3 / 3
+65: 0.316 sec elapsed
+Running phenomic on p800 dataset 66 / 100, (h2s = 09, comm = 05, h2y = 01), combi 3 / 3
+65: 0.309 sec elapsed
+Running phenomic on p800 dataset 66 / 100, (h2s = 09, comm = 08, h2y = 09), combi 3 / 3
+66: 0.236 sec elapsed
+Running phenomic on p800 dataset 67 / 100, (h2s = 09, comm = 05, h2y = 05), combi 3 / 3
+65: 0.31 sec elapsed
+Running phenomic on p800 dataset 66 / 100, (h2s = 09, comm = 02, h2y = 05), combi 3 / 3
+66: 0.289 sec elapsed
+Running phenomic on p800 dataset 67 / 100, (h2s = 09, comm = 08, h2y = 05), combi 3 / 3
+66: 0.289 sec elapsed
+Running phenomic on p800 dataset 67 / 100, (h2s = 09, comm = 08, h2y = 07), combi 3 / 3
+66: 0.257 sec elapsed
+Running phenomic on p800 dataset 67 / 100, (h2s = 09, comm = 05, h2y = 09), combi 3 / 3
+65: 0.321 sec elapsed
+Running phenomic on p800 dataset 66 / 100, (h2s = 09, comm = 05, h2y = 03), combi 3 / 3
+66: 0.273 sec elapsed
+Running phenomic on p800 dataset 67 / 100, (h2s = 09, comm = 02, h2y = 07), combi 3 / 3
+66: 0.262 sec elapsed
+Running phenomic on p800 dataset 67 / 100, (h2s = 09, comm = 08, h2y = 03), combi 3 / 3
+66: 0.215 sec elapsed
+Running phenomic on p800 dataset 67 / 100, (h2s = 09, comm = 02, h2y = 09), combi 3 / 3
+66: 0.227 sec elapsed
+Running phenomic on p800 dataset 67 / 100, (h2s = 09, comm = 08, h2y = 01), combi 3 / 3
+66: 0.3 sec elapsed
+Running phenomic on p800 dataset 67 / 100, (h2s = 09, comm = 05, h2y = 07), combi 3 / 3
+65: 0.282 sec elapsed
+Running phenomic on p800 dataset 66 / 100, (h2s = 09, comm = 02, h2y = 03), combi 3 / 3
+65: 0.234 sec elapsed
+Running phenomic on p800 dataset 66 / 100, (h2s = 09, comm = 02, h2y = 01), combi 3 / 3
+66: 0.247 sec elapsed
+Running phenomic on p800 dataset 67 / 100, (h2s = 09, comm = 05, h2y = 01), combi 3 / 3
+67: 0.281 sec elapsed
+Running phenomic on p800 dataset 68 / 100, (h2s = 09, comm = 05, h2y = 05), combi 3 / 3
+66: 0.309 sec elapsed
+Running phenomic on p800 dataset 67 / 100, (h2s = 09, comm = 08, h2y = 09), combi 3 / 3
+66: 0.32 sec elapsed
+Running phenomic on p800 dataset 67 / 100, (h2s = 09, comm = 02, h2y = 05), combi 3 / 3
+67: 0.235 sec elapsed
+Running phenomic on p800 dataset 68 / 100, (h2s = 09, comm = 08, h2y = 07), combi 3 / 3
+67: 0.214 sec elapsed
+Running phenomic on p800 dataset 68 / 100, (h2s = 09, comm = 08, h2y = 05), combi 3 / 3
+66: 0.295 sec elapsed
+Running phenomic on p800 dataset 67 / 100, (h2s = 09, comm = 05, h2y = 03), combi 3 / 3
+67: 0.298 sec elapsed
+Running phenomic on p800 dataset 68 / 100, (h2s = 09, comm = 05, h2y = 09), combi 3 / 3
+67: 0.318 sec elapsed
+Running phenomic on p800 dataset 68 / 100, (h2s = 09, comm = 02, h2y = 07), combi 3 / 3
+67: 0.259 sec elapsed
+Running phenomic on p800 dataset 68 / 100, (h2s = 09, comm = 08, h2y = 03), combi 3 / 3
+67: 0.259 sec elapsed
+Running phenomic on p800 dataset 68 / 100, (h2s = 09, comm = 08, h2y = 01), combi 3 / 3
+67: 0.251 sec elapsed
+Running phenomic on p800 dataset 68 / 100, (h2s = 09, comm = 05, h2y = 07), combi 3 / 3
+67: 0.267 sec elapsed
+Running phenomic on p800 dataset 68 / 100, (h2s = 09, comm = 02, h2y = 09), combi 3 / 3
+66: 0.303 sec elapsed
+Running phenomic on p800 dataset 67 / 100, (h2s = 09, comm = 02, h2y = 03), combi 3 / 3
+66: 0.262 sec elapsed
+Running phenomic on p800 dataset 67 / 100, (h2s = 09, comm = 02, h2y = 01), combi 3 / 3
+67: 0.265 sec elapsed
+Running phenomic on p800 dataset 68 / 100, (h2s = 09, comm = 05, h2y = 01), combi 3 / 3
+68: 0.221 sec elapsed
+Running phenomic on p800 dataset 69 / 100, (h2s = 09, comm = 05, h2y = 05), combi 3 / 3
+67: 0.232 sec elapsed
+Running phenomic on p800 dataset 68 / 100, (h2s = 09, comm = 02, h2y = 05), combi 3 / 3
+67: 0.348 sec elapsed
+Running phenomic on p800 dataset 68 / 100, (h2s = 09, comm = 08, h2y = 09), combi 3 / 3
+68: 0.251 sec elapsed
+Running phenomic on p800 dataset 69 / 100, (h2s = 09, comm = 08, h2y = 05), combi 3 / 3
+68: 0.26 sec elapsed
+Running phenomic on p800 dataset 69 / 100, (h2s = 09, comm = 08, h2y = 07), combi 3 / 3
+67: 0.239 sec elapsed
+Running phenomic on p800 dataset 68 / 100, (h2s = 09, comm = 05, h2y = 03), combi 3 / 3
+68: 0.312 sec elapsed
+Running phenomic on p800 dataset 69 / 100, (h2s = 09, comm = 05, h2y = 09), combi 3 / 3
+68: 0.299 sec elapsed
+Running phenomic on p800 dataset 69 / 100, (h2s = 09, comm = 02, h2y = 07), combi 3 / 3
+68: 0.297 sec elapsed
+Running phenomic on p800 dataset 69 / 100, (h2s = 09, comm = 08, h2y = 03), combi 3 / 3
+68: 0.238 sec elapsed
+Running phenomic on p800 dataset 69 / 100, (h2s = 09, comm = 02, h2y = 09), combi 3 / 3
+68: 0.325 sec elapsed
+Running phenomic on p800 dataset 69 / 100, (h2s = 09, comm = 08, h2y = 01), combi 3 / 3
+68: 0.27 sec elapsed
+Running phenomic on p800 dataset 69 / 100, (h2s = 09, comm = 05, h2y = 07), combi 3 / 3
+67: 0.279 sec elapsed
+Running phenomic on p800 dataset 68 / 100, (h2s = 09, comm = 02, h2y = 03), combi 3 / 3
+67: 0.313 sec elapsed
+Running phenomic on p800 dataset 68 / 100, (h2s = 09, comm = 02, h2y = 01), combi 3 / 3
+68: 0.291 sec elapsed
+Running phenomic on p800 dataset 69 / 100, (h2s = 09, comm = 05, h2y = 01), combi 3 / 3
+69: 0.22 sec elapsed
+Running phenomic on p800 dataset 70 / 100, (h2s = 09, comm = 05, h2y = 05), combi 3 / 3
+68: 0.242 sec elapsed
+Running phenomic on p800 dataset 69 / 100, (h2s = 09, comm = 02, h2y = 05), combi 3 / 3
+68: 0.267 sec elapsed
+Running phenomic on p800 dataset 69 / 100, (h2s = 09, comm = 08, h2y = 09), combi 3 / 3
+69: 0.282 sec elapsed
+Running phenomic on p800 dataset 70 / 100, (h2s = 09, comm = 08, h2y = 05), combi 3 / 3
+69: 0.265 sec elapsed
+Running phenomic on p800 dataset 70 / 100, (h2s = 09, comm = 08, h2y = 07), combi 3 / 3
+69: 0.255 sec elapsed
+Running phenomic on p800 dataset 70 / 100, (h2s = 09, comm = 05, h2y = 09), combi 3 / 3
+68: 0.348 sec elapsed
+Running phenomic on p800 dataset 69 / 100, (h2s = 09, comm = 05, h2y = 03), combi 3 / 3
+69: 0.316 sec elapsed
+Running phenomic on p800 dataset 70 / 100, (h2s = 09, comm = 02, h2y = 07), combi 3 / 3
+69: 0.319 sec elapsed
+Running phenomic on p800 dataset 70 / 100, (h2s = 09, comm = 08, h2y = 03), combi 3 / 3
+69: 0.241 sec elapsed
+Running phenomic on p800 dataset 70 / 100, (h2s = 09, comm = 02, h2y = 09), combi 3 / 3
+69: 0.271 sec elapsed
+Running phenomic on p800 dataset 70 / 100, (h2s = 09, comm = 08, h2y = 01), combi 3 / 3
+69: 0.317 sec elapsed
+Running phenomic on p800 dataset 70 / 100, (h2s = 09, comm = 05, h2y = 07), combi 3 / 3
+68: 0.277 sec elapsed
+Running phenomic on p800 dataset 69 / 100, (h2s = 09, comm = 02, h2y = 01), combi 3 / 3
+68: 0.28 sec elapsed
+Running phenomic on p800 dataset 69 / 100, (h2s = 09, comm = 02, h2y = 03), combi 3 / 3
+69: 0.294 sec elapsed
+Running phenomic on p800 dataset 70 / 100, (h2s = 09, comm = 05, h2y = 01), combi 3 / 3
+69: 0.324 sec elapsed
+Running phenomic on p800 dataset 70 / 100, (h2s = 09, comm = 02, h2y = 05), combi 3 / 3
+70: 0.326 sec elapsed
+Running phenomic on p800 dataset 71 / 100, (h2s = 09, comm = 05, h2y = 05), combi 3 / 3
+69: 0.302 sec elapsed
+Running phenomic on p800 dataset 70 / 100, (h2s = 09, comm = 08, h2y = 09), combi 3 / 3
+70: 0.244 sec elapsed
+Running phenomic on p800 dataset 71 / 100, (h2s = 09, comm = 08, h2y = 07), combi 3 / 3
+70: 0.262 sec elapsed
+Running phenomic on p800 dataset 71 / 100, (h2s = 09, comm = 08, h2y = 05), combi 3 / 3
+70: 0.265 sec elapsed
+Running phenomic on p800 dataset 71 / 100, (h2s = 09, comm = 08, h2y = 03), combi 3 / 3
+69: 0.196 sec elapsed
+Running phenomic on p800 dataset 70 / 100, (h2s = 09, comm = 05, h2y = 03), combi 3 / 3
+70: 0.232 sec elapsed
+Running phenomic on p800 dataset 71 / 100, (h2s = 09, comm = 05, h2y = 09), combi 3 / 3
+70: 0.281 sec elapsed
+Running phenomic on p800 dataset 71 / 100, (h2s = 09, comm = 02, h2y = 07), combi 3 / 3
+70: 0.238 sec elapsed
+Running phenomic on p800 dataset 71 / 100, (h2s = 09, comm = 08, h2y = 01), combi 3 / 3
+70: 0.31 sec elapsed
+Running phenomic on p800 dataset 71 / 100, (h2s = 09, comm = 02, h2y = 09), combi 3 / 3
+70: 0.332 sec elapsed
+Running phenomic on p800 dataset 71 / 100, (h2s = 09, comm = 05, h2y = 07), combi 3 / 3
+69: 0.256 sec elapsed
+Running phenomic on p800 dataset 70 / 100, (h2s = 09, comm = 02, h2y = 01), combi 3 / 3
+69: 0.242 sec elapsed
+Running phenomic on p800 dataset 70 / 100, (h2s = 09, comm = 02, h2y = 03), combi 3 / 3
+70: 0.287 sec elapsed
+Running phenomic on p800 dataset 71 / 100, (h2s = 09, comm = 05, h2y = 01), combi 3 / 3
+71: 0.277 sec elapsed
+Running phenomic on p800 dataset 72 / 100, (h2s = 09, comm = 05, h2y = 05), combi 3 / 3
+71: 0.227 sec elapsed
+Running phenomic on p800 dataset 72 / 100, (h2s = 09, comm = 08, h2y = 07), combi 3 / 3
+70: 0.332 sec elapsed
+Running phenomic on p800 dataset 71 / 100, (h2s = 09, comm = 02, h2y = 05), combi 3 / 3
+70: 0.267 sec elapsed
+Running phenomic on p800 dataset 71 / 100, (h2s = 09, comm = 08, h2y = 09), combi 3 / 3
+71: 0.23 sec elapsed
+Running phenomic on p800 dataset 72 / 100, (h2s = 09, comm = 08, h2y = 05), combi 3 / 3
+71: 0.263 sec elapsed
+Running phenomic on p800 dataset 72 / 100, (h2s = 09, comm = 08, h2y = 03), combi 3 / 3
+71: 0.225 sec elapsed
+Running phenomic on p800 dataset 72 / 100, (h2s = 09, comm = 02, h2y = 07), combi 3 / 3
+71: 0.255 sec elapsed
+Running phenomic on p800 dataset 72 / 100, (h2s = 09, comm = 05, h2y = 09), combi 3 / 3
+70: 0.277 sec elapsed
+Running phenomic on p800 dataset 71 / 100, (h2s = 09, comm = 05, h2y = 03), combi 3 / 3
+71: 0.266 sec elapsed
+Running phenomic on p800 dataset 72 / 100, (h2s = 09, comm = 02, h2y = 09), combi 3 / 3
+71: 0.283 sec elapsed
+Running phenomic on p800 dataset 72 / 100, (h2s = 09, comm = 08, h2y = 01), combi 3 / 3
+71: 0.231 sec elapsed
+Running phenomic on p800 dataset 72 / 100, (h2s = 09, comm = 05, h2y = 07), combi 3 / 3
+70: 0.279 sec elapsed
+Running phenomic on p800 dataset 71 / 100, (h2s = 09, comm = 02, h2y = 01), combi 3 / 3
+70: 0.268 sec elapsed
+Running phenomic on p800 dataset 71 / 100, (h2s = 09, comm = 02, h2y = 03), combi 3 / 3
+71: 0.228 sec elapsed
+Running phenomic on p800 dataset 72 / 100, (h2s = 09, comm = 05, h2y = 01), combi 3 / 3
+72: 0.226 sec elapsed
+Running phenomic on p800 dataset 73 / 100, (h2s = 09, comm = 05, h2y = 05), combi 3 / 3
+71: 0.235 sec elapsed
+Running phenomic on p800 dataset 72 / 100, (h2s = 09, comm = 02, h2y = 05), combi 3 / 3
+72: 0.256 sec elapsed
+Running phenomic on p800 dataset 73 / 100, (h2s = 09, comm = 08, h2y = 07), combi 3 / 3
+71: 0.251 sec elapsed
+Running phenomic on p800 dataset 72 / 100, (h2s = 09, comm = 08, h2y = 09), combi 3 / 3
+72: 0.261 sec elapsed
+Running phenomic on p800 dataset 73 / 100, (h2s = 09, comm = 08, h2y = 05), combi 3 / 3
+72: 0.238 sec elapsed
+Running phenomic on p800 dataset 73 / 100, (h2s = 09, comm = 05, h2y = 09), combi 3 / 3
+72: 0.233 sec elapsed
+Running phenomic on p800 dataset 73 / 100, (h2s = 09, comm = 02, h2y = 07), combi 3 / 3
+72: 0.273 sec elapsed
+Running phenomic on p800 dataset 73 / 100, (h2s = 09, comm = 08, h2y = 01), combi 3 / 3
+72: 0.335 sec elapsed
+Running phenomic on p800 dataset 73 / 100, (h2s = 09, comm = 08, h2y = 03), combi 3 / 3
+72: 0.287 sec elapsed
+Running phenomic on p800 dataset 73 / 100, (h2s = 09, comm = 02, h2y = 09), combi 3 / 3
+71: 0.344 sec elapsed
+Running phenomic on p800 dataset 72 / 100, (h2s = 09, comm = 05, h2y = 03), combi 3 / 3
+72: 0.272 sec elapsed
+Running phenomic on p800 dataset 73 / 100, (h2s = 09, comm = 05, h2y = 07), combi 3 / 3
+71: 0.22 sec elapsed
+Running phenomic on p800 dataset 72 / 100, (h2s = 09, comm = 02, h2y = 01), combi 3 / 3
+71: 0.23 sec elapsed
+Running phenomic on p800 dataset 72 / 100, (h2s = 09, comm = 02, h2y = 03), combi 3 / 3
+72: 0.285 sec elapsed
+Running phenomic on p800 dataset 73 / 100, (h2s = 09, comm = 05, h2y = 01), combi 3 / 3
+73: 0.251 sec elapsed
+Running phenomic on p800 dataset 74 / 100, (h2s = 09, comm = 05, h2y = 05), combi 3 / 3
+73: 0.245 sec elapsed
+Running phenomic on p800 dataset 74 / 100, (h2s = 09, comm = 08, h2y = 07), combi 3 / 3
+72: 0.261 sec elapsed
+Running phenomic on p800 dataset 73 / 100, (h2s = 09, comm = 08, h2y = 09), combi 3 / 3
+72: 0.302 sec elapsed
+Running phenomic on p800 dataset 73 / 100, (h2s = 09, comm = 02, h2y = 05), combi 3 / 3
+73: 0.228 sec elapsed
+Running phenomic on p800 dataset 74 / 100, (h2s = 09, comm = 08, h2y = 05), combi 3 / 3
+73: 0.224 sec elapsed
+Running phenomic on p800 dataset 74 / 100, (h2s = 09, comm = 08, h2y = 03), combi 3 / 3
+73: 0.235 sec elapsed
+Running phenomic on p800 dataset 74 / 100, (h2s = 09, comm = 05, h2y = 09), combi 3 / 3
+73: 0.304 sec elapsed
+Running phenomic on p800 dataset 74 / 100, (h2s = 09, comm = 02, h2y = 07), combi 3 / 3
+73: 0.264 sec elapsed
+Running phenomic on p800 dataset 74 / 100, (h2s = 09, comm = 08, h2y = 01), combi 3 / 3
+72: 0.202 sec elapsed
+Running phenomic on p800 dataset 73 / 100, (h2s = 09, comm = 05, h2y = 03), combi 3 / 3
+73: 0.294 sec elapsed
+Running phenomic on p800 dataset 74 / 100, (h2s = 09, comm = 02, h2y = 09), combi 3 / 3
+73: 0.243 sec elapsed
+Running phenomic on p800 dataset 74 / 100, (h2s = 09, comm = 05, h2y = 07), combi 3 / 3
+72: 0.234 sec elapsed
+Running phenomic on p800 dataset 73 / 100, (h2s = 09, comm = 02, h2y = 01), combi 3 / 3
+72: 0.219 sec elapsed
+Running phenomic on p800 dataset 73 / 100, (h2s = 09, comm = 02, h2y = 03), combi 3 / 3
+73: 0.231 sec elapsed
+Running phenomic on p800 dataset 74 / 100, (h2s = 09, comm = 05, h2y = 01), combi 3 / 3
+74: 0.234 sec elapsed
+Running phenomic on p800 dataset 75 / 100, (h2s = 09, comm = 05, h2y = 05), combi 3 / 3
+74: 0.259 sec elapsed
+Running phenomic on p800 dataset 75 / 100, (h2s = 09, comm = 08, h2y = 07), combi 3 / 3
+74: 0.255 sec elapsed
+Running phenomic on p800 dataset 75 / 100, (h2s = 09, comm = 08, h2y = 05), combi 3 / 3
+73: 0.291 sec elapsed
+Running phenomic on p800 dataset 74 / 100, (h2s = 09, comm = 08, h2y = 09), combi 3 / 3
+73: 0.261 sec elapsed
+Running phenomic on p800 dataset 74 / 100, (h2s = 09, comm = 02, h2y = 05), combi 3 / 3
+74: 0.283 sec elapsed
+Running phenomic on p800 dataset 75 / 100, (h2s = 09, comm = 05, h2y = 09), combi 3 / 3
+74: 0.251 sec elapsed
+Running phenomic on p800 dataset 75 / 100, (h2s = 09, comm = 08, h2y = 03), combi 3 / 3
+74: 0.247 sec elapsed
+Running phenomic on p800 dataset 75 / 100, (h2s = 09, comm = 02, h2y = 09), combi 3 / 3
+74: 0.338 sec elapsed
+Running phenomic on p800 dataset 75 / 100, (h2s = 09, comm = 02, h2y = 07), combi 3 / 3
+73: 0.214 sec elapsed
+Running phenomic on p800 dataset 74 / 100, (h2s = 09, comm = 05, h2y = 03), combi 3 / 3
+74: 0.319 sec elapsed
+Running phenomic on p800 dataset 75 / 100, (h2s = 09, comm = 08, h2y = 01), combi 3 / 3
+74: 0.272 sec elapsed
+Running phenomic on p800 dataset 75 / 100, (h2s = 09, comm = 05, h2y = 07), combi 3 / 3
+73: 0.277 sec elapsed
+Running phenomic on p800 dataset 74 / 100, (h2s = 09, comm = 02, h2y = 01), combi 3 / 3
+73: 0.299 sec elapsed
+Running phenomic on p800 dataset 74 / 100, (h2s = 09, comm = 02, h2y = 03), combi 3 / 3
+75: 0.272 sec elapsed
+Running phenomic on p800 dataset 76 / 100, (h2s = 09, comm = 08, h2y = 07), combi 3 / 3
+75: 0.257 sec elapsed
+Running phenomic on p800 dataset 76 / 100, (h2s = 09, comm = 05, h2y = 05), combi 3 / 3
+74: 0.322 sec elapsed
+Running phenomic on p800 dataset 75 / 100, (h2s = 09, comm = 05, h2y = 01), combi 3 / 3
+75: 0.222 sec elapsed
+Running phenomic on p800 dataset 76 / 100, (h2s = 09, comm = 08, h2y = 05), combi 3 / 3
+74: 0.28 sec elapsed
+Running phenomic on p800 dataset 75 / 100, (h2s = 09, comm = 02, h2y = 05), combi 3 / 3
+74: 0.226 sec elapsed
+Running phenomic on p800 dataset 75 / 100, (h2s = 09, comm = 08, h2y = 09), combi 3 / 3
+75: 0.301 sec elapsed
+Running phenomic on p800 dataset 76 / 100, (h2s = 09, comm = 05, h2y = 09), combi 3 / 3
+75: 0.271 sec elapsed
+Running phenomic on p800 dataset 76 / 100, (h2s = 09, comm = 08, h2y = 03), combi 3 / 3
+75: 0.25 sec elapsed
+Running phenomic on p800 dataset 76 / 100, (h2s = 09, comm = 02, h2y = 07), combi 3 / 3
+75: 0.248 sec elapsed
+Running phenomic on p800 dataset 76 / 100, (h2s = 09, comm = 02, h2y = 09), combi 3 / 3
+74: 0.252 sec elapsed
+Running phenomic on p800 dataset 75 / 100, (h2s = 09, comm = 05, h2y = 03), combi 3 / 3
+75: 0.305 sec elapsed
+Running phenomic on p800 dataset 76 / 100, (h2s = 09, comm = 08, h2y = 01), combi 3 / 3
+75: 0.312 sec elapsed
+Running phenomic on p800 dataset 76 / 100, (h2s = 09, comm = 05, h2y = 07), combi 3 / 3
+74: 0.298 sec elapsed
+Running phenomic on p800 dataset 75 / 100, (h2s = 09, comm = 02, h2y = 01), combi 3 / 3
+74: 0.235 sec elapsed
+Running phenomic on p800 dataset 75 / 100, (h2s = 09, comm = 02, h2y = 03), combi 3 / 3
+76: 0.234 sec elapsed
+Running phenomic on p800 dataset 77 / 100, (h2s = 09, comm = 05, h2y = 05), combi 3 / 3
+76: 0.244 sec elapsed
+Running phenomic on p800 dataset 77 / 100, (h2s = 09, comm = 08, h2y = 07), combi 3 / 3
+75: 0.341 sec elapsed
+Running phenomic on p800 dataset 76 / 100, (h2s = 09, comm = 05, h2y = 01), combi 3 / 3
+75: 0.285 sec elapsed
+Running phenomic on p800 dataset 76 / 100, (h2s = 09, comm = 02, h2y = 05), combi 3 / 3
+76: 0.269 sec elapsed
+Running phenomic on p800 dataset 77 / 100, (h2s = 09, comm = 08, h2y = 05), combi 3 / 3
+75: 0.319 sec elapsed
+Running phenomic on p800 dataset 76 / 100, (h2s = 09, comm = 08, h2y = 09), combi 3 / 3
+76: 0.25 sec elapsed
+Running phenomic on p800 dataset 77 / 100, (h2s = 09, comm = 08, h2y = 03), combi 3 / 3
+76: 0.234 sec elapsed
+Running phenomic on p800 dataset 77 / 100, (h2s = 09, comm = 05, h2y = 09), combi 3 / 3
+76: 0.252 sec elapsed
+Running phenomic on p800 dataset 77 / 100, (h2s = 09, comm = 02, h2y = 07), combi 3 / 3
+75: 0.23 sec elapsed
+Running phenomic on p800 dataset 76 / 100, (h2s = 09, comm = 05, h2y = 03), combi 3 / 3
+76: 0.288 sec elapsed
+Running phenomic on p800 dataset 77 / 100, (h2s = 09, comm = 08, h2y = 01), combi 3 / 3
+76: 0.327 sec elapsed
+Running phenomic on p800 dataset 77 / 100, (h2s = 09, comm = 02, h2y = 09), combi 3 / 3
+76: 0.219 sec elapsed
+Running phenomic on p800 dataset 77 / 100, (h2s = 09, comm = 05, h2y = 07), combi 3 / 3
+75: 0.254 sec elapsed
+Running phenomic on p800 dataset 76 / 100, (h2s = 09, comm = 02, h2y = 01), combi 3 / 3
+75: 0.249 sec elapsed
+Running phenomic on p800 dataset 76 / 100, (h2s = 09, comm = 02, h2y = 03), combi 3 / 3
+77: 0.25 sec elapsed
+Running phenomic on p800 dataset 78 / 100, (h2s = 09, comm = 05, h2y = 05), combi 3 / 3
+77: 0.237 sec elapsed
+Running phenomic on p800 dataset 78 / 100, (h2s = 09, comm = 08, h2y = 07), combi 3 / 3
+76: 0.264 sec elapsed
+Running phenomic on p800 dataset 77 / 100, (h2s = 09, comm = 05, h2y = 01), combi 3 / 3
+76: 0.27 sec elapsed
+Running phenomic on p800 dataset 77 / 100, (h2s = 09, comm = 02, h2y = 05), combi 3 / 3
+77: 0.295 sec elapsed
+Running phenomic on p800 dataset 78 / 100, (h2s = 09, comm = 08, h2y = 05), combi 3 / 3
+76: 0.245 sec elapsed
+Running phenomic on p800 dataset 77 / 100, (h2s = 09, comm = 08, h2y = 09), combi 3 / 3
+77: 0.244 sec elapsed
+Running phenomic on p800 dataset 78 / 100, (h2s = 09, comm = 05, h2y = 09), combi 3 / 3
+77: 0.294 sec elapsed
+Running phenomic on p800 dataset 78 / 100, (h2s = 09, comm = 08, h2y = 03), combi 3 / 3
+76: 0.273 sec elapsed
+Running phenomic on p800 dataset 77 / 100, (h2s = 09, comm = 05, h2y = 03), combi 3 / 3
+77: 0.303 sec elapsed
+Running phenomic on p800 dataset 78 / 100, (h2s = 09, comm = 02, h2y = 07), combi 3 / 3
+77: 0.29 sec elapsed
+Running phenomic on p800 dataset 78 / 100, (h2s = 09, comm = 02, h2y = 09), combi 3 / 3
+77: 0.294 sec elapsed
+Running phenomic on p800 dataset 78 / 100, (h2s = 09, comm = 08, h2y = 01), combi 3 / 3
+77: 0.259 sec elapsed
+Running phenomic on p800 dataset 78 / 100, (h2s = 09, comm = 05, h2y = 07), combi 3 / 3
+76: 0.226 sec elapsed
+Running phenomic on p800 dataset 77 / 100, (h2s = 09, comm = 02, h2y = 01), combi 3 / 3
+76: 0.276 sec elapsed
+Running phenomic on p800 dataset 77 / 100, (h2s = 09, comm = 02, h2y = 03), combi 3 / 3
+78: 0.228 sec elapsed
+Running phenomic on p800 dataset 79 / 100, (h2s = 09, comm = 05, h2y = 05), combi 3 / 3
+78: 0.308 sec elapsed
+Running phenomic on p800 dataset 79 / 100, (h2s = 09, comm = 08, h2y = 07), combi 3 / 3
+77: 0.289 sec elapsed
+Running phenomic on p800 dataset 78 / 100, (h2s = 09, comm = 05, h2y = 01), combi 3 / 3
+78: 0.262 sec elapsed
+Running phenomic on p800 dataset 79 / 100, (h2s = 09, comm = 08, h2y = 05), combi 3 / 3
+77: 0.239 sec elapsed
+Running phenomic on p800 dataset 78 / 100, (h2s = 09, comm = 02, h2y = 05), combi 3 / 3
+77: 0.235 sec elapsed
+Running phenomic on p800 dataset 78 / 100, (h2s = 09, comm = 08, h2y = 09), combi 3 / 3
+78: 0.268 sec elapsed
+Running phenomic on p800 dataset 79 / 100, (h2s = 09, comm = 05, h2y = 09), combi 3 / 3
+78: 0.296 sec elapsed
+Running phenomic on p800 dataset 79 / 100, (h2s = 09, comm = 08, h2y = 03), combi 3 / 3
+78: 0.33 sec elapsed
+Running phenomic on p800 dataset 79 / 100, (h2s = 09, comm = 02, h2y = 07), combi 3 / 3
+77: 0.291 sec elapsed
+Running phenomic on p800 dataset 78 / 100, (h2s = 09, comm = 05, h2y = 03), combi 3 / 3
+78: 0.286 sec elapsed
+Running phenomic on p800 dataset 79 / 100, (h2s = 09, comm = 02, h2y = 09), combi 3 / 3
+78: 0.263 sec elapsed
+Running phenomic on p800 dataset 79 / 100, (h2s = 09, comm = 05, h2y = 07), combi 3 / 3
+77: 0.321 sec elapsed
+Running phenomic on p800 dataset 78 / 100, (h2s = 09, comm = 02, h2y = 01), combi 3 / 3
+78: 0.352 sec elapsed
+Running phenomic on p800 dataset 79 / 100, (h2s = 09, comm = 08, h2y = 01), combi 3 / 3
+77: 0.293 sec elapsed
+Running phenomic on p800 dataset 78 / 100, (h2s = 09, comm = 02, h2y = 03), combi 3 / 3
+79: 0.223 sec elapsed
+Running phenomic on p800 dataset 80 / 100, (h2s = 09, comm = 08, h2y = 07), combi 3 / 3
+79: 0.267 sec elapsed
+Running phenomic on p800 dataset 80 / 100, (h2s = 09, comm = 05, h2y = 05), combi 3 / 3
+78: 0.262 sec elapsed
+Running phenomic on p800 dataset 79 / 100, (h2s = 09, comm = 05, h2y = 01), combi 3 / 3
+78: 0.236 sec elapsed
+Running phenomic on p800 dataset 79 / 100, (h2s = 09, comm = 02, h2y = 05), combi 3 / 3
+79: 0.253 sec elapsed
+Running phenomic on p800 dataset 80 / 100, (h2s = 09, comm = 08, h2y = 05), combi 3 / 3
+78: 0.213 sec elapsed
+Running phenomic on p800 dataset 79 / 100, (h2s = 09, comm = 08, h2y = 09), combi 3 / 3
+79: 0.206 sec elapsed
+Running phenomic on p800 dataset 80 / 100, (h2s = 09, comm = 05, h2y = 09), combi 3 / 3
+79: 0.273 sec elapsed
+Running phenomic on p800 dataset 80 / 100, (h2s = 09, comm = 02, h2y = 07), combi 3 / 3
+78: 0.302 sec elapsed
+Running phenomic on p800 dataset 79 / 100, (h2s = 09, comm = 05, h2y = 03), combi 3 / 3
+79: 0.27 sec elapsed
+Running phenomic on p800 dataset 80 / 100, (h2s = 09, comm = 08, h2y = 03), combi 3 / 3
+79: 0.323 sec elapsed
+Running phenomic on p800 dataset 80 / 100, (h2s = 09, comm = 02, h2y = 09), combi 3 / 3
+78: 0.365 sec elapsed
+Running phenomic on p800 dataset 79 / 100, (h2s = 09, comm = 02, h2y = 01), combi 3 / 3
+79: 0.206 sec elapsed
+Running phenomic on p800 dataset 80 / 100, (h2s = 09, comm = 05, h2y = 07), combi 3 / 3
+79: 0.254 sec elapsed
+Running phenomic on p800 dataset 80 / 100, (h2s = 09, comm = 08, h2y = 01), combi 3 / 3
+78: 0.288 sec elapsed
+Running phenomic on p800 dataset 79 / 100, (h2s = 09, comm = 02, h2y = 03), combi 3 / 3
+80: 0.215 sec elapsed
+Running phenomic on p800 dataset 81 / 100, (h2s = 09, comm = 08, h2y = 07), combi 3 / 3
+80: 0.202 sec elapsed
+Running phenomic on p800 dataset 81 / 100, (h2s = 09, comm = 05, h2y = 05), combi 3 / 3
+79: 0.297 sec elapsed
+Running phenomic on p800 dataset 80 / 100, (h2s = 09, comm = 05, h2y = 01), combi 3 / 3
+79: 0.246 sec elapsed
+Running phenomic on p800 dataset 80 / 100, (h2s = 09, comm = 02, h2y = 05), combi 3 / 3
+80: 0.321 sec elapsed
+Running phenomic on p800 dataset 81 / 100, (h2s = 09, comm = 08, h2y = 05), combi 3 / 3
+79: 0.278 sec elapsed
+Running phenomic on p800 dataset 80 / 100, (h2s = 09, comm = 08, h2y = 09), combi 3 / 3
+80: 0.32 sec elapsed
+Running phenomic on p800 dataset 81 / 100, (h2s = 09, comm = 05, h2y = 09), combi 3 / 3
+79: 0.257 sec elapsed
+Running phenomic on p800 dataset 80 / 100, (h2s = 09, comm = 05, h2y = 03), combi 3 / 3
+80: 0.267 sec elapsed
+Running phenomic on p800 dataset 81 / 100, (h2s = 09, comm = 02, h2y = 07), combi 3 / 3
+80: 0.206 sec elapsed
+Running phenomic on p800 dataset 81 / 100, (h2s = 09, comm = 08, h2y = 03), combi 3 / 3
+80: 0.25 sec elapsed
+Running phenomic on p800 dataset 81 / 100, (h2s = 09, comm = 02, h2y = 09), combi 3 / 3
+79: 0.252 sec elapsed
+Running phenomic on p800 dataset 80 / 100, (h2s = 09, comm = 02, h2y = 01), combi 3 / 3
+80: 0.244 sec elapsed
+Running phenomic on p800 dataset 81 / 100, (h2s = 09, comm = 05, h2y = 07), combi 3 / 3
+80: 0.243 sec elapsed
+Running phenomic on p800 dataset 81 / 100, (h2s = 09, comm = 08, h2y = 01), combi 3 / 3
+79: 0.293 sec elapsed
+Running phenomic on p800 dataset 80 / 100, (h2s = 09, comm = 02, h2y = 03), combi 3 / 3
+81: 0.266 sec elapsed
+Running phenomic on p800 dataset 82 / 100, (h2s = 09, comm = 08, h2y = 07), combi 3 / 3
+81: 0.258 sec elapsed
+Running phenomic on p800 dataset 82 / 100, (h2s = 09, comm = 05, h2y = 05), combi 3 / 3
+80: 0.309 sec elapsed
+Running phenomic on p800 dataset 81 / 100, (h2s = 09, comm = 05, h2y = 01), combi 3 / 3
+81: 0.263 sec elapsed
+Running phenomic on p800 dataset 82 / 100, (h2s = 09, comm = 08, h2y = 05), combi 3 / 3
+80: 0.286 sec elapsed
+Running phenomic on p800 dataset 81 / 100, (h2s = 09, comm = 02, h2y = 05), combi 3 / 3
+80: 0.259 sec elapsed
+Running phenomic on p800 dataset 81 / 100, (h2s = 09, comm = 08, h2y = 09), combi 3 / 3
+81: 0.294 sec elapsed
+Running phenomic on p800 dataset 82 / 100, (h2s = 09, comm = 05, h2y = 09), combi 3 / 3
+80: 0.282 sec elapsed
+Running phenomic on p800 dataset 81 / 100, (h2s = 09, comm = 05, h2y = 03), combi 3 / 3
+81: 0.283 sec elapsed
+Running phenomic on p800 dataset 82 / 100, (h2s = 09, comm = 02, h2y = 07), combi 3 / 3
+81: 0.258 sec elapsed
+Running phenomic on p800 dataset 82 / 100, (h2s = 09, comm = 08, h2y = 03), combi 3 / 3
+81: 0.245 sec elapsed
+Running phenomic on p800 dataset 82 / 100, (h2s = 09, comm = 02, h2y = 09), combi 3 / 3
+81: 0.258 sec elapsed
+Running phenomic on p800 dataset 82 / 100, (h2s = 09, comm = 05, h2y = 07), combi 3 / 3
+80: 0.256 sec elapsed
+Running phenomic on p800 dataset 81 / 100, (h2s = 09, comm = 02, h2y = 01), combi 3 / 3
+81: 0.245 sec elapsed
+Running phenomic on p800 dataset 82 / 100, (h2s = 09, comm = 08, h2y = 01), combi 3 / 3
+82: 0.272 sec elapsed
+Running phenomic on p800 dataset 83 / 100, (h2s = 09, comm = 08, h2y = 07), combi 3 / 3
+80: 0.239 sec elapsed
+Running phenomic on p800 dataset 81 / 100, (h2s = 09, comm = 02, h2y = 03), combi 3 / 3
+82: 0.255 sec elapsed
+Running phenomic on p800 dataset 83 / 100, (h2s = 09, comm = 05, h2y = 05), combi 3 / 3
+81: 0.25 sec elapsed
+Running phenomic on p800 dataset 82 / 100, (h2s = 09, comm = 05, h2y = 01), combi 3 / 3
+82: 0.211 sec elapsed
+Running phenomic on p800 dataset 83 / 100, (h2s = 09, comm = 08, h2y = 05), combi 3 / 3
+81: 0.285 sec elapsed
+Running phenomic on p800 dataset 82 / 100, (h2s = 09, comm = 02, h2y = 05), combi 3 / 3
+81: 0.232 sec elapsed
+Running phenomic on p800 dataset 82 / 100, (h2s = 09, comm = 08, h2y = 09), combi 3 / 3
+82: 0.21 sec elapsed
+Running phenomic on p800 dataset 83 / 100, (h2s = 09, comm = 05, h2y = 09), combi 3 / 3
+81: 0.271 sec elapsed
+Running phenomic on p800 dataset 82 / 100, (h2s = 09, comm = 05, h2y = 03), combi 3 / 3
+82: 0.327 sec elapsed
+Running phenomic on p800 dataset 83 / 100, (h2s = 09, comm = 02, h2y = 07), combi 3 / 3
+82: 0.302 sec elapsed
+Running phenomic on p800 dataset 83 / 100, (h2s = 09, comm = 08, h2y = 03), combi 3 / 3
+82: 0.279 sec elapsed
+Running phenomic on p800 dataset 83 / 100, (h2s = 09, comm = 05, h2y = 07), combi 3 / 3
+82: 0.281 sec elapsed
+Running phenomic on p800 dataset 83 / 100, (h2s = 09, comm = 02, h2y = 09), combi 3 / 3
+82: 0.253 sec elapsed
+Running phenomic on p800 dataset 83 / 100, (h2s = 09, comm = 08, h2y = 01), combi 3 / 3
+81: 0.318 sec elapsed
+Running phenomic on p800 dataset 82 / 100, (h2s = 09, comm = 02, h2y = 01), combi 3 / 3
+83: 0.278 sec elapsed
+Running phenomic on p800 dataset 84 / 100, (h2s = 09, comm = 08, h2y = 07), combi 3 / 3
+81: 0.26 sec elapsed
+Running phenomic on p800 dataset 82 / 100, (h2s = 09, comm = 02, h2y = 03), combi 3 / 3
+83: 0.304 sec elapsed
+Running phenomic on p800 dataset 84 / 100, (h2s = 09, comm = 05, h2y = 05), combi 3 / 3
+82: 0.265 sec elapsed
+Running phenomic on p800 dataset 83 / 100, (h2s = 09, comm = 05, h2y = 01), combi 3 / 3
+82: 0.237 sec elapsed
+Running phenomic on p800 dataset 83 / 100, (h2s = 09, comm = 02, h2y = 05), combi 3 / 3
+83: 0.252 sec elapsed
+Running phenomic on p800 dataset 84 / 100, (h2s = 09, comm = 08, h2y = 05), combi 3 / 3
+82: 0.231 sec elapsed
+Running phenomic on p800 dataset 83 / 100, (h2s = 09, comm = 08, h2y = 09), combi 3 / 3
+83: 0.336 sec elapsed
+Running phenomic on p800 dataset 84 / 100, (h2s = 09, comm = 05, h2y = 09), combi 3 / 3
+82: 0.247 sec elapsed
+Running phenomic on p800 dataset 83 / 100, (h2s = 09, comm = 05, h2y = 03), combi 3 / 3
+83: 0.294 sec elapsed
+Running phenomic on p800 dataset 84 / 100, (h2s = 09, comm = 02, h2y = 07), combi 3 / 3
+83: 0.277 sec elapsed
+Running phenomic on p800 dataset 84 / 100, (h2s = 09, comm = 08, h2y = 03), combi 3 / 3
+83: 0.231 sec elapsed
+Running phenomic on p800 dataset 84 / 100, (h2s = 09, comm = 05, h2y = 07), combi 3 / 3
+82: 0.289 sec elapsed
+Running phenomic on p800 dataset 83 / 100, (h2s = 09, comm = 02, h2y = 01), combi 3 / 3
+83: 0.347 sec elapsed
+Running phenomic on p800 dataset 84 / 100, (h2s = 09, comm = 02, h2y = 09), combi 3 / 3
+83: 0.233 sec elapsed
+Running phenomic on p800 dataset 84 / 100, (h2s = 09, comm = 08, h2y = 01), combi 3 / 3
+84: 0.211 sec elapsed
+Running phenomic on p800 dataset 85 / 100, (h2s = 09, comm = 08, h2y = 07), combi 3 / 3
+84: 0.261 sec elapsed
+Running phenomic on p800 dataset 85 / 100, (h2s = 09, comm = 05, h2y = 05), combi 3 / 3
+83: 0.267 sec elapsed
+Running phenomic on p800 dataset 84 / 100, (h2s = 09, comm = 05, h2y = 01), combi 3 / 3
+82: 0.234 sec elapsed
+Running phenomic on p800 dataset 83 / 100, (h2s = 09, comm = 02, h2y = 03), combi 3 / 3
+83: 0.236 sec elapsed
+Running phenomic on p800 dataset 84 / 100, (h2s = 09, comm = 02, h2y = 05), combi 3 / 3
+84: 0.287 sec elapsed
+Running phenomic on p800 dataset 85 / 100, (h2s = 09, comm = 08, h2y = 05), combi 3 / 3
+83: 0.271 sec elapsed
+Running phenomic on p800 dataset 84 / 100, (h2s = 09, comm = 08, h2y = 09), combi 3 / 3
+84: 0.267 sec elapsed
+Running phenomic on p800 dataset 85 / 100, (h2s = 09, comm = 05, h2y = 09), combi 3 / 3
+84: 0.246 sec elapsed
+Running phenomic on p800 dataset 85 / 100, (h2s = 09, comm = 02, h2y = 07), combi 3 / 3
+84: 0.244 sec elapsed
+Running phenomic on p800 dataset 85 / 100, (h2s = 09, comm = 08, h2y = 03), combi 3 / 3
+84: 0.238 sec elapsed
+Running phenomic on p800 dataset 85 / 100, (h2s = 09, comm = 05, h2y = 07), combi 3 / 3
+83: 0.292 sec elapsed
+Running phenomic on p800 dataset 84 / 100, (h2s = 09, comm = 05, h2y = 03), combi 3 / 3
+83: 0.269 sec elapsed
+Running phenomic on p800 dataset 84 / 100, (h2s = 09, comm = 02, h2y = 01), combi 3 / 3
+84: 0.249 sec elapsed
+Running phenomic on p800 dataset 85 / 100, (h2s = 09, comm = 02, h2y = 09), combi 3 / 3
+84: 0.298 sec elapsed
+Running phenomic on p800 dataset 85 / 100, (h2s = 09, comm = 08, h2y = 01), combi 3 / 3
+85: 0.3 sec elapsed
+Running phenomic on p800 dataset 86 / 100, (h2s = 09, comm = 08, h2y = 07), combi 3 / 3
+83: 0.271 sec elapsed
+Running phenomic on p800 dataset 84 / 100, (h2s = 09, comm = 02, h2y = 03), combi 3 / 3
+85: 0.29 sec elapsed
+Running phenomic on p800 dataset 86 / 100, (h2s = 09, comm = 05, h2y = 05), combi 3 / 3
+84: 0.232 sec elapsed
+Running phenomic on p800 dataset 85 / 100, (h2s = 09, comm = 05, h2y = 01), combi 3 / 3
+84: 0.312 sec elapsed
+Running phenomic on p800 dataset 85 / 100, (h2s = 09, comm = 02, h2y = 05), combi 3 / 3
+85: 0.3 sec elapsed
+Running phenomic on p800 dataset 86 / 100, (h2s = 09, comm = 08, h2y = 05), combi 3 / 3
+84: 0.296 sec elapsed
+Running phenomic on p800 dataset 85 / 100, (h2s = 09, comm = 08, h2y = 09), combi 3 / 3
+85: 0.226 sec elapsed
+Running phenomic on p800 dataset 86 / 100, (h2s = 09, comm = 05, h2y = 09), combi 3 / 3
+85: 0.278 sec elapsed
+Running phenomic on p800 dataset 86 / 100, (h2s = 09, comm = 02, h2y = 07), combi 3 / 3
+85: 0.318 sec elapsed
+Running phenomic on p800 dataset 86 / 100, (h2s = 09, comm = 08, h2y = 03), combi 3 / 3
+85: 0.301 sec elapsed
+Running phenomic on p800 dataset 86 / 100, (h2s = 09, comm = 05, h2y = 07), combi 3 / 3
+84: 0.269 sec elapsed
+Running phenomic on p800 dataset 85 / 100, (h2s = 09, comm = 02, h2y = 01), combi 3 / 3
+84: 0.274 sec elapsed
+Running phenomic on p800 dataset 85 / 100, (h2s = 09, comm = 05, h2y = 03), combi 3 / 3
+85: 0.25 sec elapsed
+Running phenomic on p800 dataset 86 / 100, (h2s = 09, comm = 02, h2y = 09), combi 3 / 3
+85: 0.246 sec elapsed
+Running phenomic on p800 dataset 86 / 100, (h2s = 09, comm = 08, h2y = 01), combi 3 / 3
+86: 0.279 sec elapsed
+Running phenomic on p800 dataset 87 / 100, (h2s = 09, comm = 08, h2y = 07), combi 3 / 3
+86: 0.25 sec elapsed
+Running phenomic on p800 dataset 87 / 100, (h2s = 09, comm = 05, h2y = 05), combi 3 / 3
+84: 0.262 sec elapsed
+Running phenomic on p800 dataset 85 / 100, (h2s = 09, comm = 02, h2y = 03), combi 3 / 3
+85: 0.344 sec elapsed
+Running phenomic on p800 dataset 86 / 100, (h2s = 09, comm = 05, h2y = 01), combi 3 / 3
+85: 0.327 sec elapsed
+Running phenomic on p800 dataset 86 / 100, (h2s = 09, comm = 02, h2y = 05), combi 3 / 3
+86: 0.253 sec elapsed
+Running phenomic on p800 dataset 87 / 100, (h2s = 09, comm = 08, h2y = 05), combi 3 / 3
+85: 0.259 sec elapsed
+Running phenomic on p800 dataset 86 / 100, (h2s = 09, comm = 08, h2y = 09), combi 3 / 3
+86: 0.246 sec elapsed
+Running phenomic on p800 dataset 87 / 100, (h2s = 09, comm = 05, h2y = 09), combi 3 / 3
+86: 0.323 sec elapsed
+Running phenomic on p800 dataset 87 / 100, (h2s = 09, comm = 02, h2y = 07), combi 3 / 3
+86: 0.324 sec elapsed
+Running phenomic on p800 dataset 87 / 100, (h2s = 09, comm = 08, h2y = 03), combi 3 / 3
+86: 0.268 sec elapsed
+Running phenomic on p800 dataset 87 / 100, (h2s = 09, comm = 05, h2y = 07), combi 3 / 3
+85: 0.286 sec elapsed
+Running phenomic on p800 dataset 86 / 100, (h2s = 09, comm = 05, h2y = 03), combi 3 / 3
+86: 0.255 sec elapsed
+Running phenomic on p800 dataset 87 / 100, (h2s = 09, comm = 02, h2y = 09), combi 3 / 3
+85: 0.304 sec elapsed
+Running phenomic on p800 dataset 86 / 100, (h2s = 09, comm = 02, h2y = 01), combi 3 / 3
+86: 0.296 sec elapsed
+Running phenomic on p800 dataset 87 / 100, (h2s = 09, comm = 08, h2y = 01), combi 3 / 3
+87: 0.252 sec elapsed
+Running phenomic on p800 dataset 88 / 100, (h2s = 09, comm = 08, h2y = 07), combi 3 / 3
+87: 0.257 sec elapsed
+Running phenomic on p800 dataset 88 / 100, (h2s = 09, comm = 05, h2y = 05), combi 3 / 3
+85: 0.319 sec elapsed
+Running phenomic on p800 dataset 86 / 100, (h2s = 09, comm = 02, h2y = 03), combi 3 / 3
+86: 0.353 sec elapsed
+Running phenomic on p800 dataset 87 / 100, (h2s = 09, comm = 05, h2y = 01), combi 3 / 3
+86: 0.27 sec elapsed
+Running phenomic on p800 dataset 87 / 100, (h2s = 09, comm = 02, h2y = 05), combi 3 / 3
+87: 0.236 sec elapsed
+Running phenomic on p800 dataset 88 / 100, (h2s = 09, comm = 08, h2y = 05), combi 3 / 3
+86: 0.245 sec elapsed
+Running phenomic on p800 dataset 87 / 100, (h2s = 09, comm = 08, h2y = 09), combi 3 / 3
+87: 0.293 sec elapsed
+Running phenomic on p800 dataset 88 / 100, (h2s = 09, comm = 05, h2y = 09), combi 3 / 3
+87: 0.25 sec elapsed
+Running phenomic on p800 dataset 88 / 100, (h2s = 09, comm = 02, h2y = 07), combi 3 / 3
+87: 0.241 sec elapsed
+Running phenomic on p800 dataset 88 / 100, (h2s = 09, comm = 08, h2y = 03), combi 3 / 3
+86: 0.306 sec elapsed
+Running phenomic on p800 dataset 87 / 100, (h2s = 09, comm = 02, h2y = 01), combi 3 / 3
+86: 0.241 sec elapsed
+Running phenomic on p800 dataset 87 / 100, (h2s = 09, comm = 05, h2y = 03), combi 3 / 3
+87: 0.299 sec elapsed
+Running phenomic on p800 dataset 88 / 100, (h2s = 09, comm = 02, h2y = 09), combi 3 / 3
+87: 0.293 sec elapsed
+Running phenomic on p800 dataset 88 / 100, (h2s = 09, comm = 05, h2y = 07), combi 3 / 3
+87: 0.243 sec elapsed
+Running phenomic on p800 dataset 88 / 100, (h2s = 09, comm = 08, h2y = 01), combi 3 / 3
+88: 0.277 sec elapsed
+Running phenomic on p800 dataset 89 / 100, (h2s = 09, comm = 08, h2y = 07), combi 3 / 3
+88: 0.293 sec elapsed
+Running phenomic on p800 dataset 89 / 100, (h2s = 09, comm = 05, h2y = 05), combi 3 / 3
+87: 0.232 sec elapsed
+Running phenomic on p800 dataset 88 / 100, (h2s = 09, comm = 05, h2y = 01), combi 3 / 3
+86: 0.315 sec elapsed
+Running phenomic on p800 dataset 87 / 100, (h2s = 09, comm = 02, h2y = 03), combi 3 / 3
+88: 0.289 sec elapsed
+Running phenomic on p800 dataset 89 / 100, (h2s = 09, comm = 08, h2y = 05), combi 3 / 3
+87: 0.273 sec elapsed
+Running phenomic on p800 dataset 88 / 100, (h2s = 09, comm = 02, h2y = 05), combi 3 / 3
+88: 0.261 sec elapsed
+Running phenomic on p800 dataset 89 / 100, (h2s = 09, comm = 05, h2y = 09), combi 3 / 3
+87: 0.285 sec elapsed
+Running phenomic on p800 dataset 88 / 100, (h2s = 09, comm = 08, h2y = 09), combi 3 / 3
+88: 0.259 sec elapsed
+Running phenomic on p800 dataset 89 / 100, (h2s = 09, comm = 08, h2y = 03), combi 3 / 3
+88: 0.249 sec elapsed
+Running phenomic on p800 dataset 89 / 100, (h2s = 09, comm = 02, h2y = 07), combi 3 / 3
+87: 0.292 sec elapsed
+Running phenomic on p800 dataset 88 / 100, (h2s = 09, comm = 02, h2y = 01), combi 3 / 3
+88: 0.282 sec elapsed
+Running phenomic on p800 dataset 89 / 100, (h2s = 09, comm = 05, h2y = 07), combi 3 / 3
+87: 0.288 sec elapsed
+Running phenomic on p800 dataset 88 / 100, (h2s = 09, comm = 05, h2y = 03), combi 3 / 3
+88: 0.284 sec elapsed
+Running phenomic on p800 dataset 89 / 100, (h2s = 09, comm = 02, h2y = 09), combi 3 / 3
+88: 0.3 sec elapsed
+Running phenomic on p800 dataset 89 / 100, (h2s = 09, comm = 08, h2y = 01), combi 3 / 3
+89: 0.287 sec elapsed
+Running phenomic on p800 dataset 90 / 100, (h2s = 09, comm = 08, h2y = 07), combi 3 / 3
+89: 0.252 sec elapsed
+Running phenomic on p800 dataset 90 / 100, (h2s = 09, comm = 05, h2y = 05), combi 3 / 3
+88: 0.238 sec elapsed
+Running phenomic on p800 dataset 89 / 100, (h2s = 09, comm = 05, h2y = 01), combi 3 / 3
+87: 0.29 sec elapsed
+Running phenomic on p800 dataset 88 / 100, (h2s = 09, comm = 02, h2y = 03), combi 3 / 3
+89: 0.291 sec elapsed
+Running phenomic on p800 dataset 90 / 100, (h2s = 09, comm = 08, h2y = 05), combi 3 / 3
+89: 0.23 sec elapsed
+Running phenomic on p800 dataset 90 / 100, (h2s = 09, comm = 05, h2y = 09), combi 3 / 3
+88: 0.31 sec elapsed
+Running phenomic on p800 dataset 89 / 100, (h2s = 09, comm = 02, h2y = 05), combi 3 / 3
+88: 0.295 sec elapsed
+Running phenomic on p800 dataset 89 / 100, (h2s = 09, comm = 08, h2y = 09), combi 3 / 3
+89: 0.283 sec elapsed
+Running phenomic on p800 dataset 90 / 100, (h2s = 09, comm = 08, h2y = 03), combi 3 / 3
+89: 0.314 sec elapsed
+Running phenomic on p800 dataset 90 / 100, (h2s = 09, comm = 02, h2y = 07), combi 3 / 3
+89: 0.255 sec elapsed
+Running phenomic on p800 dataset 90 / 100, (h2s = 09, comm = 05, h2y = 07), combi 3 / 3
+88: 0.316 sec elapsed
+Running phenomic on p800 dataset 89 / 100, (h2s = 09, comm = 05, h2y = 03), combi 3 / 3
+88: 0.276 sec elapsed
+Running phenomic on p800 dataset 89 / 100, (h2s = 09, comm = 02, h2y = 01), combi 3 / 3
+89: 0.282 sec elapsed
+Running phenomic on p800 dataset 90 / 100, (h2s = 09, comm = 08, h2y = 01), combi 3 / 3
+89: 0.328 sec elapsed
+Running phenomic on p800 dataset 90 / 100, (h2s = 09, comm = 02, h2y = 09), combi 3 / 3
+90: 0.257 sec elapsed
+Running phenomic on p800 dataset 91 / 100, (h2s = 09, comm = 08, h2y = 07), combi 3 / 3
+90: 0.267 sec elapsed
+Running phenomic on p800 dataset 91 / 100, (h2s = 09, comm = 05, h2y = 05), combi 3 / 3
+89: 0.254 sec elapsed
+Running phenomic on p800 dataset 90 / 100, (h2s = 09, comm = 05, h2y = 01), combi 3 / 3
+88: 0.266 sec elapsed
+Running phenomic on p800 dataset 89 / 100, (h2s = 09, comm = 02, h2y = 03), combi 3 / 3
+90: 0.247 sec elapsed
+Running phenomic on p800 dataset 91 / 100, (h2s = 09, comm = 08, h2y = 05), combi 3 / 3
+89: 0.233 sec elapsed
+Running phenomic on p800 dataset 90 / 100, (h2s = 09, comm = 02, h2y = 05), combi 3 / 3
+90: 0.278 sec elapsed
+Running phenomic on p800 dataset 91 / 100, (h2s = 09, comm = 05, h2y = 09), combi 3 / 3
+89: 0.271 sec elapsed
+Running phenomic on p800 dataset 90 / 100, (h2s = 09, comm = 08, h2y = 09), combi 3 / 3
+90: 0.299 sec elapsed
+Running phenomic on p800 dataset 91 / 100, (h2s = 09, comm = 08, h2y = 03), combi 3 / 3
+90: 0.315 sec elapsed
+Running phenomic on p800 dataset 91 / 100, (h2s = 09, comm = 02, h2y = 07), combi 3 / 3
+90: 0.23 sec elapsed
+Running phenomic on p800 dataset 91 / 100, (h2s = 09, comm = 05, h2y = 07), combi 3 / 3
+89: 0.264 sec elapsed
+Running phenomic on p800 dataset 90 / 100, (h2s = 09, comm = 05, h2y = 03), combi 3 / 3
+89: 0.252 sec elapsed
+Running phenomic on p800 dataset 90 / 100, (h2s = 09, comm = 02, h2y = 01), combi 3 / 3
+90: 0.249 sec elapsed
+Running phenomic on p800 dataset 91 / 100, (h2s = 09, comm = 08, h2y = 01), combi 3 / 3
+90: 0.274 sec elapsed
+Running phenomic on p800 dataset 91 / 100, (h2s = 09, comm = 02, h2y = 09), combi 3 / 3
+91: 0.241 sec elapsed
+Running phenomic on p800 dataset 92 / 100, (h2s = 09, comm = 08, h2y = 07), combi 3 / 3
+91: 0.228 sec elapsed
+Running phenomic on p800 dataset 92 / 100, (h2s = 09, comm = 05, h2y = 05), combi 3 / 3
+89: 0.269 sec elapsed
+Running phenomic on p800 dataset 90 / 100, (h2s = 09, comm = 02, h2y = 03), combi 3 / 3
+90: 0.253 sec elapsed
+Running phenomic on p800 dataset 91 / 100, (h2s = 09, comm = 05, h2y = 01), combi 3 / 3
+91: 0.302 sec elapsed
+Running phenomic on p800 dataset 92 / 100, (h2s = 09, comm = 08, h2y = 05), combi 3 / 3
+91: 0.232 sec elapsed
+Running phenomic on p800 dataset 92 / 100, (h2s = 09, comm = 05, h2y = 09), combi 3 / 3
+90: 0.314 sec elapsed
+Running phenomic on p800 dataset 91 / 100, (h2s = 09, comm = 02, h2y = 05), combi 3 / 3
+90: 0.26 sec elapsed
+Running phenomic on p800 dataset 91 / 100, (h2s = 09, comm = 08, h2y = 09), combi 3 / 3
+91: 0.27 sec elapsed
+Running phenomic on p800 dataset 92 / 100, (h2s = 09, comm = 08, h2y = 03), combi 3 / 3
+91: 0.242 sec elapsed
+Running phenomic on p800 dataset 92 / 100, (h2s = 09, comm = 02, h2y = 07), combi 3 / 3
+91: 0.219 sec elapsed
+Running phenomic on p800 dataset 92 / 100, (h2s = 09, comm = 05, h2y = 07), combi 3 / 3
+90: 0.242 sec elapsed
+Running phenomic on p800 dataset 91 / 100, (h2s = 09, comm = 02, h2y = 01), combi 3 / 3
+90: 0.254 sec elapsed
+Running phenomic on p800 dataset 91 / 100, (h2s = 09, comm = 05, h2y = 03), combi 3 / 3
+91: 0.267 sec elapsed
+Running phenomic on p800 dataset 92 / 100, (h2s = 09, comm = 08, h2y = 01), combi 3 / 3
+91: 0.25 sec elapsed
+Running phenomic on p800 dataset 92 / 100, (h2s = 09, comm = 02, h2y = 09), combi 3 / 3
+92: 0.288 sec elapsed
+Running phenomic on p800 dataset 93 / 100, (h2s = 09, comm = 08, h2y = 07), combi 3 / 3
+92: 0.231 sec elapsed
+Running phenomic on p800 dataset 93 / 100, (h2s = 09, comm = 05, h2y = 05), combi 3 / 3
+90: 0.321 sec elapsed
+Running phenomic on p800 dataset 91 / 100, (h2s = 09, comm = 02, h2y = 03), combi 3 / 3
+91: 0.242 sec elapsed
+Running phenomic on p800 dataset 92 / 100, (h2s = 09, comm = 05, h2y = 01), combi 3 / 3
+92: 0.237 sec elapsed
+Running phenomic on p800 dataset 93 / 100, (h2s = 09, comm = 05, h2y = 09), combi 3 / 3
+92: 0.327 sec elapsed
+Running phenomic on p800 dataset 93 / 100, (h2s = 09, comm = 08, h2y = 05), combi 3 / 3
+91: 0.221 sec elapsed
+Running phenomic on p800 dataset 92 / 100, (h2s = 09, comm = 08, h2y = 09), combi 3 / 3
+91: 0.262 sec elapsed
+Running phenomic on p800 dataset 92 / 100, (h2s = 09, comm = 02, h2y = 05), combi 3 / 3
+92: 0.244 sec elapsed
+Running phenomic on p800 dataset 93 / 100, (h2s = 09, comm = 08, h2y = 03), combi 3 / 3
+91: 0.256 sec elapsed
+Running phenomic on p800 dataset 92 / 100, (h2s = 09, comm = 02, h2y = 01), combi 3 / 3
+92: 0.359 sec elapsed
+Running phenomic on p800 dataset 93 / 100, (h2s = 09, comm = 05, h2y = 07), combi 3 / 3
+92: 0.324 sec elapsed
+Running phenomic on p800 dataset 93 / 100, (h2s = 09, comm = 02, h2y = 07), combi 3 / 3
+91: 0.269 sec elapsed
+Running phenomic on p800 dataset 92 / 100, (h2s = 09, comm = 05, h2y = 03), combi 3 / 3
+92: 0.259 sec elapsed
+Running phenomic on p800 dataset 93 / 100, (h2s = 09, comm = 08, h2y = 01), combi 3 / 3
+93: 0.257 sec elapsed
+Running phenomic on p800 dataset 94 / 100, (h2s = 09, comm = 08, h2y = 07), combi 3 / 3
+92: 0.293 sec elapsed
+Running phenomic on p800 dataset 93 / 100, (h2s = 09, comm = 02, h2y = 09), combi 3 / 3
+93: 0.235 sec elapsed
+Running phenomic on p800 dataset 94 / 100, (h2s = 09, comm = 05, h2y = 05), combi 3 / 3
+92: 0.263 sec elapsed
+Running phenomic on p800 dataset 93 / 100, (h2s = 09, comm = 05, h2y = 01), combi 3 / 3
+91: 0.263 sec elapsed
+Running phenomic on p800 dataset 92 / 100, (h2s = 09, comm = 02, h2y = 03), combi 3 / 3
+93: 0.246 sec elapsed
+Running phenomic on p800 dataset 94 / 100, (h2s = 09, comm = 08, h2y = 05), combi 3 / 3
+93: 0.293 sec elapsed
+Running phenomic on p800 dataset 94 / 100, (h2s = 09, comm = 05, h2y = 09), combi 3 / 3
+92: 0.214 sec elapsed
+Running phenomic on p800 dataset 93 / 100, (h2s = 09, comm = 02, h2y = 05), combi 3 / 3
+92: 0.275 sec elapsed
+Running phenomic on p800 dataset 93 / 100, (h2s = 09, comm = 08, h2y = 09), combi 3 / 3
+93: 0.223 sec elapsed
+Running phenomic on p800 dataset 94 / 100, (h2s = 09, comm = 08, h2y = 03), combi 3 / 3
+93: 0.238 sec elapsed
+Running phenomic on p800 dataset 94 / 100, (h2s = 09, comm = 05, h2y = 07), combi 3 / 3
+92: 0.256 sec elapsed
+Running phenomic on p800 dataset 93 / 100, (h2s = 09, comm = 02, h2y = 01), combi 3 / 3
+93: 0.308 sec elapsed
+Running phenomic on p800 dataset 94 / 100, (h2s = 09, comm = 02, h2y = 07), combi 3 / 3
+92: 0.254 sec elapsed
+Running phenomic on p800 dataset 93 / 100, (h2s = 09, comm = 05, h2y = 03), combi 3 / 3
+93: 0.322 sec elapsed
+Running phenomic on p800 dataset 94 / 100, (h2s = 09, comm = 08, h2y = 01), combi 3 / 3
+94: 0.231 sec elapsed
+Running phenomic on p800 dataset 95 / 100, (h2s = 09, comm = 08, h2y = 07), combi 3 / 3
+93: 0.307 sec elapsed
+Running phenomic on p800 dataset 94 / 100, (h2s = 09, comm = 02, h2y = 09), combi 3 / 3
+94: 0.287 sec elapsed
+Running phenomic on p800 dataset 95 / 100, (h2s = 09, comm = 05, h2y = 05), combi 3 / 3
+93: 0.238 sec elapsed
+Running phenomic on p800 dataset 94 / 100, (h2s = 09, comm = 05, h2y = 01), combi 3 / 3
+92: 0.318 sec elapsed
+Running phenomic on p800 dataset 93 / 100, (h2s = 09, comm = 02, h2y = 03), combi 3 / 3
+94: 0.25 sec elapsed
+Running phenomic on p800 dataset 95 / 100, (h2s = 09, comm = 08, h2y = 05), combi 3 / 3
+94: 0.285 sec elapsed
+Running phenomic on p800 dataset 95 / 100, (h2s = 09, comm = 05, h2y = 09), combi 3 / 3
+93: 0.255 sec elapsed
+Running phenomic on p800 dataset 94 / 100, (h2s = 09, comm = 02, h2y = 05), combi 3 / 3
+93: 0.321 sec elapsed
+Running phenomic on p800 dataset 94 / 100, (h2s = 09, comm = 08, h2y = 09), combi 3 / 3
+94: 0.247 sec elapsed
+Running phenomic on p800 dataset 95 / 100, (h2s = 09, comm = 08, h2y = 03), combi 3 / 3
+94: 0.265 sec elapsed
+Running phenomic on p800 dataset 95 / 100, (h2s = 09, comm = 05, h2y = 07), combi 3 / 3
+93: 0.302 sec elapsed
+Running phenomic on p800 dataset 94 / 100, (h2s = 09, comm = 02, h2y = 01), combi 3 / 3
+94: 0.284 sec elapsed
+Running phenomic on p800 dataset 95 / 100, (h2s = 09, comm = 02, h2y = 07), combi 3 / 3
+93: 0.272 sec elapsed
+Running phenomic on p800 dataset 94 / 100, (h2s = 09, comm = 05, h2y = 03), combi 3 / 3
+94: 0.305 sec elapsed
+Running phenomic on p800 dataset 95 / 100, (h2s = 09, comm = 08, h2y = 01), combi 3 / 3
+94: 0.276 sec elapsed
+Running phenomic on p800 dataset 95 / 100, (h2s = 09, comm = 02, h2y = 09), combi 3 / 3
+95: 0.249 sec elapsed
+Running phenomic on p800 dataset 96 / 100, (h2s = 09, comm = 08, h2y = 07), combi 3 / 3
+95: 0.242 sec elapsed
+Running phenomic on p800 dataset 96 / 100, (h2s = 09, comm = 05, h2y = 05), combi 3 / 3
+94: 0.242 sec elapsed
+Running phenomic on p800 dataset 95 / 100, (h2s = 09, comm = 05, h2y = 01), combi 3 / 3
+93: 0.288 sec elapsed
+Running phenomic on p800 dataset 94 / 100, (h2s = 09, comm = 02, h2y = 03), combi 3 / 3
+95: 0.259 sec elapsed
+Running phenomic on p800 dataset 96 / 100, (h2s = 09, comm = 05, h2y = 09), combi 3 / 3
+95: 0.32 sec elapsed
+Running phenomic on p800 dataset 96 / 100, (h2s = 09, comm = 08, h2y = 05), combi 3 / 3
+94: 0.296 sec elapsed
+Running phenomic on p800 dataset 95 / 100, (h2s = 09, comm = 02, h2y = 05), combi 3 / 3
+94: 0.206 sec elapsed
+Running phenomic on p800 dataset 95 / 100, (h2s = 09, comm = 08, h2y = 09), combi 3 / 3
+95: 0.223 sec elapsed
+Running phenomic on p800 dataset 96 / 100, (h2s = 09, comm = 08, h2y = 03), combi 3 / 3
+95: 0.234 sec elapsed
+Running phenomic on p800 dataset 96 / 100, (h2s = 09, comm = 05, h2y = 07), combi 3 / 3
+94: 0.361 sec elapsed
+Running phenomic on p800 dataset 95 / 100, (h2s = 09, comm = 02, h2y = 01), combi 3 / 3
+95: 0.293 sec elapsed
+Running phenomic on p800 dataset 96 / 100, (h2s = 09, comm = 02, h2y = 07), combi 3 / 3
+94: 0.303 sec elapsed
+Running phenomic on p800 dataset 95 / 100, (h2s = 09, comm = 05, h2y = 03), combi 3 / 3
+95: 0.227 sec elapsed
+Running phenomic on p800 dataset 96 / 100, (h2s = 09, comm = 08, h2y = 01), combi 3 / 3
+96: 0.316 sec elapsed
+Running phenomic on p800 dataset 97 / 100, (h2s = 09, comm = 08, h2y = 07), combi 3 / 3
+95: 0.329 sec elapsed
+Running phenomic on p800 dataset 96 / 100, (h2s = 09, comm = 02, h2y = 09), combi 3 / 3
+96: 0.239 sec elapsed
+Running phenomic on p800 dataset 97 / 100, (h2s = 09, comm = 05, h2y = 05), combi 3 / 3
+95: 0.232 sec elapsed
+Running phenomic on p800 dataset 96 / 100, (h2s = 09, comm = 05, h2y = 01), combi 3 / 3
+94: 0.271 sec elapsed
+Running phenomic on p800 dataset 95 / 100, (h2s = 09, comm = 02, h2y = 03), combi 3 / 3
+96: 0.23 sec elapsed
+Running phenomic on p800 dataset 97 / 100, (h2s = 09, comm = 05, h2y = 09), combi 3 / 3
+96: 0.226 sec elapsed
+Running phenomic on p800 dataset 97 / 100, (h2s = 09, comm = 08, h2y = 05), combi 3 / 3
+95: 0.272 sec elapsed
+Running phenomic on p800 dataset 96 / 100, (h2s = 09, comm = 02, h2y = 05), combi 3 / 3
+96: 0.27 sec elapsed
+Running phenomic on p800 dataset 97 / 100, (h2s = 09, comm = 08, h2y = 03), combi 3 / 3
+95: 0.24 sec elapsed
+Running phenomic on p800 dataset 96 / 100, (h2s = 09, comm = 08, h2y = 09), combi 3 / 3
+95: 0.216 sec elapsed
+Running phenomic on p800 dataset 96 / 100, (h2s = 09, comm = 02, h2y = 01), combi 3 / 3
+96: 0.242 sec elapsed
+Running phenomic on p800 dataset 97 / 100, (h2s = 09, comm = 05, h2y = 07), combi 3 / 3
+96: 0.281 sec elapsed
+Running phenomic on p800 dataset 97 / 100, (h2s = 09, comm = 02, h2y = 07), combi 3 / 3
+95: 0.335 sec elapsed
+Running phenomic on p800 dataset 96 / 100, (h2s = 09, comm = 05, h2y = 03), combi 3 / 3
+96: 0.262 sec elapsed
+Running phenomic on p800 dataset 97 / 100, (h2s = 09, comm = 08, h2y = 01), combi 3 / 3
+97: 0.322 sec elapsed
+Running phenomic on p800 dataset 98 / 100, (h2s = 09, comm = 08, h2y = 07), combi 3 / 3
+96: 0.3 sec elapsed
+Running phenomic on p800 dataset 97 / 100, (h2s = 09, comm = 02, h2y = 09), combi 3 / 3
+97: 0.294 sec elapsed
+Running phenomic on p800 dataset 98 / 100, (h2s = 09, comm = 05, h2y = 05), combi 3 / 3
+96: 0.298 sec elapsed
+Running phenomic on p800 dataset 97 / 100, (h2s = 09, comm = 05, h2y = 01), combi 3 / 3
+97: 0.334 sec elapsed
+Running phenomic on p800 dataset 98 / 100, (h2s = 09, comm = 05, h2y = 09), combi 3 / 3
+95: 0.289 sec elapsed
+Running phenomic on p800 dataset 96 / 100, (h2s = 09, comm = 02, h2y = 03), combi 3 / 3
+97: 0.245 sec elapsed
+Running phenomic on p800 dataset 98 / 100, (h2s = 09, comm = 08, h2y = 05), combi 3 / 3
+96: 0.242 sec elapsed
+Running phenomic on p800 dataset 97 / 100, (h2s = 09, comm = 02, h2y = 05), combi 3 / 3
+97: 0.232 sec elapsed
+Running phenomic on p800 dataset 98 / 100, (h2s = 09, comm = 08, h2y = 03), combi 3 / 3
+96: 0.291 sec elapsed
+Running phenomic on p800 dataset 97 / 100, (h2s = 09, comm = 08, h2y = 09), combi 3 / 3
+96: 0.289 sec elapsed
+Running phenomic on p800 dataset 97 / 100, (h2s = 09, comm = 02, h2y = 01), combi 3 / 3
+97: 0.273 sec elapsed
+Running phenomic on p800 dataset 98 / 100, (h2s = 09, comm = 05, h2y = 07), combi 3 / 3
+97: 0.254 sec elapsed
+Running phenomic on p800 dataset 98 / 100, (h2s = 09, comm = 02, h2y = 07), combi 3 / 3
+96: 0.244 sec elapsed
+Running phenomic on p800 dataset 97 / 100, (h2s = 09, comm = 05, h2y = 03), combi 3 / 3
+97: 0.232 sec elapsed
+Running phenomic on p800 dataset 98 / 100, (h2s = 09, comm = 08, h2y = 01), combi 3 / 3
+98: 0.267 sec elapsed
+Running phenomic on p800 dataset 99 / 100, (h2s = 09, comm = 08, h2y = 07), combi 3 / 3
+97: 0.251 sec elapsed
+Running phenomic on p800 dataset 98 / 100, (h2s = 09, comm = 02, h2y = 09), combi 3 / 3
+98: 0.246 sec elapsed
+Running phenomic on p800 dataset 99 / 100, (h2s = 09, comm = 05, h2y = 05), combi 3 / 3
+97: 0.225 sec elapsed
+Running phenomic on p800 dataset 98 / 100, (h2s = 09, comm = 05, h2y = 01), combi 3 / 3
+98: 0.272 sec elapsed
+Running phenomic on p800 dataset 99 / 100, (h2s = 09, comm = 05, h2y = 09), combi 3 / 3
+96: 0.269 sec elapsed
+Running phenomic on p800 dataset 97 / 100, (h2s = 09, comm = 02, h2y = 03), combi 3 / 3
+98: 0.313 sec elapsed
+Running phenomic on p800 dataset 99 / 100, (h2s = 09, comm = 08, h2y = 05), combi 3 / 3
+97: 0.307 sec elapsed
+Running phenomic on p800 dataset 98 / 100, (h2s = 09, comm = 02, h2y = 05), combi 3 / 3
+98: 0.301 sec elapsed
+Running phenomic on p800 dataset 99 / 100, (h2s = 09, comm = 08, h2y = 03), combi 3 / 3
+97: 0.263 sec elapsed
+Running phenomic on p800 dataset 98 / 100, (h2s = 09, comm = 08, h2y = 09), combi 3 / 3
+97: 0.31 sec elapsed
+Running phenomic on p800 dataset 98 / 100, (h2s = 09, comm = 02, h2y = 01), combi 3 / 3
+98: 0.248 sec elapsed
+Running phenomic on p800 dataset 99 / 100, (h2s = 09, comm = 05, h2y = 07), combi 3 / 3
+98: 0.243 sec elapsed
+Running phenomic on p800 dataset 99 / 100, (h2s = 09, comm = 02, h2y = 07), combi 3 / 3
+98: 0.248 sec elapsed
+Running phenomic on p800 dataset 99 / 100, (h2s = 09, comm = 08, h2y = 01), combi 3 / 3
+97: 0.333 sec elapsed
+Running phenomic on p800 dataset 98 / 100, (h2s = 09, comm = 05, h2y = 03), combi 3 / 3
+99: 0.343 sec elapsed
+Running phenomic on p800 dataset 100 / 100, (h2s = 09, comm = 08, h2y = 07), combi 3 / 3
+98: 0.256 sec elapsed
+Running phenomic on p800 dataset 99 / 100, (h2s = 09, comm = 02, h2y = 09), combi 3 / 3
+99: 0.221 sec elapsed
+Running phenomic on p800 dataset 100 / 100, (h2s = 09, comm = 05, h2y = 05), combi 3 / 3
+98: 0.242 sec elapsed
+Running phenomic on p800 dataset 99 / 100, (h2s = 09, comm = 05, h2y = 01), combi 3 / 3
+99: 0.247 sec elapsed
+Running phenomic on p800 dataset 100 / 100, (h2s = 09, comm = 05, h2y = 09), combi 3 / 3
+99: 0.24 sec elapsed
+Running phenomic on p800 dataset 100 / 100, (h2s = 09, comm = 08, h2y = 05), combi 3 / 3
+97: 0.257 sec elapsed
+Running phenomic on p800 dataset 98 / 100, (h2s = 09, comm = 02, h2y = 03), combi 3 / 3
+98: 0.253 sec elapsed
+Running phenomic on p800 dataset 99 / 100, (h2s = 09, comm = 02, h2y = 05), combi 3 / 3
+99: 0.246 sec elapsed
+Running phenomic on p800 dataset 100 / 100, (h2s = 09, comm = 08, h2y = 03), combi 3 / 3
+98: 0.242 sec elapsed
+Running phenomic on p800 dataset 99 / 100, (h2s = 09, comm = 08, h2y = 09), combi 3 / 3
+98: 0.247 sec elapsed
+Running phenomic on p800 dataset 99 / 100, (h2s = 09, comm = 02, h2y = 01), combi 3 / 3
+99: 0.288 sec elapsed
+Running phenomic on p800 dataset 100 / 100, (h2s = 09, comm = 05, h2y = 07), combi 3 / 3
+99: 0.31 sec elapsed
+Running phenomic on p800 dataset 100 / 100, (h2s = 09, comm = 02, h2y = 07), combi 3 / 3
+99: 0.307 sec elapsed
+Running phenomic on p800 dataset 100 / 100, (h2s = 09, comm = 08, h2y = 01), combi 3 / 3
+98: 0.288 sec elapsed
+Running phenomic on p800 dataset 99 / 100, (h2s = 09, comm = 05, h2y = 03), combi 3 / 3
+99: 0.252 sec elapsed
+Running phenomic on p800 dataset 100 / 100, (h2s = 09, comm = 02, h2y = 09), combi 3 / 3
+100: 0.316 sec elapsed
+100: 0.231 sec elapsed
+99: 0.286 sec elapsed
+Running phenomic on p800 dataset 100 / 100, (h2s = 09, comm = 05, h2y = 01), combi 3 / 3
+100: 0.241 sec elapsed
+98: 0.239 sec elapsed
+Running phenomic on p800 dataset 99 / 100, (h2s = 09, comm = 02, h2y = 03), combi 3 / 3
+100: 0.247 sec elapsed
+100: 0.205 sec elapsed
+99: 0.2 sec elapsed
+Running phenomic on p800 dataset 100 / 100, (h2s = 09, comm = 02, h2y = 05), combi 3 / 3
+99: 0.188 sec elapsed
+Running phenomic on p800 dataset 100 / 100, (h2s = 09, comm = 02, h2y = 01), combi 3 / 3
+99: 0.245 sec elapsed
+Running phenomic on p800 dataset 100 / 100, (h2s = 09, comm = 08, h2y = 09), combi 3 / 3
+100: 0.187 sec elapsed
+99: 0.181 sec elapsed
+Running phenomic on p800 dataset 100 / 100, (h2s = 09, comm = 05, h2y = 03), combi 3 / 3
+100: 0.183 sec elapsed
+100: 0.167 sec elapsed
+100: 0.171 sec elapsed
+100: 0.164 sec elapsed
+99: 0.141 sec elapsed
+Running phenomic on p800 dataset 100 / 100, (h2s = 09, comm = 02, h2y = 03), combi 3 / 3
+100: 0.162 sec elapsed
+100: 0.133 sec elapsed
+100: 0.155 sec elapsed
+100: 0.132 sec elapsed
+100: 0.134 sec elapsed

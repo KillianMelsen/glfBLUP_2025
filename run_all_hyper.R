@@ -14,7 +14,7 @@ reset <- function() {
 }
 
 # Checking if the old package with some helper functions is installed:
-if (!("gfBLUpold" %in% installed.packages())) {
+if (!("gfBLUPold" %in% installed.packages())) {
   install.packages("gfBLUPold_1.3.1.tar.gz", type = "source", repos = NULL)
 }
 
@@ -45,10 +45,13 @@ source("hyper/analyses/multiMLP_hyper_CV1_RF.R"); reset()
 # Step IX: MultiMLP CV2 analysis ===============================================
 source("hyper/analyses/multiMLP_hyper_CV2_RF.R"); reset()
 
-# Step X: Result Plotting ======================================================
+# Step X: phenomics analysis ===================================================
+source("hyper/analyses/phenomic_hyper.R"); reset()
+
+# Step XI: Result Plotting =====================================================
 source("hyper/plot_hyper_results.R"); reset()
 
-# Step XI: gfBLUP single date analysis =========================================
+# Step XII: gfBLUP single date analysis ========================================
 source("hyper/gfBLUP_hyper_single_date.R"); reset()
 
 
