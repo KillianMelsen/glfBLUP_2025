@@ -1,4 +1,4 @@
-CV <- "CV1"
+CV <- "CV2"
 
 
 # Loading libraries:
@@ -19,13 +19,13 @@ setwd(wd)
 load("genotypes/K_hyper.RData")
 
 # Hyperspectral data:
-tic("MegaLMM CV1")
+tic("MegaLMM CV2VEG")
 
 datasets <- 1:250
 n.datasets <- length(datasets)
 n.cores <- 10
 work <- split(datasets, ceiling(seq_along(datasets) / ceiling(n.datasets / n.cores)))
-cl <- parallel::makeCluster(n.cores, outfile = sprintf("logs/MegaLMM_CV1_hyper_datasets_%s_%s_RF.txt", datasets[1], datasets[n.datasets]))
+cl <- parallel::makeCluster(n.cores, outfile = sprintf("logs/MegaLMM_CV2VEG_hyper_datasets_%s_%s_RF.txt", datasets[1], datasets[n.datasets]))
 doParallel::registerDoParallel(cl)
 
 invisible(
@@ -44,7 +44,11 @@ invisible(
       datalist <- list.load(file = sprintf("hyper/datasets/hyper_dataset_%d.RData", par.work[run]))
       
       # Storing data and prediction target:
+      # 9 feb is last day of VEG, 25 feb is heading, 10 march is start of grain filling:
+      dates <- c("150110", "150119", "150204", "150209")
       d <- datalist$data
+      select <- which(substr(names(d), 7, 12) %in% dates)
+      d <- d[c(1, select, ncol(d))]
       pred.target <- datalist$pred.target
       test.set <- datalist$test.set
       train.set <- datalist$train.set
@@ -58,7 +62,7 @@ invisible(
       d.train <- cbind(temp$data.RF, d.train[foc])
       d.test <- d.test[colnames(d.train)]
       sec.RF <- names(d.train[2:(ncol(d.train) - 1)])
-      
+
       # Calculating genotypic means (BLUEs):
       d.train <- gfBLUP:::genotypeMeans(d.train)
       d.test <- gfBLUP:::genotypeMeans(d.test)
@@ -107,7 +111,7 @@ invisible(
       )
       
       # Creating run ID:
-      run_ID <- sprintf("hyper/megalmm_states/%s_hyper_dataset_%d_RF", CV, par.work[run])
+      run_ID <- sprintf("hyper/megalmm_states/%sVEG_hyper_dataset_%d_RF", CV, par.work[run])
       
       # Initializing MegaLMM:
       MegaLMM_state = MegaLMM::setup_model_MegaLMM(d[, 2:ncol(d)],
@@ -222,6 +226,6 @@ if (CV == "CV1") {
 }
 
 # Export results:
-write.csv(results, sprintf("hyper/results/12%s_hyper_results_megalmm_%s_RF.csv", lab, CV))
+write.csv(results, sprintf("hyper/results/12%s_hyper_results_megalmm_%sVEG_RF.csv", lab, CV))
 
 

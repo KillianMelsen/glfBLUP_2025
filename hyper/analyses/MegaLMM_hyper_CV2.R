@@ -25,7 +25,7 @@ datasets <- 1:250
 n.datasets <- length(datasets)
 n.cores <- 10
 work <- split(datasets, ceiling(seq_along(datasets) / ceiling(n.datasets / n.cores)))
-cl <- parallel::makeCluster(n.cores, outfile = sprintf("logs/MegaLMM_CV2_hyper_datasets_%s_%s.txt", datasets[1], datasets[n.datasets]))
+cl <- parallel::makeCluster(n.cores, outfile = sprintf("logs/MegaLMM_CV2_hyper_datasets_%s_%s_RF.txt", datasets[1], datasets[n.datasets]))
 doParallel::registerDoParallel(cl)
 
 invisible(
@@ -51,6 +51,14 @@ invisible(
       d.train <- droplevels(d[which(!is.na(d$Y)), ])
       d.test <- droplevels(d[which(is.na(d$Y)), ])
       
+      ### Redundancy filter the secondary features using training data only ----
+      sec <- names(d[2:(ncol(d) - 1)])
+      foc <- names(d)[ncol(d)]
+      temp <- gfBLUP::redundancyFilter(data = d.train[c("G", sec)], tau = 0.95, verbose = FALSE)
+      d.train <- cbind(temp$data.RF, d.train[foc])
+      d.test <- d.test[colnames(d.train)]
+      sec.RF <- names(d.train[2:(ncol(d.train) - 1)])
+
       # Calculating genotypic means (BLUEs):
       d.train <- gfBLUP:::genotypeMeans(d.train)
       d.test <- gfBLUP:::genotypeMeans(d.test)
@@ -80,7 +88,7 @@ invisible(
         h2_divisions = 20,
         h2_step_size = NULL,
         burn = 0,
-        K = 100,
+        K = 20,
         save_current_state = TRUE,
         thin = 2
       )
@@ -99,7 +107,7 @@ invisible(
       )
       
       # Creating run ID:
-      run_ID <- sprintf("hyper/megalmm_states/%s_hyper_dataset_%d", CV, par.work[run])
+      run_ID <- sprintf("hyper/megalmm_states/%s_hyper_dataset_%d_RF", CV, par.work[run])
       
       # Initializing MegaLMM:
       MegaLMM_state = MegaLMM::setup_model_MegaLMM(d[, 2:ncol(d)],
@@ -214,6 +222,6 @@ if (CV == "CV1") {
 }
 
 # Export results:
-write.csv(results, sprintf("hyper/results/12%s_hyper_results_megalmm_%s.csv", lab, CV))
+write.csv(results, sprintf("hyper/results/12%s_hyper_results_megalmm_%s_RF.csv", lab, CV))
 
 

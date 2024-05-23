@@ -24,7 +24,7 @@ tic("gfBLUP")
 n.datasets <- 250
 n.cores <- 5
 work <- split(1:n.datasets, ceiling(seq_along(1:n.datasets) / ceiling(n.datasets / n.cores)))
-cl <- parallel::makeCluster(n.cores, outfile = "logs/gfBLUP_hyper.txt")
+cl <- parallel::makeCluster(n.cores, outfile = "logs/gfBLUP_hyper_CV2VEG.txt")
 doParallel::registerDoParallel(cl)
 
 invisible(
@@ -47,7 +47,11 @@ invisible(
       datalist <- list.load(file = sprintf("hyper/datasets/hyper_dataset_%d.RData", par.work[run]))
       
       # Storing data and prediction target:
+      # 9 feb is last day of VEG, 25 feb is heading, 10 march is start of grain filling:
+      dates <- c("150110", "150119", "150204", "150209")
       d <- datalist$data
+      select <- which(substr(names(d), 7, 12) %in% dates)
+      d <- d[c(1, select, ncol(d))]
       pred.target <- datalist$pred.target
       
       ### Model ##############################################################
@@ -81,19 +85,19 @@ invisible(
       L.cov <- diag(D) %*% FM.fit$loadings
       PSI.cov <- outer(D, D) * FM.fit$uniquenesses
       
-      # CV1 Factor scores:
-      CV1.d.RF <- d.RF
-      CV1.d.RF[which(is.na(CV1.d.RF$Y)), 2:ncol(CV1.d.RF)] <- NA
-      CV1.F.scores <- gfBLUP::factorScores(data = CV1.d.RF[c("G", sec.RF)],
-                                           loadings = L.cov,
-                                           uniquenesses = PSI.cov,
-                                           m = FM.fit$m,
-                                           type = "genetic-thomson-repdiv",
-                                           Se = outer(sqrt(diag(tempE$Se)), sqrt(diag(tempE$Se))) * tempE$optCor)
-      
-      CV1.d.final <- cbind(CV1.F.scores, CV1.d.RF$Y)
-      names(CV1.d.final)[ncol(CV1.d.final)] <- "Y"
-      names(CV1.d.final)[1] <- "G"
+      # # CV1 Factor scores:
+      # CV1.d.RF <- d.RF
+      # CV1.d.RF[which(is.na(CV1.d.RF$Y)), 2:ncol(CV1.d.RF)] <- NA
+      # CV1.F.scores <- gfBLUP::factorScores(data = CV1.d.RF[c("G", sec.RF)],
+      #                                      loadings = L.cov,
+      #                                      uniquenesses = PSI.cov,
+      #                                      m = FM.fit$m,
+      #                                      type = "genetic-thomson-repdiv",
+      #                                      Se = outer(sqrt(diag(tempE$Se)), sqrt(diag(tempE$Se))) * tempE$optCor)
+      # 
+      # CV1.d.final <- cbind(CV1.F.scores, CV1.d.RF$Y)
+      # names(CV1.d.final)[ncol(CV1.d.final)] <- "Y"
+      # names(CV1.d.final)[1] <- "G"
       
       # CV2 Factor scores:
       # First recenter/rescale the training and test secondary data together:
@@ -113,12 +117,12 @@ invisible(
       selection <- gfBLUP::factorSelect(CV1.d.final, procedure = "leaps", verbose = FALSE)
       
       #### 7. Multi-trait genomic prediction -----------------------------------------------------------------------------------------------
-      CV1.temp <- gfBLUP::gfBLUP(data = CV1.d.final, selection = selection, K = K, sepExp = FALSE, verbose = F)
+      # CV1.temp <- gfBLUP::gfBLUP(data = CV1.d.final, selection = selection, K = K, sepExp = FALSE, verbose = F)
       CV2.temp <- gfBLUP::gfBLUP(data = CV2.d.final, selection = selection, K = K, sepExp = FALSE, verbose = F)
       toc(log = TRUE)
       ########################################################################
       
-      CV1.acc[run] <- cor(pred.target$pred.target, CV1.temp$preds[match(pred.target$G, names(CV1.temp$preds))])
+      # CV1.acc[run] <- cor(pred.target$pred.target, CV1.temp$preds[match(pred.target$G, names(CV1.temp$preds))])
       CV2.acc[run] <- cor(pred.target$pred.target, CV2.temp$preds[match(pred.target$G, names(CV2.temp$preds))])
       
       penG[run] <- tempG$optPen
@@ -129,9 +133,9 @@ invisible(
                            uniquenesses = FM.fit$uniquenesses,
                            m = FM.fit$m,
                            m.selected = selection,
-                           Sg = CV1.temp$Sg,
-                           Se = CV1.temp$Se,
-                           h2s = CV1.temp$h2s)
+                           Sg = CV2.temp$Sg,
+                           Se = CV2.temp$Se,
+                           h2s = CV2.temp$h2s)
     }
     
     # Retrieve computational times:
@@ -140,7 +144,7 @@ invisible(
     comptimes <- unlist(lapply(tictoc.logs, function(x) x$toc - x$tic))
     
     # Collect results:
-    worker.result <- list(list(result = data.frame(CV1.acc = CV1.acc,
+    worker.result <- list(list(result = data.frame(#CV1.acc = CV1.acc,
                                                    CV2.acc = CV2.acc,
                                                    penG = penG,
                                                    penE = penE,
@@ -166,7 +170,7 @@ extra <- vector("list")
 
 for (j in 1:length(work)) {
   
-  CV1.acc <- c(CV1.acc, par.results[[sprintf("worker_%d", j)]]$result$CV1.acc)
+  # CV1.acc <- c(CV1.acc, par.results[[sprintf("worker_%d", j)]]$result$CV1.acc)
   CV2.acc <- c(CV2.acc, par.results[[sprintf("worker_%d", j)]]$result$CV2.acc)
   penG <- c(penG, par.results[[sprintf("worker_%d", j)]]$result$penG)
   penE <- c(penE, par.results[[sprintf("worker_%d", j)]]$result$penE)
@@ -176,11 +180,11 @@ for (j in 1:length(work)) {
   
 }
 
-CV1.results <- data.frame(acc = CV1.acc,
-                          penG = penG,
-                          penE = penE,
-                          subset = subset,
-                          comptimes = comptimes)
+# CV1.results <- data.frame(acc = CV1.acc,
+#                           penG = penG,
+#                           penE = penE,
+#                           subset = subset,
+#                           comptimes = comptimes)
 
 CV2.results <- data.frame(acc = CV2.acc,
                           penG = penG,
@@ -189,10 +193,10 @@ CV2.results <- data.frame(acc = CV2.acc,
                           comptimes = comptimes)
 
 # Export results:
-write.csv(CV1.results, "hyper/results/3a_hyper_results_gfblup_CV1_RF.csv")
-write.csv(CV2.results, "hyper/results/3b_hyper_results_gfblup_CV2_RF.csv")
+# write.csv(CV1.results, "hyper/results/3a_hyper_results_gfblup_CV1_RF.csv")
+write.csv(CV2.results, "hyper/results/3b_hyper_results_gfblup_CV2VEG.csv")
 
-list.save(extra, "hyper/results/3_hyper_extra_results_gfblup_RF.RData")
+list.save(extra, "hyper/results/3_hyper_extra_results_gfblup_CV2VEG.RData")
 
 
 
