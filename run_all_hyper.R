@@ -47,8 +47,8 @@ source("hyper/analyses/multiMLP_hyper_CV1.R"); reset()
 # Step IX: MultiMLP CV2 analysis ===============================================
 source("hyper/analyses/multiMLP_hyper_CV2.R"); reset()
 
-# # Step X: phenomics analysis ===================================================
-# source("hyper/analyses/phenomic_hyper.R"); reset()
+# Step X: phenomics analysis ===================================================
+source("hyper/analyses/phenomic_hyper.R"); reset()
 
 
 
@@ -67,12 +67,15 @@ source("hyper/analyses/MegaLMM_hyper_CV2VEG.R"); reset()
 # Step XV: MultiMLP CV2VEG analysis ============================================
 source("hyper/analyses/multiMLP_hyper_CV2VEG.R"); reset()
 
+# Step XVI: phenomics CV2VEG analysis ==========================================
+source("hyper/analyses/phenomic_hyper_CV2VEG.R"); reset()
 
 
-# Step XVI: Result Plotting ====================================================
+
+# Step XVII: Result Plotting ===================================================
 source("hyper/plot_hyper_results.R"); reset()
 
-# Step XVII: gfBLUP single date analysis and plotting ==========================
+# Step XVIII: gfBLUP single date analysis and plotting =========================
 source("hyper/gfBLUP_hyper_single_date.R"); reset()
 
 
