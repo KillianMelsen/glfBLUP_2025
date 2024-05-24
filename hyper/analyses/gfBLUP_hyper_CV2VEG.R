@@ -114,7 +114,7 @@ invisible(
       names(CV2.d.final)[1] <- "G"
       
       #### 6. Selecting the relevant factors -----------------------------------------------------------------------------------------------
-      selection <- gfBLUP::factorSelect(CV1.d.final, procedure = "leaps", verbose = FALSE)
+      selection <- gfBLUP::factorSelect(CV2.d.final, procedure = "leaps", verbose = FALSE)
       
       #### 7. Multi-trait genomic prediction -----------------------------------------------------------------------------------------------
       # CV1.temp <- gfBLUP::gfBLUP(data = CV1.d.final, selection = selection, K = K, sepExp = FALSE, verbose = F)

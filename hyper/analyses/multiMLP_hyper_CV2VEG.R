@@ -127,8 +127,8 @@ acc <- numeric(n.datasets)
 archs <- character(n.datasets)
 histories <- vector("list", n.datasets)
 
-tic(sprintf("%s multiMLP", CV))
-cat(sprintf("%s multiMLP\n\n", CV))
+tic(sprintf("%sVEG multiMLP", CV))
+cat(sprintf("%sVEG multiMLP\n\n", CV))
 run <- first
 for (run in first:last) {
   
@@ -319,7 +319,7 @@ for (run in first:last) {
     M.train <- M.train[match(d.train$G, M.train$G),]
     M.test <- M.test[match(pred.target$G, M.test$G),]
     
-    cat(sprintf("Training and evaluating hypertuned CV2 multiMLP for dataset %d / %d (%d)...\n\n", run, n.datasets, run))
+    cat(sprintf("Training and evaluating hypertuned CV2VEG multiMLP for dataset %d / %d (%d)...\n\n", run, n.datasets, run))
     
     # Training the final hypertuned network using early stopping:
     history <- model %>% fit(cbind(as.matrix(M.train[, -1]), as.matrix(d.train[, 2:(ncol(d.train) - 1)])),
