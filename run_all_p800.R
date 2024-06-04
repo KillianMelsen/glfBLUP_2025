@@ -18,11 +18,15 @@ if (!("gfBLUPold" %in% installed.packages()[,1])) {
   install.packages("gfBLUPold_1.3.1.tar.gz", type = "source", repos = NULL)
 }
 
+
+
 # Step I: data generation ======================================================
 source("p800/data_generation/generate_sim_p800_datasets.R"); reset()
 
 # Step II: train/test division =================================================
 source("p800/data_generation/traintest_sim_p800_datasets.R"); reset()
+
+
 
 # Step III: univariate analysis ================================================
 source("p800/analyses/univariate.R"); reset()
@@ -56,10 +60,9 @@ source("p800/analyses/CV1_multiMLP_part2.R"); reset()
 source("p800/misc/CV1_multiMLP_merge.R"); reset()
 source("p800/analyses/CV2_multiMLP.R"); reset()
 
-# Step X: phenomics analysis ===================================================
-source("p800/analyses/phenomic.R"); reset()
 
-# Step XI: Result Plotting =====================================================
+
+# Step X: Result Plotting ======================================================
 source("p800/plot_p800_results.R"); reset()
 
 
