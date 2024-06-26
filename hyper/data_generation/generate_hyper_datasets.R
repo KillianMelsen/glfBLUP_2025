@@ -28,52 +28,17 @@ for (file.name in list.files("helper_functions")) {
 set.seed(1997)
 
 # Number of datasets:
-n.datasets <- 250
-
-# Loading data:
-yield_1415 <- readxl::read_xlsx("hyper/data_generation/EYT_all_data_Y13_14_to_Y15_16.xlsx", sheet = 2)
-genotypes <- vroom::vroom("hyper/data_generation/Krause_et_al_2018_Genotypes.csv")
-pseudoCRD.unscaled <- vroom::vroom("hyper/data_generation/hyper_pseudoCRD_unscaled.csv")
-genotypes$GID <- as.character(genotypes$GID)
-pseudoCRD.unscaled$gid <- as.character(pseudoCRD.unscaled$gid)
-yield_1415$GID <- as.character(yield_1415$GID)
-
-# Store yield data from treatment B5IR:
-yield_1415_B5IR <- dplyr::filter(yield_1415, env == "B5IR")
-
-# Creating kinship matrix if required:
-if (!("K_hyper.RData" %in% list.files("genotypes"))) {
-  # 1033 genotypes overlap between yield_1415_B5IR and genotypes file.
-  K <- as.data.frame(genotypes[which(genotypes$GID %in% yield_1415_B5IR$GID), ])
-  rownames(K) <- K$GID
-  K <- K[colnames(K) != "GID"]
-  K_gdata <- createGData(geno = K)
-  K_gdata <- codeMarkers(K_gdata)
-  
-  # Note that the final kinship matrix has 1033 genotypes:
-  K <- kinship(K_gdata$markers, "vanRaden")
-  
-  # Check for genotypes with missing yield (they will be removed):
-  missing_yield <- as.character(yield_1415_B5IR[which(is.na(yield_1415_B5IR$gy)), "GID"])
-  
-  K <- K[setdiff(rownames(K), missing_yield), setdiff(colnames(K), missing_yield)]
-  M_hyper <- K_gdata$markers[setdiff(rownames(K_gdata$markers), missing_yield),]
-  
-  save(K, "genotypes/K_hyper.RData")
-  save(M_hyper, "genotypes/M_hyper.RData")
-} else {
-  load("genotypes/K_hyper.RData")
-  load("genotypes/M_hyper.RData")
-}
+n.datasets <- 25
 
 n.cores <- parallel::detectCores() - 2
 work <- split(1:n.datasets, ceiling(seq_along(1:n.datasets) / ceiling(n.datasets / n.cores)))
 seeds <- sample(1:1000, n.cores)
-doParallel::registerDoParallel(cores = n.cores)
+cl <- parallel::makeCluster(n.cores, outfile = "logs/hyper_data_generation.txt")
+doParallel::registerDoParallel(cl)
 
 tic("Dataset generation")
 invisible(
-foreach::foreach(i = 1:length(work)) %dopar% {
+foreach::foreach(i = 1:length(work), .packages = c("magrittr")) %dopar% {
   
   # Getting the dataset numbers that this worker client will generate:
   par.work <- work[[i]]
@@ -81,11 +46,48 @@ foreach::foreach(i = 1:length(work)) %dopar% {
   # Setting the seed:
   set.seed(seeds[i])
   
+  # Loading data:
+  yield_1415 <- readxl::read_xlsx("hyper/data_generation/EYT_all_data_Y13_14_to_Y15_16.xlsx", sheet = 2)
+  genotypes <- vroom::vroom("hyper/data_generation/Krause_et_al_2018_Genotypes.csv")
+  pseudoCRD.unscaled <- vroom::vroom("hyper/data_generation/hyper_pseudoCRD_unscaled.csv")
+  
+  genotypes$GID <- as.character(genotypes$GID)
+  pseudoCRD.unscaled$gid <- as.character(pseudoCRD.unscaled$gid)
+  yield_1415$GID <- as.character(yield_1415$GID)
+  
+  # Store yield data from treatment B5IR:
+  yield_1415_B5IR <- dplyr::filter(yield_1415, env == "B5IR")
+  
+  # Creating kinship matrix if required:
+  if (!("K_hyper.RData" %in% list.files("genotypes"))) {
+    # 1033 genotypes overlap between yield_1415_B5IR and genotypes file.
+    K <- as.data.frame(genotypes[which(genotypes$GID %in% yield_1415_B5IR$GID), ])
+    rownames(K) <- K$GID
+    K <- K[colnames(K) != "GID"]
+    K_gdata <- createGData(geno = K)
+    K_gdata <- codeMarkers(K_gdata)
+    
+    # Note that the final kinship matrix has 1033 genotypes:
+    K <- kinship(K_gdata$markers, "vanRaden")
+    
+    # Check for genotypes with missing yield (they will be removed):
+    missing_yield <- as.character(yield_1415_B5IR[which(is.na(yield_1415_B5IR$gy)), "GID"])
+    
+    K <- K[setdiff(rownames(K), missing_yield), setdiff(colnames(K), missing_yield)]
+    M_hyper <- K_gdata$markers[setdiff(rownames(K_gdata$markers), missing_yield),]
+    
+    save(K, "genotypes/K_hyper.RData")
+    save(M_hyper, "genotypes/M_hyper.RData")
+  } else {
+    load("genotypes/K_hyper.RData")
+    load("genotypes/M_hyper.RData")
+  }
+  
   for (run in par.work) {
     
     # Genotypes with missing yield:
     missing_yield <- yield_1415_B5IR[which(is.na(yield_1415_B5IR$gy)), 'GID']
-    
+
     # Create training and test splits:
     # 39 trials.
     trials  <- unique(pseudoCRD.unscaled$trial)
@@ -142,7 +144,7 @@ foreach::foreach(i = 1:length(work)) %dopar% {
     # Remove test genotypes with missing yield data in both yield and secondary dataframes:
     gp_ready_foc_test <- dplyr::filter(gp_ready_foc_test, !GID %in% missing_yield$GID)
     gp_ready_sec_test <- dplyr::filter(test_data_sec, !gid %in% missing_yield$GID)
-    
+
     # Make sure the final dataframe has right size to merge with secondary traits:
     # Take the gp_read_foc_test dataframe, select the columns trial.name, GID, yield_adjusted_BLUES,
     # and BLUES_yield, then only keep the distinct rows. The result is written over gp_ready_foc_test:
@@ -193,7 +195,7 @@ foreach::foreach(i = 1:length(work)) %dopar% {
     # Remove one genotype with one plot missing yield; 2340 - 1 * 3 = 2337.
     gp_ready_foc_train <- dplyr::filter(gp_ready_foc_train, !GID %in% missing_yield$GID)
     gp_ready_sec_train<- dplyr::filter(train_data_sec, !gid %in% missing_yield$GID)
-    
+
     # make sure the final dataframe has right size to merge with secondary traits
     gp_ready_foc_train <- gp_ready_foc_train %>%
       dplyr::select(trial.name, GID, yield_adjusted_BLUES:BLUES_yield) %>%
@@ -239,6 +241,7 @@ foreach::foreach(i = 1:length(work)) %dopar% {
   }
 })
 doParallel::stopImplicitCluster()
+parallel::stopCluster(cl)
 toc()
 
 

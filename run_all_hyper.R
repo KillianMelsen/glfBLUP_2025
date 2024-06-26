@@ -18,13 +18,13 @@ if (!("gfBLUPold" %in% installed.packages())) {
   install.packages("gfBLUPold_1.3.1.tar.gz", type = "source", repos = NULL)
 }
 
+
+
 # Step I: data generation ======================================================
 source("hyper/data_generation/generate_hyper_datasets.R"); reset()
 
 # Step II: univariate analysis =================================================
 source("hyper/analyses/univariate_hyper.R"); reset()
-
-
 
 # Step III: lsBLUP analysis ====================================================
 source("hyper/analyses/lsBLUP_hyper.R"); reset()
@@ -47,35 +47,40 @@ source("hyper/analyses/multiMLP_hyper_CV1.R"); reset()
 # Step IX: MultiMLP CV2 analysis ===============================================
 source("hyper/analyses/multiMLP_hyper_CV2.R"); reset()
 
-# Step X: phenomics analysis ===================================================
-source("hyper/analyses/phenomic_hyper.R"); reset()
 
 
-
-# Step XI: lsBLUP CV2VEG analysis ==============================================
+# Step X: lsBLUP CV2VEG analysis ===============================================
 source("hyper/analyses/lsBLUP_hyper_CV2VEG.R"); reset()
 
-# Step XII: siBLUP CV2VEG analysis =============================================
+# Step XI: siBLUP CV2VEG analysis ==============================================
 source("hyper/analyses/siBLUP_hyper_CV2VEG.R"); reset()
 
-# Step XIII: gfBLUP CV2VEG analysis ============================================
+# Step XII: gfBLUP CV2VEG analysis =============================================
 source("hyper/analyses/gfBLUP_hyper_CV2VEG.R"); reset()
 
-# Step XIV: MegaLMM CV2VEG analysis ============================================
+# Step XIII: MegaLMM CV2VEG analysis ===========================================
 source("hyper/analyses/MegaLMM_hyper_CV2VEG.R"); reset()
 
-# Step XV: MultiMLP CV2VEG analysis ============================================
+# Step XIV: MultiMLP CV2VEG analysis ===========================================
 source("hyper/analyses/multiMLP_hyper_CV2VEG.R"); reset()
 
-# Step XVI: phenomics CV2VEG analysis ==========================================
-source("hyper/analyses/phenomic_hyper_CV2VEG.R"); reset()
 
 
-
-# Step XVII: Result Plotting ===================================================
+# Step XV: Result Plotting =====================================================
 source("hyper/plot_hyper_results.R"); reset()
 
+
+
+# Step XVI: lsBLUP single date analysis and plotting ===========================
+source("hyper/analyses_single_date/lsBLUP_hyper_single_date.R"); reset()
+
+# Step XVII: siBLUP single date analysis and plotting ==========================
+source("hyper/analyses_single_date/siBLUP_hyper_single_date.R"); reset()
+
 # Step XVIII: gfBLUP single date analysis and plotting =========================
-source("hyper/gfBLUP_hyper_single_date.R"); reset()
+source("hyper/analyses_single_date/gfBLUP_hyper_single_date.R"); reset()
+
+# Step XIX: MegaLMM single date analysis and plotting ==========================
+source("hyper/analyses_single_date/MegaLMM_hyper_single_date.R"); reset()
 
 

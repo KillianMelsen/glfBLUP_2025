@@ -222,6 +222,6 @@ if (CV == "CV1") {
 }
 
 # Export results:
-write.csv(results, sprintf("hyper/results/12%s_hyper_results_megalmm_%s_RF.csv", lab, CV))
+write.csv(results, sprintf("hyper/results/12%s_hyper_results_megalmm_%s.csv", lab, CV))
 
 

@@ -189,10 +189,10 @@ CV2.results <- data.frame(acc = CV2.acc,
                           comptimes = comptimes)
 
 # Export results:
-write.csv(CV1.results, "hyper/results/3a_hyper_results_gfblup_CV1_RF.csv")
-write.csv(CV2.results, "hyper/results/3b_hyper_results_gfblup_CV2_RF.csv")
+write.csv(CV1.results, "hyper/results/3a_hyper_results_gfblup_CV1.csv")
+write.csv(CV2.results, "hyper/results/3b_hyper_results_gfblup_CV2.csv")
 
-list.save(extra, "hyper/results/3_hyper_extra_results_gfblup_RF.RData")
+list.save(extra, "hyper/results/3_hyper_extra_results_gfblup.RData")
 
 
 
