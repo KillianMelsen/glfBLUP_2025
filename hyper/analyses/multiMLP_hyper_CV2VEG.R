@@ -14,6 +14,10 @@ library(tictoc)
 library(keras)
 library(gfBLUP)
 library(tensorflow)
+source("helper_functions/Estimate_gcor_prediction.R")
+library(MCMCglmm)
+library(coda)
+library(ape)
 
 # Setting tensorflow seed:
 tensorflow::set_random_seed(1997, disable_gpu = TRUE)
@@ -336,7 +340,14 @@ for (run in first:last) {
     
     # Making predictions and evaluating accuracy:
     preds <- model %>% predict(cbind(as.matrix(M.test[, -1]), as.matrix(d.test[, 2:(ncol(d.test) - 1)])))
-    acc[run] <- cor(preds, pred.target$pred.target)
+    #### Runcie & Cheng 2019 correction --------------------------------------
+    temp <- estimate_gcor(data = data.frame(ID = pred.target$G,
+                                            obs = pred.target$pred.target,
+                                            pred = preds),
+                          Knn = K[pred.target$G, pred.target$G],
+                          method = "MCMCglmm",
+                          normalize = T)
+    acc[run] <- temp["g_cor"]
     
     # Storing best architecture:
     archs[run] <- model.name

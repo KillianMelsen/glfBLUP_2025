@@ -7,6 +7,10 @@ library(tictoc)
 library(doParallel)
 library(gfBLUPold)
 library(gfBLUP)
+source("helper_functions/Estimate_gcor_prediction.R")
+library(MCMCglmm)
+library(coda)
+library(ape)
 
 # Setting seed:
 set.seed(1997)
@@ -123,7 +127,14 @@ invisible(
       ########################################################################
       
       # CV1.acc[run] <- cor(pred.target$pred.target, CV1.temp$preds[match(pred.target$G, names(CV1.temp$preds))])
-      CV2.acc[run] <- cor(pred.target$pred.target, CV2.temp$preds[match(pred.target$G, names(CV2.temp$preds))])
+      #### Runcie & Cheng 2019 correction --------------------------------------
+      temp <- estimate_gcor(data = data.frame(ID = pred.target$G,
+                                              obs = pred.target$pred.target,
+                                              pred = CV2.temp$preds[match(pred.target$G, names(CV2.temp$preds))]),
+                            Knn = K[pred.target$G, pred.target$G],
+                            method = "MCMCglmm",
+                            normalize = T)
+      CV2.acc[run] <- temp["g_cor"]
       
       penG[run] <- tempG$optPen
       penE[run] <- tempE$optPen

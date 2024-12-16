@@ -6,6 +6,10 @@ library(rlist)
 library(tictoc)
 library(doParallel)
 library(gfBLUPold)
+source("helper_functions/Estimate_gcor_prediction.R")
+library(MCMCglmm)
+library(coda)
+library(ape)
 
 # Setting seed:
 set.seed(1997)
@@ -58,7 +62,18 @@ for (CV in c("CV1", "CV2")) {
         
         RESULT$preds <- RESULT$preds[match(pred.target$G, names(RESULT$preds))]
         
-        acc[run] <- cor(RESULT$preds, pred.target$pred.target)
+        if (CV == "CV1") {
+          acc[run] <- cor(RESULT$preds, pred.target$pred.target)
+        } else if (CV == "CV2") {
+          #### Runcie & Cheng 2019 correction ----------------------------------
+          temp <- estimate_gcor(data = data.frame(ID = pred.target$G,
+                                                  obs = pred.target$pred.target,
+                                                  pred = RESULT$preds),
+                                Knn = K[pred.target$G, pred.target$G],
+                                method = "MCMCglmm",
+                                normalize = T)
+          acc[run] <- temp["g_cor"]
+        }
         
         if (length(RESULT) == 1) {
           extra[[run]] <- "All coefficients were 0, used univariate model..."

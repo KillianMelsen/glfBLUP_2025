@@ -81,30 +81,17 @@ invisible(
       ### Model ##############################################################
       tic(par.work[run])
       
-      # MegaLMM config:
+      # MegaLMM config (default values):
       run_parameters <- MegaLMM::MegaLMM_control(
-        drop0_tol = 1e-10,
         scale_Y = FALSE,
-        h2_divisions = 20,
-        h2_step_size = NULL,
         burn = 0,
         K = 20,
         save_current_state = TRUE,
         thin = 2
       )
       
-      priors = MegaLMM::MegaLMM_priors(
-        tot_Y_var = list(V = 0.5, nu = 10),
-        tot_F_var = list(V = 18/20, nu = 20),
-        Lambda_prior = list(
-          sampler = MegaLMM::sample_Lambda_prec_horseshoe,
-          prop_0 = 0.1,
-          delta = list(shape = 3, scale = 1),
-          delta_iterations_factor = 100
-        ),
-        h2_priors_resids_fun = function(h2s, n) 1,
-        h2_priors_factors_fun = function(h2s, n) 1
-      )
+      # Now using default values:
+      priors = MegaLMM::MegaLMM_priors()
       
       # Creating run ID:
       run_ID <- sprintf("hyper/megalmm_states/%s_hyper_dataset_%d_RF", CV, par.work[run])
@@ -141,9 +128,9 @@ invisible(
       n_iter <- 100
       n_burn_in <- 10
       for (i in 1:n_burn_in) {
-        MegaLMM_state <- MegaLMM::reorder_factors(MegaLMM_state, drop_cor_threshold = 0.6)
+        MegaLMM_state <- MegaLMM::reorder_factors(MegaLMM_state)
         MegaLMM_state <- MegaLMM::clear_Posterior(MegaLMM_state)
-        MegaLMM_state <- MegaLMM::sample_MegaLMM(MegaLMM_state, n_iter, grainSize = 1)
+        MegaLMM_state <- MegaLMM::sample_MegaLMM(MegaLMM_state, n_iter)
       }
       
       # Clearing the burn-in samples:
@@ -156,7 +143,7 @@ invisible(
       n_iter <- 500
       n_sampling <- 1
       for (i in 1:n_sampling) {
-        MegaLMM_state <- MegaLMM::sample_MegaLMM(MegaLMM_state, n_iter, grainSize = 1)
+        MegaLMM_state <- MegaLMM::sample_MegaLMM(MegaLMM_state, n_iter)
         MegaLMM_state <- MegaLMM::save_posterior_chunk(MegaLMM_state)
       }
       
