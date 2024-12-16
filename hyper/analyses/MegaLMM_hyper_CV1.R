@@ -91,7 +91,18 @@ invisible(
       )
       
       # Now using default values:
-      priors = MegaLMM::MegaLMM_priors()
+      priors = MegaLMM::MegaLMM_priors(
+        tot_Y_var = list(V = 0.5, nu = 3),
+        tot_F_var = list(V = 18/20, nu = 20),
+        Lambda_prior = list(
+          sampler = MegaLMM::sample_Lambda_prec_horseshoe,
+          prop_0 = 0.1,
+          delta = list(shape = 3, scale = 1),
+          delta_iterations_factor = 100
+        ),
+        h2_priors_resids_fun = function(h2s, n) 1,
+        h2_priors_factors_fun = function(h2s, n) 1
+      )
       
       # Creating run ID:
       run_ID <- sprintf("hyper/megalmm_states/%s_hyper_dataset_%d_RF", CV, par.work[run])
