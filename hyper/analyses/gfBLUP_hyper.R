@@ -25,7 +25,7 @@ load("genotypes/K_hyper.RData")
 # Hyperspectral data:
 tic("gfBLUP")
 
-n.datasets <- 20
+n.datasets <- 250
 n.cores <- 5
 work <- split(1:n.datasets, ceiling(seq_along(1:n.datasets) / ceiling(n.datasets / n.cores)))
 cl <- parallel::makeCluster(n.cores, outfile = "logs/gfBLUP_hyper.txt")
