@@ -1,6 +1,6 @@
 CV <- "CV2"
-
-
+# Run on Windows, don't run on WSL cause that doesn't work for whatever reason.
+# Should take about 6 hours for all 250 datasets (25 datasets for 10 workers each)
 # Loading libraries:
 library(rlist)
 library(tictoc)
@@ -25,7 +25,7 @@ load("genotypes/K_hyper.RData")
 # Hyperspectral data:
 tic("MegaLMM CV2")
 
-datasets <- 1:10
+datasets <- 1:250
 n.datasets <- length(datasets)
 n.cores <- 10
 work <- split(datasets, ceiling(seq_along(datasets) / ceiling(n.datasets / n.cores)))
@@ -144,7 +144,7 @@ invisible(
       for (i in 1:n_burn_in) {
         MegaLMM_state <- MegaLMM::reorder_factors(MegaLMM_state)
         MegaLMM_state <- MegaLMM::clear_Posterior(MegaLMM_state)
-        MegaLMM_state <- MegaLMM::sample_MegaLMM(MegaLMM_state, n_iter)
+        MegaLMM_state <- MegaLMM::sample_MegaLMM(MegaLMM_state, n_iter, verbose = F)
       }
       
       # Clearing the burn-in samples:
@@ -157,7 +157,7 @@ invisible(
       n_iter <- 500
       n_sampling <- 1
       for (i in 1:n_sampling) {
-        MegaLMM_state <- MegaLMM::sample_MegaLMM(MegaLMM_state, n_iter)
+        MegaLMM_state <- MegaLMM::sample_MegaLMM(MegaLMM_state, n_iter, verbose = F)
         MegaLMM_state <- MegaLMM::save_posterior_chunk(MegaLMM_state)
       }
       
