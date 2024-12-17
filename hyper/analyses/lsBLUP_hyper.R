@@ -1,5 +1,5 @@
-# !!! IMPORTANT: SET MKL_NUMTHREADS=1 and MKL_DYNAMIC=TRUE in ~/.profile !!!
-# Runtime: ~ 270s for 250 datasets.
+# !!! IMPORTANT: SET MKL_NUMTHREADS=1 if using Intel MKL
+# Runtime: ~ 70s for 36 datasets using 18 workers.
 
 # Loading libraries:
 library(rlist)
