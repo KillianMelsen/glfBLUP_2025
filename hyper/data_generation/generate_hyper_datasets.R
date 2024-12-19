@@ -28,7 +28,7 @@ for (file.name in list.files("helper_functions")) {
 set.seed(1997)
 
 # Number of datasets:
-n.datasets <- 25
+n.datasets <- 36
 
 n.cores <- parallel::detectCores() - 2
 work <- split(1:n.datasets, ceiling(seq_along(1:n.datasets) / ceiling(n.datasets / n.cores)))
@@ -49,10 +49,11 @@ foreach::foreach(i = 1:length(work), .packages = c("magrittr")) %dopar% {
   # Loading data:
   yield_1415 <- readxl::read_xlsx("hyper/data_generation/EYT_all_data_Y13_14_to_Y15_16.xlsx", sheet = 2)
   genotypes <- vroom::vroom("hyper/data_generation/Krause_et_al_2018_Genotypes.csv")
-  pseudoCRD.unscaled <- vroom::vroom("hyper/data_generation/hyper_pseudoCRD_unscaled.csv")
+  pseudoCRD <- readRDS("hyper/data_generation/hyper_pseudoCRD_nosplines.rds")
+  coords <- readRDS("hyper/data_generation/coords.rds")
   
   genotypes$GID <- as.character(genotypes$GID)
-  pseudoCRD.unscaled$gid <- as.character(pseudoCRD.unscaled$gid)
+  pseudoCRD$gid <- as.character(pseudoCRD$gid)
   yield_1415$GID <- as.character(yield_1415$GID)
   
   # Store yield data from treatment B5IR:
@@ -85,12 +86,13 @@ foreach::foreach(i = 1:length(work), .packages = c("magrittr")) %dopar% {
   
   for (run in par.work) {
     
-    # Genotypes with missing yield:
+    # Remove genotypes with missing yield (only a single variety):
     missing_yield <- yield_1415_B5IR[which(is.na(yield_1415_B5IR$gy)), 'GID']
+    yield_1415_B5IR <- droplevels(yield_1415_B5IR[which(!(yield_1415_B5IR$GID %in% missing_yield$GID)),])
 
     # Create training and test splits:
     # 39 trials.
-    trials  <- unique(pseudoCRD.unscaled$trial)
+    trials  <- unique(pseudoCRD$trial)
     
     # 1/3 goes to test set, 2/3 to train set.
     test <- sample(trials, 13)
@@ -98,7 +100,7 @@ foreach::foreach(i = 1:length(work), .packages = c("magrittr")) %dopar% {
     
     # Subsetting all data:
     # Subsetting test data on secondary traits (1/3):
-    test_data_sec <- pseudoCRD.unscaled[which(pseudoCRD.unscaled$trial %in% test),]
+    test_data_sec <- pseudoCRD[which(pseudoCRD$trial %in% test),]
     
     # Subsetting test data on focal trait (1/3, contains 366 unique genotypes):
     # 1170 - (2 * 3 * 13) = 1092. 1092 / 13 / 3 = 28 other genotypes per trial.
@@ -106,15 +108,67 @@ foreach::foreach(i = 1:length(work), .packages = c("magrittr")) %dopar% {
     test_data_foc <- yield_1415_B5IR[which(yield_1415_B5IR$trial.name %in% test),]
     
     # Subsetting training data on secondary traits (2/3):
-    train_data_sec <- pseudoCRD.unscaled[which(pseudoCRD.unscaled$trial %in% train),]
+    train_data_sec <- pseudoCRD[which(pseudoCRD$trial %in% train),]
     
     # Subsetting training data on focal trait (2/3, contains 730 unique genotypes):
     # Again, 2340 - (2 * 3 * 26) = 2184. 2148 / 26 / 3 = 28 other genotypes per trial.
     # So 28 * 26 = 728. Add two checks and we get 728 + 2 = 730 genotypes in total.
     train_data_foc <- yield_1415_B5IR[which(yield_1415_B5IR$trial.name %in% train),]
     
+    # Focal trait dataframes have row and col numbers within trials, so we replace
+    # them with overall row/col numbers using the plot numbers and hyper data:
+    test_data_foc[, c("row", "column")] <- coords[match(test_data_foc$plot, coords$plot), c("row", "col")]
+    train_data_foc[, c("row", "column")] <- coords[match(train_data_foc$plot, coords$plot), c("row", "col")]
+    
+    # Making sure the design factors are actually factors and not numerical values:
+    test_data_foc$trial.name <- as.factor(test_data_foc$trial.name)
+    test_data_foc$rep <- as.factor(test_data_foc$rep)
+    test_data_foc$subblock <- as.factor(test_data_foc$subblock)
+    test_data_foc$R <- as.factor(test_data_foc$row)
+    test_data_foc$C <- as.factor(test_data_foc$column)
+    train_data_foc$R <- as.factor(train_data_foc$row)
+    train_data_foc$C <- as.factor(train_data_foc$column)
+    
     # Generating adjusted yield BLUEs for the test set (removing design factors):
-    lmm.yield <- lme4::lmer(gy ~ GID + (1|trial.no) + (1|trial.no:rep) + (1|trial.no:rep:subblock), 
+    # ggplot(test_data_foc, aes(x = column, y = row, fill = !! rlang::sym("gy"))) +
+    #   geom_tile(show.legend = TRUE) +
+    #   scale_fill_gradientn(colours = topo.colors(100))+
+    #   labs(title = "Raw yield") +
+    #   coord_fixed() +
+    #   theme(panel.grid.major = element_blank(),
+    #         panel.grid.minor = element_blank())
+    # 
+    
+    # Option 1: splines using LMMsolver ----------------------------------------
+    lmm.yield <- LMMsolve(fixed = gy ~ GID,
+                          random = ~ trial.name + R + C,
+                          spline = ~ spl2D(row, column, nseg = c(25, 70)),
+                          data = test_data_foc,
+                          maxit = 1000)
+    
+    # Getting estimates:
+    estimates <- coef(lmm.yield)
+    
+    # Intercept:
+    int <- as.numeric(estimates$`(Intercept)`)
+    
+    # Genotype BLUEs:
+    BLUEs <- as.numeric(estimates$GID)
+    names(BLUEs) <- names(estimates$GID)
+    names(BLUEs) <- gsub("GID_(.*)", "\\1", names(BLUEs))
+    
+    # Residuals:
+    resids <- as.numeric(lmm.yield$residuals)
+    
+    # Getting the order of genotypes in the data vector and expanding the BLUEs:
+    order <- as.character(test_data_foc$GID)
+    BLUEs <- BLUEs[match(order, names(BLUEs))]
+    
+    # Computing the corrected data:
+    corr <- rep(int, nrow(test_data_foc)) + BLUEs + resids
+    
+    # Option 2: design factors using lme4 --------------------------------------
+    lmm.yield <- lme4::lmer(gy ~ GID + (1|trial.name) + (1|trial.name:rep) + (1|trial.name:rep:subblock),
                             control = lme4::lmerControl(calc.derivs = FALSE),
                             data = test_data_foc)
     
@@ -133,8 +187,11 @@ foreach::foreach(i = 1:length(work), .packages = c("magrittr")) %dopar% {
     # Adding (possibly alpha-scaled) residuals to BLUEs for the test set:
     adjusted_BLUES <- BLUE_adjust(lmm.yield, "GID", alpha_scaling = FALSE)
     
+    
+    
     # Generate right sized dataframe:
-    # Remove any rows with missing yield:
+    # Remove any rows with missing yield (left it here, but should just copy as
+    # we already removed the one genotype with missing yield):
     gp_ready_foc_test <- dplyr::filter(test_data_foc, !is.na(gy))
     
     # Adjusted_BLUES and test_BLUES_yield are named. Is that necessary?
@@ -142,30 +199,29 @@ foreach::foreach(i = 1:length(work), .packages = c("magrittr")) %dopar% {
     gp_ready_foc_test$BLUES_yield <- as.numeric(test_BLUES_yield)
     
     # Remove test genotypes with missing yield data in both yield and secondary dataframes:
+    # This should also not do anything...
     gp_ready_foc_test <- dplyr::filter(gp_ready_foc_test, !GID %in% missing_yield$GID)
+    # This one will do something if the genotype with missing yield is in the test set
+    # (remove three rows):
     gp_ready_sec_test <- dplyr::filter(test_data_sec, !gid %in% missing_yield$GID)
 
     # Make sure the final dataframe has right size to merge with secondary traits:
     # Take the gp_read_foc_test dataframe, select the columns trial.name, GID, yield_adjusted_BLUES,
     # and BLUES_yield, then only keep the distinct rows. The result is written over gp_ready_foc_test:
     gp_ready_foc_test <- gp_ready_foc_test %>% 
-      dplyr::select(trial.name, GID, yield_adjusted_BLUES:BLUES_yield) %>% 
+      dplyr::select(trial.name, plot, GID, yield_adjusted_BLUES:BLUES_yield) %>% 
       dplyr::distinct()
     
     # Finally bind the test dataframes containing (adjusted) BLUEs and secondary traits:
-    #####
-    # NOTE: Does bind_cols match dataframes based on order. As in, the rows (plants) need to
-    # be in the same order in both dataframes? Otherwise secondary phenotypes and yields don't match.
-    # That may not be an issue in CV1, but in CV2 it would be.
-    #####
-    # ANOTHER NOTE: length(unique(gp_ready_sec_test$gid)) = 366. Why not 27 genotypes * 13 trials + 2 checks
-    # = 27*13+2 = 353? 
-    # View(table(gp_ready_sec_test$gid)$Freq) shows 366 genotypes with two having a freq. of 39 (checks),
-    # and 364 having a freq of 3. View(table(gp_ready_sec_test$trial)) shows each trial has a freq. of
-    # 90. So 30 - 2 = 28 unique genotypes per trial...
+    # Making sure that the secondary and focal trait data of each plot gets matched correctly:
+    gp_ready_sec_test <- gp_ready_sec_test[match(gp_ready_foc_test$plot, gp_ready_sec_test$plot),]
+    
+    # Final dataframe will have 8 design columns, 620 sec columns, and a focal trait column:
     gp_ready_test <- gp_ready_sec_test %>% 
       dplyr::select(-trial) %>% 
-      dplyr::bind_cols(., gp_ready_foc_test[, 3:4])
+      dplyr::bind_cols(., gp_ready_foc_test[, 4])
+    
+    
     
     # Doing similar things for the training data:
     lmm.yield <- lme4::lmer(gy ~ GID + (1|trial.no) + (1|trial.no:rep) + (1|trial.no:rep:subblock), 
