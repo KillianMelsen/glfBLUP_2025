@@ -59,11 +59,6 @@ for (d in dates) {
                     data = df.sel,
                     maxit = 1000)
     
-    # newdata <- data.frame(gid = unique(df.sel$gid),
-    #                       row = 0,
-    #                       col = 0)
-    # preds <- predict(fit, newdata = newdata)
-    
     # Getting estimates:
     estimates <- coef(fit)
     
@@ -150,9 +145,9 @@ for (f in features) {
   
   # Predict the P-Splines Hierarchical Curve Data Model on a dense grid:
   pred.psHDM <- predict(object = fit.psHDM,
-                        newtimes = seq(min(fit.psHDM$time[["timeNumber"]]),
-                                       max(fit.psHDM$time[["timeNumber"]]),
-                                       length.out = 100),
+                        # newtimes = seq(min(fit.psHDM$time[["timeNumber"]]),
+                        #                max(fit.psHDM$time[["timeNumber"]]),
+                        #                length.out = 100),
                         pred = list(pop = TRUE, geno = TRUE, plot = TRUE),
                         se = list(pop = FALSE, geno = FALSE, plot = FALSE),
                         trace = FALSE)
@@ -190,9 +185,144 @@ data.splines.wide <- as.data.frame(tidyr::pivot_wider(data.splines,
                                                       values_from = 11:72))
 saveRDS(data.splines.wide, "hyper/data_generation/hyper_pseudoCRD_splines.rds")
 
+# Pre-processing yield data: ===================================================
+rm(list = ls())
+set.seed(1997)
 
+# Loading data:
+yield_1415 <- readxl::read_xlsx("hyper/data_generation/EYT_all_data_Y13_14_to_Y15_16.xlsx", sheet = 2)
+genotypes <- vroom::vroom("hyper/data_generation/Krause_et_al_2018_Genotypes.csv")
+pseudoCRD.nosplines <- readRDS("hyper/data_generation/hyper_pseudoCRD_nosplines.rds")
+pseudoCRD.splines <- readRDS("hyper/data_generation/hyper_pseudoCRD_splines.rds")
+coords <- readRDS("hyper/data_generation/coords.rds")
 
+genotypes$GID <- as.character(genotypes$GID)
+pseudoCRD.nosplines$gid <- as.character(pseudoCRD.nosplines$gid)
+pseudoCRD.splines$gid <- as.character(pseudoCRD.splines$gid)
+yield_1415$GID <- as.character(yield_1415$GID)
 
+# Store yield data from treatment B5IR:
+yield_1415_B5IR <- dplyr::filter(yield_1415, env == "B5IR")
+
+# Creating kinship matrix if required:
+if (!("K_hyper.RData" %in% list.files("genotypes"))) {
+  # 1033 genotypes overlap between yield_1415_B5IR and genotypes file.
+  K <- as.data.frame(genotypes[which(genotypes$GID %in% yield_1415_B5IR$GID), ])
+  rownames(K) <- K$GID
+  K <- K[colnames(K) != "GID"]
+  K_gdata <- createGData(geno = K)
+  K_gdata <- codeMarkers(K_gdata)
+  
+  # Note that the final kinship matrix has 1033 genotypes:
+  K <- kinship(K_gdata$markers, "vanRaden")
+  
+  # Check for genotypes with missing yield (they will be removed):
+  missing_yield <- as.character(yield_1415_B5IR[which(is.na(yield_1415_B5IR$gy)), "GID"])
+  
+  K <- K[setdiff(rownames(K), missing_yield), setdiff(colnames(K), missing_yield)]
+  M_hyper <- K_gdata$markers[setdiff(rownames(K_gdata$markers), missing_yield),]
+  
+  save(K, "genotypes/K_hyper.RData")
+  save(M_hyper, "genotypes/M_hyper.RData")
+} else {
+  load("genotypes/K_hyper.RData")
+  load("genotypes/M_hyper.RData")
+}
+
+# Remove genotypes with missing yield (only a single variety):
+missing_yield <- yield_1415_B5IR[which(is.na(yield_1415_B5IR$gy)), 'GID']
+yield_1415_B5IR <- droplevels(yield_1415_B5IR[which(!(yield_1415_B5IR$GID %in% missing_yield$GID)),])
+
+# Focal trait dataframes have row and col numbers within trials, so we replace
+# them with overall row/col numbers using the plot numbers and hyper data:
+yield_1415_B5IR[, c("row", "column")] <- coords[match(yield_1415_B5IR$plot, coords$plot), c("row", "col")]
+
+# Making sure the design factors are actually factors and not numerical values:
+yield_1415_B5IR$trial.name <- as.factor(yield_1415_B5IR$trial.name)
+yield_1415_B5IR$rep <- as.factor(yield_1415_B5IR$rep)
+yield_1415_B5IR$subblock <- as.factor(yield_1415_B5IR$subblock)
+yield_1415_B5IR$R <- as.factor(yield_1415_B5IR$row)
+yield_1415_B5IR$C <- as.factor(yield_1415_B5IR$column)
+
+# Generating adjusted yield BLUEs for the test set (removing design factors):
+# ggplot(yield_1415_B5IR, aes(x = column, y = row, fill = !! rlang::sym("gy"))) +
+#   geom_tile(show.legend = TRUE) +
+#   scale_fill_gradientn(colours = topo.colors(100))+
+#   labs(title = "Raw yield") +
+#   coord_fixed() +
+#   theme(panel.grid.major = element_blank(),
+#         panel.grid.minor = element_blank())
+
+lmm.yield <- LMMsolve(fixed = gy ~ GID,
+                      random = ~ trial.name + R + C,
+                      spline = ~ spl2D(row, column, nseg = c(25, 70)),
+                      data = yield_1415_B5IR,
+                      maxit = 1000)
+
+# Getting estimates:
+estimates <- coef(lmm.yield)
+
+# Intercept:
+int <- as.numeric(estimates$`(Intercept)`)
+
+# Genotype BLUEs:
+BLUEs <- as.numeric(estimates$GID)
+names(BLUEs) <- names(estimates$GID)
+names(BLUEs) <- gsub("GID_(.*)", "\\1", names(BLUEs))
+
+# Residuals:
+resids <- as.numeric(lmm.yield$residuals)
+
+# Getting the order of genotypes in the data vector and expanding the BLUEs:
+order <- as.character(yield_1415_B5IR$GID)
+BLUEs <- BLUEs[match(order, names(BLUEs))]
+
+# Computing the corrected data:
+corr <- rep(int, nrow(yield_1415_B5IR)) + BLUEs + resids
+
+# Generate right sized dataframe:
+# Remove any rows with missing yield (left it here, but should just copy as
+# we already removed the one genotype with missing yield):
+gp_ready_foc <- dplyr::filter(yield_1415_B5IR, !is.na(gy))
+gp_ready_foc$gy_adjusted <- as.numeric(corr)
+gp_ready_foc$target <- as.numeric(BLUEs)
+
+# Remove genotypes with missing yield data in both yield and secondary dataframes:
+# This should also not do anything...
+gp_ready_foc <- dplyr::filter(gp_ready_foc, !GID %in% missing_yield$GID)
+# This one will do something (remove three rows):
+pseudoCRD.nosplines <- dplyr::filter(pseudoCRD.nosplines, !gid %in% missing_yield$GID)
+pseudoCRD.splines <- dplyr::filter(pseudoCRD.splines, !gid %in% missing_yield$GID)
+
+# Select relevant columns:
+gp_ready_foc <- gp_ready_foc %>% 
+  dplyr::select(trial.name, plot, GID, gy_adjusted, target) %>% 
+  dplyr::distinct()
+
+# Finally bind the dataframes containing adjusted grain yield and secondary traits:
+# Making sure that the secondary and focal trait data of each plot gets matched correctly:
+pseudoCRD.nosplines <- pseudoCRD.nosplines[match(gp_ready_foc$plot, pseudoCRD.nosplines$plot),]
+pseudoCRD.splines <- pseudoCRD.splines[match(gp_ready_foc$plot, pseudoCRD.splines$plot),]
+
+# Final dataframe will have 9 design columns, 620 sec columns, and focal trait + target columns:
+gp_ready.nosplines <- pseudoCRD.nosplines %>%
+  dplyr::bind_cols(., gp_ready_foc[, 4:5])
+
+gp_ready.splines <- pseudoCRD.splines %>% 
+  dplyr::bind_cols(., gp_ready_foc[, 4:5])
+
+# Filter out any genotypes for which we do not have marker data:
+# We lost the 2 checks (in both sets) + 6 in the test set + 53 in the train set.
+# Total number of rows lost is 2 * 39 * 3 + 6 * 3 + 53 * 3 = 411.
+# 1170 + 2337 = 3507. 1074 + 2022 = 3096. 3507 - 411 is indeed 3096.
+gp_ready.nosplines <- dplyr::filter(gp_ready.nosplines, gid %in% genotypes$GID)
+gp_ready.splines <- dplyr::filter(gp_ready.splines, gid %in% genotypes$GID)
+
+gp_ready.nosplines <- gp_ready.nosplines[, c(4:5, 8, 10:631)]
+gp_ready.splines <- gp_ready.splines[, c(4:5, 8, 10:631)]
+
+saveRDS(gp_ready.nosplines, "hyper/data_generation/pseudoCRD_nosplines.rds")
+saveRDS(gp_ready.splines, "hyper/data_generation/pseudoCRD_splines.rds")
 
 
 
