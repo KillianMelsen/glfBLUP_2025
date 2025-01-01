@@ -19,6 +19,10 @@ for (run in 1:n.datasets) {
   test <- sample(trials, 12)
   train <- trials[!trials %in% test]
   
+  # Reloading data:
+  pseudoCRD.nosplines <- readRDS("hyper/data_generation/pseudoCRD_nosplines.rds")
+  pseudoCRD.splines <- readRDS("hyper/data_generation/pseudoCRD_splines.rds")
+  
   pseudoCRD.nosplines.test <- pseudoCRD.nosplines[which(pseudoCRD.nosplines$trial %in% test),]
   pseudoCRD.nosplines.train <- pseudoCRD.nosplines[which(pseudoCRD.nosplines$trial %in% train),]
   

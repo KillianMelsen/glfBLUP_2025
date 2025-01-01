@@ -1,6 +1,6 @@
 # !!! IMPORTANT: SET MKL_NUMTHREADS=1 and MKL_DYNAMIC=TRUE in ~/.profile !!!
 # Runtime: ~ s for 250 datasets.
-
+prep <- "splines"
 # Loading libraries:
 library(rlist)
 library(tictoc)
@@ -48,7 +48,7 @@ invisible(
     for (run in 1:length(par.work)) {
       
       # Loading hyperspectral dataset:
-      datalist <- list.load(file = sprintf("hyper/datasets/hyper_dataset_%d.RData", par.work[run]))
+      datalist <- list.load(file = sprintf("hyper/datasets/%s/hyper_dataset_%d.RData", prep, par.work[run]))
       
       # Storing data and prediction target:
       # 9 feb is last day of VEG, 25 feb is heading, 10 march is start of grain filling:
@@ -205,9 +205,9 @@ CV2.results <- data.frame(acc = CV2.acc,
 
 # Export results:
 # write.csv(CV1.results, "hyper/results/3a_hyper_results_gfblup_CV1_RF.csv")
-write.csv(CV2.results, "hyper/results/3b_hyper_results_gfblup_CV2VEG.csv")
+write.csv(CV2.results, sprintf("hyper/results/%s/3b_hyper_results_gfblup_CV2VEG.csv", prep))
 
-list.save(extra, "hyper/results/3_hyper_extra_results_gfblup_CV2VEG.RData")
+list.save(extra, sprintf("hyper/results/%s/3_hyper_extra_results_gfblup_CV2VEG.RData", prep))
 
 
 

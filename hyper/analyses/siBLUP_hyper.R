@@ -1,6 +1,6 @@
 # !!! IMPORTANT: SET MKL_NUMTHREADS=1 and MKL_DYNAMIC=TRUE in ~/.profile !!!
 # Runtime: ~ 25mins for 250 datasets using 18 workers.
-
+prep <- "splines"
 # Loading libraries:
 library(rlist)
 library(tictoc)
@@ -48,7 +48,7 @@ for (CV in c("CV1", "CV2")) {
       for (run in 1:length(par.work)) {
         
         # Loading hyperspectral dataset:
-        datalist <- list.load(file = sprintf("hyper/datasets/hyper_dataset_%d.RData", par.work[run]))
+        datalist <- list.load(file = sprintf("hyper/datasets/%s/hyper_dataset_%d.RData", prep, par.work[run]))
         
         # Storing data and prediction target:
         d <- datalist$data
@@ -135,9 +135,9 @@ for (CV in c("CV1", "CV2")) {
   }
   
   # Export results:
-  write.csv(results, sprintf("hyper/results/5%s_hyper_results_siblup_%s.csv", lab, CV))
+  write.csv(results, sprintf("hyper/results/%s/5%s_hyper_results_siblup_%s.csv", prep, lab, CV))
   
-  list.save(extra, sprintf("hyper/results/5%s_hyper_extra_results_siblup_%s.RData", lab, CV))
+  list.save(extra, sprintf("hyper/results/%s/5%s_hyper_extra_results_siblup_%s.RData", prep, lab, CV))
   
 }
 

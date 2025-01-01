@@ -38,7 +38,7 @@ par.results <- foreach::foreach(i = 1:length(work), .packages = c("rlist", "tict
   for (run in 1:length(par.work)) {
 
     # Loading hyperspectral dataset:
-    datalist <- list.load(file = sprintf("hyper/datasets/hyper_dataset_%d.RData", par.work[run]))
+    datalist <- list.load(file = sprintf("hyper/datasets/splines/hyper_dataset_%d.RData", par.work[run]))
     
     # Storing data and prediction target:
     d <- gfBLUP:::genotypeMeans(datalist$data)
