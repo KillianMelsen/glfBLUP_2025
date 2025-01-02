@@ -1,4 +1,5 @@
 CV <- "CV2"
+prep <- "splines"
 # Run on Windows, don't run on WSL cause that doesn't work for whatever reason.
 # Should take about 6 hours for all 250 datasets (25 datasets for 10 workers each)
 # Loading libraries:
@@ -45,7 +46,7 @@ invisible(
     for (run in 1:length(par.work)) {
       tic("test")
       # Loading hyperspectral dataset:
-      datalist <- list.load(file = sprintf("hyper/datasets/hyper_dataset_%d.RData", par.work[run]))
+      datalist <- list.load(file = sprintf("hyper/datasets/%s/hyper_dataset_%d.RData", prep, par.work[run]))
       
       # Storing data and prediction target:
       d <- datalist$data
@@ -108,7 +109,7 @@ invisible(
       )
       
       # Creating run ID:
-      run_ID <- sprintf("hyper/megalmm_states/%s_hyper_dataset_%d_RF", CV, par.work[run])
+      run_ID <- sprintf("hyper/megalmm_states/%s_%s_hyper_dataset_%d_RF", prep, CV, par.work[run])
       
       # Initializing MegaLMM:
       MegaLMM_state = MegaLMM::setup_model_MegaLMM(d[, 2:ncol(d)],
@@ -230,6 +231,6 @@ if (CV == "CV1") {
 }
 
 # Export results:
-write.csv(results, sprintf("hyper/results/12%s_hyper_results_megalmm_%s.csv", lab, CV))
+write.csv(results, sprintf("hyper/results/%s/12%s_hyper_results_megalmm_%s.csv", prep, lab, CV))
 
 

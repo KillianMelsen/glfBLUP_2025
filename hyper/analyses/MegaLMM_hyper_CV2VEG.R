@@ -1,4 +1,5 @@
 CV <- "CV2"
+prep <- "nosplines"
 # Run on Windows, don't run on WSL cause that doesn't work for whatever reason.
 # Should take less than 6 hours for all 250 datasets (25 datasets for 10 workers each)
 # Loading libraries:
@@ -25,9 +26,9 @@ load("genotypes/K_hyper.RData")
 # Hyperspectral data:
 tic("MegaLMM CV2VEG")
 
-datasets <- 1:250
+datasets <- 1:10
 n.datasets <- length(datasets)
-n.cores <- 10
+n.cores <- 5
 work <- split(datasets, ceiling(seq_along(datasets) / ceiling(n.datasets / n.cores)))
 cl <- parallel::makeCluster(n.cores, outfile = sprintf("logs/MegaLMM_CV2VEG_hyper_datasets_%s_%s_RF.txt", datasets[1], datasets[n.datasets]))
 doParallel::registerDoParallel(cl)
@@ -45,7 +46,7 @@ invisible(
     for (run in 1:length(par.work)) {
       
       # Loading hyperspectral dataset:
-      datalist <- list.load(file = sprintf("hyper/datasets/hyper_dataset_%d.RData", par.work[run]))
+      datalist <- list.load(file = sprintf("hyper/datasets/%s/hyper_dataset_%d.RData", prep, par.work[run]))
       
       # Storing data and prediction target:
       # 9 feb is last day of VEG, 25 feb is heading, 10 march is start of grain filling:
@@ -112,7 +113,7 @@ invisible(
       )
       
       # Creating run ID:
-      run_ID <- sprintf("hyper/megalmm_states/%sVEG_hyper_dataset_%d_RF", CV, par.work[run])
+      run_ID <- sprintf("hyper/megalmm_states/%s_%sVEG_hyper_dataset_%d_RF", prep, CV, par.work[run])
       
       # Initializing MegaLMM:
       MegaLMM_state = MegaLMM::setup_model_MegaLMM(d[, 2:ncol(d)],
@@ -234,6 +235,6 @@ if (CV == "CV1") {
 }
 
 # Export results:
-write.csv(results, sprintf("hyper/results/12%s_hyper_results_megalmm_%sVEG.csv", lab, CV))
+write.csv(results, sprintf("hyper/results/%s/12%s_hyper_results_megalmm_%sVEG.csv", prep, lab, CV))
 
 
