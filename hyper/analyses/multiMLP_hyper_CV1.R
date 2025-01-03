@@ -2,20 +2,27 @@
 ### Preliminaries #############################################################
 ###############################################################################
 
+# Will take about 6 hours for all 250 datasets on the CPU.
+
 # Setting CV:
 CV <- "CV1"
-
+prep <- "nosplines"
 # Setting seed:
 # set.seed(1997)
 
 # Loading libraries:
 library(rlist)
 library(tictoc)
-library(keras)
+library(keras3)
 library(gfBLUP)
 library(tensorflow)
 
-# Setting tensorflow seed:
+
+
+
+
+# Setting seeds:
+keras3::set_random_seed(1997)
 tensorflow::set_random_seed(1997, disable_gpu = TRUE)
 
 # Setting working directory:
@@ -136,7 +143,7 @@ for (run in first:last) {
   
   # Loading simulated datasets:
   cat(sprintf("Loading dataset %d...\n", run))
-  datalist <- list.load(sprintf("hyper/datasets/hyper_dataset_%d.RData", run))
+  datalist <- list.load(sprintf("hyper/datasets/%s/hyper_dataset_%d.RData", prep, run))
   pred.target <- datalist$pred.target
   train.set <- datalist$train.set
   test.set <- datalist$test.set
@@ -277,7 +284,7 @@ for (run in first:last) {
       names(temp)[arch] <- model.name
       
       # Clearing Keras backend:
-      k_clear_session()
+      clear_session()
     }
     # Adding results for the current fold to the overall results:
     tuning.results <- rbind(tuning.results, temp)
@@ -335,16 +342,16 @@ for (run in first:last) {
     archs[run] <- model.name
     
     # Clearing Keras backend:
-    k_clear_session()
+    clear_session()
     
   } else if (mean(mean.accs) == 0) {
     
-    cat("All fits failed!/n/n")
+    cat("All fits failed!\n\n")
     acc[run] <- NA
     archs[run] <- NA
     
     # Clearing Keras backend:
-    k_clear_session()
+    clear_session()
   }
 }
 toc()
@@ -367,10 +374,10 @@ if (CV == "CV1") {
 }
 
 # Export results:
-write.csv(results, sprintf("hyper/results/8%s_hyper_results_multiMLP_%s.csv",
-                           lab, CV))
+write.csv(results, sprintf("hyper/results/%s/8%s_hyper_results_multiMLP_%s.csv",
+                           prep, lab, CV))
 
-list.save(histories, sprintf("hyper/results/8%s_hyper_results_multiMLP_%s.RData",
-                             lab, CV))
+list.save(histories, sprintf("hyper/results/%s/8%s_hyper_results_multiMLP_%s.RData",
+                             prep, lab, CV))
 
 
