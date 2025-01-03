@@ -1,13 +1,20 @@
 CV <- "CV2"
-prep <- "nosplines"
+prep <- "splines"
 # Run on Windows, don't run on WSL cause that doesn't work for whatever reason.
 # Should take less than 6 hours for all 250 datasets (25 datasets for 10 workers each)
+
+# UPDATE: For whatever reason I cannot make it work on Windows using doparallel anymore.
+# It just gives an error about being unable to read from the connection, and no info on
+# what's going wrong. The only solution I've been able to come up with is to simply run
+# everything without parallelization, although this is much slower (~ 9 hours on WSL using
+# MKL_NUM_THREADS=1).
+
 # Loading libraries:
 library(rlist)
 library(tictoc)
 library(MegaLMM)
 library(gfBLUP)
-library(doParallel)
+# library(doParallel)
 source("helper_functions/Estimate_gcor_prediction.R")
 library(MCMCglmm)
 library(coda)
@@ -26,27 +33,30 @@ load("genotypes/K_hyper.RData")
 # Hyperspectral data:
 tic("MegaLMM CV2VEG")
 
-datasets <- 1:10
+datasets <- 1:250
 n.datasets <- length(datasets)
-n.cores <- 5
-work <- split(datasets, ceiling(seq_along(datasets) / ceiling(n.datasets / n.cores)))
-cl <- parallel::makeCluster(n.cores, outfile = sprintf("logs/MegaLMM_CV2VEG_hyper_datasets_%s_%s_RF.txt", datasets[1], datasets[n.datasets]))
-doParallel::registerDoParallel(cl)
+# n.cores <- 10
+# work <- split(datasets, ceiling(seq_along(datasets) / ceiling(n.datasets / n.cores)))
+# cl <- parallel::makeCluster(n.cores, outfile = sprintf("logs/MegaLMM_CV2VEG_hyper_datasets_%s_%s_RF.txt", datasets[1], datasets[n.datasets]))
+# doParallel::registerDoParallel(cl)
 
-invisible(
-  par.results <- foreach::foreach(k = 1:length(work), .packages = c("MegaLMM", "gfBLUP", "rlist", "tictoc"), .combine = "c") %dopar% {
+# invisible(
+#   par.results <- foreach::foreach(k = 1:length(work), .packages = c("MegaLMM", "gfBLUP", "rlist", "tictoc"), .combine = "c") %dopar% {
     
-    par.work <- work[[k]]
+    # par.work <- work[[k]]
     set.seed(1997)
     
     # Setting up result storage:
-    acc <- numeric(length(par.work))
+    # acc <- numeric(length(par.work))
+    acc <- numeric(n.datasets)
     
     # Running:
-    for (run in 1:length(par.work)) {
+    # for (run in 1:length(par.work)) {
+    for (run in datasets) {
       
       # Loading hyperspectral dataset:
-      datalist <- list.load(file = sprintf("hyper/datasets/%s/hyper_dataset_%d.RData", prep, par.work[run]))
+      # datalist <- list.load(file = sprintf("hyper/datasets/%s/hyper_dataset_%d.RData", prep, par.work[run]))
+      datalist <- list.load(file = sprintf("hyper/datasets/%s/hyper_dataset_%d.RData", prep, run))
       
       # Storing data and prediction target:
       # 9 feb is last day of VEG, 25 feb is heading, 10 march is start of grain filling:
@@ -88,7 +98,8 @@ invisible(
       }
       
       ### Model ##############################################################
-      tic(par.work[run])
+      # tic(par.work[run])
+      tic(run)
       
       # MegaLMM config:
       run_parameters <- MegaLMM::MegaLMM_control(
@@ -113,7 +124,8 @@ invisible(
       )
       
       # Creating run ID:
-      run_ID <- sprintf("hyper/megalmm_states/%s_%sVEG_hyper_dataset_%d_RF", prep, CV, par.work[run])
+      # run_ID <- sprintf("hyper/megalmm_states/%s_%sVEG_hyper_dataset_%d_RF", prep, CV, par.work[run])
+      run_ID <- sprintf("hyper/megalmm_states/%s_%sVEG_hyper_dataset_%d_RF", prep, CV, run)
       
       # Initializing MegaLMM:
       MegaLMM_state = MegaLMM::setup_model_MegaLMM(d[, 2:ncol(d)],
@@ -203,26 +215,26 @@ invisible(
     comptimes <- unlist(lapply(tictoc.logs, function(x) x$toc - x$tic))
     
     # Collect results:
-    worker.result <- list(data.frame(acc = acc,
-                                     comptimes = comptimes))
+    # worker.result <- list(data.frame(acc = acc,
+    #                                  comptimes = comptimes))
+    # 
+    # names(worker.result) <- sprintf("worker_%d", k)
+    # return(worker.result)
     
-    names(worker.result) <- sprintf("worker_%d", k)
-    return(worker.result)
-    
-  })
-doParallel::stopImplicitCluster()
-parallel::stopCluster(cl)
+#   })
+# doParallel::stopImplicitCluster()
+# parallel::stopCluster(cl)
 toc()
 
 # Restructuring parallel results for saving:
-acc <- numeric()
-comptimes <- numeric()
-for (j in 1:length(work)) {
-  
-  acc <- c(acc, par.results[[sprintf("worker_%d", j)]]$acc)
-  comptimes <- c(comptimes, par.results[[sprintf("worker_%d", j)]]$comptimes)
-  
-}
+# acc <- numeric()
+# comptimes <- numeric()
+# for (j in 1:length(work)) {
+#   
+#   acc <- c(acc, par.results[[sprintf("worker_%d", j)]]$acc)
+#   comptimes <- c(comptimes, par.results[[sprintf("worker_%d", j)]]$comptimes)
+#   
+# }
 
 results <- data.frame(acc = acc,
                       comptimes = comptimes)
