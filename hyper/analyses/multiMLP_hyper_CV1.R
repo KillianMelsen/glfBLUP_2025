@@ -57,6 +57,9 @@ for (l in 1:length(L)) {
 
 # Function to define the required architectures:
 define_model <- function(L, N, D, input_shape, output_shape) {
+  keras3::clear_session()
+  tensorflow::tf$keras$backend$clear_session()
+  tensorflow::tf$compat$v1$reset_default_graph()
   if (L == 1) {
     model <- keras_model_sequential()
     
@@ -284,7 +287,10 @@ for (run in first:last) {
       names(temp)[arch] <- model.name
       
       # Clearing Keras backend:
-      clear_session()
+      keras3::clear_session()
+      tensorflow::tf$keras$backend$clear_session()
+      tensorflow::tf$compat$v1$reset_default_graph()
+      gc()
     }
     # Adding results for the current fold to the overall results:
     tuning.results <- rbind(tuning.results, temp)
@@ -342,7 +348,10 @@ for (run in first:last) {
     archs[run] <- model.name
     
     # Clearing Keras backend:
-    clear_session()
+    keras3::clear_session()
+    tensorflow::tf$keras$backend$clear_session()
+    tensorflow::tf$compat$v1$reset_default_graph()
+    gc()
     
   } else if (mean(mean.accs) == 0) {
     
@@ -351,7 +360,9 @@ for (run in first:last) {
     archs[run] <- NA
     
     # Clearing Keras backend:
-    clear_session()
+    keras3::clear_session()
+    tensorflow::tf$keras$backend$clear_session()
+    tensorflow::tf$compat$v1$reset_default_graph()
   }
 }
 toc()

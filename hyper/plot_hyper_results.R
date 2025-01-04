@@ -8,7 +8,7 @@ set.seed(1997)
 # Settings:
 models <- c("Univariate", "gfBLUP", "MegaLMM", "lsBLUP", "siBLUP")#, "MultiMLP")
 scenarios <- c("CV1", "CV2", "CV2VEG")
-prep <- "nosplines"
+prep <- "splines"
 
 # Loading results:
 results <- expand.grid(Model = models[2:length(models)],
