@@ -13,7 +13,7 @@ prep <- "nosplines"
 # Loading libraries:
 library(rlist)
 library(tictoc)
-library(keras3)
+library(keras)
 library(gfBLUP)
 library(tensorflow)
 source("helper_functions/Estimate_gcor_prediction.R")
@@ -22,7 +22,6 @@ library(coda)
 library(ape)
 
 # Setting seeds:
-keras3::set_random_seed(1997)
 tensorflow::set_random_seed(1997, disable_gpu = TRUE)
 
 # Setting working directory:
@@ -291,7 +290,7 @@ for (run in first:last) {
       names(temp)[arch] <- model.name
       
       # Clearing Keras backend:
-      clear_session()
+      k_clear_session()
     }
     # Adding results for the current fold to the overall results:
     tuning.results <- rbind(tuning.results, temp)
@@ -357,7 +356,7 @@ for (run in first:last) {
     archs[run] <- model.name
     
     # Clearing Keras backend:
-    clear_session()
+    k_clear_session()
     
   } else if (mean(mean.accs) == 0) {
     
@@ -366,7 +365,7 @@ for (run in first:last) {
     archs[run] <- NA
     
     # Clearing Keras backend:
-    clear_session()
+    k_clear_session()
   }
 }
 toc()
