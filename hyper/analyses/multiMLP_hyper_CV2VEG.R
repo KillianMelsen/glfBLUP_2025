@@ -6,7 +6,7 @@
 
 # Setting CV:
 CV <- "CV2"
-prep <- "nosplines"
+prep <- "splines"
 # Setting seed:
 # set.seed(1997)
 
@@ -125,7 +125,7 @@ define_model <- function(L, N, D, input_shape, output_shape) {
 
 # Hyperspectral datasets to run:
 first <- 1
-last <- 2
+last <- 250
 n.datasets <- length(first:last)
       
 # Creating test accuracy storage:
