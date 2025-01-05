@@ -6,7 +6,7 @@
 
 # Setting CV:
 CV <- "CV1"
-prep <- "nosplines"
+prep <- "splines"
 # Setting seed:
 # set.seed(1997)
 
