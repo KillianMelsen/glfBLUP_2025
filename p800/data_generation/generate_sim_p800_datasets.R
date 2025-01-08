@@ -24,6 +24,8 @@ h2.foc <- c("01", "03", "05", "07", "09")
 combis <- length(h2.sec) * length(comms)
 combi <- 1
 
+h2s <- h2.sec[1]
+comm <- comms[1]
 for (h2s in h2.sec) {
   for (comm in comms) {
     
@@ -69,7 +71,8 @@ for (h2s in h2.sec) {
                                    S.per.LF = 100, Y.psi = 1 - comm.num,
                                    L.min = 0.3, L.max = 0.8,
                                    S.sg2 = sg2.s, S.se2 = se2.s,
-                                   Y.sg2 = sg2.y, Y.se2 = se2.y)
+                                   Y.sg2 = sg2.y, Y.se2 = se2.y,
+                                   resCors = TRUE)
         
         datalist$simParams <- list(r = r, n.LSF = 4, n.LNF = 4,
                                    LSF.rho = 0, LNF.rho = 0, LSNF.rho = 0,
