@@ -1,6 +1,6 @@
 # !!! IMPORTANT: SET MKL_NUMTHREADS=1 and MKL_DYNAMIC=TRUE in ~/.profile !!!
 # Runtime: ~ s for 250 datasets.
-prep <- "splines"
+prep <- "VEGsplines"
 # Loading libraries:
 library(rlist)
 library(tictoc)
@@ -38,7 +38,7 @@ invisible(
     set.seed(1997)
     
     # Setting up result storage:
-    CV1.acc <- CV2.acc <- numeric(length(par.work))
+    CV1.acc <- CV2.acc <- CV2.RC.acc <- numeric(length(par.work))
     penG <- numeric(length(par.work))
     penE <- numeric(length(par.work))
     subset <- character(length(par.work))
@@ -127,6 +127,7 @@ invisible(
       ########################################################################
       
       # CV1.acc[run] <- cor(pred.target$pred.target, CV1.temp$preds[match(pred.target$G, names(CV1.temp$preds))])
+      CV2.acc[run] <- cor(pred.target$pred.target, CV2.temp$preds[match(pred.target$G, names(CV2.temp$preds))])
       #### Runcie & Cheng 2019 correction --------------------------------------
       temp <- estimate_gcor(data = data.frame(ID = pred.target$G,
                                               obs = pred.target$pred.target,
@@ -134,7 +135,7 @@ invisible(
                             Knn = K[pred.target$G, pred.target$G],
                             method = "MCMCglmm",
                             normalize = T)
-      CV2.acc[run] <- temp["g_cor"]
+      CV2.RC.acc[run] <- temp["g_cor"]
       
       penG[run] <- tempG$optPen
       penE[run] <- tempE$optPen
@@ -157,6 +158,7 @@ invisible(
     # Collect results:
     worker.result <- list(list(result = data.frame(#CV1.acc = CV1.acc,
                                                    CV2.acc = CV2.acc,
+                                                   CV2.RC.acc = CV2.RC.acc,
                                                    penG = penG,
                                                    penE = penE,
                                                    subset = subset,
@@ -172,7 +174,7 @@ parallel::stopCluster(cl)
 toc()
 
 # Restructuring parallel results for saving:
-CV1.acc <- CV2.acc <- numeric()
+CV1.acc <- CV2.acc <- CV2.RC.acc <- numeric()
 penG <- numeric()
 penE <- numeric()
 subset <- character()
@@ -183,6 +185,7 @@ for (j in 1:length(work)) {
   
   # CV1.acc <- c(CV1.acc, par.results[[sprintf("worker_%d", j)]]$result$CV1.acc)
   CV2.acc <- c(CV2.acc, par.results[[sprintf("worker_%d", j)]]$result$CV2.acc)
+  CV2.RC.acc <- c(CV2.RC.acc, par.results[[sprintf("worker_%d", j)]]$result$CV2.RC.acc)
   penG <- c(penG, par.results[[sprintf("worker_%d", j)]]$result$penG)
   penE <- c(penE, par.results[[sprintf("worker_%d", j)]]$result$penE)
   subset <- c(subset, par.results[[sprintf("worker_%d", j)]]$result$subset)
@@ -198,6 +201,7 @@ for (j in 1:length(work)) {
 #                           comptimes = comptimes)
 
 CV2.results <- data.frame(acc = CV2.acc,
+                          acc.RC = CV2.RC.acc,
                           penG = penG,
                           penE = penE,
                           subset = subset,

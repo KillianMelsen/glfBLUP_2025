@@ -96,6 +96,10 @@ for (d in dates) {
 }
 toc()
 saveRDS(corr.list, "hyper/data_generation/corr_list.rds")
+
+
+
+rm(list = setdiff(ls(), c("dates")))
 corr.list <- readRDS("hyper/data_generation/corr_list.rds")
 
 # Putting all dataframes below each other:
@@ -113,79 +117,96 @@ saveRDS(data.wide, "hyper/data_generation/hyper_pseudoCRD_nosplines.rds")
 
 # Option 2: fitting splines through 10 timepoints and taking fitted values -----
 # Making an empty copy for storing the data:
-# data.splines <- data
-# data.splines[, 11:72] <- NA
-# 
-# # Converting the data for use with statgenHTP:
-# data$date <- as.Date(as.character(data$date), format = "%y%m%d")
-# data <- as.data.frame(data)
-# data$plot <- as.factor(data$plot)
-# names(data)[which(names(data) == "date")] <- "timePoint"
-# data$timePoint <- as.POSIXct(data$timePoint)
-# data$pop <- "pop"; data$pop <- as.factor(data$pop)
-# names(data)[which(names(data) == "row")] <- "rowId"
-# names(data)[which(names(data) == "col")] <- "colId"
-# 
-# features <- colnames(data)[11:72]
-# f <- features[1]
-# i <- 1
-# for (f in features) {
-#   cat(sprintf("Working on feature %d / 62\n\n", i))
-#   # Fit P-Splines Hierarchical Curve Data Model for all genotypes:
-#   fit.psHDM  <- fitSplineHDM(inDat = data,
-#                              trait = f,
-#                              pop = "pop",
-#                              genotype = "gid",
-#                              plotId = "plot",
-#                              difVar = list(geno = FALSE, plot = FALSE),
-#                              smoothPop = list(nseg = 5, bdeg = 2, pord = 2),
-#                              smoothGeno = list(nseg = 5, bdeg = 3, pord = 2),
-#                              smoothPlot = list(nseg = 7, bdeg = 3, pord = 2),
-#                              trace = FALSE)
-#   
-#   # Predict the P-Splines Hierarchical Curve Data Model on a dense grid:
-#   pred.psHDM <- predict(object = fit.psHDM,
-#                         # newtimes = seq(min(fit.psHDM$time[["timeNumber"]]),
-#                         #                max(fit.psHDM$time[["timeNumber"]]),
-#                         #                length.out = 100),
-#                         pred = list(pop = TRUE, geno = TRUE, plot = TRUE),
-#                         se = list(pop = FALSE, geno = FALSE, plot = FALSE),
-#                         trace = FALSE)
-#   
-#   # ## Population-specific trajectories.
-#   # plot(pred.psHDM, plotType = "popTra", themeSizeHDM = 10)
-#   # 
-#   # ## Population and genotype-specific trajectories.
-#   # plot(pred.psHDM, plotType = "popGenoTra", themeSizeHDM = 10)
-#   # 
-#   # ## As an example we used ten randomly selected genotypes 
-#   # set.seed(1)
-#   # plot.genos  <- sample(pred.psHDM$genoLevel$genotype,10, replace = FALSE)
-#   # names.genos <- as.character(plot.genos)
-#   # 
-#   # ## Genotype- and plot-specific trajectories.
-#   # plot(pred.psHDM,
-#   #      plotType = "genoPlotTra",
-#   #      genotypes = plot.genos, genotypeNames = names.genos,
-#   #      themeSizeHDM = 10)
-#   
-#   # Making sure it's all in the same order:
-#   order <- paste(as.character(data$timePoint), as.character(data$plot), sep = "_")
-#   
-#   output <- pred.psHDM$plotLevel[, c("timePoint", "plotId", "genotype", "fPlot", "obsPlot")]
-#   output$order <- paste(as.character(output$timePoint), as.character(output$plotId), sep = "_")
-#   output <- output[match(order, output$order),]
-#   data.splines[, f] <- as.numeric(output$fPlot)
-#   i <- i + 1
-# }
-# 
-# data.splines.wide <- as.data.frame(tidyr::pivot_wider(data.splines,
-#                                                       names_from = date,
-#                                                       names_glue = "{.value}_{date}",
-#                                                       values_from = 11:72))
-# saveRDS(data.splines.wide, "hyper/data_generation/hyper_pseudoCRD_splines.rds")
+rm(list = setdiff(ls(), c("dates")))
+corr.list <- readRDS("hyper/data_generation/corr_list.rds")
+
+# Putting all dataframes below each other:
+data <- corr.list[[as.character(dates[1])]]
+for (i in 2:length(dates)) {
+  data <- rbind(data, corr.list[[as.character(dates[i])]])
+}
+data.splines <- data
+data.splines[, 11:72] <- NA
+
+# Converting the data for use with statgenHTP:
+data$date <- as.Date(as.character(data$date), format = "%y%m%d")
+data <- as.data.frame(data)
+data$plot <- as.factor(data$plot)
+names(data)[which(names(data) == "date")] <- "timePoint"
+data$timePoint <- as.POSIXct(data$timePoint)
+data$pop <- "pop"; data$pop <- as.factor(data$pop)
+names(data)[which(names(data) == "row")] <- "rowId"
+names(data)[which(names(data) == "col")] <- "colId"
+
+features <- colnames(data)[11:72]
+f <- features[1]
+i <- 1
+for (f in features) {
+  cat(sprintf("Working on feature %d / 62\n\n", i))
+  # Fit P-Splines Hierarchical Curve Data Model for all genotypes:
+  fit.psHDM  <- fitSplineHDM(inDat = data,
+                             trait = f,
+                             pop = "pop",
+                             genotype = "gid",
+                             plotId = "plot",
+                             difVar = list(geno = FALSE, plot = FALSE),
+                             smoothPop = list(nseg = 5, bdeg = 2, pord = 2),
+                             smoothGeno = list(nseg = 5, bdeg = 3, pord = 2),
+                             smoothPlot = list(nseg = 7, bdeg = 3, pord = 2),
+                             trace = FALSE)
+
+  # Predict the P-Splines Hierarchical Curve Data Model on a dense grid:
+  pred.psHDM <- predict(object = fit.psHDM,
+                        # newtimes = seq(min(fit.psHDM$time[["timeNumber"]]),
+                        #                max(fit.psHDM$time[["timeNumber"]]),
+                        #                length.out = 100),
+                        pred = list(pop = TRUE, geno = TRUE, plot = TRUE),
+                        se = list(pop = FALSE, geno = FALSE, plot = FALSE),
+                        trace = FALSE)
+
+  # ## Population-specific trajectories.
+  # plot(pred.psHDM, plotType = "popTra", themeSizeHDM = 10)
+  #
+  # ## Population and genotype-specific trajectories.
+  # plot(pred.psHDM, plotType = "popGenoTra", themeSizeHDM = 10)
+  #
+  # ## As an example we used ten randomly selected genotypes
+  # set.seed(1)
+  # plot.genos  <- sample(pred.psHDM$genoLevel$genotype,10, replace = FALSE)
+  # names.genos <- as.character(plot.genos)
+  #
+  # ## Genotype- and plot-specific trajectories.
+  # plot(pred.psHDM,
+  #      plotType = "genoPlotTra",
+  #      genotypes = plot.genos, genotypeNames = names.genos,
+  #      themeSizeHDM = 10)
+
+  # Making sure it's all in the same order:
+  order <- paste(as.character(data$timePoint), as.character(data$plot), sep = "_")
+
+  output <- pred.psHDM$plotLevel[, c("timePoint", "plotId", "genotype", "fPlot", "obsPlot")]
+  output$order <- paste(as.character(output$timePoint), as.character(output$plotId), sep = "_")
+  output <- output[match(order, output$order),]
+  data.splines[, f] <- as.numeric(output$fPlot)
+  i <- i + 1
+}
+
+data.splines.wide <- as.data.frame(tidyr::pivot_wider(data.splines,
+                                                      names_from = date,
+                                                      names_glue = "{.value}_{date}",
+                                                      values_from = 11:72))
+saveRDS(data.splines.wide, "hyper/data_generation/hyper_pseudoCRD_splines.rds")
 
 # Option 3: fitting splines through the vegetative timepoints only and taking fitted values -----
+# Putting all dataframes below each other:
+rm(list = setdiff(ls(), c("dates")))
+corr.list <- readRDS("hyper/data_generation/corr_list.rds")
+
+# Putting all dataframes below each other:
+data <- corr.list[[as.character(dates[1])]]
+for (i in 2:length(dates)) {
+  data <- rbind(data, corr.list[[as.character(dates[i])]])
+}
 data <- droplevels(data[which(data$date %in% c("150110", "150119", "150204", "150209")),])
 # Making an empty copy for storing the data:
 data.splines <- data
@@ -269,7 +290,7 @@ yield_1415 <- readxl::read_xlsx("hyper/data_generation/EYT_all_data_Y13_14_to_Y1
 genotypes <- vroom::vroom("hyper/data_generation/Krause_et_al_2018_Genotypes.csv")
 pseudoCRD.nosplines <- readRDS("hyper/data_generation/hyper_pseudoCRD_nosplines.rds")
 pseudoCRD.splines <- readRDS("hyper/data_generation/hyper_pseudoCRD_splines.rds")
-pseudoCRD.VEGsplines <- readRDS("hyper/data_generation/hyper_pseudoCRD_splines.rds")
+pseudoCRD.VEGsplines <- readRDS("hyper/data_generation/hyper_pseudoCRD_VEGsplines.rds")
 coords <- readRDS("hyper/data_generation/coords.rds")
 
 genotypes$GID <- as.character(genotypes$GID)
@@ -403,7 +424,7 @@ gp_ready.VEGsplines <- dplyr::filter(gp_ready.VEGsplines, gid %in% genotypes$GID
 
 gp_ready.nosplines <- gp_ready.nosplines[, c(4:5, 8, 10:631)]
 gp_ready.splines <- gp_ready.splines[, c(4:5, 8, 10:631)]
-gp_ready.VEGsplines <- gp_ready.VEGsplines[, c(4:5, 8, 10:631)]
+gp_ready.VEGsplines <- gp_ready.VEGsplines[, c(4:5, 8, 10:259)]
 
 saveRDS(gp_ready.nosplines, "hyper/data_generation/pseudoCRD_nosplines.rds")
 saveRDS(gp_ready.splines, "hyper/data_generation/pseudoCRD_splines.rds")

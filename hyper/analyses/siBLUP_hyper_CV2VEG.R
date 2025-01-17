@@ -1,6 +1,6 @@
 # !!! IMPORTANT: SET MKL_NUMTHREADS=1 and MKL_DYNAMIC=TRUE in ~/.profile !!!
 # Runtime: ~1400 s for 250 datasets.
-prep <- "splines"
+prep <- "VEGsplines"
 # Loading libraries:
 library(rlist)
 library(tictoc)
@@ -41,6 +41,7 @@ for (CV in c("CV2")) {
       
       # Setting up result storage:
       acc <- numeric(length(par.work))
+      CV2.RC.acc <- numeric(length(par.work))
       pen <- numeric(length(par.work))
       extra <- vector("list", length(par.work))
       
@@ -73,7 +74,8 @@ for (CV in c("CV2")) {
                               Knn = K[pred.target$G, pred.target$G],
                               method = "MCMCglmm",
                               normalize = T)
-        acc[run] <- temp["g_cor"]
+        CV2.RC.acc[run] <- temp["g_cor"]
+        acc[run] <- cor(RESULT$preds, pred.target$pred.target)
         pen[run] <- RESULT$regPen
         
         extra[[run]] <- list(gamma = RESULT$gamma,
@@ -95,6 +97,7 @@ for (CV in c("CV2")) {
       
       # Collect results:
       worker.result <- list(list(result = data.frame(acc = acc,
+                                                     CV2.RC.acc = CV2.RC.acc,
                                                      pen = pen,
                                                      comptimes = comptimes),
                                  extra = extra))
@@ -109,6 +112,7 @@ for (CV in c("CV2")) {
   
   # Restructuring parallel results for saving:
   acc <- numeric()
+  CV2.RC.acc <- numeric()
   pen <- numeric()
   comptimes <- numeric()
   extra <- vector("list")
@@ -116,6 +120,7 @@ for (CV in c("CV2")) {
   for (j in 1:length(work)) {
     
     acc <- c(acc, par.results[[sprintf("worker_%d", j)]]$result$acc)
+    CV2.RC.acc <- c(CV2.RC.acc, par.results[[sprintf("worker_%d", j)]]$result$CV2.RC.acc)
     pen <- c(pen, par.results[[sprintf("worker_%d", j)]]$result$pen)
     comptimes <- c(comptimes, par.results[[sprintf("worker_%d", j)]]$result$comptimes)
     extra <- c(extra, par.results[[sprintf("worker_%d", j)]]$extra)
@@ -123,6 +128,7 @@ for (CV in c("CV2")) {
   }
   
   results <- data.frame(acc = acc,
+                        acc.RC = CV2.RC.acc,
                         pen = pen,
                         comptimes = comptimes)
   

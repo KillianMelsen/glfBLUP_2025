@@ -1,5 +1,5 @@
 CV <- "CV2"
-prep <- "splines"
+prep <- "nosplines" # or "VEGsplines"
 # Run on Windows, don't run on WSL cause that doesn't work for whatever reason.
 # Should take less than 6 hours for all 250 datasets (25 datasets for 10 workers each)
 
@@ -49,6 +49,7 @@ n.datasets <- length(datasets)
     # Setting up result storage:
     # acc <- numeric(length(par.work))
     acc <- numeric(n.datasets)
+    CV2.RC.acc <- numeric(n.datasets)
     
     # Running:
     # for (run in 1:length(par.work)) {
@@ -203,7 +204,8 @@ n.datasets <- length(datasets)
                             Knn = K[pred.target$G, pred.target$G],
                             method = "MCMCglmm",
                             normalize = T)
-      acc[run] <- temp["g_cor"]
+      CV2.RC.acc[run] <- temp["g_cor"]
+      acc[run] <- cor(pred.target$pred.target, mean_pred.test)
       
       # Deleting MegaLMM state files:
       unlink(run_ID, recursive = TRUE)
@@ -216,6 +218,7 @@ n.datasets <- length(datasets)
     
     # Collect results:
     # worker.result <- list(data.frame(acc = acc,
+    #                                  CV2.RC.acc = CV2.RC.acc,
     #                                  comptimes = comptimes))
     # 
     # names(worker.result) <- sprintf("worker_%d", k)
@@ -228,15 +231,18 @@ toc()
 
 # Restructuring parallel results for saving:
 # acc <- numeric()
+# CV2.RC.acc <- numeric()
 # comptimes <- numeric()
 # for (j in 1:length(work)) {
 #   
 #   acc <- c(acc, par.results[[sprintf("worker_%d", j)]]$acc)
+#   CV2.RC.acc <- c(CV2.RC.acc, par.results[[sprintf("worker_%d", j)]]$CV2.RC.acc)
 #   comptimes <- c(comptimes, par.results[[sprintf("worker_%d", j)]]$comptimes)
 #   
 # }
 
 results <- data.frame(acc = acc,
+                      acc.RC = CV2.RC.acc,
                       comptimes = comptimes)
 
 # Making correct CV label:

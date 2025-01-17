@@ -1,5 +1,5 @@
 CV <- "CV1"
-prep <- "splines"
+prep <- "nosplines" # or "splines"
 # Run on Windows, don't run on WSL cause that doesn't work for whatever reason.
 # Should take less than 6 hours for all 250 datasets (25 datasets for 10 workers each)
 # Loading libraries:

@@ -86,14 +86,14 @@ for (run in 1:n.datasets) {
   rlist::list.save(datalist.splines, file = sprintf("hyper/datasets/splines/hyper_dataset_%d.RData", run))
   
   # Saving the data (VEG time splines):
-  datalist.VEGsplines <- list(data = as.data.frame(pseudoCRD.VEGsplines[, 3:624]),
-                              pred.target = unique(as.data.frame(pseudoCRD.VEGsplines.test[, c(3, 625)])),
+  datalist.VEGsplines <- list(data = as.data.frame(pseudoCRD.VEGsplines[, 3:252]),
+                              pred.target = unique(as.data.frame(pseudoCRD.VEGsplines.test[, c(3, 253)])),
                               test.set = unique(pseudoCRD.VEGsplines$gid[which(is.na(pseudoCRD.VEGsplines$gy_adjusted))]),
                               train.set = unique(pseudoCRD.VEGsplines$gid[which(!is.na(pseudoCRD.VEGsplines$gy_adjusted))]))
   
   names(datalist.VEGsplines$pred.target) <- c("G", "pred.target")
   names(datalist.VEGsplines$data)[1] <- "G"
-  names(datalist.VEGsplines$data)[622] <- "Y"
+  names(datalist.VEGsplines$data)[250] <- "Y"
   rlist::list.save(datalist.VEGsplines, file = sprintf("hyper/datasets/VEGsplines/hyper_dataset_%d.RData", run))
 }
 toc()
