@@ -33,7 +33,7 @@ load("genotypes/K_hyper.RData")
 # Hyperspectral data:
 tic("MegaLMM CV2VEG")
 
-datasets <- 1:250
+datasets <- 1:10
 n.datasets <- length(datasets)
 # n.cores <- 10
 # work <- split(datasets, ceiling(seq_along(datasets) / ceiling(n.datasets / n.cores)))
@@ -54,6 +54,8 @@ n.datasets <- length(datasets)
     # Running:
     # for (run in 1:length(par.work)) {
     for (run in datasets) {
+      
+      cat(sprintf("Running dataset %d / %d...\n\n", run, n.datasets))
       
       # Loading hyperspectral dataset:
       # datalist <- list.load(file = sprintf("hyper/datasets/%s/hyper_dataset_%d.RData", prep, par.work[run]))
@@ -136,12 +138,12 @@ n.datasets <- length(datasets)
                                                    run_parameters = run_parameters,
                                                    run_ID = run_ID)
       
-      maps = MegaLMM::make_Missing_data_map(MegaLMM_state, verbose = FALSE)
+      maps = MegaLMM::make_Missing_data_map(MegaLMM_state, verbose = TRUE)
       MegaLMM_state <- MegaLMM::set_Missing_data_map(MegaLMM_state, maps$Missing_data_map)
       
       MegaLMM_state <- MegaLMM::set_priors_MegaLMM(MegaLMM_state, priors)
       MegaLMM_state <- MegaLMM::initialize_variables_MegaLMM(MegaLMM_state)
-      MegaLMM_state <- MegaLMM::initialize_MegaLMM(MegaLMM_state, verbose = FALSE)
+      MegaLMM_state <- MegaLMM::initialize_MegaLMM(MegaLMM_state, verbose = TRUE)
       
       MegaLMM_state$Posterior$posteriorSample_params <- c("Lambda")
       MegaLMM_state$Posterior$posteriorFunctions <- list(pred = "U_R[,1] + U_F %*% Lambda[,1]")
@@ -162,7 +164,7 @@ n.datasets <- length(datasets)
       for (i in 1:n_burn_in) {
         MegaLMM_state <- MegaLMM::reorder_factors(MegaLMM_state)
         MegaLMM_state <- MegaLMM::clear_Posterior(MegaLMM_state)
-        MegaLMM_state <- MegaLMM::sample_MegaLMM(MegaLMM_state, n_iter, verbose = F)
+        MegaLMM_state <- MegaLMM::sample_MegaLMM(MegaLMM_state, n_iter, verbose = T)
       }
       
       # Clearing the burn-in samples:
@@ -175,7 +177,7 @@ n.datasets <- length(datasets)
       n_iter <- 500
       n_sampling <- 1
       for (i in 1:n_sampling) {
-        MegaLMM_state <- MegaLMM::sample_MegaLMM(MegaLMM_state, n_iter, verbose = F)
+        MegaLMM_state <- MegaLMM::sample_MegaLMM(MegaLMM_state, n_iter, verbose = T)
         MegaLMM_state <- MegaLMM::save_posterior_chunk(MegaLMM_state)
       }
       
@@ -209,6 +211,7 @@ n.datasets <- length(datasets)
       
       # Deleting MegaLMM state files:
       unlink(run_ID, recursive = TRUE)
+      gc()
     }
     
     # Retrieve computational times:
