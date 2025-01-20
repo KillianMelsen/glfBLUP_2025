@@ -1,5 +1,5 @@
 CV <- "CV2"
-prep <- "nosplines" # or "VEGsplines"
+prep <- "VEGsplines" # or "VEGsplines"
 # Run on Windows, don't run on WSL cause that doesn't work for whatever reason.
 # Should take less than 6 hours for all 250 datasets (25 datasets for 10 workers each)
 
@@ -33,7 +33,7 @@ load("genotypes/K_hyper.RData")
 # Hyperspectral data:
 tic("MegaLMM CV2VEG")
 
-datasets <- 1:10
+datasets <- 1:250
 n.datasets <- length(datasets)
 # n.cores <- 10
 # work <- split(datasets, ceiling(seq_along(datasets) / ceiling(n.datasets / n.cores)))
