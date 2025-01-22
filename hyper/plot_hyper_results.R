@@ -34,7 +34,7 @@ results[results$Model == "gfBLUP" & results$Scenario == "CV1", 4] <- read.csv(sp
 results[results$Model == "gfBLUP" & results$Scenario == "CV2", 4] <- read.csv(sprintf("hyper/results/%s/3b_hyper_results_gfblup_CV2.csv", CV2.prep))[, CV2.measure]
 results[results$Model == "gfBLUP" & results$Scenario == "CV2VEG", 4] <- read.csv(sprintf("hyper/results/%s/3b_hyper_results_gfblup_CV2VEG.csv", CV2VEG.prep))[, CV2.measure]
 
-results[results$Model == "MegaLMM" & results$Scenario == "CV1", 4] <- rep(0.2, 250) #read.csv(sprintf("hyper/results/%s/12a_hyper_results_megalmm_CV1.csv", CV1.prep))[,"acc"]
+results[results$Model == "MegaLMM" & results$Scenario == "CV1", 4] <- read.csv(sprintf("hyper/results/%s/12a_hyper_results_megalmm_CV1.csv", CV1.prep))[,"acc"]
 results[results$Model == "MegaLMM" & results$Scenario == "CV2", 4] <- read.csv(sprintf("hyper/results/%s/12b_hyper_results_megalmm_CV2.csv", CV2.prep))[, CV2.measure]
 results[results$Model == "MegaLMM" & results$Scenario == "CV2VEG", 4] <- read.csv(sprintf("hyper/results/%s/12b_hyper_results_megalmm_CV2VEG.csv", CV2VEG.prep))[, CV2.measure]
 
