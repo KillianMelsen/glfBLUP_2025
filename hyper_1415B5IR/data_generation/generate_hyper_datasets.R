@@ -23,6 +23,13 @@ for (run in 1:n.datasets) {
   pseudoCRD.splines <- readRDS("hyper_1415B5IR/data_generation/pseudoCRD_splines.rds")
   pseudoCRD.VEGsplines <- readRDS("hyper_1415B5IR/data_generation/pseudoCRD_VEGsplines.rds")
   
+  # Fixing colnames:
+  colnames(pseudoCRD.splines)[4:(ncol(pseudoCRD.splines) - 2)] <-
+    substr(colnames(pseudoCRD.splines)[4:(ncol(pseudoCRD.splines) - 2)], 2, 13)
+  
+  colnames(pseudoCRD.VEGsplines)[4:(ncol(pseudoCRD.VEGsplines) - 2)] <-
+    substr(colnames(pseudoCRD.VEGsplines)[4:(ncol(pseudoCRD.VEGsplines) - 2)], 2, 13)
+  
   pseudoCRD.splines.test <- pseudoCRD.splines[which(pseudoCRD.splines$trial %in% test),]
   pseudoCRD.splines.train <- pseudoCRD.splines[which(pseudoCRD.splines$trial %in% train),]
   
