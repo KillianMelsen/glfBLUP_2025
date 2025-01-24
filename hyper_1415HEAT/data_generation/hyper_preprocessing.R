@@ -206,6 +206,7 @@ saveRDS(data.splines.wide, "hyper_1415HEAT/data_generation/hyper_pseudoCRD_splin
 
 # Pre-processing yield data: ===================================================
 rm(list = ls())
+library(statgenGWAS)
 set.seed(1997)
 
 # Loading data:

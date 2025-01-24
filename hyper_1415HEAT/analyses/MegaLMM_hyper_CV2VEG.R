@@ -1,5 +1,5 @@
 CV <- "CV2"
-prep <- "nosplines" # or "VEGsplines"
+prep <- "nosplines" # No VEGsplines cause of a single VEG date...
 # Run on Windows, don't run on WSL cause that doesn't work for whatever reason.
 # Should take less than 6 hours for all 250 datasets (25 datasets for 10 workers each)
 
@@ -49,7 +49,6 @@ n.datasets <- length(datasets)
     # Setting up result storage:
     # acc <- numeric(length(par.work))
     acc <- numeric(n.datasets)
-    CV2.RC.acc <- numeric(n.datasets)
     
     # Running:
     # for (run in 1:length(par.work)) {
@@ -62,7 +61,6 @@ n.datasets <- length(datasets)
       datalist <- list.load(file = sprintf("hyper_1415HEAT/datasets/%s/hyper_dataset_%d.RData", prep, run))
       
       # Storing data and prediction target:
-      # 9 feb is last day of VEG, 25 feb is heading, 10 march is start of grain filling:
       dates <- c("150414")
       d <- datalist$data
       select <- which(substr(names(d), 7, 12) %in% dates)
@@ -209,12 +207,10 @@ n.datasets <- length(datasets)
                             Knn = K[pred.target$G, pred.target$G],
                             method = "MCMCglmm",
                             normalize = T)
-      CV2.RC.acc[run] <- temp["g_cor"]
-      acc[run] <- cor(pred.target$pred.target, mean_pred.test)
+      acc[run] <- temp["g_cor"]
       
       # Deleting MegaLMM state files:
       unlink(run_ID, recursive = TRUE)
-      gc()
     }
     
     # Retrieve computational times:
@@ -224,7 +220,6 @@ n.datasets <- length(datasets)
     
     # Collect results:
     # worker.result <- list(data.frame(acc = acc,
-    #                                  CV2.RC.acc = CV2.RC.acc,
     #                                  comptimes = comptimes))
     # 
     # names(worker.result) <- sprintf("worker_%d", k)
@@ -237,18 +232,15 @@ toc()
 
 # Restructuring parallel results for saving:
 # acc <- numeric()
-# CV2.RC.acc <- numeric()
 # comptimes <- numeric()
 # for (j in 1:length(work)) {
 #   
 #   acc <- c(acc, par.results[[sprintf("worker_%d", j)]]$acc)
-#   CV2.RC.acc <- c(CV2.RC.acc, par.results[[sprintf("worker_%d", j)]]$CV2.RC.acc)
 #   comptimes <- c(comptimes, par.results[[sprintf("worker_%d", j)]]$comptimes)
 #   
 # }
 
 results <- data.frame(acc = acc,
-                      acc.RC = CV2.RC.acc,
                       comptimes = comptimes)
 
 # Making correct CV label:

@@ -266,6 +266,7 @@ saveRDS(data.splines.wide, "hyper_1415B5IR/data_generation/hyper_pseudoCRD_VEGsp
 
 # Pre-processing yield data: ===================================================
 rm(list = ls())
+library(statgenGWAS)
 set.seed(1997)
 
 # Loading data:
