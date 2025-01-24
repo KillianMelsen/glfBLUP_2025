@@ -8,10 +8,9 @@ library(statgenHTP)
 set.seed(1997)
 
 # Subsetting to Y1415 and Bed5IR irrigation treatment:
-df <- read_csv("hyper_1415DRIP/data_generation/Y1415_Y1516_Y1617_Hyperspectral_Raw_24Mar2022.csv", na = "*")
-# df <- df %>% dplyr::filter(year == "Y1415" & conditions == "Bed5IR")
+df <- read_csv("hyper_datafiles/Y1415_Hyperspectral_Raw_24Mar2022.csv", na = "*")
 df <- df %>% dplyr::filter(year == "Y1415" & conditions == "Heat")
-df <- df %>% dplyr::filter(date %in% c(150414, 150424, 150428, 150506))
+df <- df %>% dplyr::filter(date %in% c(150414, 150424, 150428, 150506)) # The last data in May is not mentioned in the paper about this data...
 df$gid <- as.factor(df$gid)
 
 # Discarding varieties with missing measurements:
@@ -116,14 +115,14 @@ for (i in 2:length(dates)) {
   data <- rbind(data, corr.list[[as.character(dates[i])]])
 }
 
-# Option 1: not fitting splines through the 10 timepoints ----------------------
+# Saving data without fitting splines through the 4 timepoints for CV2VEG:
 data.wide <- as.data.frame(tidyr::pivot_wider(data,
                                               names_from = date,
                                               names_glue = "{.value}_{date}",
                                               values_from = 11:72))
 saveRDS(data.wide, "hyper_1415HEAT/data_generation/hyper_pseudoCRD_nosplines.rds")
 
-# Option 2: fitting splines through 10 timepoints and taking fitted values -----
+# Fitting splines through 4 timepoints and taking fitted values -----
 # Making an empty copy for storing the data:
 rm(list = setdiff(ls(), c("dates")))
 corr.list <- readRDS("hyper_1415HEAT/data_generation/corr_list.rds")
@@ -205,136 +204,28 @@ data.splines.wide <- as.data.frame(tidyr::pivot_wider(data.splines,
                                                       values_from = 11:72))
 saveRDS(data.splines.wide, "hyper_1415HEAT/data_generation/hyper_pseudoCRD_splines.rds")
 
-# # Option 3: fitting splines through the vegetative timepoints only and taking fitted values -----
-# # Makes no sens cause we have only one measurement from the vegetative phase...
-# # Putting all dataframes below each other:
-# rm(list = setdiff(ls(), c("dates")))
-# corr.list <- readRDS("hyper_1415HEAT/data_generation/corr_list.rds")
-# 
-# # Putting all dataframes below each other:
-# data <- corr.list[[as.character(dates[1])]]
-# for (i in 2:length(dates)) {
-#   data <- rbind(data, corr.list[[as.character(dates[i])]])
-# }
-# data <- droplevels(data[which(data$date %in% c("150110", "150119", "150204")),])
-# # Making an empty copy for storing the data:
-# data.splines <- data
-# data.splines[, 11:72] <- NA
-# 
-# # Converting the data for use with statgenHTP:
-# data$date <- as.Date(as.character(data$date), format = "%y%m%d")
-# data <- as.data.frame(data)
-# data$plot <- as.factor(data$plot)
-# names(data)[which(names(data) == "date")] <- "timePoint"
-# data$timePoint <- as.POSIXct(data$timePoint)
-# data$pop <- "pop"; data$pop <- as.factor(data$pop)
-# names(data)[which(names(data) == "row")] <- "rowId"
-# names(data)[which(names(data) == "col")] <- "colId"
-# 
-# features <- colnames(data)[11:72]
-# f <- features[1]
-# i <- 1
-# for (f in features) {
-#   cat(sprintf("Working on feature %d / 62\n\n", i))
-#   # Fit P-Splines Hierarchical Curve Data Model for all genotypes:
-#   fit.psHDM  <- fitSplineHDM(inDat = data,
-#                              trait = f,
-#                              pop = "pop",
-#                              genotype = "gid",
-#                              plotId = "plot",
-#                              difVar = list(geno = FALSE, plot = FALSE),
-#                              smoothPop = list(nseg = 5, bdeg = 2, pord = 2),
-#                              smoothGeno = list(nseg = 5, bdeg = 3, pord = 2),
-#                              smoothPlot = list(nseg = 7, bdeg = 3, pord = 2),
-#                              trace = FALSE)
-#   
-#   # Predict the P-Splines Hierarchical Curve Data Model on a dense grid:
-#   pred.psHDM <- predict(object = fit.psHDM,
-#                         # newtimes = seq(min(fit.psHDM$time[["timeNumber"]]),
-#                         #                max(fit.psHDM$time[["timeNumber"]]),
-#                         #                length.out = 100),
-#                         pred = list(pop = TRUE, geno = TRUE, plot = TRUE),
-#                         se = list(pop = FALSE, geno = FALSE, plot = FALSE),
-#                         trace = FALSE)
-#   
-#   # ## Population-specific trajectories.
-#   # plot(pred.psHDM, plotType = "popTra", themeSizeHDM = 10)
-#   # 
-#   # ## Population and genotype-specific trajectories.
-#   # plot(pred.psHDM, plotType = "popGenoTra", themeSizeHDM = 10)
-#   # 
-#   # ## As an example we used ten randomly selected genotypes 
-#   # set.seed(1)
-#   # plot.genos  <- sample(pred.psHDM$genoLevel$genotype,10, replace = FALSE)
-#   # names.genos <- as.character(plot.genos)
-#   # 
-#   # ## Genotype- and plot-specific trajectories.
-#   # plot(pred.psHDM,
-#   #      plotType = "genoPlotTra",
-#   #      genotypes = plot.genos, genotypeNames = names.genos,
-#   #      themeSizeHDM = 10)
-#   
-#   # Making sure it's all in the same order:
-#   order <- paste(as.character(data$timePoint), as.character(data$plot), sep = "_")
-#   
-#   output <- pred.psHDM$plotLevel[, c("timePoint", "plotId", "genotype", "fPlot", "obsPlot")]
-#   output$order <- paste(as.character(output$timePoint), as.character(output$plotId), sep = "_")
-#   output <- output[match(order, output$order),]
-#   data.splines[, f] <- as.numeric(output$fPlot)
-#   i <- i + 1
-# }
-# 
-# data.splines.wide <- as.data.frame(tidyr::pivot_wider(data.splines,
-#                                                       names_from = date,
-#                                                       names_glue = "{.value}_{date}",
-#                                                       values_from = 11:72))
-# saveRDS(data.splines.wide, "hyper_1415DRIP/data_generation/hyper_pseudoCRD_VEGsplines.rds")
-
 # Pre-processing yield data: ===================================================
 rm(list = ls())
 set.seed(1997)
 
 # Loading data:
-yield_1415 <- readxl::read_xlsx("hyper_1415HEAT/data_generation/EYT_all_data_Y13_14_to_Y15_16.xlsx", sheet = 2)
-genotypes <- vroom::vroom("hyper_1415HEAT/data_generation/Krause_et_al_2018_Genotypes.csv")
+yield_1415 <- readxl::read_xlsx("hyper_datafiles/EYT_all_data_Y13_14_to_Y15_16.xlsx", sheet = 2)
+genotypes <- vroom::vroom("hyper_datafiles/Krause_et_al_2018_Genotypes.csv")
 pseudoCRD.nosplines <- readRDS("hyper_1415HEAT/data_generation/hyper_pseudoCRD_nosplines.rds")
 pseudoCRD.splines <- readRDS("hyper_1415HEAT/data_generation/hyper_pseudoCRD_splines.rds")
-# pseudoCRD.VEGsplines <- readRDS("hyper_1415HEAT/data_generation/hyper_pseudoCRD_VEGsplines.rds")
 coords <- readRDS("hyper_1415HEAT/data_generation/coords.rds")
 
 genotypes$GID <- as.character(genotypes$GID)
 pseudoCRD.nosplines$gid <- as.character(pseudoCRD.nosplines$gid)
 pseudoCRD.splines$gid <- as.character(pseudoCRD.splines$gid)
-# pseudoCRD.VEGsplines$gid <- as.character(pseudoCRD.VEGsplines$gid)
 yield_1415$GID <- as.character(yield_1415$GID)
 
-# Store yield data from treatment Drip:
+# Store yield data from treatment HEAT:
 yield_1415_B5IR <- dplyr::filter(yield_1415, env == "BLHT")
 
-# Creating kinship matrix if required:
-if (!("K_hyper.RData" %in% list.files("genotypes"))) {
-  # 1033 genotypes overlap between yield_1415_B5IR and genotypes file.
-  K <- as.data.frame(genotypes[which(genotypes$GID %in% yield_1415_B5IR$GID), ])
-  rownames(K) <- K$GID
-  K <- K[colnames(K) != "GID"]
-  K_gdata <- createGData(geno = K)
-  K_gdata <- codeMarkers(K_gdata)
-  
-  # Note that the final kinship matrix has 1033 genotypes:
-  K <- kinship(K_gdata$markers, "vanRaden")
-  
-  # Check for genotypes with missing yield (they will be removed):
-  missing_yield <- as.character(yield_1415_B5IR[which(is.na(yield_1415_B5IR$gy)), "GID"])
-  
-  K <- K[setdiff(rownames(K), missing_yield), setdiff(colnames(K), missing_yield)]
-  M_hyper <- K_gdata$markers[setdiff(rownames(K_gdata$markers), missing_yield),]
-  
-  save(K, "genotypes/K_hyper.RData")
-  save(M_hyper, "genotypes/M_hyper.RData")
-} else {
-  load("genotypes/K_hyper.RData")
-  load("genotypes/M_hyper.RData")
-}
+# Assuming they have already been made in the B5IR data generation script:
+load("genotypes/K_hyper.RData")
+load("genotypes/M_hyper.RData")
 
 # Remove plots with missing yield, not whole sets of genotypes cause we would discard
 # all checks:
@@ -410,7 +301,6 @@ gp_ready_foc <- dplyr::filter(gp_ready_foc, !GID %in% missing_yield$GID)
 # This one will do something (remove three rows):
 pseudoCRD.nosplines <- dplyr::filter(pseudoCRD.nosplines, !gid %in% missing_yield$GID)
 pseudoCRD.splines <- dplyr::filter(pseudoCRD.splines, !gid %in% missing_yield$GID)
-# pseudoCRD.VEGsplines <- dplyr::filter(pseudoCRD.VEGsplines, !gid %in% missing_yield$GID)
 
 # Select relevant columns:
 gp_ready_foc <- gp_ready_foc %>% 
@@ -421,7 +311,6 @@ gp_ready_foc <- gp_ready_foc %>%
 # Making sure that the secondary and focal trait data of each plot gets matched correctly:
 pseudoCRD.nosplines <- pseudoCRD.nosplines[match(gp_ready_foc$plot, pseudoCRD.nosplines$plot),]
 pseudoCRD.splines <- pseudoCRD.splines[match(gp_ready_foc$plot, pseudoCRD.splines$plot),]
-# pseudoCRD.VEGsplines <- pseudoCRD.VEGsplines[match(gp_ready_foc$plot, pseudoCRD.VEGsplines$plot),]
 
 # Final dataframe will have 9 design columns, 62*t sec columns, and focal trait + target columns:
 gp_ready.nosplines <- pseudoCRD.nosplines %>%
@@ -430,27 +319,21 @@ gp_ready.nosplines <- pseudoCRD.nosplines %>%
 gp_ready.splines <- pseudoCRD.splines %>% 
   dplyr::bind_cols(., gp_ready_foc[, 4:5])
 
-# gp_ready.VEGsplines <- pseudoCRD.VEGsplines %>% 
-#   dplyr::bind_cols(., gp_ready_foc[, 4:5])
-
 # Filter out any genotypes for which we do not have marker data:
 # We lost the 2 checks (in both sets) + 6 in the test set + 53 in the train set.
 # Total number of rows lost is 2 * 39 * 3 + 6 * 3 + 53 * 3 = 411.
 # 1170 + 2337 = 3507. 1074 + 2022 = 3096. 3507 - 411 is indeed 3096.
 gp_ready.nosplines <- dplyr::filter(gp_ready.nosplines, gid %in% genotypes$GID)
 gp_ready.splines <- dplyr::filter(gp_ready.splines, gid %in% genotypes$GID)
-# gp_ready.VEGsplines <- dplyr::filter(gp_ready.VEGsplines, gid %in% genotypes$GID)
 
 gp_ready.nosplines <- dplyr::filter(gp_ready.nosplines, gid %in% rownames(K))
 gp_ready.splines <- dplyr::filter(gp_ready.splines, gid %in% rownames(K))
 
 gp_ready.nosplines <- gp_ready.nosplines[, c(4:5, 8, 10:ncol(gp_ready.nosplines))]
 gp_ready.splines <- gp_ready.splines[, c(4:5, 8, 10:ncol(gp_ready.splines))]
-# gp_ready.VEGsplines <- gp_ready.VEGsplines[, c(4:5, 8, 10:ncol(gp_ready.VEGsplines))]
 
 saveRDS(gp_ready.nosplines, "hyper_1415HEAT/data_generation/pseudoCRD_nosplines.rds")
 saveRDS(gp_ready.splines, "hyper_1415HEAT/data_generation/pseudoCRD_splines.rds")
-# saveRDS(gp_ready.VEGsplines, "hyper_1415DRIP/data_generation/pseudoCRD_VEGsplines.rds")
 
 
 

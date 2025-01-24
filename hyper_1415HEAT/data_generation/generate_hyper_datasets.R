@@ -9,7 +9,6 @@ n.datasets <- 250
 # Loading data:
 pseudoCRD.nosplines <- readRDS("hyper_1415HEAT/data_generation/pseudoCRD_nosplines.rds")
 pseudoCRD.splines <- readRDS("hyper_1415HEAT/data_generation/pseudoCRD_splines.rds")
-# pseudoCRD.VEGsplines <- readRDS("hyper_1415HEAT/data_generation/pseudoCRD_VEGsplines.rds")
 
 # 37 trials:
 trials  <- unique(pseudoCRD.splines$trial)
@@ -23,16 +22,12 @@ for (run in 1:n.datasets) {
   # Reloading data:
   pseudoCRD.nosplines <- readRDS("hyper_1415HEAT/data_generation/pseudoCRD_nosplines.rds")
   pseudoCRD.splines <- readRDS("hyper_1415HEAT/data_generation/pseudoCRD_splines.rds")
-  # pseudoCRD.VEGsplines <- readRDS("hyper_1415HEAT/data_generation/pseudoCRD_VEGsplines.rds")
   
   pseudoCRD.nosplines.test <- pseudoCRD.nosplines[which(pseudoCRD.nosplines$trial %in% test),]
   pseudoCRD.nosplines.train <- pseudoCRD.nosplines[which(pseudoCRD.nosplines$trial %in% train),]
   
   pseudoCRD.splines.test <- pseudoCRD.splines[which(pseudoCRD.splines$trial %in% test),]
   pseudoCRD.splines.train <- pseudoCRD.splines[which(pseudoCRD.splines$trial %in% train),]
-  
-  # pseudoCRD.VEGsplines.test <- pseudoCRD.VEGsplines[which(pseudoCRD.VEGsplines$trial %in% test),]
-  # pseudoCRD.VEGsplines.train <- pseudoCRD.VEGsplines[which(pseudoCRD.VEGsplines$trial %in% train),]
   
   # Scaling secondary data separately for training and test set:
   pseudoCRD.nosplines.test[, 4:(ncol(pseudoCRD.nosplines.test) - 1)] <-
@@ -45,23 +40,15 @@ for (run in 1:n.datasets) {
   pseudoCRD.splines.train[, 4:(ncol(pseudoCRD.splines.train) - 1)] <-
     sapply(pseudoCRD.splines.train[, 4:(ncol(pseudoCRD.splines.train) - 1)], scale)
   
-  # pseudoCRD.VEGsplines.test[, 4:(ncol(pseudoCRD.VEGsplines.test) - 1)] <-
-  #   sapply(pseudoCRD.VEGsplines.test[, 4:(ncol(pseudoCRD.VEGsplines.test) - 1)], scale)
-  # pseudoCRD.VEGsplines.train[, 4:(ncol(pseudoCRD.VEGsplines.train) - 1)] <-
-  #   sapply(pseudoCRD.VEGsplines.train[, 4:(ncol(pseudoCRD.VEGsplines.train) - 1)], scale)
-  
   # Recreating full datasets after scaling:
   pseudoCRD.nosplines <- rbind(pseudoCRD.nosplines.test, pseudoCRD.nosplines.train)
   pseudoCRD.splines <- rbind(pseudoCRD.splines.test, pseudoCRD.splines.train)
-  # pseudoCRD.VEGsplines <- rbind(pseudoCRD.VEGsplines.test, pseudoCRD.VEGsplines.train)
   
   # Setting gy_adjusted (reps from pseudo-CRD) to NA for test genotypes:
   pseudoCRD.nosplines[which(pseudoCRD.nosplines$gid %in% unique(pseudoCRD.nosplines.test$gid)),
                       "gy_adjusted"] <- NA
   pseudoCRD.splines[which(pseudoCRD.splines$gid %in% unique(pseudoCRD.splines.test$gid)),
                       "gy_adjusted"] <- NA
-  # pseudoCRD.VEGsplines[which(pseudoCRD.VEGsplines$gid %in% unique(pseudoCRD.VEGsplines.test$gid)),
-  #                   "gy_adjusted"] <- NA
   
   # Saving the data (no time splines):
   datalist.nosplines <- list(data = as.data.frame(pseudoCRD.nosplines[, 3:(ncol(pseudoCRD.nosplines) - 1)]),
@@ -84,17 +71,6 @@ for (run in 1:n.datasets) {
   names(datalist.splines$data)[1] <- "G"
   names(datalist.splines$data)[ncol(datalist.splines$data)] <- "Y"
   rlist::list.save(datalist.splines, file = sprintf("hyper_1415HEAT/datasets/splines/hyper_dataset_%d.RData", run))
-  
-  # Saving the data (VEG time splines):
-  # datalist.VEGsplines <- list(data = as.data.frame(pseudoCRD.VEGsplines[, 3:(ncol(pseudoCRD.VEGsplines) - 1)]),
-  #                             pred.target = unique(as.data.frame(pseudoCRD.VEGsplines.test[, c(3, ncol(pseudoCRD.VEGsplines.test))])),
-  #                             test.set = unique(pseudoCRD.VEGsplines$gid[which(is.na(pseudoCRD.VEGsplines$gy_adjusted))]),
-  #                             train.set = unique(pseudoCRD.VEGsplines$gid[which(!is.na(pseudoCRD.VEGsplines$gy_adjusted))]))
-  # 
-  # names(datalist.VEGsplines$pred.target) <- c("G", "pred.target")
-  # names(datalist.VEGsplines$data)[1] <- "G"
-  # names(datalist.VEGsplines$data)[ncol(datalist.VEGsplines$data)] <- "Y"
-  # rlist::list.save(datalist.VEGsplines, file = sprintf("hyper_1415DRIP/datasets/VEGsplines/hyper_dataset_%d.RData", run))
 }
 toc()
 

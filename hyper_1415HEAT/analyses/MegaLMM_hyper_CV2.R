@@ -28,26 +28,30 @@ tic("MegaLMM CV2")
 
 datasets <- 1:250
 n.datasets <- length(datasets)
-n.cores <- 10
-work <- split(datasets, ceiling(seq_along(datasets) / ceiling(n.datasets / n.cores)))
-cl <- parallel::makeCluster(n.cores, outfile = sprintf("logs/MegaLMM_CV2_hyper_datasets_%s_%s_RF.txt", datasets[1], datasets[n.datasets]))
-doParallel::registerDoParallel(cl)
+# n.cores <- 10
+# work <- split(datasets, ceiling(seq_along(datasets) / ceiling(n.datasets / n.cores)))
+# cl <- parallel::makeCluster(n.cores, outfile = sprintf("logs/MegaLMM_CV2_hyper_datasets_%s_%s_RF.txt", datasets[1], datasets[n.datasets]))
+# doParallel::registerDoParallel(cl)
 
-invisible(
-  par.results <- foreach::foreach(k = 1:length(work), .packages = c("MegaLMM", "gfBLUP", "rlist", "tictoc"), .combine = "c") %dopar% {
+# invisible(
+#   par.results <- foreach::foreach(k = 1:length(work), .packages = c("MegaLMM", "gfBLUP", "rlist", "tictoc"), .combine = "c") %dopar% {
     
-    par.work <- work[[k]]
+    # par.work <- work[[k]]
     set.seed(1997)
     
     # Setting up result storage:
-    acc <- numeric(length(par.work))
-    CV2.RC.acc <- numeric(length(par.work))
+    # acc <- numeric(length(par.work))
+    # CV2.RC.acc <- numeric(length(par.work))
+    acc <- numeric(n.datasets)
+    CV2.RC.acc <- numeric(n.datasets)
     
     # Running:
-    for (run in 1:length(par.work)) {
-      tic("test")
+    # for (run in 1:length(par.work)) {
+    for (run in datasets) {
+      
       # Loading hyperspectral dataset:
-      datalist <- list.load(file = sprintf("hyper_1415HEAT/datasets/%s/hyper_dataset_%d.RData", prep, par.work[run]))
+      # datalist <- list.load(file = sprintf("hyper_1415HEAT/datasets/%s/hyper_dataset_%d.RData", prep, par.work[run]))
+      datalist <- list.load(file = sprintf("hyper_1415HEAT/datasets/%s/hyper_dataset_%d.RData", prep, run))
       
       # Storing data and prediction target:
       d <- datalist$data
@@ -88,7 +92,8 @@ invisible(
       }
       
       ### Model ##############################################################
-      tic(par.work[run])
+      # tic(par.work[run])
+      tic(run)
       
       # MegaLMM config:
       run_parameters <- MegaLMM::MegaLMM_control(
@@ -113,7 +118,8 @@ invisible(
       )
       
       # Creating run ID:
-      run_ID <- sprintf("hyper_1415HEAT/megalmm_states/%s_%s_hyper_dataset_%d_RF", prep, CV, par.work[run])
+      # run_ID <- sprintf("hyper_1415HEAT/megalmm_states/%s_%s_hyper_dataset_%d_RF", prep, CV, par.work[run])
+      run_ID <- sprintf("hyper_1415HEAT/megalmm_states/%s_%s_hyper_dataset_%d_RF", prep, CV, run)
       
       # Initializing MegaLMM:
       MegaLMM_state = MegaLMM::setup_model_MegaLMM(d[, 2:ncol(d)],
@@ -123,12 +129,12 @@ invisible(
                                                    run_parameters = run_parameters,
                                                    run_ID = run_ID)
       
-      maps = MegaLMM::make_Missing_data_map(MegaLMM_state, verbose = FALSE)
+      maps = MegaLMM::make_Missing_data_map(MegaLMM_state, verbose = T)
       MegaLMM_state <- MegaLMM::set_Missing_data_map(MegaLMM_state, maps$Missing_data_map)
       
       MegaLMM_state <- MegaLMM::set_priors_MegaLMM(MegaLMM_state, priors)
       MegaLMM_state <- MegaLMM::initialize_variables_MegaLMM(MegaLMM_state)
-      MegaLMM_state <- MegaLMM::initialize_MegaLMM(MegaLMM_state, verbose = FALSE)
+      MegaLMM_state <- MegaLMM::initialize_MegaLMM(MegaLMM_state, verbose = T)
       
       MegaLMM_state$Posterior$posteriorSample_params <- c("Lambda")
       MegaLMM_state$Posterior$posteriorFunctions <- list(pred = "U_R[,1] + U_F %*% Lambda[,1]")
@@ -195,7 +201,7 @@ invisible(
       acc[run] <- cor(pred.target$pred.target, mean_pred.test)
       
       # Deleting MegaLMM state files:
-      unlink(run_ID, recursive = TRUE); toc()
+      unlink(run_ID, recursive = TRUE)
     }
     
     # Retrieve computational times:
@@ -204,29 +210,29 @@ invisible(
     comptimes <- unlist(lapply(tictoc.logs, function(x) x$toc - x$tic))
     
     # Collect results:
-    worker.result <- list(data.frame(acc = acc,
-                                     CV2.RC.acc = CV2.RC.acc,
-                                     comptimes = comptimes))
+    # worker.result <- list(data.frame(acc = acc,
+    #                                  CV2.RC.acc = CV2.RC.acc,
+    #                                  comptimes = comptimes))
+    # 
+    # names(worker.result) <- sprintf("worker_%d", k)
+    # return(worker.result)
     
-    names(worker.result) <- sprintf("worker_%d", k)
-    return(worker.result)
-    
-  })
-doParallel::stopImplicitCluster()
-parallel::stopCluster(cl)
+#   })
+# doParallel::stopImplicitCluster()
+# parallel::stopCluster(cl)
 toc()
 
 # Restructuring parallel results for saving:
-acc <- numeric()
-CV2.RC.acc <- numeric()
-comptimes <- numeric()
-for (j in 1:length(work)) {
-  
-  acc <- c(acc, par.results[[sprintf("worker_%d", j)]]$acc)
-  CV2.RC.acc <- c(CV2.RC.acc, par.results[[sprintf("worker_%d", j)]]$CV2.RC.acc)
-  comptimes <- c(comptimes, par.results[[sprintf("worker_%d", j)]]$comptimes)
-  
-}
+# acc <- numeric()
+# CV2.RC.acc <- numeric()
+# comptimes <- numeric()
+# for (j in 1:length(work)) {
+#   
+#   acc <- c(acc, par.results[[sprintf("worker_%d", j)]]$acc)
+#   CV2.RC.acc <- c(CV2.RC.acc, par.results[[sprintf("worker_%d", j)]]$CV2.RC.acc)
+#   comptimes <- c(comptimes, par.results[[sprintf("worker_%d", j)]]$comptimes)
+#   
+# }
 
 results <- data.frame(acc = acc,
                       acc.RC = CV2.RC.acc,

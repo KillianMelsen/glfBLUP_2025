@@ -121,7 +121,8 @@ invisible(
       names(CV2.d.final)[1] <- "G"
       
       #### 6. Selecting the relevant factors -----------------------------------------------------------------------------------------------
-      selection <- gfBLUP::factorSelect(CV2.d.final, procedure = "leaps", verbose = FALSE)
+      # selection <- gfBLUP::factorSelect(CV2.d.final, procedure = "leaps", verbose = FALSE)
+      selection <- NULL
       
       #### 7. Multi-trait genomic prediction -----------------------------------------------------------------------------------------------
       # CV1.temp <- gfBLUP::gfBLUP(data = CV1.d.final, selection = selection, K = K, sepExp = FALSE, verbose = F)
@@ -212,9 +213,9 @@ CV2.results <- data.frame(acc = CV2.acc,
 
 # Export results:
 # write.csv(CV1.results, "hyper/results/3a_hyper_results_gfblup_CV1_RF.csv")
-write.csv(CV2.results, sprintf("hyper_1415HEAT/results/%s/3b_hyper_results_gfblup_CV2VEG.csv", prep))
+write.csv(CV2.results, sprintf("hyper_1415HEAT/results/%s/3b_hyper_results_gfblup_CV2VEG_noss.csv", prep))
 
-list.save(extra, sprintf("hyper_1415HEAT/results/%s/3_hyper_extra_results_gfblup_CV2VEG.RData", prep))
+list.save(extra, sprintf("hyper_1415HEAT/results/%s/3_hyper_extra_results_gfblup_CV2VEG_noss.RData", prep))
 
 
 
