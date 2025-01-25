@@ -41,7 +41,6 @@ for (CV in c("CV2")) {
       
       # Setting up result storage:
       acc <- numeric(length(par.work))
-      CV2.RC.acc <- numeric(length(par.work))
       extra <- vector("list", length(par.work))
       
       
@@ -49,7 +48,7 @@ for (CV in c("CV2")) {
       for (run in 1:length(par.work)) {
         
         # Loading hyperspectral dataset:
-        datalist <- list.load(file = sprintf("hyper/datasets/%s/hyper_dataset_%d.RData", prep, par.work[run]))
+        datalist <- list.load(file = sprintf("hyper_1415B5IR/datasets/%s/hyper_dataset_%d.RData", prep, par.work[run]))
         
         # Storing data and prediction target:
         # 9 feb is last day of VEG, 25 feb is heading, 10 march is start of grain filling:
@@ -58,6 +57,9 @@ for (CV in c("CV2")) {
         select <- which(substr(names(d), 7, 12) %in% dates)
         d <- d[c(1, select, ncol(d))]
         pred.target <- datalist$pred.target
+        
+        # Subsetting K (only really happens for the first dataset...):
+        K <- K[unique(d$G), unique(d$G)]
         
         ### Model ##############################################################
         tic(run)
@@ -74,8 +76,7 @@ for (CV in c("CV2")) {
                               Knn = K[pred.target$G, pred.target$G],
                               method = "MCMCglmm",
                               normalize = T)
-        CV2.RC.acc[run] <- temp["g_cor"]
-        acc[run] <- cor(RESULT$preds, pred.target$pred.target)
+        acc[run] <- temp["g_cor"]
         
         if (length(RESULT) == 1) {
           extra[[run]] <- "All coefficients were 0, used univariate model..."
@@ -97,7 +98,6 @@ for (CV in c("CV2")) {
       
       # Collect results:
       worker.result <- list(list(result = data.frame(acc = acc,
-                                                     CV2.RC.acc = CV2.RC.acc,
                                                      comptimes = comptimes),
                                  extra = extra))
       
@@ -111,21 +111,18 @@ for (CV in c("CV2")) {
   
   # Restructuring parallel results for saving:
   acc <- numeric()
-  CV2.RC.acc <- numeric()
   comptimes <- numeric()
   extra <- vector("list")
   
   for (j in 1:length(work)) {
     
     acc <- c(acc, par.results[[sprintf("worker_%d", j)]]$result$acc)
-    CV2.RC.acc <- c(CV2.RC.acc, par.results[[sprintf("worker_%d", j)]]$result$CV2.RC.acc)
     comptimes <- c(comptimes, par.results[[sprintf("worker_%d", j)]]$result$comptimes)
     extra <- c(extra, par.results[[sprintf("worker_%d", j)]]$extra)
     
   }
   
   results <- data.frame(acc = acc,
-                        acc.RC = CV2.RC.acc,
                         comptimes = comptimes)
   
   # Making correct CV label:
@@ -136,9 +133,9 @@ for (CV in c("CV2")) {
   }
   
   # Export results:
-  write.csv(results, sprintf("hyper/results/%s/11%s_hyper_results_lsblup_%sVEG.csv", prep, lab, CV))
+  write.csv(results, sprintf("hyper_1415B5IR/results/%s/11%s_hyper_results_lsblup_%sVEG.csv", prep, lab, CV))
   
-  list.save(extra, sprintf("hyper/results/%s/11%s_hyper_extra_results_lsblup_%sVEG.RData", prep, lab, CV))
+  list.save(extra, sprintf("hyper_1415B5IR/results/%s/11%s_hyper_extra_results_lsblup_%sVEG.RData", prep, lab, CV))
   
 }
 

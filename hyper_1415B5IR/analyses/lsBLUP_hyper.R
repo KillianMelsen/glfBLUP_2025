@@ -41,9 +41,6 @@ for (CV in c("CV1", "CV2")) {
       
       # Setting up result storage:
       acc <- numeric(length(par.work))
-      if (CV == "CV2") {
-        CV2.RC.acc <- numeric(length(par.work))
-      }
       extra <- vector("list", length(par.work))
       
       
@@ -51,11 +48,14 @@ for (CV in c("CV1", "CV2")) {
       for (run in 1:length(par.work)) {
         
         # Loading hyperspectral dataset:
-        datalist <- list.load(file = sprintf("hyper/datasets/%s/hyper_dataset_%d.RData", prep, par.work[run]))
+        datalist <- list.load(file = sprintf("hyper_1415B5IR/datasets/%s/hyper_dataset_%d.RData", prep, par.work[run]))
         
         # Storing data and prediction target:
         d <- datalist$data
         pred.target <- datalist$pred.target
+        
+        # Subsetting K (only really happens for the first dataset...):
+        K <- K[unique(d$G), unique(d$G)]
         
         ### Model ##############################################################
         tic(run)
@@ -75,8 +75,7 @@ for (CV in c("CV1", "CV2")) {
                                 Knn = K[pred.target$G, pred.target$G],
                                 method = "MCMCglmm",
                                 normalize = T)
-          CV2.RC.acc[run] <- temp["g_cor"]
-          acc[run] <- cor(RESULT$preds, pred.target$pred.target)
+          acc[run] <- temp["g_cor"]
         }
         
         if (length(RESULT) == 1) {
@@ -98,16 +97,9 @@ for (CV in c("CV1", "CV2")) {
       comptimes <- unlist(lapply(tictoc.logs, function(x) x$toc - x$tic))
       
       # Collect results:
-      if (CV == "CV1") {
-        worker.result <- list(list(result = data.frame(acc = acc,
+      worker.result <- list(list(result = data.frame(acc = acc,
                                                      comptimes = comptimes),
-                                   extra = extra))
-      } else {
-        worker.result <- list(list(result = data.frame(acc = acc,
-                                                       CV2.RC.acc = CV2.RC.acc,
-                                                       comptimes = comptimes),
-                                   extra = extra))
-      }
+                                 extra = extra))
       names(worker.result) <- sprintf("worker_%d", i)
       return(worker.result)
       
@@ -118,31 +110,19 @@ for (CV in c("CV1", "CV2")) {
   
   # Restructuring parallel results for saving:
   acc <- numeric()
-  if (CV == "CV2") {
-    CV2.RC.acc <- numeric()
-  }
   comptimes <- numeric()
   extra <- vector("list")
   
   for (j in 1:length(work)) {
     
     acc <- c(acc, par.results[[sprintf("worker_%d", j)]]$result$acc)
-    if (CV == "CV2") {
-      CV2.RC.acc <- c(CV2.RC.acc, par.results[[sprintf("worker_%d", j)]]$result$CV2.RC.acc)
-    }
     comptimes <- c(comptimes, par.results[[sprintf("worker_%d", j)]]$result$comptimes)
     extra <- c(extra, par.results[[sprintf("worker_%d", j)]]$extra)
     
   }
   
-  if (CV == "CV1") {
-    results <- data.frame(acc = acc,
+  results <- data.frame(acc = acc,
                         comptimes = comptimes)
-  } else {
-    results <- data.frame(acc = acc,
-                          acc.RC = CV2.RC.acc,
-                          comptimes = comptimes)
-  }
   
   
   # Making correct CV label:
@@ -153,9 +133,9 @@ for (CV in c("CV1", "CV2")) {
   }
   
   # Export results:
-  write.csv(results, sprintf("hyper/results/%s/11%s_hyper_results_lsblup_%s.csv", prep, lab, CV))
+  write.csv(results, sprintf("hyper_1415B5IR/results/%s/11%s_hyper_results_lsblup_%s.csv", prep, lab, CV))
   
-  list.save(extra, sprintf("hyper/results/%s/11%s_hyper_extra_results_lsblup_%s.RData", prep, lab, CV))
+  list.save(extra, sprintf("hyper_1415B5IR/results/%s/11%s_hyper_extra_results_lsblup_%s.RData", prep, lab, CV))
   
 }
 

@@ -41,9 +41,6 @@ for (CV in c("CV1", "CV2")) {
       
       # Setting up result storage:
       acc <- numeric(length(par.work))
-      if (CV == "CV2") {
-        CV2.RC.acc <- numeric(length(par.work))
-      }
       pen <- numeric(length(par.work))
       extra <- vector("list", length(par.work))
       
@@ -78,8 +75,7 @@ for (CV in c("CV1", "CV2")) {
                                 Knn = K[pred.target$G, pred.target$G],
                                 method = "MCMCglmm",
                                 normalize = T)
-          CV2.RC.acc[run] <- temp["g_cor"]
-          acc[run] <- cor(RESULT$preds, pred.target$pred.target)
+          acc[run] <- temp["g_cor"]
         }
         
         pen[run] <- RESULT$regPen
@@ -102,18 +98,10 @@ for (CV in c("CV1", "CV2")) {
       comptimes <- unlist(lapply(tictoc.logs, function(x) x$toc - x$tic))
       
       # Collect results:
-      if (CV == "CV1") {
-        worker.result <- list(list(result = data.frame(acc = acc,
-                                                     pen = pen,
-                                                     comptimes = comptimes),
-                                 extra = extra))
-      } else {
-        worker.result <- list(list(result = data.frame(acc = acc,
-                                                       CV2.RC.acc = CV2.RC.acc,
-                                                       pen = pen,
-                                                       comptimes = comptimes),
-                                   extra = extra))
-      }
+      worker.result <- list(list(result = data.frame(acc = acc,
+                                                   pen = pen,
+                                                   comptimes = comptimes),
+                               extra = extra))
       names(worker.result) <- sprintf("worker_%d", i)
       return(worker.result)
       
@@ -124,9 +112,6 @@ for (CV in c("CV1", "CV2")) {
   
   # Restructuring parallel results for saving:
   acc <- numeric()
-  if (CV == "CV2") {
-    CV2.RC.acc <- numeric()
-  }
   pen <- numeric()
   comptimes <- numeric()
   extra <- vector("list")
@@ -134,25 +119,16 @@ for (CV in c("CV1", "CV2")) {
   for (j in 1:length(work)) {
     
     acc <- c(acc, par.results[[sprintf("worker_%d", j)]]$result$acc)
-    if (CV == "CV2") {
-      CV2.RC.acc <- c(CV2.RC.acc, par.results[[sprintf("worker_%d", j)]]$result$CV2.RC.acc)
-    }
     pen <- c(pen, par.results[[sprintf("worker_%d", j)]]$result$pen)
     comptimes <- c(comptimes, par.results[[sprintf("worker_%d", j)]]$result$comptimes)
     extra <- c(extra, par.results[[sprintf("worker_%d", j)]]$extra)
     
   }
   
-  if (CV == "CV1") {
-    results <- data.frame(acc = acc,
-                          pen = pen,
-                          comptimes = comptimes)
-  } else {
-    results <- data.frame(acc = acc,
-                          acc.RC = CV2.RC.acc,
-                          pen = pen,
-                          comptimes = comptimes)
-  }
+  
+  results <- data.frame(acc = acc,
+                        pen = pen,
+                        comptimes = comptimes)
   
   
   # Making correct CV label:

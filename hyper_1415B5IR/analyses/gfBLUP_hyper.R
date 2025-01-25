@@ -38,7 +38,7 @@ invisible(
     set.seed(1997)
     
     # Setting up result storage:
-    CV1.acc <- CV2.acc <- CV2.RC.acc <- numeric(length(par.work))
+    CV1.acc <- CV2.acc <- numeric(length(par.work))
     penG <- numeric(length(par.work))
     penE <- numeric(length(par.work))
     subset <- character(length(par.work))
@@ -48,11 +48,14 @@ invisible(
     for (run in 1:length(par.work)) {
       
       # Loading hyperspectral dataset:
-      datalist <- list.load(file = sprintf("hyper/datasets/%s/hyper_dataset_%d.RData", prep, par.work[run]))
+      datalist <- list.load(file = sprintf("hyper_1415B5IR/datasets/%s/hyper_dataset_%d.RData", prep, par.work[run]))
       
       # Storing data and prediction target:
       d <- datalist$data
       pred.target <- datalist$pred.target
+      
+      # Subsetting K (only really happens for the first dataset...):
+      K <- K[unique(d$G), unique(d$G)]
       
       ### Model ##############################################################
       tic(run)
@@ -123,7 +126,6 @@ invisible(
       ########################################################################
       
       CV1.acc[run] <- cor(pred.target$pred.target, CV1.temp$preds[match(pred.target$G, names(CV1.temp$preds))])
-      CV2.acc[run] <- cor(pred.target$pred.target, CV2.temp$preds[match(pred.target$G, names(CV2.temp$preds))])
       
       #### Runcie & Cheng 2019 correction --------------------------------------
       temp <- estimate_gcor(data = data.frame(ID = pred.target$G,
@@ -132,7 +134,7 @@ invisible(
                             Knn = K[pred.target$G, pred.target$G],
                             method = "MCMCglmm",
                             normalize = T)
-      CV2.RC.acc[run] <- temp["g_cor"]
+      CV2.acc[run] <- temp["g_cor"]
       
       penG[run] <- tempG$optPen
       penE[run] <- tempE$optPen
@@ -155,7 +157,6 @@ invisible(
     # Collect results:
     worker.result <- list(list(result = data.frame(CV1.acc = CV1.acc,
                                                    CV2.acc = CV2.acc,
-                                                   CV2.RC.acc = CV2.RC.acc,
                                                    penG = penG,
                                                    penE = penE,
                                                    subset = subset,
@@ -171,7 +172,7 @@ parallel::stopCluster(cl)
 toc()
 
 # Restructuring parallel results for saving:
-CV1.acc <- CV2.acc <- CV2.RC.acc <- numeric()
+CV1.acc <- CV2.acc <- numeric()
 penG <- numeric()
 penE <- numeric()
 subset <- character()
@@ -182,7 +183,6 @@ for (j in 1:length(work)) {
   
   CV1.acc <- c(CV1.acc, par.results[[sprintf("worker_%d", j)]]$result$CV1.acc)
   CV2.acc <- c(CV2.acc, par.results[[sprintf("worker_%d", j)]]$result$CV2.acc)
-  CV2.RC.acc <- c(CV2.RC.acc, par.results[[sprintf("worker_%d", j)]]$result$CV2.RC.acc)
   penG <- c(penG, par.results[[sprintf("worker_%d", j)]]$result$penG)
   penE <- c(penE, par.results[[sprintf("worker_%d", j)]]$result$penE)
   subset <- c(subset, par.results[[sprintf("worker_%d", j)]]$result$subset)
@@ -198,17 +198,16 @@ CV1.results <- data.frame(acc = CV1.acc,
                           comptimes = comptimes)
 
 CV2.results <- data.frame(acc = CV2.acc,
-                          acc.RC = CV2.RC.acc,
                           penG = penG,
                           penE = penE,
                           subset = subset,
                           comptimes = comptimes)
 
 # Export results:
-write.csv(CV1.results, sprintf("hyper/results/%s/3a_hyper_results_gfblup_CV1.csv", prep))
-write.csv(CV2.results, sprintf("hyper/results/%s/3b_hyper_results_gfblup_CV2.csv", prep))
+write.csv(CV1.results, sprintf("hyper_1415B5IR/results/%s/3a_hyper_results_gfblup_CV1.csv", prep))
+write.csv(CV2.results, sprintf("hyper_1415B5IR/results/%s/3b_hyper_results_gfblup_CV2.csv", prep))
 
-list.save(extra, sprintf("hyper/results/%s/3_hyper_extra_results_gfblup.RData", prep))
+list.save(extra, sprintf("hyper_1415B5IR/results/%s/3_hyper_extra_results_gfblup.RData", prep))
 
 
 
