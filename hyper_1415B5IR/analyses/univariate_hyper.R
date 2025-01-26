@@ -38,12 +38,15 @@ par.results <- foreach::foreach(i = 1:length(work), .packages = c("rlist", "tict
   for (run in 1:length(par.work)) {
 
     # Loading hyperspectral dataset:
-    datalist <- list.load(file = sprintf("hyper/datasets/splines/hyper_dataset_%d.RData", par.work[run]))
+    datalist <- list.load(file = sprintf("hyper_1415B5IR/datasets/splines/hyper_dataset_%d.RData", par.work[run]))
     
     # Storing data and prediction target:
     d <- gfBLUP:::genotypeMeans(datalist$data)
     d[,-1] <- scale(d[,-1])
     pred.target <- datalist$pred.target
+    
+    # Subsetting K (only really happens for the first dataset...):
+    K <- K[unique(d$G), unique(d$G)]
     
     ### Model ##############################################################
     tic(run)
@@ -86,7 +89,7 @@ results <- data.frame(acc = acc,
                       comptimes = comptimes)
 
 # Export results:
-write.csv(results, "hyper/results/2_hyper_results_univariate.csv")
+write.csv(results, "hyper_1415B5IR/results/2_hyper_results_univariate.csv")
 
 
 

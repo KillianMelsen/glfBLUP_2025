@@ -1,5 +1,5 @@
 CV <- "CV1"
-prep <- "nosplines" # or "splines"
+prep <- "splines" # or "splines"
 # Run on Windows, don't run on WSL cause that doesn't work for whatever reason.
 # Should take less than 6 hours for all 250 datasets (25 datasets for 10 workers each)
 # Loading libraries:
@@ -45,7 +45,7 @@ n.datasets <- length(datasets)
       
       # Loading hyperspectral dataset:
       # datalist <- list.load(file = sprintf("hyper/datasets/%s/hyper_dataset_%d.RData", prep, par.work[run]))
-      datalist <- list.load(file = sprintf("hyper/datasets/%s/hyper_dataset_%d.RData", prep, run))
+      datalist <- list.load(file = sprintf("hyper_1415B5IR/datasets/%s/hyper_dataset_%d.RData", prep, run))
       
       # Storing data and prediction target:
       d <- datalist$data
@@ -54,6 +54,9 @@ n.datasets <- length(datasets)
       train.set <- datalist$train.set
       d.train <- droplevels(d[which(!is.na(d$Y)), ])
       d.test <- droplevels(d[which(is.na(d$Y)), ])
+      
+      # Subsetting K (only really happens for the first dataset...):
+      K <- K[unique(d$G), unique(d$G)]
       
       ### Redundancy filter the secondary features using training data only ----
       sec <- names(d[2:(ncol(d) - 1)])
@@ -111,7 +114,7 @@ n.datasets <- length(datasets)
       
       # Creating run ID:
       # run_ID <- sprintf("hyper/megalmm_states/%s_%s_hyper_dataset_%d_RF", prep, CV, par.work[run])
-      run_ID <- sprintf("hyper/megalmm_states/%s_%s_hyper_dataset_%d_RF", prep, CV, run)
+      run_ID <- sprintf("hyper_1415B5IR/megalmm_states/%s_%s_hyper_dataset_%d_RF", prep, CV, run)
       
       # Initializing MegaLMM:
       MegaLMM_state = MegaLMM::setup_model_MegaLMM(d[, 2:ncol(d)],
@@ -147,7 +150,7 @@ n.datasets <- length(datasets)
       for (i in 1:n_burn_in) {
         MegaLMM_state <- MegaLMM::reorder_factors(MegaLMM_state)
         MegaLMM_state <- MegaLMM::clear_Posterior(MegaLMM_state)
-        MegaLMM_state <- MegaLMM::sample_MegaLMM(MegaLMM_state, n_iter, verbose = T)
+        MegaLMM_state <- MegaLMM::sample_MegaLMM(MegaLMM_state, n_iter, verbose = F)
       }
       
       # Clearing the burn-in samples:
@@ -160,7 +163,7 @@ n.datasets <- length(datasets)
       n_iter <- 500
       n_sampling <- 1
       for (i in 1:n_sampling) {
-        MegaLMM_state <- MegaLMM::sample_MegaLMM(MegaLMM_state, n_iter, verbose = T)
+        MegaLMM_state <- MegaLMM::sample_MegaLMM(MegaLMM_state, n_iter, verbose = F)
         MegaLMM_state <- MegaLMM::save_posterior_chunk(MegaLMM_state)
       }
       
@@ -226,6 +229,6 @@ if (CV == "CV1") {
 }
 
 # Export results:
-write.csv(results, sprintf("hyper/results/%s/12%s_hyper_results_megalmm_%s.csv", prep, lab, CV))
+write.csv(results, sprintf("hyper_1415B5IR/results/%s/12%s_hyper_results_megalmm_%s.csv", prep, lab, CV))
 
 

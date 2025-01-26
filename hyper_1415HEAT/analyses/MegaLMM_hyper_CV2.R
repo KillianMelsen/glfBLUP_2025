@@ -7,7 +7,7 @@ library(rlist)
 library(tictoc)
 library(MegaLMM)
 library(gfBLUP)
-library(doParallel)
+# library(doParallel)
 source("helper_functions/Estimate_gcor_prediction.R")
 library(MCMCglmm)
 library(coda)
@@ -43,7 +43,6 @@ n.datasets <- length(datasets)
     # acc <- numeric(length(par.work))
     # CV2.RC.acc <- numeric(length(par.work))
     acc <- numeric(n.datasets)
-    CV2.RC.acc <- numeric(n.datasets)
     
     # Running:
     # for (run in 1:length(par.work)) {
@@ -197,8 +196,7 @@ n.datasets <- length(datasets)
                             Knn = K[pred.target$G, pred.target$G],
                             method = "MCMCglmm",
                             normalize = T)
-      CV2.RC.acc[run] <- temp["g_cor"]
-      acc[run] <- cor(pred.target$pred.target, mean_pred.test)
+      acc[run] <- temp["g_cor"]
       
       # Deleting MegaLMM state files:
       unlink(run_ID, recursive = TRUE)
@@ -235,7 +233,6 @@ toc()
 # }
 
 results <- data.frame(acc = acc,
-                      acc.RC = CV2.RC.acc,
                       comptimes = comptimes)
 
 # Making correct CV label:
