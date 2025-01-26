@@ -112,7 +112,7 @@ n.datasets <- length(datasets)
       )
       
       # Creating run ID:
-      run_ID <- sprintf("hyper/megalmm_states/%s_%s_hyper_dataset_%d_RF", prep, CV, run)
+      run_ID <- sprintf("hyper_1415B5IR/megalmm_states/%s_%s_hyper_dataset_%d_RF", prep, CV, run)
       
       # Initializing MegaLMM:
       MegaLMM_state = MegaLMM::setup_model_MegaLMM(d[, 2:ncol(d)],
