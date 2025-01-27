@@ -18,13 +18,16 @@ load("genotypes/K_hyper.RData")
 dataset <- 1
       
 # Loading hyperspectral dataset:
-datalist <- list.load(file = sprintf("hyper/datasets/hyper_dataset_%d.RData", dataset))
+datalist <- list.load(file = sprintf("hyper_1415B5IR/datasets/splines/hyper_dataset_%d.RData", dataset))
 
 # Storing data:
 d <- datalist$data
 
 # Subsetting to 10-03-2015:
 d <- d[c(1, grep(".*_150310", names(d)), ncol(d))]
+
+# Subsetting K (only really happens for the first dataset...):
+K <- K[unique(d$G), unique(d$G)]
 
 # Make training data and store feature/focal trait names:
 d.train <- droplevels(na.omit(d))
@@ -33,8 +36,8 @@ foc <- names(d)[ncol(d)]
 
 # Regularization:
 folds <- gfBLUP::createFolds(genos = unique(as.character(d$G)))
-tempG <- gfBLUP::regularizedCorrelation(data = d[c("G", sec)], folds = folds, what = "genetic", dopar = TRUE, verbose = FALSE)
-tempE <- gfBLUP::regularizedCorrelation(data = d[c("G", sec)], folds = folds, what = "residual", dopar = TRUE, verbose = FALSE)
+tempG <- gfBLUP::regularizedCorrelation(data = d[c("G", sec)], folds = folds, what = "genetic", dopar = F, verbose = FALSE)
+tempE <- gfBLUP::regularizedCorrelation(data = d[c("G", sec)], folds = folds, what = "residual", dopar = F, verbose = FALSE)
 Rg.reg <- tempG$optCor
 
 # Fitting factor model:
@@ -96,13 +99,16 @@ ggplot(data = loadings, mapping = aes(x = Wavelength, y = Loading, color = Facto
         legend.key.height = unit(0.5, "cm"),
         legend.spacing.y = unit(0.1, "cm"),
         legend.key.width = unit(0.5, "cm")) +
-  annotate("text", x = 757, y = 0.8, label = paste(("rho[(F2*', '* Y)]^g * ' = ' *"), round(gencors["F2", "Y"], 2)),
-           color = "white", parse = TRUE, size = 6, hjust = 0) +
-  annotate("text", x = 757, y = -0.3, label = paste(("rho[(F1*', '* Y)]^g * ' = ' *"), round(gencors["F1", "Y"], 2)),
-           color = "white", parse = TRUE, size = 6, hjust = 0) +
-  annotate("text", x = 757, y = 0.2, label = paste(("rho[(F3*', '* Y)]^g * ' = ' *"), round(gencors["F3", "Y"], 2)),
-           color = "white", parse = TRUE, size = 6, hjust = 0)
+  annotate("text", x = 747, y = 0.8, label = paste(("rho[(F2*', '* Y)]^g * ' = ' *"), round(gencors["F2", "Y"], 2)),
+           color = "white", parse = T, size = 6, hjust = 0) +
+  
+  annotate("text", x = 747, y = -0.3, label = paste(("rho[(F1*', '* Y)]^g * ' = ' *"), round(gencors["F1", "Y"], 2)),
+           color = "white", parse = T, size = 6, hjust = 0) +
+  
+  annotate("text", x = 747, y = 0.2, label = paste(("rho[(F3*', '* Y)]^g * ' = ' *"), round(gencors["F3", "Y"], 2)),
+           color = "white", parse = T, size = 6, hjust = 0) +
+  xlab("Wavelength (nm)")
 
-ggsave("plots/gfBLUP_hyper_single_date.png", width = 24, height = 8, units = "cm")
+ggsave("plots/gfBLUP_hyper_1415B5IR_single_date.png", width = 24, height = 8, units = "cm")
 
 
