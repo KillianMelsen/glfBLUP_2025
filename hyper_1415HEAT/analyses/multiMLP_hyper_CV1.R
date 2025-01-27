@@ -2,6 +2,11 @@
 ### Preliminaries #############################################################
 ###############################################################################
 
+# To use the old Keras. There's some kind of memory leak issue with Keras3...
+# install.packages("keras")
+# reticulate::install_miniconda()
+# keras::install_keras(method = "conda", python_version = "3.10")
+
 # Will take about 6 hours for all 250 datasets on the CPU.
 
 # Setting CV:
@@ -16,10 +21,6 @@ library(tictoc)
 library(keras)
 library(gfBLUP)
 library(tensorflow)
-
-
-
-
 
 # Setting seeds:
 tensorflow::set_random_seed(1997, disable_gpu = TRUE)
