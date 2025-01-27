@@ -14,8 +14,6 @@ CV1.prep <- "splines"
 CV2.prep <- "splines"
 CV2VEG.prep <- "VEGsplines"
 
-CV2.measure <- "acc.RC"
-
 # Loading results:
 results <- expand.grid(Model = models[2:length(models)],
                        Scenario = scenarios,
@@ -28,27 +26,27 @@ results <- rbind(results,
                              Run = 1:250,
                              Accuracy = 0))
 
-results[results$Model == "Univariate" & results$Scenario == "N/A", 4] <- read.csv("hyper/results/2_hyper_results_univariate.csv")[,"acc"]
+results[results$Model == "Univariate" & results$Scenario == "N/A", 4] <- read.csv("hyper_1415B5IR/results/2_hyper_results_univariate.csv")$acc
 
-results[results$Model == "gfBLUP" & results$Scenario == "CV1", 4] <- read.csv(sprintf("hyper/results/%s/3a_hyper_results_gfblup_CV1.csv", CV1.prep))[,"acc"]
-results[results$Model == "gfBLUP" & results$Scenario == "CV2", 4] <- read.csv(sprintf("hyper/results/%s/3b_hyper_results_gfblup_CV2.csv", CV2.prep))[, CV2.measure]
-results[results$Model == "gfBLUP" & results$Scenario == "CV2VEG", 4] <- read.csv(sprintf("hyper/results/%s/3b_hyper_results_gfblup_CV2VEG.csv", CV2VEG.prep))[, CV2.measure]
+results[results$Model == "gfBLUP" & results$Scenario == "CV1", 4] <- read.csv(sprintf("hyper_1415B5IR/results/%s/3a_hyper_results_gfblup_CV1.csv", CV1.prep))$acc
+results[results$Model == "gfBLUP" & results$Scenario == "CV2", 4] <- read.csv(sprintf("hyper_1415B5IR/results/%s/3b_hyper_results_gfblup_CV2.csv", CV2.prep))$acc
+results[results$Model == "gfBLUP" & results$Scenario == "CV2VEG", 4] <- read.csv(sprintf("hyper_1415B5IR/results/%s/3b_hyper_results_gfblup_CV2VEG.csv", CV2VEG.prep))$acc
 
-results[results$Model == "MegaLMM" & results$Scenario == "CV1", 4] <- read.csv(sprintf("hyper/results/%s/12a_hyper_results_megalmm_CV1.csv", CV1.prep))[,"acc"]
-results[results$Model == "MegaLMM" & results$Scenario == "CV2", 4] <- read.csv(sprintf("hyper/results/%s/12b_hyper_results_megalmm_CV2.csv", CV2.prep))[, CV2.measure]
-results[results$Model == "MegaLMM" & results$Scenario == "CV2VEG", 4] <- read.csv(sprintf("hyper/results/%s/12b_hyper_results_megalmm_CV2VEG.csv", CV2VEG.prep))[, CV2.measure]
+results[results$Model == "MegaLMM" & results$Scenario == "CV1", 4] <- read.csv(sprintf("hyper_1415B5IR/results/%s/12a_hyper_results_megalmm_CV1.csv", CV1.prep))$acc
+results[results$Model == "MegaLMM" & results$Scenario == "CV2", 4] <- read.csv(sprintf("hyper_1415B5IR/results/%s/12b_hyper_results_megalmm_CV2.csv", CV2.prep))$acc
+results[results$Model == "MegaLMM" & results$Scenario == "CV2VEG", 4] <- read.csv(sprintf("hyper_1415B5IR/results/%s/12b_hyper_results_megalmm_CV2VEG.csv", CV2VEG.prep))$acc
 
-results[results$Model == "lsBLUP" & results$Scenario == "CV1", 4] <- read.csv(sprintf("hyper/results/%s/11a_hyper_results_lsblup_CV1.csv", CV1.prep))[,"acc"]
-results[results$Model == "lsBLUP" & results$Scenario == "CV2", 4] <- read.csv(sprintf("hyper/results/%s/11b_hyper_results_lsblup_CV2.csv", CV2.prep))[, CV2.measure]
-results[results$Model == "lsBLUP" & results$Scenario == "CV2VEG", 4] <- read.csv(sprintf("hyper/results/%s/11b_hyper_results_lsblup_CV2VEG.csv", CV2VEG.prep))[, CV2.measure]
+results[results$Model == "lsBLUP" & results$Scenario == "CV1", 4] <- read.csv(sprintf("hyper_1415B5IR/results/%s/11a_hyper_results_lsblup_CV1.csv", CV1.prep))$acc
+results[results$Model == "lsBLUP" & results$Scenario == "CV2", 4] <- read.csv(sprintf("hyper_1415B5IR/results/%s/11b_hyper_results_lsblup_CV2.csv", CV2.prep))$acc
+results[results$Model == "lsBLUP" & results$Scenario == "CV2VEG", 4] <- read.csv(sprintf("hyper_1415B5IR/results/%s/11b_hyper_results_lsblup_CV2VEG.csv", CV2VEG.prep))$acc
 
-results[results$Model == "siBLUP" & results$Scenario == "CV1", 4] <- read.csv(sprintf("hyper/results/%s/5a_hyper_results_siblup_CV1.csv", CV1.prep))[,"acc"]
-results[results$Model == "siBLUP" & results$Scenario == "CV2", 4] <- read.csv(sprintf("hyper/results/%s/5b_hyper_results_siblup_CV2.csv", CV2.prep))[, CV2.measure]
-results[results$Model == "siBLUP" & results$Scenario == "CV2VEG", 4] <- read.csv(sprintf("hyper/results/%s/5b_hyper_results_siblup_CV2VEG.csv", CV2VEG.prep))[, CV2.measure]
+results[results$Model == "siBLUP" & results$Scenario == "CV1", 4] <- read.csv(sprintf("hyper_1415B5IR/results/%s/5a_hyper_results_siblup_CV1.csv", CV1.prep))$acc
+results[results$Model == "siBLUP" & results$Scenario == "CV2", 4] <- read.csv(sprintf("hyper_1415B5IR/results/%s/5b_hyper_results_siblup_CV2.csv", CV2.prep))$acc
+results[results$Model == "siBLUP" & results$Scenario == "CV2VEG", 4] <- read.csv(sprintf("hyper_1415B5IR/results/%s/5b_hyper_results_siblup_CV2VEG.csv", CV2VEG.prep))$acc
 
-# results[results$Model == "MultiMLP" & results$Scenario == "CV1", 4] <- read.csv(sprintf("hyper/results/%s/8a_hyper_results_multiMLP_CV1.csv", CV1.prep))[,"acc"]
-# results[results$Model == "MultiMLP" & results$Scenario == "CV2", 4] <- read.csv(sprintf("hyper/results/%s/8b_hyper_results_multiMLP_CV2.csv", CV2.prep))[, CV2.measure]
-# results[results$Model == "MultiMLP" & results$Scenario == "CV2VEG", 4] <- read.csv(sprintf("hyper/results/%s/8b_hyper_results_multiMLP_CV2VEG.csv", CV2VEG.prep))[, CV2.measure]
+# results[results$Model == "MultiMLP" & results$Scenario == "CV1", 4] <- read.csv(sprintf("hyper_1415B5IR/results/%s/8a_hyper_results_multiMLP_CV1.csv", CV1.prep))$acc
+# results[results$Model == "MultiMLP" & results$Scenario == "CV2", 4] <- read.csv(sprintf("hyper_1415B5IR/results/%s/8b_hyper_results_multiMLP_CV2.csv", CV2.prep))$acc
+# results[results$Model == "MultiMLP" & results$Scenario == "CV2VEG", 4] <- read.csv(sprintf("hyper_1415B5IR/results/%s/8b_hyper_results_multiMLP_CV2VEG.csv", CV2VEG.prep))$acc
 
 # results$Model <- factor(results$Model, levels = c("Univariate", "gfBLUP", "MegaLMM", "siBLUP", "lsBLUP", "MultiMLP"))
 results$Model <- factor(results$Model, levels = c("Univariate", "gfBLUP", "MegaLMM", "siBLUP", "lsBLUP"))
@@ -87,15 +85,10 @@ ggplot(data = results, mapping = aes(x = Model, y = Accuracy, fill = Scenario)) 
         legend.spacing.y = unit(0.1, "cm"),
         legend.key.width = unit(0.5, "cm")) +
   geom_sina(data = results, mapping = aes(x = Model, y = Accuracy, fill = Scenario),
-            size = 0.3, position = position_dodge(width = 0.75), shape = 21, stroke = 0.05, maxwidth = 0.5, alpha = 0.25) +
-  if (CV2VEG.prep == "nosplines") {
-    ggtitle(sprintf("Prep = nosplines, acc = %s", CV2.measure))
-  } else if (CV2VEG.prep == "VEGsplines") {
-    ggtitle(sprintf("Prep = (VEG)splines, acc = %s", CV2.measure))
-  }
+            size = 0.3, position = position_dodge(width = 0.75), shape = 21, stroke = 0.05, maxwidth = 0.5, alpha = 0.25)
   
 
-ggsave(filename = sprintf("plots/hyper_%s_%s.png", CV1.prep, CV2.measure), dpi = 640, width = 15, height = 6, units = "cm")
+ggsave(filename = "plots/hyper_1415B5IR.png", dpi = 640, width = 15, height = 6, units = "cm")
 
 # Plotting without CV2VEG results:
 # ggplot(data = results, mapping = aes(x = Model, y = Accuracy, fill = Scenario)) +
