@@ -6,7 +6,7 @@
 
 # Setting CV:
 CV <- "CV2"
-prep <- "splines"
+prep <- "VEGsplines"
 # Setting seed:
 # set.seed(1997)
 
@@ -142,7 +142,7 @@ for (run in first:last) {
   
   # Loading simulated datasets:
   cat(sprintf("Loading dataset %d...\n", run))
-  datalist <- list.load(sprintf("hyper/datasets/%s/hyper_dataset_%d.RData", prep, run))
+  datalist <- list.load(sprintf("hyper_1415B5IR/datasets/%s/hyper_dataset_%d.RData", prep, run))
   
   # Storing data and prediction target:
   # 9 feb is last day of VEG, 25 feb is heading, 10 march is start of grain filling:
@@ -153,6 +153,9 @@ for (run in first:last) {
   pred.target <- datalist$pred.target
   train.set <- datalist$train.set
   test.set <- datalist$test.set
+  
+  # Subsetting K (only really happens for the first dataset...):
+  K <- K[unique(d$G), unique(d$G)]
   
   # Storing training and test data:
   d.train <- droplevels(na.omit(d))
@@ -388,10 +391,10 @@ if (CV == "CV1") {
 }
 
 # Export results:
-write.csv(results, sprintf("hyper/results/%s/8%s_hyper_results_multiMLP_%sVEG.csv",
+write.csv(results, sprintf("hyper_1415B5IR/results/%s/8%s_hyper_results_multiMLP_%sVEG.csv",
                            prep, lab, CV))
 
-list.save(histories, sprintf("hyper/results/%s/8%s_hyper_results_multiMLP_%sVEG.RData",
+list.save(histories, sprintf("hyper_1415B5IR/results/%s/8%s_hyper_results_multiMLP_%sVEG.RData",
                              prep, lab, CV))
       
       

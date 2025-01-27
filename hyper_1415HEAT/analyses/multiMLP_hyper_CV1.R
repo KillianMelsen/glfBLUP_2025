@@ -2,11 +2,6 @@
 ### Preliminaries #############################################################
 ###############################################################################
 
-# To use the old Keras. There's some kind of memory leak issue with Keras3...
-# install.packages("keras")
-# reticulate::install_miniconda()
-# keras::install_keras(method = "conda", python_version = "3.10")
-
 # Will take about 6 hours for all 250 datasets on the CPU.
 
 # Setting CV:
@@ -143,7 +138,7 @@ for (run in first:last) {
   
   # Loading simulated datasets:
   cat(sprintf("Loading dataset %d...\n", run))
-  datalist <- list.load(sprintf("hyper/datasets/%s/hyper_dataset_%d.RData", prep, run))
+  datalist <- list.load(sprintf("hyper_1415HEAT/datasets/%s/hyper_dataset_%d.RData", prep, run))
   pred.target <- datalist$pred.target
   train.set <- datalist$train.set
   test.set <- datalist$test.set
@@ -374,10 +369,10 @@ if (CV == "CV1") {
 }
 
 # Export results:
-write.csv(results, sprintf("hyper/results/%s/8%s_hyper_results_multiMLP_%s.csv",
+write.csv(results, sprintf("hyper_1415HEAT/results/%s/8%s_hyper_results_multiMLP_%s.csv",
                            prep, lab, CV))
 
-list.save(histories, sprintf("hyper/results/%s/8%s_hyper_results_multiMLP_%s.RData",
+list.save(histories, sprintf("hyper_1415HEAT/results/%s/8%s_hyper_results_multiMLP_%s.RData",
                              prep, lab, CV))
 
 
