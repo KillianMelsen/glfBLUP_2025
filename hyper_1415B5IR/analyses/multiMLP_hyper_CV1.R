@@ -17,10 +17,6 @@ library(keras)
 library(gfBLUP)
 library(tensorflow)
 
-
-
-
-
 # Setting seeds:
 tensorflow::set_random_seed(1997, disable_gpu = TRUE)
 
@@ -142,7 +138,7 @@ for (run in first:last) {
   
   # Loading simulated datasets:
   cat(sprintf("Loading dataset %d...\n", run))
-  datalist <- list.load(sprintf("hyper/datasets/%s/hyper_dataset_%d.RData", prep, run))
+  datalist <- list.load(sprintf("hyper_1415B5IR/datasets/%s/hyper_dataset_%d.RData", prep, run))
   pred.target <- datalist$pred.target
   train.set <- datalist$train.set
   test.set <- datalist$test.set
@@ -373,10 +369,10 @@ if (CV == "CV1") {
 }
 
 # Export results:
-write.csv(results, sprintf("hyper/results/%s/8%s_hyper_results_multiMLP_%s.csv",
+write.csv(results, sprintf("hyper_1415B5IR/results/%s/8%s_hyper_results_multiMLP_%s.csv",
                            prep, lab, CV))
 
-list.save(histories, sprintf("hyper/results/%s/8%s_hyper_results_multiMLP_%s.RData",
+list.save(histories, sprintf("hyper_1415B5IR/results/%s/8%s_hyper_results_multiMLP_%s.RData",
                              prep, lab, CV))
 
 
