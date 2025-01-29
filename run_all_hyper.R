@@ -15,7 +15,14 @@ reset <- function() {
 
 # Checking if the old package with some helper functions is installed:
 if (!("gfBLUPold" %in% installed.packages())) {
-  install.packages("gfBLUPold_1.3.1.tar.gz", type = "source", repos = NULL)
+  install.packages("gfBLUPold_1.3.1.tar.gz",
+                   type = "source", repos = NULL, dependencies = TRUE)
+}
+
+# Checking if the gfBLUP package is installed:
+if (!("gfBLUP" %in% installed.packages())) {
+  install.packages("gfBLUP_1.0.0.tar.gz",
+                   type = "source", repos = NULL, dependencies = TRUE)
 }
 
 

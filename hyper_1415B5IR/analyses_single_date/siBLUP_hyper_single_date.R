@@ -68,9 +68,9 @@ ggplot(data = gamma, mapping = aes(x = Wavelength, y = Gamma)) +
         legend.key.height = unit(0.5, "cm"),
         legend.spacing.y = unit(0.1, "cm"),
         legend.key.width = unit(0.5, "cm")) +
-  annotate("text", x = 775, y = 1.2, label = paste(("rho[(SI*', '* Y)]^g * ' = ' *"), round(gencors["penSI", "Y"], 2)),
+  annotate("text", x = 775, y = -3, label = paste(("rho[(SI*', '* Y)]^g * ' = ' *"), round(gencors["penSI", "Y"], 2)),
            color = "white", parse = TRUE, size = 6, hjust = 0) +
-  annotate("text", x = 400, y = 1.3, label = "B",
+  annotate("text", x = 400, y = 2.1, label = "B",
            color = "white", parse = TRUE, size = 6, hjust = 0) +
   ylab("SI Weight") + xlab("Wavelength (nm)")
 

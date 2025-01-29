@@ -41,7 +41,7 @@ tempE <- gfBLUP::regularizedCorrelation(data = d[c("G", sec)], folds = folds, wh
 Rg.reg <- tempG$optCor
 
 # Fitting factor model:
-FM.fit <- gfBLUP::factorModel(data = d[c("G", sec)], cormat = Rg.reg, what = "genetic", verbose = FALSE)
+FM.fit <- gfBLUP::factorModel(data = d[c("G", sec)], cormat = Rg.reg, what = "genetic", verbose = T)
 
 # Getting factor scores:
 # scaling back loadings and uniquenesses:
@@ -110,5 +110,8 @@ ggplot(data = loadings, mapping = aes(x = Wavelength, y = Loading, color = Facto
   xlab("Wavelength (nm)")
 
 ggsave("plots/gfBLUP_hyper_1415B5IR_single_date.png", width = 24, height = 8, units = "cm")
+
+temp <- gfBLUP::covSS(na.omit(d))
+(herits <- diag(temp$Sg)/diag(temp$Sp))
 
 

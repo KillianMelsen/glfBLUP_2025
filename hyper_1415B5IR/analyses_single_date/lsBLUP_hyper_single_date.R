@@ -69,9 +69,9 @@ ggplot(data = coefs, mapping = aes(x = Wavelength, y = Coefficient)) +
         legend.key.height = unit(0.5, "cm"),
         legend.spacing.y = unit(0.1, "cm"),
         legend.key.width = unit(0.5, "cm")) +
-  annotate("text", x = 775, y = 1.2, label = paste(("rho[(LS*', '* Y)]^g * ' = ' *"), round(gencors["LSP", "Y"], 2)),
+  annotate("text", x = 775, y = -1.5, label = paste(("rho[(LS*', '* Y)]^g * ' = ' *"), round(gencors["LSP", "Y"], 2)),
            color = "white", parse = TRUE, size = 6, hjust = 0) +
-  annotate("text", x = 400, y = 1.3, label = "A",
+  annotate("text", x = 400, y = 1.6, label = "A",
            color = "white", parse = TRUE, size = 6, hjust = 0) +
   ylab("LSP Coefficient") + xlab(NULL)
 

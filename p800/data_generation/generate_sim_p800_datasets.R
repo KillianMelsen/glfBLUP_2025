@@ -5,7 +5,7 @@
 # This script generates 100 datasets for each of the 45 h2s - comm - h2y combinations.
 # These datasets contain 500 genotypes replicated twice, with 300 training genotypes and 200 test genotypes.
 # There are 4 signal factors and 4 noise factors representing 100 features each for a total of p = 800 features.
-# As a result, the data is high-dimensional as p > n > n_g.
+# As a result, the data is high-dimensional as p > n > n_g for the training data.
 
 # Signal factors are not correlated to each other.
 
@@ -79,7 +79,8 @@ for (h2s in h2.sec) {
                                    S.per.LF = 100, Y.psi = 1 - comm.num,
                                    L.min = 0.3, L.max = 0.8,
                                    S.sg2 = sg2.s, S.se2 = se2.s,
-                                   Y.sg2 = sg2.y, Y.se2 = se2.y)
+                                   Y.sg2 = sg2.y, Y.se2 = se2.y,
+                                   resCors = TRUE)
           
         list.save(datalist, file = sprintf("p800/datasets/p800_h2y%s_comm%s_h2s%s_dataset_%d.RData",
                                            h2y, comm, h2s, sim))
