@@ -18,7 +18,7 @@ load("genotypes/K_hyper.RData")
 dataset <- 1
       
 # Loading hyperspectral dataset:
-datalist <- list.load(file = sprintf("hyper/datasets/hyper_dataset_%d.RData", dataset))
+datalist <- list.load(file = sprintf("hyper_1415B5IR/datasets/splines/hyper_dataset_%d.RData", dataset))
 
 # Storing data:
 d <- datalist$data
@@ -56,7 +56,7 @@ g <- rasterGrob(gradient, width = unit(1, "npc"), height = unit(1, "npc"), inter
 ggplot(data = coefs, mapping = aes(x = Wavelength, y = Coefficient)) +
   annotation_custom(g, xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf) +
   geom_line(linewidth = 1.5, color = "gray") +
-  ylim(c(-1.5, 1.5)) +
+  ylim(c(-2.1, 2.1)) +
   theme_classic(base_size = 11) +
   theme(axis.text.x = element_blank(),
         axis.text.y = element_text(color = "black", size = 11),
@@ -75,6 +75,6 @@ ggplot(data = coefs, mapping = aes(x = Wavelength, y = Coefficient)) +
            color = "white", parse = TRUE, size = 6, hjust = 0) +
   ylab("LSP Coefficient") + xlab(NULL)
 
-ggsave("plots/lsBLUP_hyper_single_date.png", width = 24, height = 4.8, units = "cm")
+ggsave("plots/lsBLUP_hyper_1415B5IR_single_date.png", width = 24, height = 4.8, units = "cm")
 
 
