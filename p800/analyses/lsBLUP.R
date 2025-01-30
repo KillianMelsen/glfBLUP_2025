@@ -1,4 +1,5 @@
 # !!! IMPORTANT: SET MKL_NUMTHREADS=1 and MKL_DYNAMIC=TRUE in ~/.profile !!!
+# Should take about 1 hour and 30 minutes
 
 # Loading libraries:
 library(rlist)
@@ -45,7 +46,7 @@ for (CV in CVs) {
       h2y <- par.combis[i, "h2y"]
       
       # Number of simulated datasets to load:
-      n.sim <- 100
+      n.sim <- 2
       
       # Setting up result storage:
       acc <- numeric(n.sim)

@@ -1,4 +1,5 @@
 # !!! IMPORTANT: SET MKL_NUMTHREADS=1 and MKL_DYNAMIC=TRUE in ~/.profile !!!
+# Should take about 4.5 hours to run
 
 # Loading libraries:
 library(rlist)
@@ -42,7 +43,7 @@ for (h2y in h2.foc) {
     h2s <- par.combis[i, "h2s"]
     
     # Number of simulated datasets to load:
-    first <- 51
+    first <- 1
     last <- 100
     n.sim <- length(first:last)
     
@@ -169,12 +170,12 @@ for (h2y in h2.foc) {
                               subset = subset)
     
     # Export results:
-    write.csv(CV1.results, sprintf("p800/results/h2s%s/3a_p800_results_gfblup_CV1_h2y%s_comm%s_h2s%s_51to100.csv", h2s, h2y, comm, h2s))
-    write.csv(CV2.results, sprintf("p800/results/h2s%s/3b_p800_results_gfblup_CV2_h2y%s_comm%s_h2s%s_51to100.csv", h2s, h2y, comm, h2s))
+    write.csv(CV1.results, sprintf("p800/results/h2s%s/3a_p800_results_gfblup_CV1_h2y%s_comm%s_h2s%s.csv", h2s, h2y, comm, h2s))
+    write.csv(CV2.results, sprintf("p800/results/h2s%s/3b_p800_results_gfblup_CV2_h2y%s_comm%s_h2s%s.csv", h2s, h2y, comm, h2s))
     
     
-    list.save(extra, file = sprintf("p800/results/h2s%s/3a_p800_extra_results_gfblup_CV1_h2y%s_comm%s_h2s%s_51to100.RData", h2s, h2y, comm, h2s))
-    list.save(extra, file = sprintf("p800/results/h2s%s/3b_p800_extra_results_gfblup_CV2_h2y%s_comm%s_h2s%s_51to100.RData", h2s, h2y, comm, h2s))
+    list.save(extra, file = sprintf("p800/results/h2s%s/3a_p800_extra_results_gfblup_CV1_h2y%s_comm%s_h2s%s.RData", h2s, h2y, comm, h2s))
+    list.save(extra, file = sprintf("p800/results/h2s%s/3b_p800_extra_results_gfblup_CV2_h2y%s_comm%s_h2s%s.RData", h2s, h2y, comm, h2s))
     
   })
   doParallel::stopImplicitCluster()

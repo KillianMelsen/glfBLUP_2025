@@ -1,4 +1,5 @@
 # !!! IMPORTANT: SET MKL_NUMTHREADS=1 and MKL_DYNAMIC=TRUE in ~/.profile !!!
+# Should take about 21 hours to run
 
 # Loading libraries:
 library(gfBLUPold)
@@ -45,7 +46,7 @@ for (CV in CVs) {
       h2s <- par.combis[i, "h2s"]
         
       # Number of simulated datasets to load:
-      first <- 34
+      first <- 51
       last <- 100
       n.sim <- length(first:last)
       
@@ -108,10 +109,10 @@ for (CV in CVs) {
       }
       
       # Export results:
-      write.csv(results, sprintf("p800/results/h2s%s/5%s_p800_results_siblup_%s_h2y%s_comm%s_h2s%s_34to100.csv",
+      write.csv(results, sprintf("p800/results/h2s%s/5%s_p800_results_siblup_%s_h2y%s_comm%s_h2s%s_51to100.csv",
                                  h2s, lab, CV, h2y, comm, h2s))
       
-      list.save(extra, file = sprintf("p800/results/h2s%s/5%s_p800_extra_results_siblup_%s_h2y%s_comm%s_h2s%s_34to100.RData",
+      list.save(extra, file = sprintf("p800/results/h2s%s/5%s_p800_extra_results_siblup_%s_h2y%s_comm%s_h2s%s_51to100.RData",
                                       h2s, lab, CV, h2y, comm, h2s))
         
     })
