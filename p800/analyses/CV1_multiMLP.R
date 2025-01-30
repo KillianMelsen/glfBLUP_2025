@@ -122,7 +122,7 @@ define_model <- function(L, N, D, input_shape, output_shape) {
 ###############################################################################
 
 # Datasets to run for each combination of genetic parameters:
-first <- 11
+first <- 1
 last <- 20
 n.datasets <- length(first:last)
 
@@ -253,6 +253,7 @@ for (h2y in h2.foc) {
             # Defining and compiling architecture (note that the output_shape = ncol(y_tune) due to
             # the secondary features being in the output layer together with yield).
             # The input shape is ncol(x_tune) - 1 (1 because "G" is omitted):
+            
             model.def <- define_model(L = hypers[[arch]]$layers,
                                       N = hypers[[arch]]$neurons,
                                       D = hypers[[arch]]$dropout,
@@ -374,10 +375,10 @@ for (h2y in h2.foc) {
       }
       
       # Export results:
-      write.csv(results, sprintf("p800/results/h2s%s/8%s_p800_results_multiMLP_%s_h2y%s_comm%s_h2s%s_11to20.csv",
+      write.csv(results, sprintf("p800/results/h2s%s/8%s_p800_results_multiMLP_%s_h2y%s_comm%s_h2s%s.csv",
                                  h2s, lab, CV, h2y, comm, h2s))
 
-      list.save(histories, sprintf("p800/results/h2s%s/8%s_p800_results_multiMLP_%s_h2y%s_comm%s_h2s%s_11to20.RData",
+      list.save(histories, sprintf("p800/results/h2s%s/8%s_p800_results_multiMLP_%s_h2y%s_comm%s_h2s%s.RData",
                                    h2s, lab, CV, h2y, comm, h2s))
       
       combi <- combi + 1
