@@ -564,7 +564,7 @@ data <- tidyr::pivot_longer(data, cols = 1:length(WL),
 data$Wavelength <- factor(data$Wavelength, levels = WL, labels = paste0(WL, " nm"))
 data$Factor <- factor(data$Factor, levels = factors)
 
-scaleFUN <- function(x) sprintf("%.1f", x)
+scaleFUN <- function(x) sprintf("%.2f", x)
 
 p <- ggplot(data, aes(x = Iteration, y = Loading)) +
   geom_point(aes(fill = Wavelength), color = "black", pch = 21, stroke = 0.05, size = 1) +
@@ -582,7 +582,7 @@ p <- ggplot(data, aes(x = Iteration, y = Loading)) +
         legend.spacing.y = unit(0.1, "cm"),
         legend.key.width = unit(0.5, "cm")) +
   guides(fill = guide_legend(override.aes = list(size = 5))) +
-  ylab("Loading") +
+  ylab("Loading") + xlab("Posterior sample (thin = 2)") +
   scale_y_continuous(labels=scaleFUN)
 
 ggsave(plot = p, filename = "plots/MegaLMM_hyper_1415B5IR_single_date_traceplot_WL_M5.png",
@@ -604,6 +604,8 @@ loadings.y$Iteration <- 1:nrow(loadings.y)
 loadings.y <- tidyr::pivot_longer(loadings.y, cols = 1:(ncol(loadings.y) - 1), names_to = "Factor", values_to = "Loading")
 loadings.y$Factor <- factor(loadings.y$Factor, levels = paste0("F", 1:dim(Lambda_samples)[2]))
 
+scaleFUN <- function(x) sprintf("%.2f", x)
+
 # Plotting the significant Y loadings:
 ggplot(loadings.y, aes(x = Iteration, y = Loading)) +
   geom_point(aes(fill = Factor), color = "black", pch = 21, stroke = 0.05, size = 1) +
@@ -619,7 +621,9 @@ ggplot(loadings.y, aes(x = Iteration, y = Loading)) +
         legend.key.height = unit(0.5, "cm"),
         legend.spacing.y = unit(0.1, "cm"),
         legend.key.width = unit(0.5, "cm")) +
-  guides(fill = guide_legend(override.aes = list(size = 5)))
+  guides(fill = guide_legend(override.aes = list(size = 5))) +
+  xlab("Posterior sample (thin = 2)") +
+  scale_y_continuous(labels = scaleFUN)
 
 ggsave("plots/MegaLMM_hyper_1415B5IR_single_date_traceplot_Y_M10.png", width = 24, height = 8, units = "cm")
 
@@ -644,7 +648,7 @@ data <- tidyr::pivot_longer(data, cols = 1:length(WL),
 data$Wavelength <- factor(data$Wavelength, levels = WL, labels = paste0(WL, " nm"))
 data$Factor <- factor(data$Factor, levels = factors)
 
-scaleFUN <- function(x) sprintf("%.3f", x)
+scaleFUN <- function(x) sprintf("%.2f", x)
 
 p1 <- ggplot(data[which(data$Factor %in% factors[1:5]),], aes(x = Iteration, y = Loading)) +
   geom_point(aes(fill = Wavelength), color = "black", pch = 21, stroke = 0.05, size = 1) +
@@ -662,7 +666,7 @@ p1 <- ggplot(data[which(data$Factor %in% factors[1:5]),], aes(x = Iteration, y =
         legend.spacing.y = unit(0.1, "cm"),
         legend.key.width = unit(0.5, "cm")) +
   guides(fill = guide_legend(override.aes = list(size = 5))) +
-  ylab("Loading") +
+  ylab("Loading") + xlab("Posterior sample (thin = 2)") +
   scale_y_continuous(labels=scaleFUN)
 
 p2 <- ggplot(data[which(data$Factor %in% factors[6:10]),], aes(x = Iteration, y = Loading)) +
@@ -681,7 +685,7 @@ p2 <- ggplot(data[which(data$Factor %in% factors[6:10]),], aes(x = Iteration, y 
         legend.spacing.y = unit(0.1, "cm"),
         legend.key.width = unit(0.5, "cm")) +
   guides(fill = guide_legend(override.aes = list(size = 5))) +
-  ylab("Loading") +
+  ylab("Loading") + xlab("Posterior sample (thin = 2)") +
   scale_y_continuous(labels=scaleFUN)
 
 ggsave(plot = p1, filename = "plots/MegaLMM_hyper_1415B5IR_single_date_traceplot_WL_M10_part1.png",
@@ -706,6 +710,8 @@ loadings.y$Iteration <- 1:nrow(loadings.y)
 loadings.y <- tidyr::pivot_longer(loadings.y, cols = 1:(ncol(loadings.y) - 1), names_to = "Factor", values_to = "Loading")
 loadings.y$Factor <- factor(loadings.y$Factor, levels = paste0("F", 1:dim(Lambda_samples)[2]))
 
+scaleFUN <- function(x) sprintf("%.2f", x)
+
 # Plotting the significant Y loadings:
 ggplot(loadings.y, aes(x = Iteration, y = Loading)) +
   geom_point(aes(fill = Factor), color = "black", pch = 21, stroke = 0.05, size = 1) +
@@ -721,7 +727,9 @@ ggplot(loadings.y, aes(x = Iteration, y = Loading)) +
         legend.key.height = unit(0.5, "cm"),
         legend.spacing.y = unit(0.1, "cm"),
         legend.key.width = unit(0.5, "cm")) +
-  guides(fill = guide_legend(override.aes = list(size = 5)))
+  guides(fill = guide_legend(override.aes = list(size = 5))) +
+  xlab("Posterior sample (thin = 2)") +
+  scale_y_continuous(labels=scaleFUN)
 
 ggsave("plots/MegaLMM_hyper_1415B5IR_single_date_traceplot_Y_M3.png", width = 24, height = 8, units = "cm")
 
@@ -746,7 +754,7 @@ data <- tidyr::pivot_longer(data, cols = 1:length(WL),
 data$Wavelength <- factor(data$Wavelength, levels = WL, labels = paste0(WL, " nm"))
 data$Factor <- factor(data$Factor, levels = factors)
 
-scaleFUN <- function(x) sprintf("%.3f", x)
+scaleFUN <- function(x) sprintf("%.2f", x)
 
 p <- ggplot(data, aes(x = Iteration, y = Loading)) +
   geom_point(aes(fill = Wavelength), color = "black", pch = 21, stroke = 0.05, size = 1) +
@@ -764,7 +772,7 @@ p <- ggplot(data, aes(x = Iteration, y = Loading)) +
         legend.spacing.y = unit(0.1, "cm"),
         legend.key.width = unit(0.5, "cm")) +
   guides(fill = guide_legend(override.aes = list(size = 5))) +
-  ylab("Loading") +
+  ylab("Loading") + xlab("Posterior sample (thin = 2)") +
   scale_y_continuous(labels=scaleFUN)
 
 ggsave(plot = p, filename = "plots/MegaLMM_hyper_1415B5IR_single_date_traceplot_WL_M3.png",
