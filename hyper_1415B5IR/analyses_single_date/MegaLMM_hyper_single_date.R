@@ -135,6 +135,8 @@ save(pred_samples, file = "hyper_1415B5IR/megalmm_hyper_single_date_arrays/PREDS
 unlink(run_ID, recursive = TRUE)
 
 # Calculating posterior means:
+load("hyper_1415B5IR/megalmm_hyper_single_date_arrays/LAMBDA_M5.RData")
+load("hyper_1415B5IR/megalmm_hyper_single_date_arrays/PREDS_M5.RData")
 mean_Lambda <- MegaLMM::get_posterior_mean(Lambda_samples)
 mean_pred <- MegaLMM::get_posterior_mean(pred_samples)
 
@@ -180,15 +182,15 @@ ggplot(data = loadings.wl.long, mapping = aes(x = Wavelength, y = Loading, color
         legend.key.height = unit(0.5, "cm"),
         legend.spacing.y = unit(0.1, "cm"),
         legend.key.width = unit(0.5, "cm")) +
-  annotate("text", x = 757, y = 0.13, label = paste(("lambda(F1*', '* Y) * ' = ' *"), round(loadings.y["F1"], 2)),
+  annotate("text", x = 757, y = 1.05, label = paste(("lambda(F1*', '* Y) * ' = ' *"), round(loadings.y["F1"], 2)),
            color = "white", parse = TRUE, size = 4, hjust = 0) +
-  annotate("text", x = 757, y = -0.5, label = paste(("lambda(F2*', '* Y) * ' = ' *"), round(loadings.y["F2"], 2)),
+  annotate("text", x = 757, y = 0.75, label = paste(("lambda(F2*', '* Y) * ' = ' *"), round(loadings.y["F2"], 2)),
            color = "white", parse = TRUE, size = 4, hjust = 0) +
-  annotate("text", x = 757, y = -0.35, label = paste(("lambda(F3*', '* Y) * ' = ' *"), round(loadings.y["F3"], 2)),
+  annotate("text", x = 757, y = 0.40, label = paste(("lambda(F3*', '* Y) * ' = ' *"), round(loadings.y["F3"], 2)),
            color = "white", parse = TRUE, size = 4, hjust = 0) +
-  annotate("text", x = 757, y = 0.45, label = paste(("lambda(F4*', '* Y) * ' = ' *"), round(loadings.y["F4"], 2)),
+  annotate("text", x = 757, y = 0.225, label = paste(("lambda(F4*', '* Y) * ' = ' *"), round(loadings.y["F4"], 2)),
            color = "white", parse = TRUE, size = 4, hjust = 0) +
-  annotate("text", x = 757, y = 0.90, label = paste(("lambda(F5*', '* Y) * ' = ' *"), round(loadings.y["F5"], 2)),
+  annotate("text", x = 757, y = 0.575, label = paste(("lambda(F5*', '* Y) * ' = ' *"), round(loadings.y["F5"], 2)),
            color = "white", parse = TRUE, size = 4, hjust = 0) +
   xlab(NULL) +
   annotate("text", x = 400, y = 1, label = "B", color = "white", parse = TRUE, size = 4, hjust = 0)
@@ -198,6 +200,7 @@ ggsave("plots/MegaLMM_hyper_1415B5IR_single_date_M5.png", width = 24, height = 7
 # M = 10 =======================================================================
 # Setting seed:
 set.seed(1997)
+rm(Lambda_samples, pred_samples)
 
 # Some MegaLMM parameters:
 M <- 10
@@ -285,6 +288,8 @@ save(pred_samples, file = "hyper_1415B5IR/megalmm_hyper_single_date_arrays/PREDS
 unlink(run_ID, recursive = TRUE)
 
 # Calculating posterior means:
+load("hyper_1415B5IR/megalmm_hyper_single_date_arrays/LAMBDA_M10.RData")
+load("hyper_1415B5IR/megalmm_hyper_single_date_arrays/PREDS_M10.RData")
 mean_Lambda <- MegaLMM::get_posterior_mean(Lambda_samples)
 mean_pred <- MegaLMM::get_posterior_mean(pred_samples)
 
@@ -329,26 +334,26 @@ ggplot(data = loadings.wl.long, mapping = aes(x = Wavelength, y = Loading, color
         legend.key.height = unit(0.5, "cm"),
         legend.spacing.y = unit(0.1, "cm"),
         legend.key.width = unit(0.5, "cm")) +
-  annotate("text", x = 757, y = -1.0, label = paste(("lambda(F1*', '* Y) * ' = ' *"), round(loadings.y["F1"], 2)),
-           color = "white", parse = TRUE, size = 4, hjust = 0) +
-  annotate("text", x = 757, y = 0.75, label = paste(("lambda(F2 *', '* Y) * ' = ' *"), round(loadings.y["F2"], 2)),
-           color = "white", parse = TRUE, size = 4, hjust = 0) +
-  annotate("text", x = 757, y = 0.90, label = paste(("lambda(F3*', '* Y) * ' = ' *"), round(loadings.y["F3"], 2)),
-           color = "white", parse = TRUE, size = 4, hjust = 0) +
-  annotate("text", x = 757, y = 0.60, label = paste(("lambda(F4*', '* Y) * ' = ' *"), round(loadings.y["F4"], 2)),
-           color = "white", parse = TRUE, size = 4, hjust = 0) +
-  annotate("text", x = 757, y = 0.45, label = paste(("lambda(F5*', '* Y) * ' = ' *"), round(loadings.y["F5"], 2)),
-           color = "white", parse = TRUE, size = 4, hjust = 0) +
-  annotate("text", x = 757, y = 0.30, label = paste(("lambda(F6*', '* Y) * ' = ' *"), round(loadings.y["F6"], 2)),
-           color = "white", parse = TRUE, size = 4, hjust = 0) +
-  annotate("text", x = 757, y = -0.85, label = paste(("lambda(F7*', '* Y) * ' = ' *"), round(loadings.y["F7"], 2)),
-           color = "white", parse = TRUE, size = 4, hjust = 0) +
-  annotate("text", x = 757, y = -0.70, label = paste(("lambda(F8*', '* Y) * ' = ' *"), round(loadings.y["F8"], 2)),
-           color = "white", parse = TRUE, size = 4, hjust = 0) +
+  annotate("text", x = 757, y = 0.32, label = paste(("lambda(F1*', '* Y) * ' = ' *"), round(loadings.y["F1"], 2)),
+           color = "white", parse = TRUE, size = 3, hjust = 0) +
+  annotate("text", x = 757, y = 0.62, label = paste(("lambda(F2 *', '* Y) * ' = ' *"), round(loadings.y["F2"], 2)),
+           color = "white", parse = TRUE, size = 3, hjust = 0) +
+  annotate("text", x = 757, y = 0.77, label = paste(("lambda(F3*', '* Y) * ' = ' *"), round(loadings.y["F3"], 2)),
+           color = "white", parse = TRUE, size = 3, hjust = 0) +
+  annotate("text", x = 757, y = -1, label = paste(("lambda(F4*', '* Y) * ' = ' *"), round(loadings.y["F4"], 2)),
+           color = "white", parse = TRUE, size = 3, hjust = 0) +
+  annotate("text", x = 757, y = -0.85, label = paste(("lambda(F5*', '* Y) * ' = ' *"), round(loadings.y["F5"], 2)),
+           color = "white", parse = TRUE, size = 3, hjust = 0) +
+  annotate("text", x = 757, y = 1, label = paste(("lambda(F6*', '* Y) * ' = ' *"), round(loadings.y["F6"], 2)),
+           color = "white", parse = TRUE, size = 3, hjust = 0) +
+  annotate("text", x = 757, y = -0.70, label = paste(("lambda(F7*', '* Y) * ' = ' *"), round(loadings.y["F7"], 2)),
+           color = "white", parse = TRUE, size = 3, hjust = 0) +
+  annotate("text", x = 757, y = -0.27, label = paste(("lambda(F8*', '* Y) * ' = ' *"), round(loadings.y["F8"], 2)),
+           color = "white", parse = TRUE, size = 3, hjust = 0) +
   annotate("text", x = 757, y = -0.55, label = paste(("lambda(F9*', '* Y) * ' = ' *"), round(loadings.y["F9"], 2)),
-           color = "white", parse = TRUE, size = 4, hjust = 0) +
-  annotate("text", x = 757, y = -0.40, label = paste(("lambda(F10*', '* Y) * ' = ' *"), round(loadings.y["F10"], 2)),
-           color = "white", parse = TRUE, size = 4, hjust = 0) +
+           color = "white", parse = TRUE, size = 3, hjust = 0) +
+  annotate("text", x = 757, y = 0.47, label = paste(("lambda(F10*', '* Y) * ' = ' *"), round(loadings.y["F10"], 2)),
+           color = "white", parse = TRUE, size = 3, hjust = 0) +
   xlab("Wavelength (nm)") +
   annotate("text", x = 400, y = 1, label = "C", color = "white", parse = TRUE, size = 4, hjust = 0)
 
@@ -357,6 +362,7 @@ ggsave("plots/MegaLMM_hyper_1415B5IR_single_date_M10.png", width = 24, height = 
 # M = 3 ========================================================================
 # Setting seed:
 set.seed(1997)
+rm(Lambda_samples, pred_samples)
 
 # Some MegaLMM parameters:
 M <- 3
@@ -444,6 +450,8 @@ save(pred_samples, file = "hyper_1415B5IR/megalmm_hyper_single_date_arrays/PREDS
 unlink(run_ID, recursive = TRUE)
 
 # Calculating posterior means:
+load("hyper_1415B5IR/megalmm_hyper_single_date_arrays/LAMBDA_M3.RData")
+load("hyper_1415B5IR/megalmm_hyper_single_date_arrays/PREDS_M3.RData")
 mean_Lambda <- MegaLMM::get_posterior_mean(Lambda_samples)
 mean_pred <- MegaLMM::get_posterior_mean(pred_samples)
 
@@ -475,7 +483,7 @@ g <- rasterGrob(gradient, width = unit(1, "npc"), height = unit(1, "npc"), inter
 ggplot(data = loadings.wl.long, mapping = aes(x = Wavelength, y = Loading, color = Factor)) +
   annotation_custom(g, xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf) +
   geom_line(linewidth = 1.5) +
-  scale_color_manual(values = NatParksPalettes::natparks.pals("Acadia", 10)) +
+  scale_color_manual(values = NatParksPalettes::natparks.pals("Acadia", 10)[c(2, 8, 10)]) +
   ylim(c(-1.1, 1.1)) +
   theme_classic(base_size = 11) +
   theme(axis.text = element_text(color = "black", size = 11),
@@ -488,11 +496,11 @@ ggplot(data = loadings.wl.long, mapping = aes(x = Wavelength, y = Loading, color
         legend.key.height = unit(0.5, "cm"),
         legend.spacing.y = unit(0.1, "cm"),
         legend.key.width = unit(0.5, "cm")) +
-  annotate("text", x = 757, y = -1.0, label = paste(("lambda(F1*', '* Y) * ' = ' *"), round(loadings.y["F1"], 2)),
+  annotate("text", x = 757, y = -0.15, label = paste(("lambda(F1*', '* Y) * ' = ' *"), round(loadings.y["F1"], 2)),
            color = "white", parse = TRUE, size = 4, hjust = 0) +
-  annotate("text", x = 757, y = 0.75, label = paste(("lambda(F2 *', '* Y) * ' = ' *"), round(loadings.y["F2"], 2)),
+  annotate("text", x = 757, y = 0.50, label = paste(("lambda(F2 *', '* Y) * ' = ' *"), round(loadings.y["F2"], 2)),
            color = "white", parse = TRUE, size = 4, hjust = 0) +
-  annotate("text", x = 757, y = 0.90, label = paste(("lambda(F3*', '* Y) * ' = ' *"), round(loadings.y["F3"], 2)),
+  annotate("text", x = 757, y = -0.75, label = paste(("lambda(F3*', '* Y) * ' = ' *"), round(loadings.y["F3"], 2)),
            color = "white", parse = TRUE, size = 4, hjust = 0) +
   xlab("Wavelength (nm)") +
   annotate("text", x = 400, y = 1, label = "A", color = "white", parse = TRUE, size = 4, hjust = 0)
@@ -530,12 +538,13 @@ ggplot(loadings.y, aes(x = Iteration, y = Loading)) +
         legend.key.height = unit(0.5, "cm"),
         legend.spacing.y = unit(0.1, "cm"),
         legend.key.width = unit(0.5, "cm")) +
-  guides(fill = guide_legend(override.aes = list(size = 5)))
+  guides(fill = guide_legend(override.aes = list(size = 5))) +
+  xlab("Posterior sample (thin = 2)")
 
 ggsave("plots/MegaLMM_hyper_1415B5IR_single_date_traceplot_Y_M5.png", width = 24, height = 8, units = "cm")
 
 # The important wavelengths around the "switching" point in gfBLUP:
-(WL <- dimnames(Lambda_samples)[[3]][39:47])
+(WL <- dimnames(Lambda_samples)[[3]][41:50])
 
 factors <- paste0("F", 1:dim(Lambda_samples)[2])
 niter <- dim(Lambda_samples)[1]
@@ -555,11 +564,11 @@ data <- tidyr::pivot_longer(data, cols = 1:length(WL),
 data$Wavelength <- factor(data$Wavelength, levels = WL, labels = paste0(WL, " nm"))
 data$Factor <- factor(data$Factor, levels = factors)
 
-scaleFUN <- function(x) sprintf("%.3f", x)
+scaleFUN <- function(x) sprintf("%.1f", x)
 
 p <- ggplot(data, aes(x = Iteration, y = Loading)) +
   geom_point(aes(fill = Wavelength), color = "black", pch = 21, stroke = 0.05, size = 1) +
-  scale_fill_manual(values = NatParksPalettes::natparks.pals("Acadia")[1:9]) +
+  scale_fill_manual(values = NatParksPalettes::natparks.pals("Acadia", n = 10)) +
   theme_classic(base_size = 11) +
   facet_grid(rows = vars(Factor), scales = "free_y") +
   theme(axis.text = element_text(color = "black", size = 11),
@@ -615,7 +624,7 @@ ggplot(loadings.y, aes(x = Iteration, y = Loading)) +
 ggsave("plots/MegaLMM_hyper_1415B5IR_single_date_traceplot_Y_M10.png", width = 24, height = 8, units = "cm")
 
 # The important wavelengths around the "switching" point in gfBLUP:
-(WL <- dimnames(Lambda_samples)[[3]][39:47])
+(WL <- dimnames(Lambda_samples)[[3]][41:50])
 
 factors <- paste0("F", 1:dim(Lambda_samples)[2])
 niter <- dim(Lambda_samples)[1]
@@ -639,7 +648,7 @@ scaleFUN <- function(x) sprintf("%.3f", x)
 
 p1 <- ggplot(data[which(data$Factor %in% factors[1:5]),], aes(x = Iteration, y = Loading)) +
   geom_point(aes(fill = Wavelength), color = "black", pch = 21, stroke = 0.05, size = 1) +
-  scale_fill_manual(values = NatParksPalettes::natparks.pals("Acadia")[1:9]) +
+  scale_fill_manual(values = NatParksPalettes::natparks.pals("Acadia", 10)) +
   theme_classic(base_size = 11) +
   facet_grid(rows = vars(Factor), scales = "free_y") +
   theme(axis.text = element_text(color = "black", size = 11),
@@ -658,7 +667,7 @@ p1 <- ggplot(data[which(data$Factor %in% factors[1:5]),], aes(x = Iteration, y =
 
 p2 <- ggplot(data[which(data$Factor %in% factors[6:10]),], aes(x = Iteration, y = Loading)) +
   geom_point(aes(fill = Wavelength), color = "black", pch = 21, stroke = 0.05, size = 1) +
-  scale_fill_manual(values = NatParksPalettes::natparks.pals("Acadia")[1:9]) +
+  scale_fill_manual(values = NatParksPalettes::natparks.pals("Acadia", 10)) +
   theme_classic(base_size = 11) +
   facet_grid(rows = vars(Factor), scales = "free_y") +
   theme(axis.text = element_text(color = "black", size = 11),
@@ -700,7 +709,7 @@ loadings.y$Factor <- factor(loadings.y$Factor, levels = paste0("F", 1:dim(Lambda
 # Plotting the significant Y loadings:
 ggplot(loadings.y, aes(x = Iteration, y = Loading)) +
   geom_point(aes(fill = Factor), color = "black", pch = 21, stroke = 0.05, size = 1) +
-  scale_fill_manual(values = NatParksPalettes::natparks.pals("Acadia")[3:7]) +
+  scale_fill_manual(values = NatParksPalettes::natparks.pals("Acadia", 10)[c(2, 8, 10)]) +
   theme_classic(base_size = 11) +
   theme(axis.text = element_text(color = "black", size = 11),
         axis.title = element_text(face = "bold", size = 13),
@@ -717,7 +726,7 @@ ggplot(loadings.y, aes(x = Iteration, y = Loading)) +
 ggsave("plots/MegaLMM_hyper_1415B5IR_single_date_traceplot_Y_M3.png", width = 24, height = 8, units = "cm")
 
 # The important wavelengths around the "switching" point in gfBLUP:
-(WL <- dimnames(Lambda_samples)[[3]][39:47])
+(WL <- dimnames(Lambda_samples)[[3]][41:50])
 
 factors <- paste0("F", 1:dim(Lambda_samples)[2])
 niter <- dim(Lambda_samples)[1]
@@ -741,7 +750,7 @@ scaleFUN <- function(x) sprintf("%.3f", x)
 
 p <- ggplot(data, aes(x = Iteration, y = Loading)) +
   geom_point(aes(fill = Wavelength), color = "black", pch = 21, stroke = 0.05, size = 1) +
-  scale_fill_manual(values = NatParksPalettes::natparks.pals("Acadia")[1:9]) +
+  scale_fill_manual(values = NatParksPalettes::natparks.pals("Acadia", 10)) +
   theme_classic(base_size = 11) +
   facet_grid(rows = vars(Factor), scales = "free_y") +
   theme(axis.text = element_text(color = "black", size = 11),
