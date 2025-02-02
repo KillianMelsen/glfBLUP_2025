@@ -46,7 +46,7 @@ for (CV in CVs) {
       h2y <- par.combis[i, "h2y"]
       
       # Number of simulated datasets to load:
-      n.sim <- 2
+      n.sim <- 100
       
       # Setting up result storage:
       acc <- numeric(n.sim)
