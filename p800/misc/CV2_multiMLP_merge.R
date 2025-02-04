@@ -14,7 +14,7 @@ comms <- c("02", "05", "08")
 h2.foc <- c("01", "03", "05", "07", "09")
 
 # Scenarios:
-CVs <- c("CV1", "CV2")
+CVs <- c("CV2")
 
 # For printing progress:
 progress <- 1
@@ -33,17 +33,18 @@ for (CV in CVs) {
           lab <- "b"
         }
         
-        # Load part 1 and part 2 (discard the first 50 rows of part 2 because of a formatting mistake...):
-        part_1 <- read.csv(sprintf("p800/results/h2s%s/3%s_p800_results_gfblup_%s_h2y%s_comm%s_h2s%s_1to50.csv",
+        # Load part 1, 2, 3, and 4:
+        part_1 <- read.csv(sprintf("p800/results/h2s%s/8%s_p800_results_multiMLP_%s_h2y%s_comm%s_h2s%s_1to10.csv",
+                                    h2s, lab, CV, h2y, comm, h2s))
+        
+        part_2 <- read.csv(sprintf("p800/results/h2s%s/8%s_p800_results_multiMLP_%s_h2y%s_comm%s_h2s%s_11to20.csv",
                                    h2s, lab, CV, h2y, comm, h2s))
-        part_2 <- read.csv(sprintf("p800/results/h2s%s/3%s_p800_results_gfblup_%s_h2y%s_comm%s_h2s%s_51to100.csv",
-                                   h2s, lab, CV, h2y, comm, h2s))[51:100,]
         
         # Merging:
         total <- rbind(part_1, part_2)
         
         # Saving the full results:
-        write.csv(total, sprintf("p800/results/h2s%s/3%s_p800_results_gfblup_%s_h2y%s_comm%s_h2s%s.csv",
+        write.csv(total, sprintf("p800/results/h2s%s/8%s_p800_results_multiMLP_%s_h2y%s_comm%s_h2s%s.csv",
                                  h2s, lab, CV, h2y, comm, h2s))
         
         progress <- progress + 1

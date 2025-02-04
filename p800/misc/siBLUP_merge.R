@@ -35,9 +35,9 @@ for (CV in CVs) {
         
         # Load part 1 and part 2 (discard the first 50 rows of part 2 because of a formatting mistake...):
         # Also renaming SGP > p800 because of mistake...
-        part_1 <- read.csv(sprintf("p800/results/h2s%s/5%s_p800_results_siblup_%s_h2y%s_comm%s_h2s%s_1to33.csv",
+        part_1 <- read.csv(sprintf("p800/results/h2s%s/5%s_p800_results_siblup_%s_h2y%s_comm%s_h2s%s_1to50.csv",
                                     h2s, lab, CV, h2y, comm, h2s))
-        part_2 <- read.csv(sprintf("p800/results/h2s%s/5%s_p800_results_siblup_%s_h2y%s_comm%s_h2s%s_34to100.csv",
+        part_2 <- read.csv(sprintf("p800/results/h2s%s/5%s_p800_results_siblup_%s_h2y%s_comm%s_h2s%s_51to100.csv",
                                    h2s, lab, CV, h2y, comm, h2s))
         
         # Merging:

@@ -24,7 +24,7 @@ medians <- data.frame(Model = character(n.row),
                       Accuracy = numeric(n.row))
 
 ### Loading all results:
-i <- 1
+i <- 1; h2y <- h2.foc[1]; h2s <- h2.sec[1]; comm <- comms[1]; CV <- CVs[1]
 for (model in models$name) {
   label <- models[which(models$name == model), "label"]
   for (h2y in h2.foc) {
@@ -38,14 +38,14 @@ for (model in models$name) {
             } else {
               label.letter <- "b"
             }
-            
-            if (model == "multiMLP") {
+              
+            if (model == "MegaLMM") {
+              acc <- 0
+            } else {
               accs <- read.csv(sprintf("p800/results/h2s%s/%s%s_p800_results_%s_%s_h2y%s_comm%s_h2s%s.csv",
                                        h2s, label, label.letter, model, CV, h2y, comm, h2s))$acc
-              acc <- median(accs[c(1:10, (length(accs) - 9):length(accs))])
-            } else {
-              acc <- median(read.csv(sprintf("p800/results/h2s%s/%s%s_p800_results_%s_%s_h2y%s_comm%s_h2s%s.csv",
-                                           h2s, label, label.letter, model, CV, h2y, comm, h2s))$acc)
+              stopifnot(length(accs) == 20 | length(accs) == 100)
+              acc <- median(accs)
             }
             
             medians[i, "Model"] <- model
@@ -59,6 +59,8 @@ for (model in models$name) {
           }
         } else if (model == "univariate") {
           
+          accs <- read.csv(sprintf("p800/results/h2s%s/2_p800_results_univariate_h2y%s_comm%s_h2s%s.csv", h2s, h2y, comm, h2s))$acc
+          stopifnot(length(accs) == 20 | length(accs) == 100)
           acc <- median(read.csv(sprintf("p800/results/h2s%s/2_p800_results_univariate_h2y%s_comm%s_h2s%s.csv", h2s, h2y, comm, h2s))$acc)
           
           medians[i, "Model"] <- "Univariate"
@@ -76,17 +78,15 @@ for (model in models$name) {
   }
 }
 
-
-
 medians$Model <- factor(medians$Model, levels = c("Univariate", "benchmark", "gfblup", "MegaLMM", "lsblup", "siblup", "multiMLP"),
                         labels = c("Univariate", "Benchmark", "gfBLUP", "MegaLMM", "lsBLUP", "siBLUP", "multiMLP"))
 
 h = 20
 w = 25
 
-labs <- list("comm02" = expression(bold("\u03BB\u03BB")[~y]^"\u0054"~"= 0.2"),
-             "comm05" = expression(bold("\u03BB\u03BB")[~y]^"\u0054"~"= 0.5"),
-             "comm08" = expression(bold("\u03BB\u03BB")[~y]^"\u0054"~"= 0.8"),
+labs <- list("comm02" = expression(bold("\u03A8")[~y]~"= 0.8"),
+             "comm05" = expression(bold("\u03A8")[~y]~"= 0.5"),
+             "comm08" = expression(bold("\u03A8")[~y]~"= 0.2"),
              "h2s05" = expression(h^2*(s)~"= 0.5"),
              "h2s07" = expression(h^2*(s)~"= 0.7"),
              "h2s09" = expression(h^2*(s)~"= 0.9"))
@@ -96,12 +96,14 @@ labs_labeller <- function(variable, value) {
 }
 
 colors <- RColorBrewer::brewer.pal(7, "Dark2")
+colors <- NatParksPalettes::natparks.pals("Charmonix")
+
 
 ggplot(data = medians, mapping = aes(x = h2y, y = Accuracy, color = Model)) +
   theme_classic() +
   geom_point(size = 1) +
   geom_line(mapping = aes(x = h2y, y = Accuracy, color = Model, linetype = CV), linewidth = 0.8) +
-  ylim(0, 1) +
+  ylim(-0.1, 1) +
   xlab("Focal trait heritability") +
   theme(axis.text = element_text(color = "black"),
         axis.title = element_text(face = "bold"),
@@ -112,32 +114,33 @@ ggplot(data = medians, mapping = aes(x = h2y, y = Accuracy, color = Model)) +
                         values = c("CV1" = 1,
                                    "CV2" = 2,
                                    "Univariate" = 3)) +
-  scale_color_manual(values = c("Univariate" = colors[1],
-                                "Benchmark" = colors[2],
-                                "gfBLUP" = colors[3],
-                                "MegaLMM" = colors[4],
-                                "siBLUP" = colors[5],
-                                "lsBLUP" = colors[6],
-                                "multiMLP" = colors[7])) +
+  scale_color_manual(values = c("Univariate" = "black",
+                                "Benchmark" = "red",
+                                "gfBLUP" = colors[2],
+                                "MegaLMM" = colors[3],
+                                "siBLUP" = "purple4",
+                                "lsBLUP" = colors[5],
+                                "multiMLP" = colors[6])) +
   facet_grid(cols = vars(comm), rows = vars(h2s), labeller = labs_labeller) +
   theme(strip.background = element_blank()) +
-  geom_hline(yintercept = seq(0, 1, 0.1), color = "gray", linetype = 1, linewidth = 0.1) +
+  geom_hline(yintercept = seq(-0.1, 1, 0.1), color = "gray", linetype = 1, linewidth = 0.1) +
   theme(legend.position = "right",
         legend.spacing.x = unit(0.1, "cm"),
         legend.text = element_text(size = 9),
         legend.title = element_text(size = 11),
         panel.background = element_blank(),
-        plot.title = element_text(size = 11)) +
+        plot.title = element_text(size = 11),
+        legend.key.size = unit(2,"line")) +
   guides(Model = guide_legend(title.position = "top", title.hjust = 0.5)) +
   labs(tag = "Secondary feature heritability") +
-  theme(plot.tag.position = c(0.862, 0.48),
+  theme(plot.tag.position = c(0.855, 0.48),
         plot.tag = element_text(angle = 270, face = "bold", size = 11),
         plot.margin = margin(l = 0.5, r = 1, t = 0.5, b = 0.5, unit = "cm")) +
   guides(color = guide_legend(title.position = "top", title.hjust = 0.5,
                               nrow = 8, byrow = TRUE),
          linetype = guide_legend(title.position = "top", title.hjust = 0.5,
                                  nrow = 3, byrow = TRUE)) +
-  ggtitle("Focal trait communality")
+  ggtitle("Focal trait unique variance")
 
 ggsave(filename = "plots/p800.png", dpi = 640, width = 25, height = 25, units = "cm")
 
