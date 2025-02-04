@@ -3,7 +3,7 @@
 ###############################################################################
 
 # Setting CV:
-CV <- "CV2"
+CV <- "CV1"
 
 # Setting seed:
 # set.seed(1997)
@@ -62,7 +62,7 @@ define_model <- function(L, N, D, input_shape, output_shape) {
       layer_dropout(rate = D) %>%
       layer_dense(units = output_shape)
     
-    name <- sprintf("multiMLP_L1_N%d_D%.1f_CV2", N, D)
+    name <- sprintf("multiMLP_L1_N%d_D%.1f_CV1", N, D)
     
   } else if (L == 2) {
     model <- keras_model_sequential()
@@ -74,7 +74,7 @@ define_model <- function(L, N, D, input_shape, output_shape) {
       layer_dropout(rate = D) %>%
       layer_dense(units = output_shape)
     
-    name <- sprintf("multiMLP_L2_N%d_D%.1f_CV2", N, D)
+    name <- sprintf("multiMLP_L2_N%d_D%.1f_CV1", N, D)
   } else if (L == 4) {
     model <- keras_model_sequential()
     
@@ -89,7 +89,7 @@ define_model <- function(L, N, D, input_shape, output_shape) {
       layer_dropout(rate = D) %>%
       layer_dense(units = output_shape)
     
-    name <- sprintf("multiMLP_L4_N%d_D%.1f_CV2", N, D)
+    name <- sprintf("multiMLP_L4_N%d_D%.1f_CV1", N, D)
   } else if (L == 8) {
     model <- keras_model_sequential()
     
@@ -112,7 +112,7 @@ define_model <- function(L, N, D, input_shape, output_shape) {
       layer_dropout(rate = D) %>%
       layer_dense(units = output_shape)
     
-    name <- sprintf("multiMLP_L8_N%d_D%.1f_CV2", N, D)
+    name <- sprintf("multiMLP_L8_N%d_D%.1f_CV1", N, D)
   }
   return(list(model = model, name = name))
 }
@@ -122,7 +122,7 @@ define_model <- function(L, N, D, input_shape, output_shape) {
 ###############################################################################
 
 # Datasets to run for each combination of genetic parameters:
-first <- 1
+first <- 11
 last <- 20
 n.datasets <- length(first:last)
 
@@ -157,18 +157,18 @@ for (h2y in h2.foc) {
         
         # Storing training and test data:
         d.train <- droplevels(na.omit(datalist$data.real))
-        d.test <- droplevels(datalist$data.real[which(is.na(datalist$data.real$Y)),])
+        # d.test <- droplevels(datalist$data.real[which(is.na(datalist$data.real$Y)),])
         
         # Going to BLUEs:
         d.train <- gfBLUP:::genotypeMeans(d.train)
-        d.test <- gfBLUP:::genotypeMeans(d.test)
+        # d.test <- gfBLUP:::genotypeMeans(d.test)
         
         # Rescaling now we only have means:
         d.train[, 2:ncol(d.train)] <- sapply(d.train[, 2:ncol(d.train)], scale)
-        d.test[, 2:ncol(d.test)] <- sapply(d.test[, 2:ncol(d.test)], scale)
+        # d.test[, 2:ncol(d.test)] <- sapply(d.test[, 2:ncol(d.test)], scale)
         
         d.train[, 2:ncol(d.train)] <- sapply(d.train[, 2:ncol(d.train)], as.numeric)
-        d.test[, 2:ncol(d.test)] <- sapply(d.test[, 2:ncol(d.test)], as.numeric)
+        # d.test[, 2:ncol(d.test)] <- sapply(d.test[, 2:ncol(d.test)], as.numeric)
         
         # Subsetting marker data to train and test set and scaling:
         M.train <- M[which(M$G %in% train.set),]
@@ -214,22 +214,22 @@ for (h2y in h2.foc) {
           # Matching x_tune to y_tune:
           x_tune <- x_tune[match(y_tune$G, x_tune$G),]
           
-          # Storing evaluation prediction targets and matching:
-          y_eval <- d.train[which(d.train$G %in% eval.set), ]
+          # Storing evaluation prediction targets and matching (note the selection of only yield for y_eval!):
+          y_eval <- d.train[which(d.train$G %in% eval.set), c(1, ncol(d.train))]
           x_eval <- x_eval[match(y_eval$G, x_eval$G),]
           
           rownames(y_eval) <- rownames(x_eval)
           rownames(y_tune) <- rownames(x_tune)
           
           # Scaling again:
-          y_eval[, 2:ncol(y_eval)] <- sapply(y_eval[, 2:ncol(y_eval)], scale)
-          y_tune[, 2:ncol(y_tune)] <- sapply(y_tune[, 2:ncol(y_tune)], scale)
+          y_eval[, 2] <- scale(y_eval[, 2])
+          y_tune[, 2] <- scale(y_tune[, 2])
           
           x_eval[, 2:ncol(x_eval)] <- sapply(x_eval[, 2:ncol(x_eval)], scale)
           x_tune[, 2:ncol(x_tune)] <- sapply(x_tune[, 2:ncol(x_tune)], scale)
           
-          y_eval[, 2:ncol(y_eval)] <- sapply(y_eval[, 2:ncol(y_eval)], as.numeric)
-          y_tune[, 2:ncol(y_tune)] <- sapply(y_tune[, 2:ncol(y_tune)], as.numeric)
+          y_eval[, 2] <- as.numeric(y_eval[, 2])
+          y_tune[, 2] <- as.numeric(y_tune[, 2])
           
           x_eval[, 2:ncol(x_eval)] <- sapply(x_eval[, 2:ncol(x_eval)], as.numeric)
           x_tune[, 2:ncol(x_tune)] <- sapply(x_tune[, 2:ncol(x_tune)], as.numeric)
@@ -250,15 +250,15 @@ for (h2y in h2.foc) {
             cat(sprintf("Evaluating architecture %d / %d on fold %d / 5 for dataset %d / %d (%d)...\n",
                         arch, length(hypers), fold, run, n.datasets, sim))
             
-            # Defining and compiling architecture (note that the output_shape = 1 due to
-            # the secondary features being in the input layer).
-            # The input shape is ncol(x_tune) + ncol(y_tune) - 3 (3 because "G" is omitted
-            # twice, and "Y" is omitted from y_tune because it is used in the output layer):
+            # Defining and compiling architecture (note that the output_shape = ncol(y_tune) due to
+            # the secondary features being in the output layer together with yield).
+            # The input shape is ncol(x_tune) - 1 (1 because "G" is omitted):
+            
             model.def <- define_model(L = hypers[[arch]]$layers,
                                       N = hypers[[arch]]$neurons,
                                       D = hypers[[arch]]$dropout,
-                                      input_shape = ncol(x_tune) + ncol(y_tune) - 3,
-                                      output_shape = 1)
+                                      input_shape = ncol(x_tune) - 1,
+                                      output_shape = ncol(y_tune) - 1)
             
             model <- model.def$model
             model.name <- model.def$name
@@ -268,8 +268,8 @@ for (h2y in h2.foc) {
                               metrics = list())
             
             # Training network:
-            history.arch <- model %>% fit(cbind(as.matrix(x_tune[, -1]), as.matrix(y_tune[, 2:(ncol(y_tune) - 1)])),
-                                          as.matrix(y_tune[, ncol(y_tune)]),
+            history.arch <- model %>% fit(as.matrix(x_tune[, -1]),
+                                          as.matrix(y_tune[, -1]),
                                           epochs = 25, batch_size = 128,
                                           validation_split = 0.1, verbose = 0,
                                           callbacks = callback_early_stopping(monitor = "val_loss",
@@ -278,8 +278,8 @@ for (h2y in h2.foc) {
                                                                               restore_best_weights = FALSE))
             
             # Making evaluation predictions and calculating accuracy:
-            preds <- model %>% predict(cbind(as.matrix(x_eval[, -1]), as.matrix(y_eval[, 2:(ncol(y_eval) - 1)])))
-            temp[arch] <- cor(preds, y_eval$Y)
+            preds <- model %>% predict(as.matrix(x_eval[, -1]))
+            temp[arch] <- cor(preds[, ncol(preds)], y_eval$Y)
             names(temp)[arch] <- model.name
             
             # Clearing Keras backend:
@@ -304,8 +304,8 @@ for (h2y in h2.foc) {
           model.def <- define_model(L = hypers[[best.arch]]$layers,
                                     N = hypers[[best.arch]]$neurons,
                                     D = hypers[[best.arch]]$dropout,
-                                    input_shape = ncol(M.train) + ncol(d.train) - 3,
-                                    output_shape = 1)
+                                    input_shape = ncol(M.train) - 1,
+                                    output_shape = ncol(d.train) - 1)
           
           model <- model.def$model
           model.name <- model.def$name
@@ -321,8 +321,8 @@ for (h2y in h2.foc) {
           cat(sprintf("Training and evaluating hypertuned CV2 multiMLP for dataset %d / %d (%d)...\n\n", run, n.datasets, sim))
           
           # Training the final hypertuned network using early stopping:
-          history <- model %>% fit(cbind(as.matrix(M.train[, -1]), as.matrix(d.train[, 2:(ncol(d.train) - 1)])),
-                                   as.matrix(d.train[, ncol(d.train)]),
+          history <- model %>% fit(as.matrix(M.train[, -1]),
+                                   as.matrix(d.train[, -1]),
                                    epochs = 100, batch_size = 128,
                                    validation_split = 0.1, verbose = 0,
                                    callbacks = callback_early_stopping(monitor = "val_loss",
@@ -334,8 +334,8 @@ for (h2y in h2.foc) {
           histories[[run]] <- history
           
           # Making predictions and evaluating accuracy:
-          preds <- model %>% predict(cbind(as.matrix(M.test[, -1]), as.matrix(d.test[, 2:(ncol(d.test) - 1)])))
-          acc[run] <- cor(preds, pred.target)
+          preds <- model %>% predict(as.matrix(M.test[, -1]))
+          acc[run] <- cor(preds[, ncol(preds)], pred.target)
           
           # Storing best architecture:
           archs[run] <- model.name
@@ -375,10 +375,10 @@ for (h2y in h2.foc) {
       }
       
       # Export results:
-      write.csv(results, sprintf("p800/results/h2s%s/8%s_p800_results_multiMLP_%s_h2y%s_comm%s_h2s%s.csv",
+      write.csv(results, sprintf("p800/results/h2s%s/8%s_p800_results_multiMLP_%s_h2y%s_comm%s_h2s%s_11to20.csv",
                                  h2s, lab, CV, h2y, comm, h2s))
 
-      list.save(histories, sprintf("p800/results/h2s%s/8%s_p800_results_multiMLP_%s_h2y%s_comm%s_h2s%s.RData",
+      list.save(histories, sprintf("p800/results/h2s%s/8%s_p800_results_multiMLP_%s_h2y%s_comm%s_h2s%s_11to20.RData",
                                    h2s, lab, CV, h2y, comm, h2s))
       
       combi <- combi + 1

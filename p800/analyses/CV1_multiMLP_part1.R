@@ -123,7 +123,7 @@ define_model <- function(L, N, D, input_shape, output_shape) {
 
 # Datasets to run for each combination of genetic parameters:
 first <- 1
-last <- 20
+last <- 10
 n.datasets <- length(first:last)
 
 # Keeping track of where we are:
@@ -375,10 +375,10 @@ for (h2y in h2.foc) {
       }
       
       # Export results:
-      write.csv(results, sprintf("p800/results/h2s%s/8%s_p800_results_multiMLP_%s_h2y%s_comm%s_h2s%s.csv",
+      write.csv(results, sprintf("p800/results/h2s%s/8%s_p800_results_multiMLP_%s_h2y%s_comm%s_h2s%s_1to10.csv",
                                  h2s, lab, CV, h2y, comm, h2s))
 
-      list.save(histories, sprintf("p800/results/h2s%s/8%s_p800_results_multiMLP_%s_h2y%s_comm%s_h2s%s.RData",
+      list.save(histories, sprintf("p800/results/h2s%s/8%s_p800_results_multiMLP_%s_h2y%s_comm%s_h2s%s_1to10.RData",
                                    h2s, lab, CV, h2y, comm, h2s))
       
       combi <- combi + 1
