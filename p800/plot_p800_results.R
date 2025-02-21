@@ -39,12 +39,13 @@ for (model in models$name) {
               label.letter <- "b"
             }
               
-            if (model == "MegaLMM") {
+            if (model == "multiMLP") {
               acc <- 0
             } else {
               accs <- read.csv(sprintf("p800/results/h2s%s/%s%s_p800_results_%s_%s_h2y%s_comm%s_h2s%s.csv",
                                        h2s, label, label.letter, model, CV, h2y, comm, h2s))$acc
               stopifnot(length(accs) == 20 | length(accs) == 100)
+              stopifnot(length(unique(accs)) == 20 | length(unique(accs)) == 100)
               acc <- median(accs)
             }
             
@@ -60,7 +61,7 @@ for (model in models$name) {
         } else if (model == "univariate") {
           
           accs <- read.csv(sprintf("p800/results/h2s%s/2_p800_results_univariate_h2y%s_comm%s_h2s%s.csv", h2s, h2y, comm, h2s))$acc
-          stopifnot(length(accs) == 20 | length(accs) == 100)
+          stopifnot(length(unique(accs)) == 20 | length(unique(accs)) == 100)
           acc <- median(read.csv(sprintf("p800/results/h2s%s/2_p800_results_univariate_h2y%s_comm%s_h2s%s.csv", h2s, h2y, comm, h2s))$acc)
           
           medians[i, "Model"] <- "Univariate"
@@ -184,7 +185,7 @@ ggplot(data = medians[which(medians$Model != "multiMLP"),], mapping = aes(x = h2
                               nrow = 8, byrow = TRUE),
          linetype = guide_legend(title.position = "top", title.hjust = 0.5,
                                  nrow = 3, byrow = TRUE)) +
-  ggtitle("Focal trait communality")
+  ggtitle("Focal trait unique variance")
 
 ggsave(filename = "plots/p800_2.png", dpi = 640, width = 25, height = 25, units = "cm")
 
