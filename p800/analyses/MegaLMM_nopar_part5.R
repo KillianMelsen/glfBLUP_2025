@@ -26,7 +26,7 @@ CVs <- c("CV1", "CV2")
 combis <- length(h2.sec) * length(comms) * length(h2.foc) * length(CVs)
 combi <- 1
 
-part <- "1"
+part <- "5"
 
 # All simulated data for both CV1 and CV2:
 tic("MegaLMM") # tic 1
@@ -38,7 +38,7 @@ for (CV in CVs) {
                     combi, combis, CV, h2y, comm, h2s))
         
         # Number of simulated datasets to load:
-        first <- 1
+        first <- 17
         last <- 20
         n.sim <- length(first:last)
         
@@ -205,7 +205,7 @@ for (CV in CVs) {
         }
         
         # Export results:
-        write.csv(results, sprintf("p800/results/h2s%s/12%s_p800_results_MegaLMM_%s_h2y%s_comm%s_h2s%s.csv",
+        write.csv(results, sprintf("p800/results/h2s%s/12%s_p800_results_MegaLMM_%s_h2y%s_comm%s_h2s%s_17to20.csv",
                                    h2s, lab, CV, h2y, comm, h2s))
         
         combi <- combi + 1

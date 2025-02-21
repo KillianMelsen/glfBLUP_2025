@@ -34,20 +34,23 @@ for (CV in CVs) {
         }
         
         # Load part 1, 2, 3, and 4:
-        part_1 <- read.csv(sprintf("p800/results/h2s%s/12%s_p800_results_MegaLMM_%s_h2y%s_comm%s_h2s%s_1to6.csv",
+        part_1 <- read.csv(sprintf("p800/results/h2s%s/12%s_p800_results_MegaLMM_%s_h2y%s_comm%s_h2s%s_1to4.csv",
                                     h2s, lab, CV, h2y, comm, h2s))
         
-        part_2 <- read.csv(sprintf("p800/results/h2s%s/12%s_p800_results_MegaLMM_%s_h2y%s_comm%s_h2s%s_7to12.csv",
+        part_2 <- read.csv(sprintf("p800/results/h2s%s/12%s_p800_results_MegaLMM_%s_h2y%s_comm%s_h2s%s_5to8.csv",
                                    h2s, lab, CV, h2y, comm, h2s))
         
-        part_3 <- read.csv(sprintf("p800/results/h2s%s/12%s_p800_results_MegaLMM_%s_h2y%s_comm%s_h2s%s_13to16.csv",
+        part_3 <- read.csv(sprintf("p800/results/h2s%s/12%s_p800_results_MegaLMM_%s_h2y%s_comm%s_h2s%s_9to12.csv",
                                    h2s, lab, CV, h2y, comm, h2s))
         
-        part_4 <- read.csv(sprintf("p800/results/h2s%s/12%s_p800_results_MegaLMM_%s_h2y%s_comm%s_h2s%s_17to20.csv",
+        part_4 <- read.csv(sprintf("p800/results/h2s%s/12%s_p800_results_MegaLMM_%s_h2y%s_comm%s_h2s%s_13to16.csv",
+                                   h2s, lab, CV, h2y, comm, h2s))
+        
+        part_5 <- read.csv(sprintf("p800/results/h2s%s/12%s_p800_results_MegaLMM_%s_h2y%s_comm%s_h2s%s_17to20.csv",
                                    h2s, lab, CV, h2y, comm, h2s))
         
         # Merging:
-        total <- rbind(part_1, part_2, part_3, part_4)
+        total <- rbind(part_1, part_2, part_3, part_4, part_5)
         
         # Saving the full results:
         write.csv(total, sprintf("p800/results/h2s%s/12%s_p800_results_MegaLMM_%s_h2y%s_comm%s_h2s%s.csv",

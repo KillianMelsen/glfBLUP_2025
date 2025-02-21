@@ -1,11 +1,11 @@
 # !!! IMPORTANT: SET MKL_NUMTHREADS=1 and MKL_DYNAMIC=TRUE in ~/.profile !!!
+# Should take about 5 days to run
 
 # Loading libraries:
 library(rlist)
 library(tictoc)
 library(MegaLMM)
 library(gfBLUP)
-library(doParallel)
 
 # Setting seed:
 set.seed(1997)
@@ -23,40 +23,29 @@ comms <- c("02", "05", "08")
 h2.foc <- c("01", "03", "05", "07", "09")
 CVs <- c("CV1", "CV2")
 
-combis <- length(h2.foc) * length(CVs)
+combis <- length(h2.sec) * length(comms) * length(h2.foc) * length(CVs)
 combi <- 1
 
-par.combis <- data.frame(comm = rep(comms, each = length(h2.sec)),
-                         h2s = rep(h2.sec, length(comms)))
-
-part <- "2"
+part <- "3"
 
 # All simulated data for both CV1 and CV2:
-tic("MegaLMM")
+tic("MegaLMM") # tic 1
 for (CV in CVs) {
   for (h2y in h2.foc) {
-    
-    tic(sprintf("MegaLMM p800 combi %d / %d, (CV = %s, h2y = %s)", combi, combis, CV, h2y))
-
-    cl <- parallel::makeCluster(9, outfile = sprintf("logs/MegaLMM_sim_p800_h2y%s_%s_part%s.txt", h2y, CV, part))
-    registerDoParallel(cl)
-    
-    invisible(
-      foreach::foreach(i = 1:nrow(par.combis), .packages = c("rlist", "tictoc")) %dopar% {
-        
-        comm <- par.combis[i, "comm"]
-        h2s <- par.combis[i, "h2s"]
+    for (comm in comms) {
+      for (h2s in h2.sec) {
+        tic(sprintf("MegaLMM p800 combi %d / %d, (CV = %s, h2y = %s, comm = %s, h2s = %s)", # tic 2
+                    combi, combis, CV, h2y, comm, h2s))
         
         # Number of simulated datasets to load:
-        first <- 7
+        first <- 9
         last <- 12
         n.sim <- length(first:last)
         
         # Setting up result storage:
         acc <- numeric(n.sim)
-
-        # Running (SET SEED IN EACH PARALLEL WORKER!):
-        set.seed(1997)
+        
+        sim <- first:last[1]
         run <- 1
         for (sim in first:last) {
           
@@ -94,14 +83,11 @@ for (CV in CVs) {
           }
           
           # Start of timing:
-          tic(run)
+          tic(run) # tic 3
           
           # MegaLMM config:
           run_parameters <- MegaLMM::MegaLMM_control(
-            drop0_tol = 1e-10,
             scale_Y = FALSE,
-            h2_divisions = 20,
-            h2_step_size = NULL,
             burn = 0,
             K = 16,
             save_current_state = TRUE,
@@ -109,8 +95,8 @@ for (CV in CVs) {
           )
           
           priors = MegaLMM::MegaLMM_priors(
-            tot_Y_var = list(V = 0.5, nu = 10),
-            tot_F_var = list(V = 18/20, nu = 100000),
+            tot_Y_var = list(V = 0.5, nu = 3),
+            tot_F_var = list(V = 18/20, nu = 20),
             Lambda_prior = list(
               sampler = MegaLMM::sample_Lambda_prec_horseshoe,
               prop_0 = 0.1,
@@ -132,12 +118,12 @@ for (CV in CVs) {
                                                        run_parameters = run_parameters,
                                                        run_ID = run_ID)
           
-          maps = MegaLMM::make_Missing_data_map(MegaLMM_state, verbose = FALSE)
+          maps = MegaLMM::make_Missing_data_map(MegaLMM_state, verbose = T)
           MegaLMM_state <- MegaLMM::set_Missing_data_map(MegaLMM_state, maps$Missing_data_map)
           
           MegaLMM_state <- MegaLMM::set_priors_MegaLMM(MegaLMM_state, priors)
           MegaLMM_state <- MegaLMM::initialize_variables_MegaLMM(MegaLMM_state)
-          MegaLMM_state <- MegaLMM::initialize_MegaLMM(MegaLMM_state, verbose = FALSE)
+          MegaLMM_state <- MegaLMM::initialize_MegaLMM(MegaLMM_state, verbose = T)
           
           MegaLMM_state$Posterior$posteriorSample_params <- c("Lambda")
           MegaLMM_state$Posterior$posteriorFunctions <- list(pred = "U_R[,1] + U_F %*% Lambda[,1]")
@@ -156,22 +142,22 @@ for (CV in CVs) {
           n_iter <- 100
           n_burn_in <- 10
           for (i in 1:n_burn_in) {
-            MegaLMM_state <- MegaLMM::reorder_factors(MegaLMM_state, drop_cor_threshold = 0.6)
+            MegaLMM_state <- MegaLMM::reorder_factors(MegaLMM_state)
             MegaLMM_state <- MegaLMM::clear_Posterior(MegaLMM_state)
-            MegaLMM_state <- MegaLMM::sample_MegaLMM(MegaLMM_state, n_iter, grainSize = 1)
+            MegaLMM_state <- MegaLMM::sample_MegaLMM(MegaLMM_state, n_iter, grainSize = 1, verbose = F)
           }
           
           # Clearing the burn-in samples:
           MegaLMM_state <- MegaLMM::clear_Posterior(MegaLMM_state)
           
           # Collecting the posterior samples:
-          # 2000 iterations with a thinning rate of 2 gives 1000 posterior samples.
+          # 500 iterations with a thinning rate of 2 gives 250 posterior samples.
           #
-          # So 1000 burn-in samples and 1000 posterior samples.
-          n_iter <- 2000
+          # So 1000 burn-in samples and 500 posterior samples with a thinning rate of 2.
+          n_iter <- 500
           n_sampling <- 1
           for (i in 1:n_sampling) {
-            MegaLMM_state <- MegaLMM::sample_MegaLMM(MegaLMM_state, n_iter, grainSize = 1)
+            MegaLMM_state <- MegaLMM::sample_MegaLMM(MegaLMM_state, n_iter, grainSize = 1, verbose = F)
             MegaLMM_state <- MegaLMM::save_posterior_chunk(MegaLMM_state)
           }
           
@@ -190,7 +176,7 @@ for (CV in CVs) {
           mean_pred.test <- mean_pred[which(names(mean_pred) %in% test.set)]
           mean_pred.test <- mean_pred.test[match(names(pred.target), names(mean_pred.test))]
           
-          toc(log = TRUE)
+          toc(log = TRUE) # toc 3
           
           acc[run] <- cor(pred.target, mean_pred.test)
           
@@ -200,6 +186,7 @@ for (CV in CVs) {
           # Increment run number:
           run <- run + 1
         }
+        toc() # toc 2
         
         # Retrieve computational times:
         tictoc.logs <- tic.log(format = FALSE)
@@ -210,7 +197,6 @@ for (CV in CVs) {
         results <- data.frame(acc = acc,
                               comptimes = comptimes)
         
-        
         # Making correct CV label:
         if (CV == "CV1") {
           lab <- "a"
@@ -219,16 +205,14 @@ for (CV in CVs) {
         }
         
         # Export results:
-        write.csv(results, sprintf("p800/results/h2s%s/12%s_p800_results_MegaLMM_%s_h2y%s_comm%s_h2s%s_7to12.csv",
+        write.csv(results, sprintf("p800/results/h2s%s/12%s_p800_results_MegaLMM_%s_h2y%s_comm%s_h2s%s_9to12.csv",
                                    h2s, lab, CV, h2y, comm, h2s))
+        
+        combi <- combi + 1
       }
-    )
-    doParallel::stopImplicitCluster()
-    parallel::stopCluster(cl)
-    toc()
-    combi <- combi + 1
+    }
   }
 }
-toc()
+toc() # toc 1
 
 
