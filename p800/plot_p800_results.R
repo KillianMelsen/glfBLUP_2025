@@ -87,41 +87,34 @@ labs <- list("comm02" = expression(bold("\u03A8")[~y]~"= 0.8"),
              "comm08" = expression(bold("\u03A8")[~y]~"= 0.2"),
              "h2s05" = expression(h^2*(s)~"= 0.5"),
              "h2s07" = expression(h^2*(s)~"= 0.7"),
-             "h2s09" = expression(h^2*(s)~"= 0.9"))
+             "h2s09" = expression(h^2*(s)~"= 0.9"),
+             "CV1" = "CV1", "CV2" = "CV2", "Univariate" = "Univariate")
 
 labs_labeller <- function(variable, value) {
   return(labs[value])
 }
 
-colors <- RColorBrewer::brewer.pal(7, "Dark2")
-colors <- NatParksPalettes::natparks.pals("Charmonix")
-
-
 ggplot(data = medians, mapping = aes(x = h2y, y = Accuracy, color = Model)) +
   theme_classic() +
-  geom_point(size = 1) +
+  geom_point(size = 2, mapping = aes(shape = CV)) +
   geom_line(mapping = aes(x = h2y, y = Accuracy, color = Model, linetype = CV), linewidth = 0.8) +
-  ylim(-0.1, 1) +
+  # ylim(-0.1, 1) +
   xlab("Focal trait heritability") +
   theme(axis.text = element_text(color = "black"),
         axis.title = element_text(face = "bold"),
         legend.title = element_text(face = "bold"),
         plot.title = element_text(face = "bold", hjust = 0.5),
         plot.subtitle = element_text(hjust = 0.5)) +
-  scale_linetype_manual(breaks = c("CV1", "CV2", "Univariate"),
-                        values = c("CV1" = 1,
-                                   "CV2" = 2,
-                                   "Univariate" = 3)) +
-  scale_color_manual(values = c("Univariate" = "black",
-                                "Benchmark" = "red",
-                                "gfBLUP" = colors[2],
-                                "MegaLMM" = colors[3],
-                                "siBLUP" = "purple4",
-                                "lsBLUP" = colors[5],
-                                "multiMLP" = colors[6])) +
+  scale_color_manual(values = c("Univariate" = "#000000",
+                                "Benchmark" = "#E69F00",
+                                "gfBLUP" = "#56B4E9",
+                                "MegaLMM" = "#009E73",
+                                "siBLUP" = "#CC79A7",
+                                "lsBLUP" = "#D55E00",
+                                "multiMLP" = "#0072B2")) +
   facet_grid(cols = vars(comm), rows = vars(h2s), labeller = labs_labeller) +
   theme(strip.background = element_blank()) +
-  geom_hline(yintercept = seq(-0.1, 1, 0.1), color = "gray", linetype = 1, linewidth = 0.1) +
+  geom_hline(yintercept = seq(-0.05, 1, 0.05), color = "gray30", linetype = 1, linewidth = 0.1) +
   theme(legend.position = "right",
         legend.spacing.x = unit(0.1, "cm"),
         legend.text = element_text(size = 9),
@@ -140,42 +133,41 @@ ggplot(data = medians, mapping = aes(x = h2y, y = Accuracy, color = Model)) +
                                  nrow = 3, byrow = TRUE)) +
   ggtitle("Focal trait unique variance")
 
-ggsave(filename = "plots/p800.png", dpi = 640, width = 25, height = 25, units = "cm")
+ggsave(filename = "plots/p800.png", dpi = 640, width = 25, height = 27.5, units = "cm")
 
-# Without multiMLP:
-ggplot(data = medians[which(medians$Model != "multiMLP"),], mapping = aes(x = h2y, y = Accuracy, color = Model)) +
+# Smaller plot for the paper:
+medians2 <- droplevels(medians[which(medians$h2s == "h2s07"),])
+ggplot(data = medians2, mapping = aes(x = h2y, y = Accuracy, color = Model)) +
   theme_classic() +
-  geom_point(size = 1) +
+  geom_point(size = 3, mapping = aes(shape = CV)) +
   geom_line(mapping = aes(x = h2y, y = Accuracy, color = Model, linetype = CV), linewidth = 0.8) +
-  ylim(0.3, 1) +
+  # ylim(-0.1, 1) +
   xlab("Focal trait heritability") +
   theme(axis.text = element_text(color = "black"),
         axis.title = element_text(face = "bold"),
         legend.title = element_text(face = "bold"),
         plot.title = element_text(face = "bold", hjust = 0.5),
         plot.subtitle = element_text(hjust = 0.5)) +
-  scale_linetype_manual(breaks = c("CV1", "CV2", "Univariate"),
-                        values = c("CV1" = 1,
-                                   "CV2" = 2,
-                                   "Univariate" = 3)) +
-  scale_color_manual(values = c("Univariate" = colors[1],
-                                "Benchmark" = colors[2],
-                                "gfBLUP" = colors[3],
-                                "MegaLMM" = colors[4],
-                                "siBLUP" = colors[5],
-                                "lsBLUP" = colors[6])) +
+  scale_color_manual(values = c("Univariate" = "#000000",
+                                "Benchmark" = "#E69F00",
+                                "gfBLUP" = "#56B4E9",
+                                "MegaLMM" = "#009E73",
+                                "siBLUP" = "#CC79A7",
+                                "lsBLUP" = "#D55E00",
+                                "multiMLP" = "#0072B2")) +
   facet_grid(cols = vars(comm), rows = vars(h2s), labeller = labs_labeller) +
   theme(strip.background = element_blank()) +
-  geom_hline(yintercept = seq(0.3, 1, 0.1), color = "gray", linetype = 1, linewidth = 0.1) +
+  geom_hline(yintercept = seq(-0.05, 1, 0.05), color = "gray30", linetype = 1, linewidth = 0.1) +
   theme(legend.position = "right",
         legend.spacing.x = unit(0.1, "cm"),
         legend.text = element_text(size = 9),
         legend.title = element_text(size = 11),
         panel.background = element_blank(),
-        plot.title = element_text(size = 11)) +
+        plot.title = element_text(size = 11),
+        legend.key.size = unit(2,"line")) +
   guides(Model = guide_legend(title.position = "top", title.hjust = 0.5)) +
   labs(tag = "Secondary feature heritability") +
-  theme(plot.tag.position = c(0.862, 0.48),
+  theme(plot.tag.position = c(0.855, 0.48),
         plot.tag = element_text(angle = 270, face = "bold", size = 11),
         plot.margin = margin(l = 0.5, r = 1, t = 0.5, b = 0.5, unit = "cm")) +
   guides(color = guide_legend(title.position = "top", title.hjust = 0.5,
@@ -184,6 +176,4 @@ ggplot(data = medians[which(medians$Model != "multiMLP"),], mapping = aes(x = h2
                                  nrow = 3, byrow = TRUE)) +
   ggtitle("Focal trait unique variance")
 
-ggsave(filename = "plots/p800_2.png", dpi = 640, width = 25, height = 25, units = "cm")
-
-
+ggsave(filename = "plots/p800_main.png", dpi = 640, width = 25, height = 27.5, units = "cm")
