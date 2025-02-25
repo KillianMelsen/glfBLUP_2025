@@ -96,84 +96,71 @@ labs_labeller <- function(variable, value) {
 
 ggplot(data = medians, mapping = aes(x = h2y, y = Accuracy, color = Model)) +
   theme_classic() +
-  geom_point(size = 2, mapping = aes(shape = CV)) +
+  geom_hline(yintercept = seq(-0.05, 1, 0.05), color = "gray30", linetype = 1, linewidth = 0.1) +
   geom_line(mapping = aes(x = h2y, y = Accuracy, color = Model, linetype = CV), linewidth = 0.8) +
-  # ylim(-0.1, 1) +
+  geom_point(size = 3, mapping = aes(shape = CV)) +
+  facet_grid(cols = vars(comm), rows = vars(h2s), labeller = labs_labeller) +
   xlab("Focal trait heritability") +
+  labs(tag = "Secondary feature heritability") +
+  ggtitle("Focal trait unique variance") +
   theme(axis.text = element_text(color = "black"),
         axis.title = element_text(face = "bold"),
-        legend.title = element_text(face = "bold"),
-        plot.title = element_text(face = "bold", hjust = 0.5),
-        plot.subtitle = element_text(hjust = 0.5)) +
-  scale_color_manual(values = c("Univariate" = "#000000",
-                                "Benchmark" = "#E69F00",
-                                "gfBLUP" = "#56B4E9",
-                                "MegaLMM" = "#009E73",
-                                "siBLUP" = "#CC79A7",
-                                "lsBLUP" = "#D55E00",
-                                "multiMLP" = "#0072B2")) +
-  facet_grid(cols = vars(comm), rows = vars(h2s), labeller = labs_labeller) +
-  theme(strip.background = element_blank()) +
-  geom_hline(yintercept = seq(-0.05, 1, 0.05), color = "gray30", linetype = 1, linewidth = 0.1) +
-  theme(legend.position = "right",
+        legend.title = element_text(face = "bold", size = 11, hjust = 0.5),
+        legend.position = "right",
         legend.spacing.x = unit(0.1, "cm"),
         legend.text = element_text(size = 9),
-        legend.title = element_text(size = 11),
-        panel.background = element_blank(),
-        plot.title = element_text(size = 11),
-        legend.key.size = unit(2,"line")) +
-  guides(Model = guide_legend(title.position = "top", title.hjust = 0.5)) +
-  labs(tag = "Secondary feature heritability") +
-  theme(plot.tag.position = c(0.855, 0.48),
+        legend.key.size = unit(2,"line"),
+        plot.title = element_text(face = "bold", hjust = 0.5, size = 11),
+        plot.subtitle = element_text(hjust = 0.5),
+        plot.tag.position = c(0.855, 0.48),
         plot.tag = element_text(angle = 270, face = "bold", size = 11),
-        plot.margin = margin(l = 0.5, r = 1, t = 0.5, b = 0.5, unit = "cm")) +
-  guides(color = guide_legend(title.position = "top", title.hjust = 0.5,
-                              nrow = 8, byrow = TRUE),
-         linetype = guide_legend(title.position = "top", title.hjust = 0.5,
-                                 nrow = 3, byrow = TRUE)) +
-  ggtitle("Focal trait unique variance")
+        plot.margin = margin(l = 0.5, r = 1, t = 0.5, b = 0.5, unit = "cm"),
+        strip.background = element_blank(),
+        panel.background = element_blank()) +
+  scale_color_manual(values = c("Univariate" = "#000000", "Benchmark" = "#E69F00",
+                                "gfBLUP" = "#56B4E9", "MegaLMM" = "#009E73",
+                                "siBLUP" = "#CC79A7", "lsBLUP" = "#D55E00",
+                                "multiMLP" = "#0072B2")) +
+  guides(Model = guide_legend(title.position = "top"),
+         color = guide_legend(title.position = "top", nrow = 8, byrow = TRUE,
+                              override.aes = list(shape = NA, linewidth = 2)),
+         linetype = guide_legend(title.position = "top", nrow = 3, byrow = TRUE))
 
 ggsave(filename = "plots/p800.png", dpi = 640, width = 25, height = 27.5, units = "cm")
 
 # Smaller plot for the paper:
 medians2 <- droplevels(medians[which(medians$h2s == "h2s07"),])
+
 ggplot(data = medians2, mapping = aes(x = h2y, y = Accuracy, color = Model)) +
   theme_classic() +
-  geom_point(size = 3, mapping = aes(shape = CV)) +
+  geom_hline(yintercept = seq(-0.05, 1, 0.05), color = "gray30", linetype = 1, linewidth = 0.1) +
   geom_line(mapping = aes(x = h2y, y = Accuracy, color = Model, linetype = CV), linewidth = 0.8) +
-  # ylim(-0.1, 1) +
+  geom_point(size = 3, mapping = aes(shape = CV)) +
+  facet_grid(cols = vars(comm), rows = vars(h2s), labeller = labs_labeller) +
   xlab("Focal trait heritability") +
+  labs(tag = "Secondary feature heritability") +
+  ggtitle("Focal trait unique variance") +
   theme(axis.text = element_text(color = "black"),
         axis.title = element_text(face = "bold"),
-        legend.title = element_text(face = "bold"),
-        plot.title = element_text(face = "bold", hjust = 0.5),
-        plot.subtitle = element_text(hjust = 0.5)) +
-  scale_color_manual(values = c("Univariate" = "#000000",
-                                "Benchmark" = "#E69F00",
-                                "gfBLUP" = "#56B4E9",
-                                "MegaLMM" = "#009E73",
-                                "siBLUP" = "#CC79A7",
-                                "lsBLUP" = "#D55E00",
-                                "multiMLP" = "#0072B2")) +
-  facet_grid(cols = vars(comm), rows = vars(h2s), labeller = labs_labeller) +
-  theme(strip.background = element_blank()) +
-  geom_hline(yintercept = seq(-0.05, 1, 0.05), color = "gray30", linetype = 1, linewidth = 0.1) +
-  theme(legend.position = "right",
+        legend.title = element_text(face = "bold", size = 11, hjust = 0.5),
+        plot.title = element_text(face = "bold", hjust = 0.5, size = 11),
+        plot.subtitle = element_text(hjust = 0.5),
+        legend.position = "right",
         legend.spacing.x = unit(0.1, "cm"),
         legend.text = element_text(size = 9),
-        legend.title = element_text(size = 11),
+        legend.key.size = unit(2,"line"),
         panel.background = element_blank(),
-        plot.title = element_text(size = 11),
-        legend.key.size = unit(2,"line")) +
-  guides(Model = guide_legend(title.position = "top", title.hjust = 0.5)) +
-  labs(tag = "Secondary feature heritability") +
-  theme(plot.tag.position = c(0.855, 0.48),
+        strip.background = element_blank(),
+        plot.tag.position = c(0.855, 0.48),
         plot.tag = element_text(angle = 270, face = "bold", size = 11),
         plot.margin = margin(l = 0.5, r = 1, t = 0.5, b = 0.5, unit = "cm")) +
-  guides(color = guide_legend(title.position = "top", title.hjust = 0.5,
-                              nrow = 8, byrow = TRUE),
-         linetype = guide_legend(title.position = "top", title.hjust = 0.5,
-                                 nrow = 3, byrow = TRUE)) +
-  ggtitle("Focal trait unique variance")
-
+  scale_color_manual(values = c("Univariate" = "#000000", "Benchmark" = "#E69F00",
+                                "gfBLUP" = "#56B4E9", "MegaLMM" = "#009E73",
+                                "siBLUP" = "#CC79A7", "lsBLUP" = "#D55E00",
+                                "multiMLP" = "#0072B2")) +
+  guides(Model = guide_legend(title.position = "top"),
+         color = guide_legend(title.position = "top", nrow = 8, byrow = TRUE,
+                              override.aes = list(shape = NA, linewidth = 2)),
+         linetype = guide_legend(title.position = "top", nrow = 3, byrow = TRUE))
+  
 ggsave(filename = "plots/p800_main.png", dpi = 640, width = 25, height = 27.5, units = "cm")

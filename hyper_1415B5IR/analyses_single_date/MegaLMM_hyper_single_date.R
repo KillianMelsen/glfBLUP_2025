@@ -486,7 +486,8 @@ ggplot(data = loadings.wl.long, mapping = aes(x = Wavelength, y = Loading, color
   scale_color_manual(values = NatParksPalettes::natparks.pals("Acadia", 10)[c(2, 8, 10)]) +
   ylim(c(-1.1, 1.1)) +
   theme_classic(base_size = 11) +
-  theme(axis.text = element_text(color = "black", size = 11),
+  theme(axis.text.y = element_text(color = "black", size = 11),
+        axis.text.x = element_blank(),
         axis.title = element_text(face = "bold", size = 13),
         axis.title.y.left = element_text(margin = margin(r = 0.25, unit = "cm")),
         axis.title.y.right = element_text(margin = margin(l = 0.25, unit = "cm")),
@@ -502,7 +503,156 @@ ggplot(data = loadings.wl.long, mapping = aes(x = Wavelength, y = Loading, color
            color = "white", parse = TRUE, size = 4, hjust = 0) +
   annotate("text", x = 757, y = -0.75, label = paste(("lambda(F3*', '* Y) * ' = ' *"), round(loadings.y["F3"], 2)),
            color = "white", parse = TRUE, size = 4, hjust = 0) +
-  xlab("Wavelength (nm)") +
+  xlab(NULL) +
+  annotate("text", x = 400, y = 1, label = "A", color = "white", parse = TRUE, size = 4, hjust = 0)
+
+ggsave("plots/MegaLMM_hyper_1415B5IR_single_date_M3.png", width = 24, height = 8.3, units = "cm")
+
+# M = 100 ======================================================================
+# Setting seed:
+set.seed(1997)
+rm(Lambda_samples, pred_samples)
+
+# Some MegaLMM parameters:
+M <- 3
+burnin <- 1000
+posterior <- 5000
+thin <- 2
+
+# MegaLMM config:
+run_parameters <- MegaLMM::MegaLMM_control(
+  scale_Y = FALSE,
+  burn = 0,
+  K = M,
+  save_current_state = TRUE,
+  thin = thin
+)
+
+priors = MegaLMM::MegaLMM_priors(
+  tot_Y_var = list(V = 0.5, nu = 3),
+  tot_F_var = list(V = 18/20, nu = 20),
+  Lambda_prior = list(
+    sampler = MegaLMM::sample_Lambda_prec_horseshoe,
+    prop_0 = 0.1,
+    delta = list(shape = 3, scale = 1),
+    delta_iterations_factor = 100
+  ),
+  h2_priors_resids_fun = function(h2s, n) 1,
+  h2_priors_factors_fun = function(h2s, n) 1
+)
+
+# Creating run ID:
+run_ID <- "hyper_1415B5IR/megalmm_states/MegaLMM_hyper_single_date_M3"
+
+# Initializing MegaLMM:
+MegaLMM_state = MegaLMM::setup_model_MegaLMM(d[, 2:ncol(d)],
+                                             ~ 1 + (1|G),
+                                             data = d,
+                                             relmat = list(G = K),
+                                             run_parameters = run_parameters,
+                                             run_ID = run_ID)
+
+maps = MegaLMM::make_Missing_data_map(MegaLMM_state, verbose = T)
+MegaLMM_state <- MegaLMM::set_Missing_data_map(MegaLMM_state, maps$Missing_data_map)
+
+MegaLMM_state <- MegaLMM::set_priors_MegaLMM(MegaLMM_state, priors)
+MegaLMM_state <- MegaLMM::initialize_variables_MegaLMM(MegaLMM_state)
+MegaLMM_state <- MegaLMM::initialize_MegaLMM(MegaLMM_state, verbose = T)
+
+MegaLMM_state$Posterior$posteriorSample_params <- c("Lambda")
+MegaLMM_state$Posterior$posteriorFunctions <- list(pred = "U_R[,1] + U_F %*% Lambda[,1]")
+
+# Clearing posterior samples if they already exist for some reason:
+if (file.exists(run_ID)) {
+  MegaLMM_state <- MegaLMM::clear_Posterior(MegaLMM_state)
+}
+
+# Burn-in, collect samples, reorder factors, clear posterior, repeat 10 times
+n_iter <- burnin / 10
+n_burn_in <- 10
+for (i in 1:n_burn_in) {
+  MegaLMM_state <- MegaLMM::reorder_factors(MegaLMM_state, drop_cor_threshold = 0.6)
+  MegaLMM_state <- MegaLMM::clear_Posterior(MegaLMM_state)
+  MegaLMM_state <- MegaLMM::sample_MegaLMM(MegaLMM_state, n_iter, grainSize = 1)
+}
+
+# Clearing the burn-in samples:
+MegaLMM_state <- MegaLMM::clear_Posterior(MegaLMM_state)
+
+# Collecting the posterior samples in a single go:
+n_iter <- posterior
+n_sampling <- 1
+for (i in 1:n_sampling) {
+  MegaLMM_state <- MegaLMM::sample_MegaLMM(MegaLMM_state, n_iter, grainSize = 1)
+  MegaLMM_state <- MegaLMM::save_posterior_chunk(MegaLMM_state)
+}
+
+# Reloading the saved posterior samples:
+Lambda_samples <- MegaLMM::load_posterior_param(MegaLMM_state, "Lambda")
+pred_samples <- MegaLMM::load_posterior_param(MegaLMM_state, "pred")
+
+# Saving the arrays containing all posterior predictions and loadings
+save(Lambda_samples, file = "hyper_1415B5IR/megalmm_hyper_single_date_arrays/LAMBDA_M3.RData")
+save(pred_samples, file = "hyper_1415B5IR/megalmm_hyper_single_date_arrays/PREDS_M3.RData")
+
+# Deleting MegaLMM state files:
+unlink(run_ID, recursive = TRUE)
+
+# Calculating posterior means:
+load("hyper_1415B5IR/megalmm_hyper_single_date_arrays/LAMBDA_M3.RData")
+load("hyper_1415B5IR/megalmm_hyper_single_date_arrays/PREDS_M3.RData")
+mean_Lambda <- MegaLMM::get_posterior_mean(Lambda_samples)
+mean_pred <- MegaLMM::get_posterior_mean(pred_samples)
+
+loadings <- as.data.frame(t(mean_Lambda))
+names(loadings) <- paste0("F", 1:nrow(mean_Lambda))
+loadings.wl <- loadings[-1,]
+loadings.y <- loadings[1,]
+
+loadings.wl$Wavelength <- as.numeric(rownames(loadings.wl))
+
+loadings.wl.long <- tidyr::pivot_longer(loadings.wl, names_to = "Factor",
+                                        cols = 1:(ncol(loadings.wl) - 1),
+                                        values_to = "Loading")
+
+loadings.wl.long$Factor <- factor(loadings.wl.long$Factor, levels = paste0("F", 1:nrow(mean_Lambda)))
+
+# Some data for the spectral background:
+conesdata <- read.csv("http://www.cvrl.org/database/data/cones/linss10e_5.csv")
+names(conesdata) <- c("Wavelength", "Red", "Green", "Blue")
+conesdata[is.na(conesdata)] <- 0
+conesdata$colour <- rgb(conesdata$Red, conesdata$Green, conesdata$Blue, alpha = 0.6)
+gradient <- t(conesdata$colour[conesdata$Wavelength >= 400 & conesdata$Wavelength <= 800])
+g <- rasterGrob(gradient, width = unit(1, "npc"), height = unit(1, "npc"), interpolate = TRUE)
+
+# gradient <- t(photobiology::w_length2rgb(400:800))
+# g <- rasterGrob(gradient, width = unit(1, "npc"), height = unit(1, "npc"), interpolate = TRUE)
+
+# Plotting:
+ggplot(data = loadings.wl.long, mapping = aes(x = Wavelength, y = Loading, color = Factor)) +
+  annotation_custom(g, xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf) +
+  geom_line(linewidth = 1.5) +
+  scale_color_manual(values = NatParksPalettes::natparks.pals("Acadia", 10)[c(2, 8, 10)]) +
+  ylim(c(-1.1, 1.1)) +
+  theme_classic(base_size = 11) +
+  theme(axis.text.y = element_text(color = "black", size = 11),
+        axis.text.x = element_blank(),
+        axis.title = element_text(face = "bold", size = 13),
+        axis.title.y.left = element_text(margin = margin(r = 0.25, unit = "cm")),
+        axis.title.y.right = element_text(margin = margin(l = 0.25, unit = "cm")),
+        legend.title = element_text(face = "bold", size = 13),
+        legend.text = element_text(size = 11),
+        legend.position = "right",
+        legend.key.height = unit(0.5, "cm"),
+        legend.spacing.y = unit(0.1, "cm"),
+        legend.key.width = unit(0.5, "cm")) +
+  annotate("text", x = 757, y = -0.15, label = paste(("lambda(F1*', '* Y) * ' = ' *"), round(loadings.y["F1"], 2)),
+           color = "white", parse = TRUE, size = 4, hjust = 0) +
+  annotate("text", x = 757, y = 0.50, label = paste(("lambda(F2 *', '* Y) * ' = ' *"), round(loadings.y["F2"], 2)),
+           color = "white", parse = TRUE, size = 4, hjust = 0) +
+  annotate("text", x = 757, y = -0.75, label = paste(("lambda(F3*', '* Y) * ' = ' *"), round(loadings.y["F3"], 2)),
+           color = "white", parse = TRUE, size = 4, hjust = 0) +
+  xlab(NULL) +
   annotate("text", x = 400, y = 1, label = "A", color = "white", parse = TRUE, size = 4, hjust = 0)
 
 ggsave("plots/MegaLMM_hyper_1415B5IR_single_date_M3.png", width = 24, height = 8.3, units = "cm")

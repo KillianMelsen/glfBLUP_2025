@@ -144,7 +144,7 @@ ggplot(data = results, mapping = aes(x = Model, y = Accuracy, fill = Scenario)) 
   # ylim(min(min(results$Accuracy), 0), 1) +
   theme(axis.text = element_text(color = "black", size = 6),
         axis.title = element_text(face = "bold"),
-        legend.title = element_text(face = "bold"),
+        legend.title = element_text(face = "bold", hjust = 0.5),
         plot.title = element_text(face = "bold", hjust = 0.5),
         plot.subtitle = element_text(hjust = 0.5)) +
   theme(legend.text = element_text(size = 6),
