@@ -529,7 +529,8 @@ ggplot(loadings.y, aes(x = Iteration, y = Loading)) +
   geom_point(aes(fill = Factor), color = "black", pch = 21, stroke = 0.05, size = 1) +
   scale_fill_manual(values = NatParksPalettes::natparks.pals("Acadia")[3:7]) +
   theme_classic(base_size = 11) +
-  theme(axis.text = element_text(color = "black", size = 11),
+  theme(axis.text.y = element_text(color = "black", size = 11),
+        axis.text.x = element_blank(),
         axis.title = element_text(face = "bold", size = 13),
         axis.title.y.left = element_text(margin = margin(r = 0.25, unit = "cm")),
         axis.title.y.right = element_text(margin = margin(l = 0.25, unit = "cm")),
@@ -540,7 +541,8 @@ ggplot(loadings.y, aes(x = Iteration, y = Loading)) +
         legend.spacing.y = unit(0.1, "cm"),
         legend.key.width = unit(0.5, "cm")) +
   guides(fill = guide_legend(override.aes = list(size = 5))) +
-  xlab("Posterior sample (thin = 2)")
+  xlab(NULL) +
+  annotate("text", x = 1000, y = 0.4, label = "B", color = "black", parse = TRUE, size = 4, hjust = 0)
 
 ggsave("plots/MegaLMM_hyper_1415B5IR_single_date_traceplot_Y_M5.png", width = 24, height = 8, units = "cm")
 
@@ -624,7 +626,8 @@ ggplot(loadings.y, aes(x = Iteration, y = Loading)) +
         legend.key.width = unit(0.5, "cm")) +
   guides(fill = guide_legend(override.aes = list(size = 5))) +
   xlab("Posterior sample (thin = 2)") +
-  scale_y_continuous(labels = scaleFUN)
+  scale_y_continuous(labels = scaleFUN) +
+  annotate("text", x = 1000, y = 0.55, label = "C", color = "black", parse = TRUE, size = 4, hjust = 0)
 
 ggsave("plots/MegaLMM_hyper_1415B5IR_single_date_traceplot_Y_M10.png", width = 24, height = 8, units = "cm")
 
@@ -718,7 +721,8 @@ ggplot(loadings.y, aes(x = Iteration, y = Loading)) +
   geom_point(aes(fill = Factor), color = "black", pch = 21, stroke = 0.05, size = 1) +
   scale_fill_manual(values = NatParksPalettes::natparks.pals("Acadia", 10)[c(2, 8, 10)]) +
   theme_classic(base_size = 11) +
-  theme(axis.text = element_text(color = "black", size = 11),
+  theme(axis.text.y = element_text(color = "black", size = 11),
+        axis.text.x = element_blank(),
         axis.title = element_text(face = "bold", size = 13),
         axis.title.y.left = element_text(margin = margin(r = 0.25, unit = "cm")),
         axis.title.y.right = element_text(margin = margin(l = 0.25, unit = "cm")),
@@ -729,8 +733,9 @@ ggplot(loadings.y, aes(x = Iteration, y = Loading)) +
         legend.spacing.y = unit(0.1, "cm"),
         legend.key.width = unit(0.5, "cm")) +
   guides(fill = guide_legend(override.aes = list(size = 5))) +
-  xlab("Posterior sample (thin = 2)") +
-  scale_y_continuous(labels=scaleFUN)
+  xlab(NULL) +
+  scale_y_continuous(labels=scaleFUN) +
+  annotate("text", x = 1000, y = 0.62, label = "A", color = "black", parse = TRUE, size = 4, hjust = 0)
 
 ggsave("plots/MegaLMM_hyper_1415B5IR_single_date_traceplot_Y_M3.png", width = 24, height = 8, units = "cm")
 

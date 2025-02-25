@@ -46,14 +46,16 @@ for (p in ps) {
                              S.per.LF = S.per.LF, Y.psi = 1 - comm.num,
                              L.min = 0.3, L.max = 0.8,
                              S.sg2 = sg2.s, S.se2 = se2.s,
-                             Y.sg2 = sg2.y, Y.se2 = se2.y)
+                             Y.sg2 = sg2.y, Y.se2 = se2.y,
+                             resCors = F)
   
   datalist$simParams <- list(r = r, n.LSF = n.LSF, n.LNF = n.LNF,
                              LSF.rho = 0, LNF.rho = 0, LSNF.rho = 0,
                              S.per.LF = S.per.LF, Y.psi = 1 - comm.num,
                              L.min = 0.3, L.max = 0.8,
                              S.sg2 = sg2.s, S.se2 = se2.s,
-                             Y.sg2 = sg2.y, Y.se2 = se2.y)
+                             Y.sg2 = sg2.y, Y.se2 = se2.y,
+                             resCors = F)
   
   list.save(datalist, file = sprintf("timing/datasets/timing_p%s.RData", p))
   
