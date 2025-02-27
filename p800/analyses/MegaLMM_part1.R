@@ -1,5 +1,5 @@
 # !!! IMPORTANT: SET MKL_NUMTHREADS=1 and MKL_DYNAMIC=TRUE in ~/.profile !!!
-# Should take about 5 days to run
+# Should take about 25 hours to run
 
 # Loading libraries:
 library(rlist)

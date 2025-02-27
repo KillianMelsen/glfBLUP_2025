@@ -27,67 +27,99 @@ if (!("glfBLUP" %in% installed.packages())) {
 
 
 
-# Step I: data generation ======================================================
-source("hyper/data_generation/generate_hyper_datasets.R"); reset()
+# Hyper b5IR ===================================================================
+## Step I: data pre-processing for B5IR ========================================
+source("hyper_1415B5IR/data_generation/hyper_preprocessing.R"); reset()
 
-# Step II: univariate analysis =================================================
-source("hyper/analyses/univariate_hyper.R"); reset()
+## Step II: data generation for B5IR ===========================================
+source("hyper_1415B5IR/data_generation/generate_hyper_datasets.R"); reset()
 
-# Step III: lsBLUP analysis ====================================================
-source("hyper/analyses/lsBLUP_hyper.R"); reset()
+## Step III: univariate analysis ===============================================
+source("hyper_1415B5IR/analyses/univariate_hyper.R"); reset()
 
-# Step IV: siBLUP analysis =====================================================
-source("hyper/analyses/siBLUP_hyper.R"); reset()
+## Step IV: lsBLUP analysis ====================================================
+source("hyper_1415B5IR/analyses/lsBLUP_hyper.R"); reset()
+source("hyper_1415B5IR/analyses/lsBLUP_hyper_CV2VEG.R"); reset()
 
-# Step V: glfBLUP analysis ======================================================
-source("hyper/analyses/glfBLUP_hyper.R"); reset()
+## Step V: siBLUP analysis =====================================================
+source("hyper_1415B5IR/analyses/siBLUP_hyper.R"); reset()
+source("hyper_1415B5IR/analyses/siBLUP_hyper_CV2VEG.R"); reset()
 
-# Step VI: MegaLMM CV1 analysis ================================================
-source("hyper/analyses/MegaLMM_hyper_CV1.R"); reset()
+## Step VI: glfBLUP analysis ===================================================
+source("hyper_1415B5IR/analyses/glfBLUP_hyper.R"); reset()
+source("hyper_1415B5IR/analyses/glfBLUP_hyper_CV2VEG.R"); reset()
 
-# Step VII: MegaLMM CV2 analysis ===============================================
-source("hyper/analyses/MegaLMM_hyper_CV2.R"); reset()
+## Step VII: MegaLMM CV1 analysis ==============================================
+source("hyper_1415B5IR/analyses/MegaLMM_hyper_CV1.R"); reset()
 
-# Step VIII: MultiMLP CV1 analysis =============================================
-source("hyper/analyses/multiMLP_hyper_CV1.R"); reset()
+## Step VIII: MegaLMM CV2 analysis =============================================
+source("hyper_1415B5IR/analyses/MegaLMM_hyper_CV2.R"); reset()
+source("hyper_1415B5IR/analyses/MegaLMM_hyper_CV2VEG.R"); reset()
 
-# Step IX: MultiMLP CV2 analysis ===============================================
-source("hyper/analyses/multiMLP_hyper_CV2.R"); reset()
+## Step IX: MultiMLP CV1 analysis ==============================================
+source("hyper_1415B5IR/analyses/multiMLP_hyper_CV1.R"); reset()
 
-
-
-# Step X: lsBLUP CV2VEG analysis ===============================================
-source("hyper/analyses/lsBLUP_hyper_CV2VEG.R"); reset()
-
-# Step XI: siBLUP CV2VEG analysis ==============================================
-source("hyper/analyses/siBLUP_hyper_CV2VEG.R"); reset()
-
-# Step XII: glfBLUP CV2VEG analysis =============================================
-source("hyper/analyses/glfBLUP_hyper_CV2VEG.R"); reset()
-
-# Step XIII: MegaLMM CV2VEG analysis ===========================================
-source("hyper/analyses/MegaLMM_hyper_CV2VEG.R"); reset()
-
-# Step XIV: MultiMLP CV2VEG analysis ===========================================
-source("hyper/analyses/multiMLP_hyper_CV2VEG.R"); reset()
+## Step X: MultiMLP CV2 analysis ===============================================
+source("hyper_1415B5IR/analyses/multiMLP_hyper_CV2.R"); reset()
+source("hyper_1415B5IR/analyses/multiMLP_hyper_CV2_VEG.R"); reset()
 
 
 
-# Step XV: Result Plotting =====================================================
-source("hyper/plot_hyper_results.R"); reset()
+# Hyper HEAT ===================================================================
+## Step I: data pre-processing for HEAT ========================================
+source("hyper_1415HEAT/data_generation/hyper_preprocessing.R"); reset()
+
+## Step II: data generation for HEAT ===========================================
+source("hyper_1415HEAT/data_generation/generate_hyper_datasets.R"); reset()
+
+## Step III: univariate analysis ===============================================
+source("hyper_1415HEAT/analyses/univariate_hyper.R"); reset()
+
+## Step IV: lsBLUP analysis ====================================================
+source("hyper_1415HEAT/analyses/lsBLUP_hyper.R"); reset()
+source("hyper_1415HEAT/analyses/lsBLUP_hyper_CV2VEG.R"); reset()
+
+## Step V: siBLUP analysis =====================================================
+source("hyper_1415HEAT/analyses/siBLUP_hyper.R"); reset()
+source("hyper_1415HEAT/analyses/siBLUP_hyper_CV2VEG.R"); reset()
+
+## Step VI: glfBLUP analysis ===================================================
+source("hyper_1415HEAT/analyses/glfBLUP_hyper.R"); reset()
+source("hyper_1415HEAT/analyses/glfBLUP_hyper_CV2VEG.R"); reset()
+
+## Step VII: MegaLMM CV1 analysis ==============================================
+source("hyper_1415HEAT/analyses/MegaLMM_hyper_CV1.R"); reset()
+
+## Step VIII: MegaLMM CV2 analysis =============================================
+source("hyper_1415HEAT/analyses/MegaLMM_hyper_CV2.R"); reset()
+source("hyper_1415HEAT/analyses/MegaLMM_hyper_CV2VEG.R"); reset()
+
+## Step IX: MultiMLP CV1 analysis ==============================================
+source("hyper_1415HEAT/analyses/multiMLP_hyper_CV1.R"); reset()
+
+## Step X: MultiMLP CV2 analysis ===============================================
+source("hyper_1415HEAT/analyses/multiMLP_hyper_CV2.R"); reset()
+source("hyper_1415HEAT/analyses/multiMLP_hyper_CV2_VEG.R"); reset()
 
 
 
-# Step XVI: lsBLUP single date analysis and plotting ===========================
-source("hyper/analyses_single_date/lsBLUP_hyper_single_date.R"); reset()
+# Hyper B5IR and HEAT plotting =================================================
+## Step I: Result Plotting =====================================================
+source("plot_hyper.R"); reset()
 
-# Step XVII: siBLUP single date analysis and plotting ==========================
-source("hyper/analyses_single_date/siBLUP_hyper_single_date.R"); reset()
 
-# Step XVIII: glfBLUP single date analysis and plotting =========================
-source("hyper/analyses_single_date/glfBLUP_hyper_single_date.R"); reset()
 
-# Step XIX: MegaLMM single date analysis and plotting ==========================
-source("hyper/analyses_single_date/MegaLMM_hyper_single_date.R"); reset()
+# Single date analyses and plotting ============================================
+## Step I: lsBLUP single date analysis and plotting ============================
+source("hyper_B5IR/analyses_single_date/lsBLUP_hyper_single_date.R"); reset()
+
+## Step II: siBLUP single date analysis and plotting ===========================
+source("hyper_B5IR/analyses_single_date/siBLUP_hyper_single_date.R"); reset()
+
+## Step III: glfBLUP single date analysis and plotting =========================
+source("hyper_B5IR/analyses_single_date/glfBLUP_hyper_single_date.R"); reset()
+
+## Step IV: MegaLMM single date analysis and plotting ==========================
+source("hyper_B5IR/analyses_single_date/MegaLMM_hyper_single_date.R"); reset()
 
 

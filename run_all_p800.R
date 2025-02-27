@@ -26,24 +26,21 @@ source("p800/data_generation/generate_sim_p800_datasets.R"); reset()
 # Step II: train/test division =================================================
 source("p800/data_generation/traintest_sim_p800_datasets.R"); reset()
 
-
-
 # Step III: univariate analysis ================================================
 source("p800/analyses/univariate.R"); reset()
 
 # Step IV: benchmark analysis ==================================================
 source("p800/analyses/benchmark.R"); reset()
 
-# Step V: glfBLUP analysis ======================================================
-source("p800/analyses/glfBLUP_part1.R"); reset()
-source("p800/analyses/glfBLUP_part2.R"); reset()
-source("p800/misc/glfBLUP_merge.R"); reset()
+# Step V: glfBLUP analysis =====================================================
+source("p800/analyses/glfBLUP.R"); reset()
 
 # Step VI: MegaLMM analysis ====================================================
 source("p800/analyses/MegaLMM_part1.R"); reset()
 source("p800/analyses/MegaLMM_part2.R"); reset()
 source("p800/analyses/MegaLMM_part3.R"); reset()
 source("p800/analyses/MegaLMM_part4.R"); reset()
+source("p800/analyses/MegaLMM_part5.R"); reset()
 source("p800/misc/MegaLMM_merge.R"); reset()
 
 # Step VII: lsBLUP analysis ====================================================
@@ -57,10 +54,10 @@ source("p800/misc/siBLUP_merge.R"); reset()
 # Step IX: MultiMLP analysis ===================================================
 source("p800/analyses/CV1_multiMLP_part1.R"); reset()
 source("p800/analyses/CV1_multiMLP_part2.R"); reset()
+source("p800/analyses/CV2_multiMLP_part1.R"); reset()
+source("p800/analyses/CV2_multiMLP_part2.R"); reset()
 source("p800/misc/CV1_multiMLP_merge.R"); reset()
-source("p800/analyses/CV2_multiMLP.R"); reset()
-
-
+source("p800/misc/CV2_multiMLP_merge.R"); reset()
 
 # Step X: Result Plotting ======================================================
 source("p800/plot_p800_results.R"); reset()
