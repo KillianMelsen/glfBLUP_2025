@@ -1,6 +1,6 @@
 # Loading libraries:
 library(rlist)
-library(gfBLUP)
+library(glfBLUP)
 library(ggplot2)
 library(grid)
 
@@ -35,13 +35,13 @@ sec <- names(d[2:(ncol(d) - 1)])
 foc <- names(d)[ncol(d)]
 
 # Regularization:
-folds <- gfBLUP::createFolds(genos = unique(as.character(d$G)))
-tempG <- gfBLUP::regularizedCorrelation(data = d[c("G", sec)], folds = folds, what = "genetic", dopar = F, verbose = FALSE)
-tempE <- gfBLUP::regularizedCorrelation(data = d[c("G", sec)], folds = folds, what = "residual", dopar = F, verbose = FALSE)
+folds <- glfBLUP::createFolds(genos = unique(as.character(d$G)))
+tempG <- glfBLUP::regularizedCorrelation(data = d[c("G", sec)], folds = folds, what = "genetic", dopar = F, verbose = FALSE)
+tempE <- glfBLUP::regularizedCorrelation(data = d[c("G", sec)], folds = folds, what = "residual", dopar = F, verbose = FALSE)
 Rg.reg <- tempG$optCor
 
 # Fitting factor model:
-FM.fit <- gfBLUP::factorModel(data = d[c("G", sec)], cormat = Rg.reg, what = "genetic", verbose = T)
+FM.fit <- glfBLUP::factorModel(data = d[c("G", sec)], cormat = Rg.reg, what = "genetic", verbose = T)
 
 # Getting factor scores:
 # scaling back loadings and uniquenesses:
@@ -51,7 +51,7 @@ PSI.cov <- outer(D, D) * FM.fit$uniquenesses
 
 # Determining factor scores:
 d[sec] <- sapply(d[sec], scale)
-scores <- gfBLUP::factorScores(data = d[c("G", sec)],
+scores <- glfBLUP::factorScores(data = d[c("G", sec)],
                                loadings = L.cov,
                                uniquenesses = PSI.cov,
                                m = FM.fit$m,
@@ -63,7 +63,7 @@ names(d)[ncol(d)] <- "Y"
 names(d)[1] <- "G"
 
 # Getting the genetic correlations and loadings:
-gencors <- cov2cor(gfBLUP::covSS(na.omit(d))$Sg)
+gencors <- cov2cor(glfBLUP::covSS(na.omit(d))$Sg)
 loadings <- as.data.frame(FM.fit$loadings[,])
 rownames(loadings) <- substr(rownames(loadings), 3, 5)
 loadings$Wavelength <- rownames(loadings)
@@ -109,9 +109,9 @@ ggplot(data = loadings, mapping = aes(x = Wavelength, y = Loading, color = Facto
            color = "white", parse = T, size = 6, hjust = 0) +
   xlab("Wavelength (nm)")
 
-ggsave("plots/gfBLUP_hyper_1415B5IR_single_date.png", width = 24, height = 8, units = "cm")
+ggsave("plots/glfBLUP_hyper_1415B5IR_single_date.png", width = 24, height = 8, units = "cm")
 
-temp <- gfBLUP::covSS(na.omit(d))
+temp <- glfBLUP::covSS(na.omit(d))
 (herits <- diag(temp$Sg)/diag(temp$Sp))
 
 

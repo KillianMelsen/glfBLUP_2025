@@ -24,7 +24,7 @@ results.avg$Step <- factor(results.avg$Step,
                            levels = c("Total", "Redundancy filtering", "Genetic regularization",
                                       "Residual regularization", "Factor model",
                                       "Factor scores", "Subset selection",
-                                      "gfBLUP genomic prediction", "Other"))
+                                      "glfBLUP genomic prediction", "Other"))
 
 results.avg$Percentage <- numeric(nrow(results.avg))
 

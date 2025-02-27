@@ -1,6 +1,6 @@
 # Loading libraries:
 library(rlist)
-library(gfBLUP)
+library(glfBLUP)
 library(ggplot2)
 library(grid)
 
@@ -42,8 +42,8 @@ d.train <- droplevels(d[which(!is.na(d$Y)), ])
 d.test <- droplevels(d[which(is.na(d$Y)), ])
 
 # Calculating genotypic means (BLUEs):
-d.train <- gfBLUP:::genotypeMeans(d.train)
-d.test <- gfBLUP:::genotypeMeans(d.test)
+d.train <- glfBLUP:::genotypeMeans(d.train)
+d.test <- glfBLUP:::genotypeMeans(d.test)
 
 # Rescaling now we only have means:
 d.train[, 2:ncol(d.train)] <- sapply(d.train[, 2:ncol(d.train)], scale)
@@ -546,7 +546,7 @@ ggplot(loadings.y, aes(x = Iteration, y = Loading)) +
 
 ggsave("plots/MegaLMM_hyper_1415B5IR_single_date_traceplot_Y_M5.png", width = 24, height = 8, units = "cm")
 
-# The important wavelengths around the "switching" point in gfBLUP:
+# The important wavelengths around the "switching" point in glfBLUP:
 (WL <- dimnames(Lambda_samples)[[3]][41:50])
 
 factors <- paste0("F", 1:dim(Lambda_samples)[2])
@@ -631,7 +631,7 @@ ggplot(loadings.y, aes(x = Iteration, y = Loading)) +
 
 ggsave("plots/MegaLMM_hyper_1415B5IR_single_date_traceplot_Y_M10.png", width = 24, height = 8, units = "cm")
 
-# The important wavelengths around the "switching" point in gfBLUP:
+# The important wavelengths around the "switching" point in glfBLUP:
 (WL <- dimnames(Lambda_samples)[[3]][41:50])
 
 factors <- paste0("F", 1:dim(Lambda_samples)[2])
@@ -739,7 +739,7 @@ ggplot(loadings.y, aes(x = Iteration, y = Loading)) +
 
 ggsave("plots/MegaLMM_hyper_1415B5IR_single_date_traceplot_Y_M3.png", width = 24, height = 8, units = "cm")
 
-# The important wavelengths around the "switching" point in gfBLUP:
+# The important wavelengths around the "switching" point in glfBLUP:
 (WL <- dimnames(Lambda_samples)[[3]][41:50])
 
 factors <- paste0("F", 1:dim(Lambda_samples)[2])

@@ -6,8 +6,8 @@ setwd(wd)
 set.seed(1997)
 
 # Settings:
-models <- c("Univariate", "gfBLUP", "MegaLMM", "lsBLUP", "siBLUP", "MultiMLP")
-# models <- c("Univariate", "gfBLUP", "MegaLMM", "lsBLUP", "siBLUP")
+models <- c("Univariate", "glfBLUP", "MegaLMM", "lsBLUP", "siBLUP", "MultiMLP")
+# models <- c("Univariate", "glfBLUP", "MegaLMM", "lsBLUP", "siBLUP")
 scenarios <- c("CV1", "CV2", "CV2VEG")
 irrigation <- c("HEAT", "B5IR")
 
@@ -36,12 +36,12 @@ results <- rbind(results,
 results[results$Model == "Univariate" & results$Scenario == "N/A" & results$Irrigation == "HEAT", "Accuracy"] <-
   read.csv("hyper_1415HEAT/results/2_hyper_results_univariate.csv")$acc
 
-results[results$Model == "gfBLUP" & results$Scenario == "CV1" & results$Irrigation == "HEAT", "Accuracy"] <-
-  read.csv("hyper_1415HEAT/results/splines/3a_hyper_results_gfblup_CV1.csv")$acc
-results[results$Model == "gfBLUP" & results$Scenario == "CV2" & results$Irrigation == "HEAT", "Accuracy"] <-
-  read.csv("hyper_1415HEAT/results/splines/3b_hyper_results_gfblup_CV2.csv")$acc
-results[results$Model == "gfBLUP" & results$Scenario == "CV2VEG" & results$Irrigation == "HEAT", "Accuracy"] <-
-  read.csv("hyper_1415HEAT/results/nosplines/3b_hyper_results_gfblup_CV2VEG.csv")$acc
+results[results$Model == "glfBLUP" & results$Scenario == "CV1" & results$Irrigation == "HEAT", "Accuracy"] <-
+  read.csv("hyper_1415HEAT/results/splines/3a_hyper_results_glfblup_CV1.csv")$acc
+results[results$Model == "glfBLUP" & results$Scenario == "CV2" & results$Irrigation == "HEAT", "Accuracy"] <-
+  read.csv("hyper_1415HEAT/results/splines/3b_hyper_results_glfblup_CV2.csv")$acc
+results[results$Model == "glfBLUP" & results$Scenario == "CV2VEG" & results$Irrigation == "HEAT", "Accuracy"] <-
+  read.csv("hyper_1415HEAT/results/nosplines/3b_hyper_results_glfblup_CV2VEG.csv")$acc
 
 results[results$Model == "MegaLMM" & results$Scenario == "CV1" & results$Irrigation == "HEAT", "Accuracy"] <-
   read.csv("hyper_1415HEAT/results/splines/12a_hyper_results_megalmm_CV1.csv")$acc
@@ -75,12 +75,12 @@ results[results$Model == "MultiMLP" & results$Scenario == "CV2VEG" & results$Irr
 results[results$Model == "Univariate" & results$Scenario == "N/A" & results$Irrigation == "B5IR", "Accuracy"] <-
   read.csv("hyper_1415B5IR/results/2_hyper_results_univariate.csv")$acc
 
-results[results$Model == "gfBLUP" & results$Scenario == "CV1" & results$Irrigation == "B5IR", "Accuracy"] <-
-  read.csv("hyper_1415B5IR/results/splines/3a_hyper_results_gfblup_CV1.csv")$acc
-results[results$Model == "gfBLUP" & results$Scenario == "CV2" & results$Irrigation == "B5IR", "Accuracy"] <-
-  read.csv("hyper_1415B5IR/results/splines/3b_hyper_results_gfblup_CV2.csv")$acc
-results[results$Model == "gfBLUP" & results$Scenario == "CV2VEG" & results$Irrigation == "B5IR", "Accuracy"] <-
-  read.csv("hyper_1415B5IR/results/VEGsplines/3b_hyper_results_gfblup_CV2VEG.csv")$acc
+results[results$Model == "glfBLUP" & results$Scenario == "CV1" & results$Irrigation == "B5IR", "Accuracy"] <-
+  read.csv("hyper_1415B5IR/results/splines/3a_hyper_results_glfblup_CV1.csv")$acc
+results[results$Model == "glfBLUP" & results$Scenario == "CV2" & results$Irrigation == "B5IR", "Accuracy"] <-
+  read.csv("hyper_1415B5IR/results/splines/3b_hyper_results_glfblup_CV2.csv")$acc
+results[results$Model == "glfBLUP" & results$Scenario == "CV2VEG" & results$Irrigation == "B5IR", "Accuracy"] <-
+  read.csv("hyper_1415B5IR/results/VEGsplines/3b_hyper_results_glfblup_CV2VEG.csv")$acc
 
 results[results$Model == "MegaLMM" & results$Scenario == "CV1" & results$Irrigation == "B5IR", "Accuracy"] <-
   read.csv("hyper_1415B5IR/results/splines/12a_hyper_results_megalmm_CV1.csv")$acc
@@ -110,16 +110,16 @@ results[results$Model == "MultiMLP" & results$Scenario == "CV2" & results$Irriga
 results[results$Model == "MultiMLP" & results$Scenario == "CV2VEG" & results$Irrigation == "B5IR", "Accuracy"] <-
   read.csv("hyper_1415B5IR/results/VEGsplines/8b_hyper_results_multiMLP_CV2VEG.csv")$acc
 
-results$Model <- factor(results$Model, levels = c("Univariate", "gfBLUP", "MegaLMM", "siBLUP", "lsBLUP", "MultiMLP"))
-# results$Model <- factor(results$Model, levels = c("Univariate", "gfBLUP", "MegaLMM", "siBLUP", "lsBLUP"))
+results$Model <- factor(results$Model, levels = c("Univariate", "glfBLUP", "MegaLMM", "siBLUP", "lsBLUP", "MultiMLP"))
+# results$Model <- factor(results$Model, levels = c("Univariate", "glfBLUP", "MegaLMM", "siBLUP", "lsBLUP"))
 results$Scenario <- factor(results$Scenario, levels = c("CV1", "CV2", "CV2VEG", "N/A"))
 results$Irrigation <- factor(results$Irrigation, levels = c("HEAT", "B5IR"))
 
 medians <- aggregate(Accuracy ~ Scenario + Model + Irrigation, data = results, FUN = median)
 medians$max <- aggregate(Accuracy ~ Scenario + Model + Irrigation, data = results, FUN = max)$Accuracy
 
-medians$Model <- factor(medians$Model, levels = c("Univariate", "gfBLUP", "MegaLMM", "siBLUP", "lsBLUP", "MultiMLP"))
-# medians$Model <- factor(medians$Model, levels = c("Univariate", "gfBLUP", "MegaLMM", "siBLUP", "lsBLUP"))
+medians$Model <- factor(medians$Model, levels = c("Univariate", "glfBLUP", "MegaLMM", "siBLUP", "lsBLUP", "MultiMLP"))
+# medians$Model <- factor(medians$Model, levels = c("Univariate", "glfBLUP", "MegaLMM", "siBLUP", "lsBLUP"))
 medians$Scenario <- factor(medians$Scenario, levels = c("CV1", "CV2", "CV2VEG", "N/A"))
 medians$Irrigation <- factor(medians$Irrigation, levels = c("HEAT", "B5IR"))
 

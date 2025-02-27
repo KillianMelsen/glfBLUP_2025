@@ -58,7 +58,7 @@ for (h2s in h2.sec) {
       datalist <- list.load(file = sprintf("p800/datasets/p800_h2y%s_comm%s_h2s%s_dataset_%d.RData", h2y, comm, h2s, sim))
       
       # Storing data and prediction target:
-      d <- gfBLUP:::genotypeMeans(datalist$data.real)
+      d <- glfBLUP:::genotypeMeans(datalist$data.real)
       d[,-1] <- scale(d[,-1])
       pred.target <- datalist$pred.target
       

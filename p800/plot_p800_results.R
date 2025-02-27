@@ -5,7 +5,7 @@ setwd(wd)
 # Loading libraries:
 library(ggplot2)
 
-models <- data.frame(name = c("benchmark", "univariate", "gfblup", "MegaLMM", "lsblup", "siblup", "multiMLP"),
+models <- data.frame(name = c("benchmark", "univariate", "glfblup", "MegaLMM", "lsblup", "siblup", "multiMLP"),
                      label = c("1", "2", "3", "12", "11", "5", "8"))
 
 h2.foc <- c("01", "03", "05", "07", "09")
@@ -76,8 +76,8 @@ for (model in models$name) {
   }
 }
 
-medians$Model <- factor(medians$Model, levels = c("Univariate", "benchmark", "gfblup", "MegaLMM", "lsblup", "siblup", "multiMLP"),
-                        labels = c("Univariate", "Benchmark", "gfBLUP", "MegaLMM", "lsBLUP", "siBLUP", "multiMLP"))
+medians$Model <- factor(medians$Model, levels = c("Univariate", "benchmark", "glfblup", "MegaLMM", "lsblup", "siblup", "multiMLP"),
+                        labels = c("Univariate", "Benchmark", "glfBLUP", "MegaLMM", "lsBLUP", "siBLUP", "multiMLP"))
 
 h = 20
 w = 25
@@ -118,7 +118,7 @@ ggplot(data = medians, mapping = aes(x = h2y, y = Accuracy, color = Model)) +
         strip.background = element_blank(),
         panel.background = element_blank()) +
   scale_color_manual(values = c("Univariate" = "#000000", "Benchmark" = "#E69F00",
-                                "gfBLUP" = "#56B4E9", "MegaLMM" = "#009E73",
+                                "glfBLUP" = "#56B4E9", "MegaLMM" = "#009E73",
                                 "siBLUP" = "#CC79A7", "lsBLUP" = "#D55E00",
                                 "multiMLP" = "#0072B2")) +
   guides(Model = guide_legend(title.position = "top"),
@@ -155,7 +155,7 @@ ggplot(data = medians2, mapping = aes(x = h2y, y = Accuracy, color = Model)) +
         plot.tag = element_text(angle = 270, face = "bold", size = 11),
         plot.margin = margin(l = 0.5, r = 1, t = 0.5, b = 0.5, unit = "cm")) +
   scale_color_manual(values = c("Univariate" = "#000000", "Benchmark" = "#E69F00",
-                                "gfBLUP" = "#56B4E9", "MegaLMM" = "#009E73",
+                                "glfBLUP" = "#56B4E9", "MegaLMM" = "#009E73",
                                 "siBLUP" = "#CC79A7", "lsBLUP" = "#D55E00",
                                 "multiMLP" = "#0072B2")) +
   guides(Model = guide_legend(title.position = "top"),

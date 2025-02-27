@@ -1,6 +1,6 @@
 # Loading libraries:
 library(rlist)
-library(gfBLUP)
+library(glfBLUP)
 library(ggplot2)
 library(grid)
 

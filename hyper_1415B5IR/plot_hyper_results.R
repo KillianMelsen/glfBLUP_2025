@@ -6,8 +6,8 @@ setwd(wd)
 set.seed(1997)
 
 # Settings:
-# models <- c("Univariate", "gfBLUP", "MegaLMM", "lsBLUP", "siBLUP", "MultiMLP")
-models <- c("Univariate", "gfBLUP", "MegaLMM", "lsBLUP", "siBLUP")
+# models <- c("Univariate", "glfBLUP", "MegaLMM", "lsBLUP", "siBLUP", "MultiMLP")
+models <- c("Univariate", "glfBLUP", "MegaLMM", "lsBLUP", "siBLUP")
 scenarios <- c("CV1", "CV2", "CV2VEG")
 
 CV1.prep <- "splines"
@@ -28,9 +28,9 @@ results <- rbind(results,
 
 results[results$Model == "Univariate" & results$Scenario == "N/A", 4] <- read.csv("hyper_1415B5IR/results/2_hyper_results_univariate.csv")$acc
 
-results[results$Model == "gfBLUP" & results$Scenario == "CV1", 4] <- read.csv(sprintf("hyper_1415B5IR/results/%s/3a_hyper_results_gfblup_CV1.csv", CV1.prep))$acc
-results[results$Model == "gfBLUP" & results$Scenario == "CV2", 4] <- read.csv(sprintf("hyper_1415B5IR/results/%s/3b_hyper_results_gfblup_CV2.csv", CV2.prep))$acc
-results[results$Model == "gfBLUP" & results$Scenario == "CV2VEG", 4] <- read.csv(sprintf("hyper_1415B5IR/results/%s/3b_hyper_results_gfblup_CV2VEG.csv", CV2VEG.prep))$acc
+results[results$Model == "glfBLUP" & results$Scenario == "CV1", 4] <- read.csv(sprintf("hyper_1415B5IR/results/%s/3a_hyper_results_glfblup_CV1.csv", CV1.prep))$acc
+results[results$Model == "glfBLUP" & results$Scenario == "CV2", 4] <- read.csv(sprintf("hyper_1415B5IR/results/%s/3b_hyper_results_glfblup_CV2.csv", CV2.prep))$acc
+results[results$Model == "glfBLUP" & results$Scenario == "CV2VEG", 4] <- read.csv(sprintf("hyper_1415B5IR/results/%s/3b_hyper_results_glfblup_CV2VEG.csv", CV2VEG.prep))$acc
 
 results[results$Model == "MegaLMM" & results$Scenario == "CV1", 4] <- read.csv(sprintf("hyper_1415B5IR/results/%s/12a_hyper_results_megalmm_CV1.csv", CV1.prep))$acc
 results[results$Model == "MegaLMM" & results$Scenario == "CV2", 4] <- read.csv(sprintf("hyper_1415B5IR/results/%s/12b_hyper_results_megalmm_CV2.csv", CV2.prep))$acc
@@ -48,16 +48,16 @@ results[results$Model == "siBLUP" & results$Scenario == "CV2VEG", 4] <- read.csv
 # results[results$Model == "MultiMLP" & results$Scenario == "CV2", 4] <- read.csv(sprintf("hyper_1415B5IR/results/%s/8b_hyper_results_multiMLP_CV2.csv", CV2.prep))$acc
 # results[results$Model == "MultiMLP" & results$Scenario == "CV2VEG", 4] <- read.csv(sprintf("hyper_1415B5IR/results/%s/8b_hyper_results_multiMLP_CV2VEG.csv", CV2VEG.prep))$acc
 
-# results$Model <- factor(results$Model, levels = c("Univariate", "gfBLUP", "MegaLMM", "siBLUP", "lsBLUP", "MultiMLP"))
-results$Model <- factor(results$Model, levels = c("Univariate", "gfBLUP", "MegaLMM", "siBLUP", "lsBLUP"))
+# results$Model <- factor(results$Model, levels = c("Univariate", "glfBLUP", "MegaLMM", "siBLUP", "lsBLUP", "MultiMLP"))
+results$Model <- factor(results$Model, levels = c("Univariate", "glfBLUP", "MegaLMM", "siBLUP", "lsBLUP"))
 results$Scenario <- factor(results$Scenario, levels = c("CV1", "CV2", "CV2VEG", "N/A"))
 # results$Scenario <- factor(results$Scenario, levels = c("CV1", "CV2", "N/A"))
 
 medians <- aggregate(Accuracy ~ Scenario + Model, data = results, FUN = median)
 medians$max <- aggregate(Accuracy ~ Scenario + Model, data = results, FUN = max)$Accuracy
 
-# medians$Model <- factor(medians$Model, levels = c("Univariate", "gfBLUP", "MegaLMM", "siBLUP", "lsBLUP", "MultiMLP"))
-medians$Model <- factor(medians$Model, levels = c("Univariate", "gfBLUP", "MegaLMM", "siBLUP", "lsBLUP"))
+# medians$Model <- factor(medians$Model, levels = c("Univariate", "glfBLUP", "MegaLMM", "siBLUP", "lsBLUP", "MultiMLP"))
+medians$Model <- factor(medians$Model, levels = c("Univariate", "glfBLUP", "MegaLMM", "siBLUP", "lsBLUP"))
 medians$Scenario <- factor(medians$Scenario, levels = c("CV1", "CV2", "CV2VEG", "N/A"))
 # medians$Scenario <- factor(medians$Scenario, levels = c("CV1", "CV2", "N/A"))
 

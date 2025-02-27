@@ -41,7 +41,7 @@ par.results <- foreach::foreach(i = 1:length(work), .packages = c("rlist", "tict
     datalist <- list.load(file = sprintf("hyper_1415HEAT/datasets/splines/hyper_dataset_%d.RData", par.work[run]))
     
     # Storing data and prediction target:
-    d <- gfBLUP:::genotypeMeans(datalist$data)
+    d <- glfBLUP:::genotypeMeans(datalist$data)
     d[,-1] <- scale(d[,-1])
     pred.target <- datalist$pred.target
     

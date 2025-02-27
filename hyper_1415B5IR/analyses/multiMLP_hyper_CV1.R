@@ -14,7 +14,7 @@ prep <- "splines"
 library(rlist)
 library(tictoc)
 library(keras)
-library(gfBLUP)
+library(glfBLUP)
 library(tensorflow)
 
 # Setting seeds:
@@ -150,14 +150,14 @@ for (run in first:last) {
   # Redundancy filtering:
   sec <- names(d.train[2:(ncol(d.train) - 1)])
   foc <- names(d.train)[ncol(d.train)]
-  temp <- gfBLUP::redundancyFilter(data = d.train[c("G", sec)], tau = 0.95, verbose = TRUE)
+  temp <- glfBLUP::redundancyFilter(data = d.train[c("G", sec)], tau = 0.95, verbose = TRUE)
   d.train <- cbind(temp$data.RF, d.train[foc])
   # d.test <- d.test[colnames(d.train)]
   sec.RF <- names(d.train[2:(ncol(d.train) - 1)])
   
   # Going to BLUEs:
-  d.train <- gfBLUP:::genotypeMeans(d.train)
-  # d.test <- gfBLUP:::genotypeMeans(d.test)
+  d.train <- glfBLUP:::genotypeMeans(d.train)
+  # d.test <- glfBLUP:::genotypeMeans(d.test)
   
   # Rescaling now we only have means:
   d.train[, 2:ncol(d.train)] <- sapply(d.train[, 2:ncol(d.train)], scale)
@@ -186,7 +186,7 @@ for (run in first:last) {
   # Creating folds for 5-fold hyper-parameter tuning:
   tic(sprintf("Dataset %d", run))
   ngeno <- length(d.train$G)
-  folds <- gfBLUP::createFolds(genos = d.train$G, folds = 5)
+  folds <- glfBLUP::createFolds(genos = d.train$G, folds = 5)
   
   # Creating temporary tuning results storage:
   tuning.results <- data.frame()

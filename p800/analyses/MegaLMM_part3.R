@@ -5,7 +5,7 @@
 library(rlist)
 library(tictoc)
 library(MegaLMM)
-library(gfBLUP)
+library(glfBLUP)
 
 # Setting seed:
 set.seed(1997)
@@ -64,8 +64,8 @@ for (CV in CVs) {
           d.test <- droplevels(d[which(is.na(d$Y)), ])
           
           # Calculating genotypic means (BLUEs):
-          d.train <- gfBLUP:::genotypeMeans(d.train)
-          d.test <- gfBLUP:::genotypeMeans(d.test)
+          d.train <- glfBLUP:::genotypeMeans(d.train)
+          d.test <- glfBLUP:::genotypeMeans(d.test)
           
           # Rescaling now we only have means:
           d.train[, 2:ncol(d.train)] <- sapply(d.train[, 2:ncol(d.train)], scale)

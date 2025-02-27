@@ -12,7 +12,7 @@ CV <- "CV1"
 library(rlist)
 library(tictoc)
 library(keras)
-library(gfBLUP)
+library(glfBLUP)
 library(tensorflow)
 
 # Setting tensorflow seed:
@@ -160,8 +160,8 @@ for (h2y in h2.foc) {
         # d.test <- droplevels(datalist$data.real[which(is.na(datalist$data.real$Y)),])
         
         # Going to BLUEs:
-        d.train <- gfBLUP:::genotypeMeans(d.train)
-        # d.test <- gfBLUP:::genotypeMeans(d.test)
+        d.train <- glfBLUP:::genotypeMeans(d.train)
+        # d.test <- glfBLUP:::genotypeMeans(d.test)
         
         # Rescaling now we only have means:
         d.train[, 2:ncol(d.train)] <- sapply(d.train[, 2:ncol(d.train)], scale)
@@ -190,7 +190,7 @@ for (h2y in h2.foc) {
         # Creating folds for 5-fold hyper-parameter tuning:
         tic(sprintf("Dataset %d", sim))
         ngeno <- length(d.train$G)
-        folds <- gfBLUP::createFolds(genos = d.train$G, folds = 5)
+        folds <- glfBLUP::createFolds(genos = d.train$G, folds = 5)
         
         # Creating temporary tuning results storage:
         tuning.results <- data.frame()

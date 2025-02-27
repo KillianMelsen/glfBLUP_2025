@@ -6,7 +6,7 @@ prep <- "splines" # or "splines"
 library(rlist)
 library(tictoc)
 library(MegaLMM)
-library(gfBLUP)
+library(glfBLUP)
 # library(doParallel)
 source("helper_functions/Estimate_gcor_prediction.R")
 library(MCMCglmm)
@@ -34,7 +34,7 @@ n.datasets <- length(datasets)
 # doParallel::registerDoParallel(cl)
 
 # invisible(
-#   par.results <- foreach::foreach(k = 1:length(work), .packages = c("MegaLMM", "gfBLUP", "rlist", "tictoc"), .combine = "c") %dopar% {
+#   par.results <- foreach::foreach(k = 1:length(work), .packages = c("MegaLMM", "glfBLUP", "rlist", "tictoc"), .combine = "c") %dopar% {
     
     # par.work <- work[[k]]
     set.seed(1997)
@@ -66,14 +66,14 @@ n.datasets <- length(datasets)
       ### Redundancy filter the secondary features using training data only ----
       sec <- names(d[2:(ncol(d) - 1)])
       foc <- names(d)[ncol(d)]
-      temp <- gfBLUP::redundancyFilter(data = d.train[c("G", sec)], tau = 0.95, verbose = FALSE)
+      temp <- glfBLUP::redundancyFilter(data = d.train[c("G", sec)], tau = 0.95, verbose = FALSE)
       d.train <- cbind(temp$data.RF, d.train[foc])
       d.test <- d.test[colnames(d.train)]
       sec.RF <- names(d.train[2:(ncol(d.train) - 1)])
 
       # Calculating genotypic means (BLUEs):
-      d.train <- gfBLUP:::genotypeMeans(d.train)
-      d.test <- gfBLUP:::genotypeMeans(d.test)
+      d.train <- glfBLUP:::genotypeMeans(d.train)
+      d.test <- glfBLUP:::genotypeMeans(d.test)
       
       # Rescaling now we only have means:
       d.train[, 2:ncol(d.train)] <- sapply(d.train[, 2:ncol(d.train)], scale)

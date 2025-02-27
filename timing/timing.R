@@ -3,7 +3,7 @@ start <- Sys.time()
 # Loading libraries:
 library(rlist)
 library(tictoc)
-library(gfBLUP)
+library(glfBLUP)
 
 # Setting seed:
 set.seed(1997)
@@ -26,7 +26,7 @@ steps <- c("Redundancy filtering",
            "Factor model",
            "Factor scores",
            "Subset selection",
-           "gfBLUP genomic prediction",
+           "glfBLUP genomic prediction",
            "Other")
 
 results <- expand.grid(Step = steps, Run = 1:runs.timing, p = ps)
@@ -62,21 +62,21 @@ for (p in ps) {
     
     ## 2. Mock redundancy filtering the sec. features using training data ======
     tic("Redundancy filtering") # Redundancy filtering start
-    temp <- gfBLUP::redundancyFilter(data = d.train[c("G", sec)], tau = 0.95, verbose = F)
+    temp <- glfBLUP::redundancyFilter(data = d.train[c("G", sec)], tau = 0.95, verbose = F)
     toc(log = FALSE) # Redundancy filtering stop
     
     
     
     ## 3. Regularization =======================================================
-    folds <- gfBLUP::createFolds(genos = unique(as.character(d.train$G)))
+    folds <- glfBLUP::createFolds(genos = unique(as.character(d.train$G)))
     
     tic("Genetic Regularization") # Genetic regularization start
-    tempG <- gfBLUP::regularizedCorrelation(data = d.train[c("G", sec)],
+    tempG <- glfBLUP::regularizedCorrelation(data = d.train[c("G", sec)],
                                             folds = folds, what = "genetic", dopar = TRUE)
     toc(log = FALSE) # Genetic regularization stop
     
     tic("Residual Regularization") # Residual regularization start
-    tempE <- gfBLUP::regularizedCorrelation(data = d.train[c("G", sec)],
+    tempE <- glfBLUP::regularizedCorrelation(data = d.train[c("G", sec)],
                                             folds = folds, what = "residual", dopar = TRUE)
     toc(log = FALSE) # Residual regularization stop
     
@@ -86,7 +86,7 @@ for (p in ps) {
     
     ## 4. Fitting factor model =================================================
     tic("Factor model") # Factor model start
-    FM.fit <- gfBLUP::factorModel(data = d.train[c("G", sec)], cormat = Rg.reg, what = "genetic")
+    FM.fit <- glfBLUP::factorModel(data = d.train[c("G", sec)], cormat = Rg.reg, what = "genetic")
     toc(log = FALSE) # Factor model stop
     
     
@@ -98,7 +98,7 @@ for (p in ps) {
     PSI.cov <- outer(D, D) * FM.fit$uniquenesses
     
     # CV1 Factor scores
-    CV1.F.scores <- gfBLUP::factorScores(data = d[c("G", sec)],
+    CV1.F.scores <- glfBLUP::factorScores(data = d[c("G", sec)],
                                          loadings = L.cov,
                                          uniquenesses = PSI.cov,
                                          m = FM.fit$m,
@@ -112,7 +112,7 @@ for (p in ps) {
     # # CV2 Factor scores:
     # # First recenter/rescale the training and test secondary data together:
     # d[sec] <- sapply(d[sec], scale)
-    # CV2.F.scores <- gfBLUP::factorScores(data = d[c("G", sec)],
+    # CV2.F.scores <- glfBLUP::factorScores(data = d[c("G", sec)],
     #                                      loadings = L.cov,
     #                                      uniquenesses = PSI.cov,
     #                                      m = FM.fit$m,
@@ -129,15 +129,15 @@ for (p in ps) {
     ## 6. Selecting the relevant factors =======================================
     tic("Subset selection") # Subset selection start
     # Subset selection can only be done using training data:
-    selection <- gfBLUP::factorSelect(na.omit(CV1.d.final), procedure = "leaps", verbose = F)
+    selection <- glfBLUP::factorSelect(na.omit(CV1.d.final), procedure = "leaps", verbose = F)
     toc(log = FALSE) # Subset selection stop
     
     
     
     ## 7. Multi-trait genomic prediction =======================================
-    tic("gfBLUP genomic prediction") # gfBLUP genomic prediction start
-    CV1.temp <- gfBLUP::gfBLUP(data = CV1.d.final, selection = selection, K = K, sepExp = FALSE, verbose = F)
-    toc(log = FALSE) # gfBLUP genomic prediction stop
+    tic("glfBLUP genomic prediction") # glfBLUP genomic prediction start
+    CV1.temp <- glfBLUP::glfBLUP(data = CV1.d.final, selection = selection, K = K, sepExp = FALSE, verbose = F)
+    toc(log = FALSE) # glfBLUP genomic prediction stop
     
     toc(log = FALSE) # Full model stop
     
@@ -171,21 +171,21 @@ for (p in ps) {
     
     ## 2. Mock redundancy filtering the sec. features using training data ======
     tic("Redundancy filtering") # Redundancy filtering start
-    temp <- gfBLUP::redundancyFilter(data = d.train[c("G", sec)], tau = 0.95, verbose = F)
+    temp <- glfBLUP::redundancyFilter(data = d.train[c("G", sec)], tau = 0.95, verbose = F)
     toc(log = TRUE) # Redundancy filtering stop
     
     
     
     ## 3. Regularization =======================================================
-    folds <- gfBLUP::createFolds(genos = unique(as.character(d.train$G)))
+    folds <- glfBLUP::createFolds(genos = unique(as.character(d.train$G)))
     
     tic("Genetic Regularization") # Genetic regularization start
-    tempG <- gfBLUP::regularizedCorrelation(data = d.train[c("G", sec)],
+    tempG <- glfBLUP::regularizedCorrelation(data = d.train[c("G", sec)],
                                             folds = folds, what = "genetic", dopar = TRUE)
     toc(log = TRUE) # Genetic regularization stop
     
     tic("Residual Regularization") # Residual regularization start
-    tempE <- gfBLUP::regularizedCorrelation(data = d.train[c("G", sec)],
+    tempE <- glfBLUP::regularizedCorrelation(data = d.train[c("G", sec)],
                                             folds = folds, what = "residual", dopar = TRUE)
     toc(log = TRUE) # Residual regularization stop
     
@@ -195,7 +195,7 @@ for (p in ps) {
     
     ## 4. Fitting factor model =================================================
     tic("Factor model") # Factor model start
-    FM.fit <- gfBLUP::factorModel(data = d.train[c("G", sec)], cormat = Rg.reg, what = "genetic")
+    FM.fit <- glfBLUP::factorModel(data = d.train[c("G", sec)], cormat = Rg.reg, what = "genetic")
     toc(log = TRUE) # Factor model stop
     
     
@@ -207,7 +207,7 @@ for (p in ps) {
     PSI.cov <- outer(D, D) * FM.fit$uniquenesses
     
     # CV1 Factor scores
-    CV1.F.scores <- gfBLUP::factorScores(data = d[c("G", sec)],
+    CV1.F.scores <- glfBLUP::factorScores(data = d[c("G", sec)],
                                          loadings = L.cov,
                                          uniquenesses = PSI.cov,
                                          m = FM.fit$m,
@@ -221,7 +221,7 @@ for (p in ps) {
     # # CV2 Factor scores:
     # # First recenter/rescale the training and test secondary data together:
     # d[sec] <- sapply(d[sec], scale)
-    # CV2.F.scores <- gfBLUP::factorScores(data = d[c("G", sec)],
+    # CV2.F.scores <- glfBLUP::factorScores(data = d[c("G", sec)],
     #                                      loadings = L.cov,
     #                                      uniquenesses = PSI.cov,
     #                                      m = FM.fit$m,
@@ -238,15 +238,15 @@ for (p in ps) {
     ## 6. Selecting the relevant factors =======================================
     tic("Subset selection") # Subset selection start
     # Subset selection can only be done using training data:
-    selection <- gfBLUP::factorSelect(na.omit(CV1.d.final), procedure = "leaps", verbose = F)
+    selection <- glfBLUP::factorSelect(na.omit(CV1.d.final), procedure = "leaps", verbose = F)
     toc(log = TRUE) # Subset selection stop
     
     
     
     ## 7. Multi-trait genomic prediction =======================================
-    tic("gfBLUP genomic prediction") # gfBLUP genomic prediction start
-    CV1.temp <- gfBLUP::gfBLUP(data = CV1.d.final, selection = selection, K = K, sepExp = FALSE, verbose = F)
-    toc(log = TRUE) # gfBLUP genomic prediction stop
+    tic("glfBLUP genomic prediction") # glfBLUP genomic prediction start
+    CV1.temp <- glfBLUP::glfBLUP(data = CV1.d.final, selection = selection, K = K, sepExp = FALSE, verbose = F)
+    toc(log = TRUE) # glfBLUP genomic prediction stop
     
     toc(log = TRUE) # Full model stop
     

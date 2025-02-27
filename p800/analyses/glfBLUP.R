@@ -28,12 +28,12 @@ par.combis <- data.frame(comm = rep(comms, each = length(h2.sec)),
                          h2s = rep(h2.sec, length(comms)))
 
 # All simulated data for both CV1 and CV2:
-tic("gfBLUP")
+tic("glfBLUP")
 for (h2y in h2.foc) {
   
-  tic(sprintf("gfBLUP CV1/CV2 p800 combi %d / %d, (h2y = %s)", combi, combis, h2y))
+  tic(sprintf("glfBLUP CV1/CV2 p800 combi %d / %d, (h2y = %s)", combi, combis, h2y))
   
-  cl <- parallel::makeCluster(9, outfile = sprintf("logs/gfBLUP_sim_p800_h2y%s.txt", h2y))
+  cl <- parallel::makeCluster(9, outfile = sprintf("logs/glfBLUP_sim_p800_h2y%s.txt", h2y))
   registerDoParallel(cl)
   
   invisible(
@@ -59,7 +59,7 @@ for (h2y in h2.foc) {
     set.seed(1997)
     for (sim in first:last) {
       
-      cat(sprintf("Running gfBLUP CV1/CV2 on p800 dataset %d / %d, (h2s = %s, comm = %s, h2y = %s), combi %d / %d\n",
+      cat(sprintf("Running glfBLUP CV1/CV2 on p800 dataset %d / %d, (h2s = %s, comm = %s, h2y = %s), combi %d / %d\n",
                   sim, n.sim, h2s, comm, h2y, combi, combis))
       
       # Loading simulated dataset:
@@ -77,21 +77,21 @@ for (h2y in h2.foc) {
       foc <- names(d)[ncol(d)]
       
       ### 2. Redundancy filter the secondary features using training data only -------------------------------------------------------------
-      temp <- gfBLUP::redundancyFilter(data = d.train[c("G", sec)], tau = 1, verbose = F)
+      temp <- glfBLUP::redundancyFilter(data = d.train[c("G", sec)], tau = 1, verbose = F)
       d.train.RF <- cbind(temp$data.RF, d.train[foc])
       d.RF <- d[names(d.train.RF)]
       sec.RF <- names(d.RF[2:(ncol(d.RF) - 1)])
       
       ### 3. Regularization ----------------------------------------------------------------------------------------------------------------
-      folds <- gfBLUP::createFolds(genos = unique(as.character(d.train.RF$G)))
-      tempG <- gfBLUP::regularizedCorrelation(data = d.train.RF[c("G", sec.RF)], folds = folds, what = "genetic", dopar = FALSE)
-      tempE <- gfBLUP::regularizedCorrelation(data = d.train.RF[c("G", sec.RF)], folds = folds, what = "residual", dopar = FALSE)
+      folds <- glfBLUP::createFolds(genos = unique(as.character(d.train.RF$G)))
+      tempG <- glfBLUP::regularizedCorrelation(data = d.train.RF[c("G", sec.RF)], folds = folds, what = "genetic", dopar = FALSE)
+      tempE <- glfBLUP::regularizedCorrelation(data = d.train.RF[c("G", sec.RF)], folds = folds, what = "residual", dopar = FALSE)
       Rg.RF.reg <- tempG$optCor
       
       ### 4. Fitting factor model ----------------------------------------------------------------------------------------------------------
       # data is only used to determine the sample size for the MP-bound. what specifies that it's a genetic correlation matrix, so the
       # number of training genotypes should be used, and not the number of training individuals (= genotypes * replicates).
-      FM.fit <- gfBLUP::factorModel(data = d.train.RF[c("G", sec.RF)], cormat = Rg.RF.reg, what = "genetic")
+      FM.fit <- glfBLUP::factorModel(data = d.train.RF[c("G", sec.RF)], cormat = Rg.RF.reg, what = "genetic")
       
       #### 5. Getting factor scores (also for the test set in CV2!) ------------------------------------------------------------------------
       # Loadings and uniquenesses were estimated on the correlation scale, but should be on the covariance scale for genetic-thomson scores:
@@ -102,7 +102,7 @@ for (h2y in h2.foc) {
       # CV1 Factor scores:
       CV1.d.RF <- d.RF
       CV1.d.RF[which(is.na(CV1.d.RF$Y)), 2:ncol(CV1.d.RF)] <- NA
-      CV1.F.scores <- gfBLUP::factorScores(data = CV1.d.RF[c("G", sec.RF)],
+      CV1.F.scores <- glfBLUP::factorScores(data = CV1.d.RF[c("G", sec.RF)],
                                            loadings = L.cov,
                                            uniquenesses = PSI.cov,
                                            m = FM.fit$m,
@@ -116,7 +116,7 @@ for (h2y in h2.foc) {
       # CV2 Factor scores:
       # First recenter/rescale the training and test secondary data together:
       d.RF[sec.RF] <- sapply(d.RF[sec.RF], scale)
-      CV2.F.scores <- gfBLUP::factorScores(data = d.RF[c("G", sec.RF)],
+      CV2.F.scores <- glfBLUP::factorScores(data = d.RF[c("G", sec.RF)],
                                            loadings = L.cov,
                                            uniquenesses = PSI.cov,
                                            m = FM.fit$m,
@@ -128,11 +128,11 @@ for (h2y in h2.foc) {
       names(CV2.d.final)[1] <- "G"
       
       #### 6. Selecting the relevant factors -----------------------------------------------------------------------------------------------
-      selection <- gfBLUP::factorSelect(CV1.d.final, procedure = "leaps", verbose = F)
+      selection <- glfBLUP::factorSelect(CV1.d.final, procedure = "leaps", verbose = F)
       
       #### 7. Multi-trait genomic prediction -----------------------------------------------------------------------------------------------
-      CV1.temp <- gfBLUP::gfBLUP(data = CV1.d.final, selection = selection, K = K, sepExp = FALSE, verbose = F)
-      CV2.temp <- gfBLUP::gfBLUP(data = CV2.d.final, selection = selection, K = K, sepExp = FALSE, verbose = F)
+      CV1.temp <- glfBLUP::glfBLUP(data = CV1.d.final, selection = selection, K = K, sepExp = FALSE, verbose = F)
+      CV2.temp <- glfBLUP::glfBLUP(data = CV2.d.final, selection = selection, K = K, sepExp = FALSE, verbose = F)
       toc(log = TRUE)
       ######################################################################
       
@@ -170,12 +170,12 @@ for (h2y in h2.foc) {
                               subset = subset)
     
     # Export results:
-    write.csv(CV1.results, sprintf("p800/results/h2s%s/3a_p800_results_gfblup_CV1_h2y%s_comm%s_h2s%s.csv", h2s, h2y, comm, h2s))
-    write.csv(CV2.results, sprintf("p800/results/h2s%s/3b_p800_results_gfblup_CV2_h2y%s_comm%s_h2s%s.csv", h2s, h2y, comm, h2s))
+    write.csv(CV1.results, sprintf("p800/results/h2s%s/3a_p800_results_glfblup_CV1_h2y%s_comm%s_h2s%s.csv", h2s, h2y, comm, h2s))
+    write.csv(CV2.results, sprintf("p800/results/h2s%s/3b_p800_results_glfblup_CV2_h2y%s_comm%s_h2s%s.csv", h2s, h2y, comm, h2s))
     
     
-    list.save(extra, file = sprintf("p800/results/h2s%s/3a_p800_extra_results_gfblup_CV1_h2y%s_comm%s_h2s%s.RData", h2s, h2y, comm, h2s))
-    list.save(extra, file = sprintf("p800/results/h2s%s/3b_p800_extra_results_gfblup_CV2_h2y%s_comm%s_h2s%s.RData", h2s, h2y, comm, h2s))
+    list.save(extra, file = sprintf("p800/results/h2s%s/3a_p800_extra_results_glfblup_CV1_h2y%s_comm%s_h2s%s.RData", h2s, h2y, comm, h2s))
+    list.save(extra, file = sprintf("p800/results/h2s%s/3b_p800_extra_results_glfblup_CV2_h2y%s_comm%s_h2s%s.RData", h2s, h2y, comm, h2s))
     
   })
   doParallel::stopImplicitCluster()

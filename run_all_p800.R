@@ -34,10 +34,10 @@ source("p800/analyses/univariate.R"); reset()
 # Step IV: benchmark analysis ==================================================
 source("p800/analyses/benchmark.R"); reset()
 
-# Step V: gfBLUP analysis ======================================================
-source("p800/analyses/gfBLUP_part1.R"); reset()
-source("p800/analyses/gfBLUP_part2.R"); reset()
-source("p800/misc/gfBLUP_merge.R"); reset()
+# Step V: glfBLUP analysis ======================================================
+source("p800/analyses/glfBLUP_part1.R"); reset()
+source("p800/analyses/glfBLUP_part2.R"); reset()
+source("p800/misc/glfBLUP_merge.R"); reset()
 
 # Step VI: MegaLMM analysis ====================================================
 source("p800/analyses/MegaLMM_part1.R"); reset()

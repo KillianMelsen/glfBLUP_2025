@@ -66,13 +66,13 @@ for (h2s in h2.sec) {
       sim <- 1
       for (sim in 1:n.sim) {
         
-        datalist <- gfBLUP::GFAsim(K = K, r = r, n.LSF = 4, n.LNF = 4,
-                                   LSF.rho = 0, LNF.rho = 0, LSNF.rho = 0,
-                                   S.per.LF = 100, Y.psi = 1 - comm.num,
-                                   L.min = 0.3, L.max = 0.8,
-                                   S.sg2 = sg2.s, S.se2 = se2.s,
-                                   Y.sg2 = sg2.y, Y.se2 = se2.y,
-                                   resCors = TRUE)
+        datalist <- glfBLUP::GFAsim(K = K, r = r, n.LSF = 4, n.LNF = 4,
+                                    LSF.rho = 0, LNF.rho = 0, LSNF.rho = 0,
+                                    S.per.LF = 100, Y.psi = 1 - comm.num,
+                                    L.min = 0.3, L.max = 0.8,
+                                    S.sg2 = sg2.s, S.se2 = se2.s,
+                                    Y.sg2 = sg2.y, Y.se2 = se2.y,
+                                    resCors = TRUE)
         
         datalist$simParams <- list(r = r, n.LSF = 4, n.LNF = 4,
                                    LSF.rho = 0, LNF.rho = 0, LSNF.rho = 0,
