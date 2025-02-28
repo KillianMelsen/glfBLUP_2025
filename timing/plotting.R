@@ -24,6 +24,10 @@ results.avg$Step <- factor(results.avg$Step,
                            levels = c("Total", "Redundancy filtering", "Genetic regularization",
                                       "Residual regularization", "Factor model",
                                       "Factor scores", "Subset selection",
+                                      "gfBLUP genomic prediction", "Other"),
+                           labels = c("Total", "Redundancy filtering", "Genetic regularization",
+                                      "Residual regularization", "Factor model",
+                                      "Factor scores", "Subset selection",
                                       "glfBLUP genomic prediction", "Other"))
 
 results.avg$Percentage <- numeric(nrow(results.avg))
@@ -55,7 +59,7 @@ ggplot(mapping = aes(x = p)) +
         legend.key.width = unit(0.5, "cm")) +
   scale_y_continuous(labels = scales::percent, sec.axis = sec_axis(~./SF, name = "Total runtime (s)"))
 
-ggsave("plots/timing.png", width = 24, height = 10, units = "cm")
+ggsave("plots/timing.png", width = 24, height = 15, units = "cm")
 
 # results.total <- results.avg[which(results.avg$Step == "Total"),]
 # results.total$times <- numeric(nrow(results.total))
