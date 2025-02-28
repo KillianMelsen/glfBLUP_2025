@@ -1,0 +1,85 @@
+<h1 id="improving-genomic-prediction-using-high-dimensional-secondary-phenotypes-the-genetic-latent-factor-approach">Improving Genomic Prediction using High-dimensional Secondary Phenotypes: The Genetic Latent Factor Approach</h1>
+<p>This repository contains all scripts required to generate the simulated, hyperspectral, and timing data. It also contains scripts to analyze the datasets using different methods and visualize the results, as in the paper. The individual scripts can all be run conveniently from four main files that source all scripts, <a href="run_all_p800.R"><code>run_all_p800.R</code></a>, <a href="run_all_hyper.R"><code>run_all_hyper.R</code></a>, <a href="run_all_timing.R"><code>run_all_timing.R</code></a>, and <a href="run_all_misc.R"><code>run_all_misc.R</code></a>.</p>
+<p>Source all scripts in the order presented in these main files. No manual changes to any scripts are required.</p>
+<h2 id="notes">Notes:</h2>
+<ul>
+<li>All analyses together take a significant amount of time. Things can be sped up considerably if run in Windows subsystem for Linux (WSL) using Intel’s oneMKL BLAS and LAPACK libraries. If using oneMKL, set MKL_DYNAMIC to FALSE and MKL_NUM_THREADS to 1 to avoid issues with parallelization.</li>
+<li>There are five scripts that allow for checking of reproducibility of some intermediate results. These can be sourced from <a href="run_all_rep_checks.R"><code>run_all_rep_checks.R</code></a>.</li>
+<li>Deep learning was run on the CPU in Windows.</li>
+<li>It is safest to run MegaLMM on Linux or in WSL as I’ve had it crash randomly in Windows.</li>
+<li>Info on the hyperspectral dataset can be found in the paper by <a href="https://doi.org/10.1534/g3.118.200856">Krause et al. 2019</a>.</li>
+<li>The <a href="glfBLUP_1.0.0.tar.gz">glfBLUP package</a> is included in this repository, but can be installed from <a href="https://github.com/KillianMelsen/glfBLUP">this github repository</a> as well.</li>
+<li>There is an <a href="gfBLUPold_1.3.1.tar.gz">old version of the glfBLUP package</a> included in this repository that is required to run the lsBLUP and siBLUP models.</li>
+</ul>
+<h2 id="folders">Folders:</h2>
+<ul>
+<li><a href="genotypes">genotypes</a> contains marker data and kinships for the analyses.</li>
+<li><a href="helper_functions">helper_functions</a> contains functions required for the analyses and data generation.</li>
+<li><a href="hyper_1415B5IR">hyper_1415B5IR</a> contains all files for the hyperspectral B5IR analyses.</li>
+<li><a href="hyper_1415HEAT">hyper_1415HEAT</a> contains all files for the hyperspectral HEAT analyses.</li>
+<li><a href="hyper_datafiles">hyper_datafiles</a> contains the original hyperspectral data.</li>
+<li><a href="logs">logs</a> would contain log files from analyses that make use of parallelization.</li>
+<li><a href="p800">p800</a> contains all files for the simulations.</li>
+<li><a href="plots">plots</a> contains all plots.</li>
+<li><a href="rep_check_scripts">rep_check_scripts</a> contains the scripts that check reproducibility of some intermediate results.</li>
+<li><a href="timing">timing</a> contains files that measure runtimes of glfBLUP for different numbers of features.</li>
+<li><a href="gfBLUPold_1.3.1.tar.gz">gfBLUPold_1.3.1.tar.gz</a> is an old version of the glfBLUP package required to run lsBLUP and siBLUP.</li>
+<li><a href="glfBLUP_1.0.0.tar.gz">glfBLUP_1.0.0.tar.gz</a> is the version of the glfBLUP package used in the glfBLUP analyses.</li>
+<li><a href="plot_hyper.R">plot_hyper.R</a> is the script that generates the combined plot of the B5IR and HEAT hyperspectral results.</li>
+<li><a href="run_all_hyper.R">run_all_hyper.R</a> is the masterscript for all hyperspectral analyses.</li>
+<li><a href="run_all_misc.R">run_all_misc.R</a> is the masterscript for some additional plotting.</li>
+<li><a href="run_all_p800.R">run_all_p800.R</a> is the masterscript for all simulations.</li>
+<li><a href="run_all_rep_checks.R">run_all_rep_checks.R</a> is the masterscript for reproducibility checks.</li>
+<li><a href="run_all_timing.R">run_all_timing.R</a> is the masterscript for the glfBLUP timing.</li>
+</ul>
+<h2 id="figures">Figures:</h2>
+<ul>
+<li>Figure 2 corresponds to <a href="plots/p800_main.png">p800_main.png</a>.</li>
+<li>Figure 3 corresponds to <a href="plots/hyper.png">hyper.png</a>.</li>
+<li>Figure 4 corresponds to <a href="plots/gfBLUP_hyper_1415B5IR_single_date.png">gfBLUP_hyper_1415B5IR_single_date.png</a>.</li>
+<li>Figure 5 corresponds to <a href="plots/p800.png">p800.png</a>.</li>
+<li>Figure S1 corresponds to <a href="plots/siBLUP_hyper_1415B5IR_single_date.png">siBLUP_hyper_1415B5IR_single_date.png</a> and <a href="plots/lsBLUP_hyper_1415B5IR_single_date.png">lsBLUP_hyper_1415B5IR_single_date.png</a>.</li>
+<li>Figure S2 corresponds to <a href="plots/MegaLMM_hyper_1415B5IR_single_date_M3.png">MegaLMM_hyper_1415B5IR_single_date_M3.png</a>, <a href="plots/MegaLMM_hyper_1415B5IR_single_date_M5.png">MegaLMM_hyper_1415B5IR_single_date_M5.png</a>, and <a href="plots/MegaLMM_hyper_1415B5IR_single_date_M10.png">MegaLMM_hyper_1415B5IR_single_date_M10.png</a>.</li>
+<li>Figure S3 corresponds to <a href="plots/MegaLMM_hyper_1415B5IR_single_date_traceplot_WL_M3.png">MegaLMM_hyper_1415B5IR_single_date_traceplot_WL_M3.png</a>.</li>
+<li>Figure S4 corresponds to <a href="plots/MegaLMM_hyper_1415B5IR_single_date_traceplot_WL_M5.png">MegaLMM_hyper_1415B5IR_single_date_traceplot_WL_M5.png</a>.</li>
+<li>Figure S5 corresponds to <a href="plots/MegaLMM_hyper_1415B5IR_single_date_traceplot_WL_M10_part1.png">MegaLMM_hyper_1415B5IR_single_date_traceplot_WL_M10_part1.png</a>.</li>
+<li>Figure S6 corresponds to <a href="plots/MegaLMM_hyper_1415B5IR_single_date_traceplot_WL_M10_part2.png">MegaLMM_hyper_1415B5IR_single_date_traceplot_WL_M10_part2.png</a>.</li>
+<li>Figure S7 corresponds to <a href="plots/MegaLMM_hyper_1415B5IR_single_date_traceplot_Y_M3.png">MegaLMM_hyper_1415B5IR_single_date_traceplot_Y_M3.png</a>, <a href="plots/MegaLMM_hyper_1415B5IR_single_date_traceplot_Y_M5.png">MegaLMM_hyper_1415B5IR_single_date_traceplot_Y_M5.png</a>, and <a href="plots/MegaLMM_hyper_1415B5IR_single_date_traceplot_Y_M10.png">MegaLMM_hyper_1415B5IR_single_date_traceplot_Y_M10.png</a>.</li>
+<li>Figure S8 corresponds to <a href="plots/timing.png">timing.png</a>.</li>
+<li>Figure S9 corresponds to <a href="plots/hyper_RF_1415B5IR.png">hyper_RF_1415B5IR.png</a>.</li>
+<li>Figure S10 corresponds to <a href="plots/hyper_RF_1415HEAT.png">hyper_RF_1415HEAT.png</a>.</li>
+</ul>
+<h2 id="sessioninfo-output">sessionInfo() output:</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a>R version <span class="dv">4</span>.<span class="fl">4.1</span> (<span class="dv">2024-06-14</span> ucrt)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a>Platform<span class="op">:</span><span class="st"> </span>x86_<span class="dv">64</span><span class="op">-</span>w64<span class="op">-</span>mingw32<span class="op">/</span>x64</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a>Running under<span class="op">:</span><span class="st"> </span>Windows <span class="dv">11</span> <span class="kw">x64</span> (build <span class="dv">26100</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true"></a>Matrix products<span class="op">:</span><span class="st"> </span>default</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true"></a>locale<span class="op">:</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true"></a>[<span class="dv">1</span>] LC_COLLATE=English_Netherlands.utf8  LC_CTYPE=English_Netherlands.utf8    LC_MONETARY=English_Netherlands.utf8 LC_NUMERIC=C                        </span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true"></a>[<span class="dv">5</span>] LC_TIME=English_Netherlands.utf8    </span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true"></a>time zone<span class="op">:</span><span class="st"> </span>Europe<span class="op">/</span>Amsterdam</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true"></a>tzcode source<span class="op">:</span><span class="st"> </span>internal</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true"></a>attached base packages<span class="op">:</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true"></a>[<span class="dv">1</span>] grid      parallel  stats     graphics  grDevices utils     datasets  methods   base     </span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true"></a>other attached packages<span class="op">:</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true"></a><span class="st"> </span>[<span class="dv">1</span>] ggforce_<span class="dv">0</span>.<span class="fl">4.2</span>      statgenGWAS_<span class="dv">1</span>.<span class="fl">0.9</span>  statgenHTP_<span class="dv">1</span>.<span class="dv">0</span>.<span class="fl">6.1</span> LMMsolver_<span class="dv">1</span>.<span class="fl">0.8</span>    lubridate_<span class="dv">1</span>.<span class="fl">9.3</span>    forcats_<span class="dv">1</span>.<span class="fl">0.0</span>      stringr_<span class="dv">1</span>.<span class="fl">5.1</span>     </span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true"></a> [<span class="dv">8</span>] dplyr_<span class="dv">1</span>.<span class="fl">1.4</span>        purrr_<span class="dv">1</span>.<span class="fl">0.2</span>        readr_<span class="dv">2</span>.<span class="fl">1.5</span>        tidyr_<span class="dv">1</span>.<span class="fl">3.1</span>        tibble_<span class="dv">3</span>.<span class="fl">2.1</span>       tidyverse_<span class="dv">2</span>.<span class="fl">0.0</span>    ggplot2_<span class="dv">3</span>.<span class="fl">5.1</span>     </span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true"></a>[<span class="dv">15</span>] rrBLUP_<span class="dv">4</span>.<span class="fl">6.3</span>       tensorflow_<span class="dv">2</span>.<span class="fl">16.0</span>  keras_<span class="dv">2</span>.<span class="fl">15.0</span>       MegaLMM_<span class="dv">0</span>.<span class="fl">9.5</span>      MCMCglmm_<span class="fl">2.36</span>      ape_<span class="fl">5.8</span><span class="dv">-1</span>          coda_<span class="fl">0.19-4.1</span>     </span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true"></a>[<span class="dv">22</span>] Matrix_<span class="fl">1.7</span><span class="dv">-0</span>       glfBLUP_<span class="dv">1</span>.<span class="fl">0.0</span>      gfBLUPold_<span class="dv">1</span>.<span class="fl">3.1</span>    doParallel_<span class="dv">1</span>.<span class="fl">0.17</span>  iterators_<span class="dv">1</span>.<span class="fl">0.14</span>   foreach_<span class="dv">1</span>.<span class="fl">5.2</span>      tictoc_<span class="dv">1</span>.<span class="fl">2.1</span>      </span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true"></a>[<span class="dv">29</span>] rlist_<span class="dv">0</span>.<span class="dv">4</span>.<span class="fl">6.2</span>     </span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true"></a></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true"></a>loaded via a <span class="kw">namespace</span> (and not attached)<span class="op">:</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true"></a><span class="st"> </span>[<span class="dv">1</span>] dotCall64_<span class="fl">1.1</span><span class="dv">-1</span>   spam_<span class="fl">2.10</span><span class="dv">-0</span>       gtable_<span class="dv">0</span>.<span class="fl">3.5</span>      tensorA_<span class="dv">0</span>.<span class="dv">36</span>.<span class="fl">2.1</span>  lattice_<span class="fl">0.22</span><span class="dv">-6</span>    tzdb_<span class="dv">0</span>.<span class="fl">4.0</span>        vctrs_<span class="dv">0</span>.<span class="fl">6.5</span>       tools_<span class="dv">4</span>.<span class="fl">4.1</span>      </span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true"></a> [<span class="dv">9</span>] tfruns_<span class="dv">1</span>.<span class="fl">5.3</span>      generics_<span class="dv">0</span>.<span class="fl">1.3</span>    fansi_<span class="dv">1</span>.<span class="fl">0.6</span>       SpATS_<span class="fl">1.0</span><span class="dv">-18</span>      pkgconfig_<span class="dv">2</span>.<span class="fl">0.3</span>   data.table_<span class="dv">1</span>.<span class="fl">16.0</span> lifecycle_<span class="dv">1</span>.<span class="fl">0.4</span>   cubature_<span class="dv">2</span>.<span class="fl">1.1</span>   </span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true"></a>[<span class="dv">17</span>] farver_<span class="dv">2</span>.<span class="fl">1.2</span>      compiler_<span class="dv">4</span>.<span class="fl">4.1</span>    munsell_<span class="dv">0</span>.<span class="fl">5.1</span>     codetools_<span class="fl">0.2</span><span class="dv">-20</span>  pillar_<span class="dv">1</span>.<span class="fl">9.0</span>      nloptr_<span class="dv">2</span>.<span class="fl">1.1</span>      whisker_<span class="dv">0</span>.<span class="fl">4.1</span>     MASS_<span class="fl">7.3</span><span class="dv">-61</span>      </span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true"></a>[<span class="dv">25</span>] boot_<span class="fl">1.3</span><span class="dv">-31</span>       abind_<span class="fl">1.4</span><span class="dv">-8</span>       nlme_<span class="fl">3.1</span><span class="dv">-166</span>      tidyselect_<span class="dv">1</span>.<span class="fl">2.1</span>  digest_<span class="dv">0</span>.<span class="fl">6.37</span>     stringi_<span class="dv">1</span>.<span class="fl">8.4</span>     reshape2_<span class="dv">1</span>.<span class="fl">4.4</span>    splines_<span class="dv">4</span>.<span class="fl">4.1</span>    </span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true"></a>[<span class="dv">33</span>] polyclip_<span class="fl">1.10</span><span class="dv">-7</span>   rprojroot_<span class="dv">2</span>.<span class="fl">0.4</span>   here_<span class="dv">1</span>.<span class="fl">0.1</span>        colorspace_<span class="fl">2.1</span><span class="dv">-1</span>  cli_<span class="dv">3</span>.<span class="fl">6.3</span>         magrittr_<span class="dv">2</span>.<span class="fl">0.3</span>    base64enc_<span class="fl">0.1</span><span class="dv">-3</span>   utf8_<span class="dv">1</span>.<span class="fl">2.4</span>       </span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true"></a>[<span class="dv">41</span>] corpcor_<span class="dv">1</span>.<span class="fl">6.10</span>    withr_<span class="dv">3</span>.<span class="fl">0.1</span>       scales_<span class="dv">1</span>.<span class="fl">3.0</span>      rappdirs_<span class="dv">0</span>.<span class="fl">3.3</span>    timechange_<span class="dv">0</span>.<span class="fl">3.0</span>  lme4_<span class="fl">1.1-35.5</span>     reticulate_<span class="dv">1</span>.<span class="fl">39.0</span> hms_<span class="dv">1</span>.<span class="fl">1.3</span>        </span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true"></a>[<span class="dv">49</span>] png_<span class="fl">0.1</span><span class="dv">-8</span>         rlang_<span class="dv">1</span>.<span class="fl">1.4</span>       Rcpp_<span class="dv">1</span>.<span class="fl">0.13</span>       zeallot_<span class="dv">0</span>.<span class="fl">1.0</span>     glue_<span class="dv">1</span>.<span class="fl">7.0</span>        tweenr_<span class="dv">2</span>.<span class="fl">0.3</span>      rstudioapi_<span class="dv">0</span>.<span class="fl">16.0</span> minqa_<span class="dv">1</span>.<span class="fl">2.8</span>      </span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true"></a>[<span class="dv">57</span>] jsonlite_<span class="dv">1</span>.<span class="fl">8.9</span>    R6_<span class="dv">2</span>.<span class="fl">5.1</span>          plyr_<span class="dv">1</span>.<span class="fl">8.9</span></span></code></pre></div>
