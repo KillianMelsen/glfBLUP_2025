@@ -6,7 +6,7 @@ run = 1
 set.seed(1997)
 
 # Loading hyperspectral dataset:
-datalist <- list.load(file = sprintf("hyper_1415HEAT/datasets/%s/hyper_dataset_%d.RData", prep, run))
+datalist <- rlist::list.load(file = sprintf("hyper_1415HEAT/datasets/%s/hyper_dataset_%d.RData", prep, run))
 
 # Storing data and prediction target:
 # 9 feb is last day of VEG, 25 feb is heading, 10 march is start of grain filling:

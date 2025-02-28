@@ -3,7 +3,7 @@ source("helper_functions/Estimate_gcor_prediction.R")
 load("genotypes/K_hyper.RData")
 set.seed(1997)
 run = 1
-datalist <- list.load(file = sprintf("hyper_1415B5IR/datasets/%s/hyper_dataset_%d.RData", prep, run))
+datalist <- rlist::list.load(file = sprintf("hyper_1415B5IR/datasets/%s/hyper_dataset_%d.RData", prep, run))
 
 # Storing data and prediction target:
 d <- datalist$data
