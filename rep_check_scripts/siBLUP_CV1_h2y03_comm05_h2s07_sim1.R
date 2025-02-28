@@ -18,7 +18,7 @@ RESULT$preds <- RESULT$preds[match(names(pred.target), names(RESULT$preds))]
 
 acc <- cor(RESULT$preds, pred.target)
 
-x <- read.csv(sprintf("p800/results/h2s%s/5%s_p800_results_siblup_%s_h2y%s_comm%s_h2s%s_1to50.csv",
+x <- read.csv(sprintf("p800/results/h2s%s/5%s_p800_results_siblup_%s_h2y%s_comm%s_h2s%s.csv",
                       h2s, lab, CV, h2y, comm, h2s))
 
-cat(sprintf("siBLUP accuracy reproduced correctly: %s", all.equal(acc, x$acc[sim])))
+cat(sprintf("\nsiBLUP accuracy reproduced correctly: %s\n\n", all.equal(acc, x$acc[sim])))

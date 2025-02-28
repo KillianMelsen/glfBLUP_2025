@@ -74,7 +74,7 @@ CV2.acc <- cor(pred.target, CV2.temp$preds[match(names(pred.target), names(CV2.t
 x1 <- read.csv(sprintf("p800/results/h2s%s/3a_p800_results_glfblup_CV1_h2y%s_comm%s_h2s%s.csv", h2s, h2y, comm, h2s))
 x2 <- read.csv(sprintf("p800/results/h2s%s/3b_p800_results_glfblup_CV2_h2y%s_comm%s_h2s%s.csv", h2s, h2y, comm, h2s))
 
-cat(sprintf("glfBLUP accuracy reproduced correctly for CV1: %s", all.equal(CV1.acc, x1$acc[sim])))
-cat(sprintf("glfBLUP accuracy reproduced correctly for CV2: %s", all.equal(CV2.acc, x2$acc[sim])))
+cat(sprintf("\nglfBLUP accuracy reproduced correctly for CV1: %s\n", all.equal(CV1.acc, x1$acc[sim])))
+cat(sprintf("glfBLUP accuracy reproduced correctly for CV2: %s\n\n", all.equal(CV2.acc, x2$acc[sim])))
 
 

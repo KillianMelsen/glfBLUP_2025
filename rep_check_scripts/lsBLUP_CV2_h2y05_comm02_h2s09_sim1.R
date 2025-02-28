@@ -20,4 +20,4 @@ acc <- cor(RESULT$preds, pred.target)
 x <- read.csv(sprintf("p800/results/h2s%s/11%s_p800_results_lsblup_%s_h2y%s_comm%s_h2s%s.csv",
                       h2s, lab, CV, h2y, comm, h2s))
 
-cat(sprintf("lsBLUP accuracy reproduced correctly: %s", all.equal(acc, x$acc[sim])))
+cat(sprintf("\nlsBLUP accuracy reproduced correctly: %s\n\n", all.equal(acc, x$acc[sim])))
