@@ -14,7 +14,7 @@
 #SBATCH --time=4-00:00:00
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=10
-#SBATCH --mem-per-cpu=80G
+#SBATCH --mem-per-cpu=8G
 
 #-----------------------------Environment, Operations and Job steps----
 # Modules
