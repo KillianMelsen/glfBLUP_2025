@@ -170,6 +170,8 @@ for (h2y in h2.foc) {
                               subset = subset)
     
     # Export results:
+    cat(sprintf("Writing results for glfBLUP CV1/CV2 on p800_V2 dataset %d / %d, (h2s = %s, comm = %s, h2y = %s), combi %d / %d\n",
+                sim, n.sim, h2s, comm, h2y, combi, combis))
     write.csv(CV1.results, sprintf("p800_V2/results/h2s%s/3a_p800_V2_results_glfblup_CV1_h2y%s_comm%s_h2s%s.csv", h2s, h2y, comm, h2s))
     write.csv(CV2.results, sprintf("p800_V2/results/h2s%s/3b_p800_V2_results_glfblup_CV2_h2y%s_comm%s_h2s%s.csv", h2s, h2y, comm, h2s))
     
