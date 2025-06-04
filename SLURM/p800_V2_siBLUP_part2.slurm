@@ -8,7 +8,7 @@
 #SBATCH --error=output/errors_p800_V2_siBLUP_part2_%j.txt
 
 #-----------------------------Other information------------------------
-#SBATCH --comment='p800_V2 siBLUP part 2 script'
+#SBATCH --comment='siBLUP_2'
 
 #-----------------------------Required resources-----------------------
 #SBATCH --time=4-00:00:00
