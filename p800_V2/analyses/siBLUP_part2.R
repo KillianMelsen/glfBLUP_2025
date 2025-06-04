@@ -1,3 +1,4 @@
+#!/usr/bin/env Rscript
 # !!! IMPORTANT: SET MKL_NUMTHREADS=1 and MKL_DYNAMIC=TRUE in ~/.profile !!!
 # Should take about 21 hours to run
 
