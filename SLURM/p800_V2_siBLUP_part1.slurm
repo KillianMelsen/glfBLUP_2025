@@ -11,7 +11,7 @@
 #SBATCH --comment='siBLUP_2'
 
 #-----------------------------Required resources-----------------------
-#SBATCH --time=4-00:00:00
+#SBATCH --time=14-00:00:00
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=1
 #SBATCH --mem-per-cpu=8G

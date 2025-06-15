@@ -1,0 +1,3 @@
+Running "module reset". Resetting modules to system default. The following $MODULEPATH directories have been removed: /shared/easybuild/modules/2024/generic/all
+dos2unix: converting file ./p800_V2/analyses/MegaLMM_part5.R to Unix format...
+There were 50 or more warnings (use warnings() to see the first 50)
