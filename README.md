@@ -31,6 +31,7 @@ Source all scripts in the order presented in these main files. No manual changes
 -   [run_all_hyper.R](run_all_hyper.R) is the masterscript for all hyperspectral analyses.
 -   [run_all_misc.R](run_all_misc.R) is the masterscript for some additional plotting.
 -   [run_all_p800.R](run_all_p800.R) is the masterscript for all simulations.
+-   [run_all_p800_v2.R](run_all_p800_V2.R) is the masterscript for all simulations using a low-rank residual covariance structure.
 -   [run_all_rep_checks.R](run_all_rep_checks.R) is the masterscript for reproducibility checks.
 -   [run_all_timing.R](run_all_timing.R) is the masterscript for the glfBLUP timing.
 
