@@ -15,6 +15,7 @@ Source all scripts in the order presented in these main files. No manual changes
 -   There is an [old version of the glfBLUP package](gfBLUPold_1.3.1.tar.gz) included in this repository that is required to run the lsBLUP and siBLUP models.
 
 ## Folders:
+
 -   [genotypes](genotypes) contains marker data and kinships for the analyses.
 -   [helper_functions](helper_functions) contains functions required for the analyses and data generation.
 -   [hyper_1415B5IR](hyper_1415B5IR) contains all files for the hyperspectral B5IR analyses.
@@ -36,6 +37,7 @@ Source all scripts in the order presented in these main files. No manual changes
 -   [run_all_timing.R](run_all_timing.R) is the masterscript for the glfBLUP timing.
 
 ## Figures:
+
 -   Figure 2 corresponds to [p800_main.png](plots/p800_main.png).
 -   Figure 3 corresponds to [hyper.png](plots/hyper.png).
 -   Figure 4 corresponds to [gfBLUP_hyper_1415B5IR_single_date.png](plots/gfBLUP_hyper_1415B5IR_single_date.png).
@@ -52,7 +54,8 @@ Source all scripts in the order presented in these main files. No manual changes
 -   Figure S10 corresponds to [hyper_RF_1415HEAT.png](plots/hyper_RF_1415HEAT.png).
 
 ## sessionInfo() output:
-```R
+
+``` r
 R version 4.4.1 (2024-06-14 ucrt)
 Platform: x86_64-w64-mingw32/x64
 Running under: Windows 11 x64 (build 26100)
