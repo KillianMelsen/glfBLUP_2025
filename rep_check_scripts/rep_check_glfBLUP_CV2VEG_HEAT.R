@@ -1,0 +1,227 @@
+# This script is a copy of the script at `hyper_1415HEAT/analyses/glfBLUP_hyper_CV2VEG.R`.
+# The purpose of this script is to provide an annotated example of how to perform
+# a reproducibility spot check. All code that is not needed for the spot check has
+# been commented out.
+# Please carefully read the instructions below, and make sure you manually define
+# the variables as explained below.
+
+# This script produces all intermediate results for the glfBLUP CV2VEG analyses on
+# the hyperspectral HEAT dataset.
+#
+# The script is structured as follows:
+# - There is a single parallel loop dividing the 250 replications over 5 parallel
+#   workers.
+# - The replications produced by each worker are given by the `par.work`
+#   variable on line 60.
+# - A seed is set inside each worker and the replicates of the worker are produced
+#   inside the inner loop starting on line 71.
+#
+# Suppose you want to reproduce the result of replication 51. Looking at the `work`
+# variable, replication 51 is handled by the 2nd worker. So we can manually set
+# `i <- 2` instead of running the parallel for loop. We also note that replication
+# 51 is the 1st replication that is produced by the 2nd worker, so in the inner
+# loop we do not go from `1:length(par.work)`, but `1:1`. Then running the loop
+# will produce the CV2VEG accuracy of replication 51 as the 1st value in `CV2.acc`.
+# This can be compared to the 51st accuracy stored in the appropriate intermediate
+# results csv file:
+#
+# all.equal(read.csv(sprintf("hyper_1415HEAT/results/%s/3b_hyper_results_glfblup_CV2VEG.csv", prep))$acc[51],
+#           CV2.acc[1])
+#
+# [1] TRUE
+
+# Set these manually:
+i <- 2
+
+prep <- "nosplines"
+# Loading libraries:
+library(rlist)
+library(tictoc)
+library(doParallel)
+library(gfBLUPold)
+library(glfBLUP)
+source("helper_functions.R")
+library(MCMCglmm)
+library(coda)
+library(ape)
+
+# Setting seed:
+set.seed(1997)
+
+# Setting working directory:
+wd <- getwd()
+setwd(wd)
+
+# Loading kinship:
+load("genotypes/K_hyper.RData")
+
+# Hyperspectral data:
+# tic("glfBLUP")
+
+n.datasets <- 250
+n.cores <- 5
+work <- split(1:n.datasets, ceiling(seq_along(1:n.datasets) / ceiling(n.datasets / n.cores)))
+# cl <- parallel::makeCluster(n.cores, outfile = "logs/glfBLUP_hyper_CV2VEG.txt")
+# doParallel::registerDoParallel(cl)
+
+# invisible(
+  # par.results <- foreach::foreach(i = 1:length(work), .packages = c("rlist", "tictoc", "gfBLUPold", "glfBLUP"), .combine = "c") %dopar% {
+    
+    par.work <- work[[i]]
+    set.seed(1997)
+    
+    # Setting up result storage:
+    CV1.acc <- CV2.acc <- numeric(length(par.work))
+    penG <- numeric(length(par.work))
+    penE <- numeric(length(par.work))
+    subset <- character(length(par.work))
+    extra <- vector("list", length(par.work))
+    
+    # Running:
+    for (run in 1:1) {
+      
+      # Loading hyperspectral dataset:
+      datalist <- list.load(file = sprintf("hyper_1415HEAT/datasets/%s/hyper_dataset_%d.RData", prep, par.work[run]))
+      
+      # Storing data and prediction target:
+      # 9 feb is last day of VEG, 25 feb is heading, 10 march is start of grain filling:
+      dates <- c("150414")
+      d <- datalist$data
+      select <- which(substr(names(d), 7, 12) %in% dates)
+      d <- d[c(1, select, ncol(d))]
+      pred.target <- datalist$pred.target
+      
+      # Subsetting K (only really happens for the first dataset...):
+      K <- K[unique(d$G), unique(d$G)]
+      
+      ### Model ##############################################################
+      tic(run)
+      
+      ### 1. Make training data and store feature/focal trait names ------------------------------------------------------------------------
+      d.train <- droplevels(na.omit(d))
+      sec <- names(d[2:(ncol(d) - 1)])
+      foc <- names(d)[ncol(d)]
+      
+      ### 2. Redundancy filter the secondary features using training data only -------------------------------------------------------------
+      temp <- glfBLUP::redundancyFilter(data = d.train[c("G", sec)], tau = 0.95, verbose = FALSE)
+      d.train.RF <- cbind(temp$data.RF, d.train[foc])
+      d.RF <- d[names(d.train.RF)]
+      sec.RF <- names(d.RF[2:(ncol(d.RF) - 1)])
+      
+      ### 3. Regularization ----------------------------------------------------------------------------------------------------------------
+      folds <- glfBLUP::createFolds(genos = unique(as.character(d.train.RF$G)))
+      tempG <- glfBLUP::regularizedCorrelation(data = d.train.RF[c("G", sec.RF)], folds = folds, what = "genetic", dopar = FALSE, verbose = FALSE)
+      tempE <- glfBLUP::regularizedCorrelation(data = d.train.RF[c("G", sec.RF)], folds = folds, what = "residual", dopar = FALSE, verbose = FALSE)
+      Rg.RF.reg <- tempG$optCor
+      
+      ### 4. Fitting factor model ----------------------------------------------------------------------------------------------------------
+      # data is only used to determine the sample size for the MP-bound. what specifies that it's a genetic correlation matrix, so the
+      # number of training genotypes should be used, and not the number of training individuals (= genotypes * replicates).
+      FM.fit <- glfBLUP::factorModel(data = d.train.RF[c("G", sec.RF)], cormat = Rg.RF.reg, what = "genetic", verbose = FALSE)
+      
+      #### 5. Getting factor scores (also for the test set in CV2!) ------------------------------------------------------------------------
+      # Loadings and uniquenesses were estimated on the correlation scale, but should be on the covariance scale for genetic-thomson scores:
+      D <- sqrt(diag(tempG$Sg)) # Getting standard deviations
+      L.cov <- diag(D) %*% FM.fit$loadings
+      PSI.cov <- outer(D, D) * FM.fit$uniquenesses
+      
+      # CV2 Factor scores:
+      # First recenter/rescale the training and test secondary data together:
+      d.RF[sec.RF] <- sapply(d.RF[sec.RF], scale)
+      CV2.F.scores <- glfBLUP::factorScores(data = d.RF[c("G", sec.RF)],
+                                            loadings = L.cov,
+                                            uniquenesses = PSI.cov,
+                                            m = FM.fit$m,
+                                            type = "genetic-thomson-repdiv",
+                                            Se = outer(sqrt(diag(tempE$Se)), sqrt(diag(tempE$Se))) * tempE$optCor)
+      
+      CV2.d.final <- cbind(CV2.F.scores, d.RF$Y)
+      names(CV2.d.final)[ncol(CV2.d.final)] <- "Y"
+      names(CV2.d.final)[1] <- "G"
+      
+      #### 6. Selecting the relevant factors -----------------------------------------------------------------------------------------------
+      selection <- glfBLUP::factorSelect(CV2.d.final, procedure = "leaps", verbose = FALSE)
+      
+      #### 7. Multi-trait genomic prediction -----------------------------------------------------------------------------------------------
+      CV2.temp <- glfBLUP::glfBLUP(data = CV2.d.final, selection = selection, K = K, sepExp = FALSE, verbose = F)
+      toc(log = TRUE)
+      ########################################################################
+      
+      #### Runcie & Cheng 2019 correction --------------------------------------
+      temp <- estimate_gcor(data = data.frame(ID = pred.target$G,
+                                              obs = pred.target$pred.target,
+                                              pred = CV2.temp$preds[match(pred.target$G, names(CV2.temp$preds))]),
+                            Knn = K[pred.target$G, pred.target$G],
+                            method = "MCMCglmm",
+                            normalize = T)
+      CV2.acc[run] <- temp["g_cor"]
+      
+      penG[run] <- tempG$optPen
+      penE[run] <- tempE$optPen
+      subset[run] <- paste(selection, collapse = "-")
+      
+      extra[[run]] <- list(loadings = FM.fit$loadings,
+                           uniquenesses = FM.fit$uniquenesses,
+                           m = FM.fit$m,
+                           m.selected = selection,
+                           Sg = CV2.temp$Sg,
+                           Se = CV2.temp$Se,
+                           h2s = CV2.temp$h2s)
+    }
+    
+cat(paste0(all.equal(read.csv(sprintf("hyper_1415HEAT/results/%s/3b_hyper_results_glfblup_CV2VEG.csv", prep))$acc[51],
+                     CV2.acc[1]), "\n"))
+    
+# The code below is not needed for the reproducibility spot check.
+#     # Retrieve computational times:
+#     tictoc.logs <- tic.log(format = FALSE)
+#     tic.clearlog()
+#     comptimes <- unlist(lapply(tictoc.logs, function(x) x$toc - x$tic))
+#     
+#     # Collect results:
+#     worker.result <- list(list(result = data.frame(#CV1.acc = CV1.acc,
+#       CV2.acc = CV2.acc,
+#       penG = penG,
+#       penE = penE,
+#       subset = subset,
+#       comptimes = comptimes),
+#       extra = extra))
+#     
+#     names(worker.result) <- sprintf("worker_%d", i)
+#     return(worker.result)
+#     
+#   })
+# doParallel::stopImplicitCluster()
+# parallel::stopCluster(cl)
+# toc()
+# 
+# # Restructuring parallel results for saving:
+# CV1.acc <- CV2.acc <- numeric()
+# penG <- numeric()
+# penE <- numeric()
+# subset <- character()
+# comptimes <- numeric()
+# extra <- vector("list")
+# 
+# for (j in 1:length(work)) {
+#   
+#   # CV1.acc <- c(CV1.acc, par.results[[sprintf("worker_%d", j)]]$result$CV1.acc)
+#   CV2.acc <- c(CV2.acc, par.results[[sprintf("worker_%d", j)]]$result$CV2.acc)
+#   penG <- c(penG, par.results[[sprintf("worker_%d", j)]]$result$penG)
+#   penE <- c(penE, par.results[[sprintf("worker_%d", j)]]$result$penE)
+#   subset <- c(subset, par.results[[sprintf("worker_%d", j)]]$result$subset)
+#   comptimes <- c(comptimes, par.results[[sprintf("worker_%d", j)]]$result$comptimes)
+#   extra <- c(extra, par.results[[sprintf("worker_%d", j)]]$extra)
+#   
+# }
+# 
+# CV2.results <- data.frame(acc = CV2.acc,
+#                           penG = penG,
+#                           penE = penE,
+#                           subset = subset,
+#                           comptimes = comptimes)
+# 
+# # Export results:
+# write.csv(CV2.results, sprintf("hyper_1415HEAT/results/%s/3b_hyper_results_glfblup_CV2VEG.csv", prep))
+# 
+# list.save(extra, sprintf("hyper_1415HEAT/results/%s/3_hyper_extra_results_glfblup_CV2VEG.RData", prep))
