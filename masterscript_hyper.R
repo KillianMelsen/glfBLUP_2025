@@ -62,8 +62,11 @@ if (!("glfBLUP" %in% installed.packages())) {
 ## Step I: data pre-processing for B5IR ========================================
 # This script preprocesses the raw hyperspectral B5IR data. The output of this
 # script should already be present in the repository, so running this script is
-# not strictly required.
-source("hyper_1415B5IR/data_generation/hyper_preprocessing.R"); reset()
+# not strictly required (and not possible for the public repository due to the lack
+# of raw data).
+if (!(length(list.files("hyper_datafiles/")) == 1)) {
+  source("hyper_1415B5IR/data_generation/hyper_preprocessing.R"); reset()
+}
 
 ## Step II: data generation for B5IR ===========================================
 # This script uses the output of the previous script to create all 250 datafiles
@@ -131,8 +134,11 @@ source("hyper_1415B5IR/analyses/multiMLP_hyper_CV2_VEG.R"); reset()
 ## Step I: data pre-processing for HEAT ========================================
 # This script preprocesses the raw hyperspectral HEAT data. The output of this
 # script should already be present in the repository, so running this script is
-# not strictly required.
-source("hyper_1415HEAT/data_generation/hyper_preprocessing.R"); reset()
+# not strictly required (and not possible for the public repository due to the lack
+# of raw data).
+if (!(length(list.files("hyper_datafiles/")) == 1)) {
+  source("hyper_1415HEAT/data_generation/hyper_preprocessing.R"); reset()
+}
 
 ## Step II: data generation for HEAT ===========================================
 # This script uses the output of the previous script to create all 250 datafiles
