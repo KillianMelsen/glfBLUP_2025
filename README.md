@@ -1,5 +1,7 @@
 # Improving genomic prediction using high-dimensional secondary phenotypes: The genetic latent factor approach
 
+https://doi.org/10.1002/bimj.70081
+
 This repository contains all scripts required to generate the datafiles for all replications for the hyperspectral B5IR/HEAT data as well as the random (p800) and low-rank (p800_lowrank) residual structure simulations. This repository also contains scripts to analyze these datasets using different methods and visualize the results. These scripts can be used to reproduce all intermediate results, i.e., every single accuracy for each model and replication. Finally, it contains instructions and examples that can be used to perform reproducibility spot checks that allow anyone interested to check reproducibility without having to run all analyses.
 
 This readme contains the following sections:
